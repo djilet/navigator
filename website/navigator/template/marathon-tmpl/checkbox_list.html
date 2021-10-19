@@ -1,0 +1,9 @@
+<ul class="answer-list drop-list checkbox <TMPL_IF NAME='MoreType' OP='==' VALUE='NoSave'>no-save</TMPL_IF>"
+	<TMPL_IF NAME='MaxSelectCount'>data-max-count=<TMPL_VAR NAME='MaxSelectCount'></TMPL_IF>>
+	<TMPL_LOOP NAME='Content'>
+		<li class="item <TMPL_IF NAME='Selected'>selected</TMPL_IF>">
+			<TMPL_VAR NAME='Title'>
+			<input type="checkbox" name="answers[]" value="<TMPL_VAR NAME='ID'>" <TMPL_IF NAME='Selected'>checked="checked"</TMPL_IF>>
+		</li>
+	</TMPL_LOOP>
+</ul>

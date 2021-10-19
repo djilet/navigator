@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<public>
+		<users_profile.html>
+			<ShowRecord>Посмотреть запись</ShowRecord>
+			<Details>Подробнее</Details>
+			<Connect>Присоединиться</Connect>
+			<AlreadyGoing>Уже идет</AlreadyGoing>
+			<Duration>Продолжительность</Duration>
+			<Finished>состоялся</Finished>
+		</users_profile.html>
+	</public>
+</Root>

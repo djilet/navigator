@@ -1,0 +1,848 @@
+<TMPL_IF NAME="ExhibitionScheduleView">
+
+    <div class="content-aside">
+        <div class="container page-schedule schedule">
+            <div class="row">
+                <div class="col-xs-12 section-event--type2">
+
+                    <ol class="breadcrumb grey">
+                        <li><a href="<TMPL_VAR NAME='CurrentPageURL'>">Выставка</a></li>
+                        <li><a href="<TMPL_VAR NAME='CurrentPageURL'>/<TMPL_VAR NAME='StaticPath'>"><TMPL_VAR NAME="CityTitle"></a></li>
+                        <li class="active"><TMPL_IF NAME="TitleSchedule"><TMPL_VAR NAME="TitleSchedule" /><TMPL_ELSE><TMPL_VAR NAME="LNG_ScheduleForum" /></TMPL_IF></li>
+                    </ol>
+
+                    <h1 class="header-section"><TMPL_IF NAME="TitleSchedule"><TMPL_VAR NAME="TitleSchedule" /><TMPL_ELSE><TMPL_VAR NAME="LNG_ScheduleForum" /></TMPL_IF></h1>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs dates" role="tablist">
+                        <TMPL_LOOP NAME="Schedule">
+                            <TMPL_IF NAME="Schedule.ShortDate">
+                                <li role="presentation" class="item double<TMPL_IF NAME='__FIRST__'> active</TMPL_IF>">
+                                    <a class="date-link" href="#tab-shedule-<TMPL_VAR NAME='StaticPath' />-<TMPL_VAR NAME='__ROWNUM__' />" data-toggle="tab">
+                                        <span><TMPL_VAR NAME="Schedule.ShortDate" /></span>
+                                    </a>
+                                </li>
+                            </TMPL_IF>
+                        </TMPL_LOOP>
+                    </ul>
+
+                    <TMPL_LOOP NAME="Schedule">
+                        <div role="tabpanel" class="tab-pane fade<TMPL_IF NAME='__FIRST__'> in active</TMPL_IF> rooms" id="tab-shedule-<TMPL_VAR NAME='StaticPath' />-<TMPL_VAR NAME='__ROWNUM__' />">
+                            <ul class="nav nav-tabs nav-tabs--big_2 list-filter" role="tablist">
+                                <TMPL_LOOP NAME="RoomList">
+                                    <li role="presentation" class="double<TMPL_IF NAME='__FIRST__'> active</TMPL_IF>">
+                                        <a href="#tab-shedule-<TMPL_VAR NAME='StaticPath' />-<TMPL_VAR NAME='Schedule.__ROWNUM__' />-<TMPL_VAR NAME='__ROWNUM__' />" data-toggle="tab" class="no-animate">
+                                            <span><TMPL_VAR NAME="Title" /></span>
+                                        </a>
+                                    </li>
+                                </TMPL_LOOP>
+                            </ul>
+                        </div>
+                    </TMPL_LOOP>
+
+                    <ul class="schedule__list-type">
+                        <li><span class="bold">Типы событий:</span></li>
+                        <li class="experts">
+                            <span class="icon checkbox checked"></span>
+                            <span><TMPL_VAR NAME='LNG_Type1'></span>
+                        </li>
+                        <li class="parent">
+                            <span class="icon checkbox checked"></span>
+                            <span><TMPL_VAR NAME='LNG_Type2'></span>
+                        </li>
+                        <li class="abroad">
+                            <span class="icon checkbox checked"></span>
+                            <span><TMPL_VAR NAME='LNG_Type3'></span>
+                        </li>
+                        <li class="prof">
+                            <span class="icon checkbox checked"></span>
+                            <span><TMPL_VAR NAME='LNG_Type4'></span>
+                        </li>
+                        <li class="univer">
+                            <span class="icon checkbox checked"></span>
+                            <span><TMPL_VAR NAME='LNG_Type5'></span>
+                        </li>
+                        <li class="toelf">
+                            <span class="icon checkbox checked"></span>
+                            <span><TMPL_VAR NAME='LNG_Type6'></span>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="section-event--type2">
+                        <div class="tab-content">
+
+                            <TMPL_LOOP NAME="Schedule">
+                                <TMPL_LOOP NAME="RoomList">
+                                    <div role="tabpanel" class="tab-pane fade<TMPL_IF NAME='__FIRST__'> <TMPL_IF NAME='Schedule.__FIRST__'>  in active</TMPL_IF></TMPL_IF> actions" id="tab-shedule-<TMPL_VAR NAME='StaticPath' />-<TMPL_VAR NAME='Schedule.__ROWNUM__' />-<TMPL_VAR NAME='__ROWNUM__' />">
+
+                                    <TMPL_LOOP NAME="ActionList">
+
+                                        <div class="block-event-wrap">
+                                            <div class="event-date">
+                                                <span class="event-date__time"><TMPL_VAR NAME="ActionList.Title" /></span>
+                                            </div>
+
+                                            <TMPL_LOOP NAME="ItemList">
+                                                <div class="block-event block-event--<TMPL_VAR NAME='Type'>">
+                                                    <section>
+                                                        <header>
+                                                            <span class="block-event__time"><TMPL_VAR NAME="TimeFrom" /> – <TMPL_VAR NAME="TimeTo" /></span>
+                                                            <span class="block-event__hall"><TMPL_VAR NAME="RoomTitle" /></span>
+                                                            <h3 class="block-event__header<TMPL_IF NAME='Description'> toggled</TMPL_IF>"><TMPL_VAR NAME="Title" /></h3>
+                                                        </header>
+
+                                                        <TMPL_IF NAME="Description">
+                                                            <div class="block-event__toggle"><TMPL_VAR NAME="Description" ESCAPE="nl2br" /></div>
+                                                        </TMPL_IF>
+
+                                                        <div class="block-event__info">
+                                                            <ul>
+                                                                <li>
+                                                                    <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/places.svg" alt="">
+                                                                    <span><TMPL_VAR NAME="Name" /></span>
+                                                                    <small><TMPL_VAR NAME="Post" /></small>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </TMPL_LOOP>
+                                        </div>
+                                    </TMPL_LOOP>
+
+                                    </div>
+                                </TMPL_LOOP>
+                            </TMPL_LOOP>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<TMPL_ELSEIF NAME="RegistrationView">
+
+    <div class="content-aside">
+        <div class="container page-registration">
+            <div class="row">
+                <TMPL_IF NAME="MessageList">
+                    <div class="col-xs-12">
+                        <ol class="breadcrumb grey">
+                            <li><a href="<TMPL_VAR NAME='CurrentPageURL'>">Выставка</a></li>
+                            <li><a href="<TMPL_VAR NAME='CurrentPageURL'>/<TMPL_VAR NAME='StaticPath'>"><TMPL_VAR NAME="CityTitle"></a></li>
+                            <li class="active"><TMPL_IF NAME="TitleRegister"><TMPL_VAR NAME="TitleRegister" /><TMPL_ELSE><TMPL_VAR NAME="LNG_RegistrationOnForum" /></TMPL_IF></li>
+                        </ol>
+                    </div>
+                    <div class="col-xs-12 register">
+                        <div class="image"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/heart.png" /></div>
+                        <div class="text1"><TMPL_VAR NAME='LNG_ResultTitle'></div>
+                        <div class="text2"><TMPL_VAR NAME='LNG_ResultComment'></div>
+                        <TMPL_IF NAME='StaticPath' VALUE='msk'>
+                            <TMPL_INCLUDE NAME='widgets/call-to-order-block-2.html'>
+                        <TMPL_ELSE>
+                            <div class="page-products__3block with-title">
+                                <p class="title color-gray h4 normal text-center">
+                                    А пока можете пройти <a href="https://propostuplenie.ru/proftest/" class="main-link">тест по профориентации</a> и разобрать его с экспертами на выставке
+                                </p>
+                            </div>
+                        </TMPL_IF>
+                    </div>
+                    <script type="text/javascript">
+                        VK.Goal('complete_registration');
+                        yaCounter47132955.reachGoal('Uspeshnaya_registratsiya');
+                    </script>
+                    <TMPL_ELSE>
+                        <div class="col-xs-12">
+
+                            <ol class="breadcrumb grey">
+                                <li><a href="<TMPL_VAR NAME='CurrentPageURL'>">Выставка</a></li>
+                                <li><a href="<TMPL_VAR NAME='CurrentPageURL'>/<TMPL_VAR NAME='StaticPath'>"><TMPL_VAR NAME="CityTitle"></a></li>
+                                <li class="active"><TMPL_IF NAME="TitleRegister"><TMPL_VAR NAME="TitleRegister" /><TMPL_ELSE><TMPL_VAR NAME="LNG_RegistrationOnForum" /></TMPL_IF></li>
+                            </ol>
+
+                            <h1 class="header-section"><TMPL_IF NAME="TitleRegister"><TMPL_VAR NAME="TitleRegister" /><TMPL_ELSE><TMPL_VAR NAME="LNG_RegistrationOnForum" /></TMPL_IF></h1>
+                        </div>
+                        <div class="col-xs-4 aside">
+                            <TMPL_IF NAME='StaticPath' VALUE='online'><!-- HACK: temporary for all cities -->
+                                <TMPL_ELSE>
+                                    <img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN'>img/dotted.png">
+                                    <section class=" aside__first">
+                                        <div class="aside__header">Во сколько вас ждать?</div>
+                                        <p>Необязательно приходить на выставку утром. Можете подойти к <a href="#" class="timelink">10:00</a>, <a href="#" class="timelink">12:00</a>, <a href="#" class="timelink">14:00</a> или <a href="#" class="timelink">16:00</a>. Вы не пропустите ни одной лекции и сможете пообщаться со всеми вузами.</p>
+                                        <p>Укажите наиболее удобное время, а мы учтем это и постараемся не допустить очередей.</p>
+                                    </section>
+                            </TMPL_IF>
+                        </div>
+
+                        <div class="col-xs-8">
+                            <p class="p-header"><TMPL_VAR NAME="LNG_RegistrationOnForumDescription" ESCAPE="nl2br" /></p>
+
+                            <div class="content-main">
+
+                                <form action="<TMPL_VAR NAME='CurrentPageURL'>/<TMPL_VAR NAME='StaticPath'>/RegistrationSuccess/" method="post" class="registration-exhibition-form" onsubmit="yaCounter47132955.reachGoal('Click_RegistrationSubmit');$('.loading').show();">
+
+                                    <div class="wrap-block-registration">
+                                        <TMPL_IF NAME="RegisterFormList">
+
+                                            <TMPL_LOOP NAME="RegisterFormList">
+
+                                                <div class="block-registration">
+
+                                                    <TMPL_IF NAME="__FIRST__">
+                                                        <div class="header hidden">
+                                                            <a href="#" class="remove-item"><TMPL_VAR NAME='LNG_RemoveRegistration'></a>
+                                                        </div>
+                                                        <div class="modal__social">
+                                                            <span class="modal__text"><TMPL_VAR NAME="LNG_FillFieldsFromSocial" /></span>
+                                                            <ul>
+                                                                <li>
+                                                                    <a class="modal__social-vk" href="#">
+                                                                        <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/vk.svg">
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="modal__social-fb" href="#">
+                                                                        <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/fb.svg">
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <TMPL_ELSE>
+                                                            <div class="header">
+                                                                <a href="#" class="remove-item"><TMPL_VAR NAME='LNG_RemoveRegistration'></a>
+                                                            </div>
+                                                    </TMPL_IF>
+
+                                                    <TMPL_IF NAME="ErrorList">
+                                                        <ul class="errors">
+                                                            <TMPL_LOOP NAME="ErrorList">
+                                                                <li><TMPL_VAR NAME="Message" /></li>
+                                                            </TMPL_LOOP>
+                                                        </ul>
+                                                    </TMPL_IF>
+
+                                                    <ul class="success message-list">
+                                                        <TMPL_IF NAME="MessageList">
+                                                            <TMPL_LOOP NAME="MessageList">
+                                                                <li><TMPL_VAR NAME="Message" /></li>
+                                                            </TMPL_LOOP>
+                                                        </TMPL_IF>
+                                                    </ul>
+
+                                                    <div class="form-group">
+                                                        <input type="text" name="RegisterForm[UserName][]" required class="form-control" id="formName" value="<TMPL_VAR NAME='UserName' />">
+                                                        <label for="formName"><TMPL_VAR NAME="LNG_UserName" /></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" name="RegisterForm[UserLastName][]" required class="form-control" id="formName" value="<TMPL_VAR NAME='UserLastName' />">
+                                                        <label for="formName"><TMPL_VAR NAME="LNG_UserLastName" /></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="email" name="RegisterForm[UserEmail][]" required class="form-control" id="formEmail" value="<TMPL_VAR NAME='UserEmail' />">
+                                                        <label for="formEmail"><TMPL_VAR NAME="LNG_UserEmail" /></label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input type="text" name="RegisterForm[UserPhone][]" required class="form-control form--phone" id="formPhone" value="<TMPL_VAR NAME='UserPhone' />">
+                                                        <label for="formPhone"><TMPL_VAR NAME="LNG_UserPhone" /></label>
+                                                    </div>
+                                                    <div class="form-group custom-select">
+                                                        <select class="form-control formWho" name="RegisterForm[UserWho][]">
+                                                            <option value="parent" <TMPL_IF NAME='UserWho' VALUE="parent"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IParent" /></option>
+                                                            <option value="teacher" <TMPL_IF NAME='UserWho' VALUE="teacher"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_ITeacher" /></option>
+                                                            <option value="child" <TMPL_IF NAME='UserWho' VALUE="child"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IChild" /></option>
+                                                            <option value="student" <TMPL_IF NAME='UserWho' VALUE="student"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IStudent" /></option>
+                                                        </select>
+                                                        <label><TMPL_VAR NAME="LNG_WhoAreYou" /></label>
+                                                    </div>
+                                                    <div class="form-group formClass-group" id="formClass-group" <TMPL_IF NAME='UserWho' VALUE="student"> style="display: none;"</TMPL_IF>>
+                                                    <input type="number" name="RegisterForm[UserClassNumber][]" required <TMPL_IF NAME='UserWho' VALUE="student"> disabled</TMPL_IF> class="form-control" min="0" max="11" id="formClass" value="<TMPL_VAR NAME='UserClassNumber' />">
+                                                    <label for="formClass">
+                                                        <TMPL_IF NAME="UserWho" VALUE="parent"><TMPL_VAR NAME="LNG_WhichClassChild" /><TMPL_ELSE><TMPL_VAR NAME="LNG_WhatClassYou" /></TMPL_IF>
+                                                    </label>
+                                                </div>
+                                                <TMPL_IF NAME='StaticPath' VALUE='online'><!-- HACK: temporary for all cities -->
+                                                    <input type="hidden" name="RegisterForm[UserTime][]" value="10:00" />
+                                                    <TMPL_ELSE>
+                                                        <div class="form-group custom-select">
+                                                            <select class="form-control time" name="RegisterForm[UserTime][]">
+                                                                <TMPL_LOOP NAME="Schedule">
+                                                                    <TMPL_IF NAME= "CityTitle" OP="==" VALUE="Москва">
+                                                                        <TMPL_IF NAME="Date" OP="==" VALUE="2021-09-25">
+                                                                            <option value="<TMPL_VAR NAME="Date" /> 16:00"><TMPL_VAR NAME="ShortDate" /> 16:00</option>
+                                                                        <TMPL_ELSE>
+                                                                            <option value="<TMPL_VAR NAME="Date" /> 10:00"><TMPL_VAR NAME="ShortDate" /> 10:00</option>
+                                                                            <option value="<TMPL_VAR NAME="Date" /> 12:00"><TMPL_VAR NAME="ShortDate" /> 12:00</option>                   
+                                                                            <option value="<TMPL_VAR NAME="Date" /> 14:00"><TMPL_VAR NAME="ShortDate" /> 14:00</option>
+                                                                            <option value="<TMPL_VAR NAME="Date" /> 16:00"><TMPL_VAR NAME="ShortDate" /> 16:00</option>
+                                                                        </TMPL_IF>
+                                                                    <TMPL_ELSE>
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 10:00"><TMPL_VAR NAME="ShortDate" /> 10:00</option>
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 12:00"><TMPL_VAR NAME="ShortDate" /> 12:00</option>                   
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 14:00"><TMPL_VAR NAME="ShortDate" /> 14:00</option>
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 16:00"><TMPL_VAR NAME="ShortDate" /> 16:00</option>
+                                                                    </TMPL_IF>
+                                                                </TMPL_LOOP>
+                                                            </select>
+                                                            <label><TMPL_VAR NAME="LNG_Time" /></label>
+                                                        </div>
+                                                </TMPL_IF>
+                                   	 		</div>
+
+	                                    </TMPL_LOOP>
+
+	                                    <TMPL_ELSE>
+	                                        <div class="block-registration">
+
+	                                            <div class="header hidden">
+	                                                <a href="#" class="remove-item"><TMPL_VAR NAME='LNG_RemoveRegistration'></a>
+	                                            </div>
+
+	                                            <div class="modal__social">
+	                                                <span class="modal__text"><TMPL_VAR NAME="LNG_FillFieldsFromSocial" /></span>
+	                                                <ul>
+	                                                    <li>
+	                                                        <a class="modal__social-vk" href="#">
+	                                                            <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/vk.svg">
+	                                                        </a>
+	                                                    </li>
+	                                                    <li>
+	                                                        <a class="modal__social-fb" href="#">
+	                                                            <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/fb.svg">
+	                                                        </a>
+	                                                    </li>
+	                                                </ul>
+	                                            </div>
+
+	                                            <ul class="success message-list">
+	                                                <TMPL_IF NAME="MessageList">
+	                                                    <TMPL_LOOP NAME="MessageList">
+	                                                        <li><TMPL_VAR NAME="Message" /></li>
+	                                                    </TMPL_LOOP>
+	                                                </TMPL_IF>
+	                                            </ul>
+
+	                                            <div class="form-group">
+	                                                <input type="text" name="RegisterForm[UserName][]" required class="form-control" id="formName" value="<TMPL_VAR NAME='UserItemName' />">
+	                                                <label for="formName"><TMPL_VAR NAME="LNG_UserName" /></label>
+	                                            </div>
+	                                            <div class="form-group">
+	                                                <input type="text" name="RegisterForm[UserLastName][]" required class="form-control" id="formName" value="">
+	                                                <label for="formName"><TMPL_VAR NAME="LNG_UserLastName" /></label>
+	                                            </div>
+	                                            <div class="form-group">
+	                                                <input type="email" name="RegisterForm[UserEmail][]" required class="form-control" id="formEmail" value="<TMPL_VAR NAME='UserItemEmail' />">
+	                                                <label for="formEmail"><TMPL_VAR NAME="LNG_UserEmail" /></label>
+	                                            </div>
+	                                            <div class="form-group">
+	                                                <input type="text" name="RegisterForm[UserPhone][]" required class="form-control form--phone" id="formPhone" value="<TMPL_VAR NAME='UserItemPhone' />">
+	                                                <label for="formPhone"><TMPL_VAR NAME="LNG_UserPhone" /></label>
+	                                            </div>
+	                                            <div class="form-group custom-select">
+	                                                <select class="form-control formWho" name="RegisterForm[UserWho][]">
+	                                                    <option value="child" <TMPL_IF NAME='UserItemWho' VALUE="child"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IChild" /></option>
+                                                        <option value="teacher" <TMPL_IF NAME='UserItemWho' VALUE="teacher"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_ITeacher" /></option>
+	                                                    <option value="parent" <TMPL_IF NAME='UserItemWho' VALUE="parent"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IParent" /></option>
+	                                                    <option value="student" <TMPL_IF NAME='UserItemWho' VALUE="student"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IStudent" /></option>
+	                                                </select>
+	                                                <label><TMPL_VAR NAME="LNG_WhoAreYou" /></label>
+	                                            </div>
+	                                            <div class="form-group formClass-group" id="formClass-group" <TMPL_IF NAME='UserItemWho' VALUE="student"> style="display: none;"</TMPL_IF>>
+	                                            <input type="number" name="RegisterForm[UserClassNumber][]" required <TMPL_IF NAME='UserItemWho' VALUE="student"> disabled</TMPL_IF> class="form-control" min="0" max="11" id="formClass" value="<TMPL_VAR NAME='UserItemClassNumber' />">
+	                                            <label for="formClass">
+	                                                <TMPL_IF NAME="UserItemWho" VALUE="parent"><TMPL_VAR NAME="LNG_WhichClassChild" /><TMPL_ELSE><TMPL_VAR NAME="LNG_WhatClassYou" /></TMPL_IF>
+	                                            </label>
+	                                        </div>
+	                                        <TMPL_IF NAME='StaticPath' VALUE='online'><!-- HACK: temporary for all cities -->
+	                                            <input type="hidden" name="RegisterForm[UserTime][]" value="10:00" />
+	                                            <TMPL_ELSE>
+	                                                <div class="form-group custom-select">
+	                                                    <select class="form-control time" name="RegisterForm[UserTime][]">
+                                                            <TMPL_LOOP NAME="Schedule">
+                                                                <TMPL_IF NAME= "CityTitle" OP="==" VALUE="Москва">
+                                                                    <TMPL_IF NAME="Date" OP="==" VALUE="2021-09-25">
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 16:00"><TMPL_VAR NAME="ShortDate" /> 16:00</option>
+                                                                    <TMPL_ELSE>
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 10:00"><TMPL_VAR NAME="ShortDate" /> 10:00</option>
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 12:00"><TMPL_VAR NAME="ShortDate" /> 12:00</option>                   
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 14:00"><TMPL_VAR NAME="ShortDate" /> 14:00</option>
+                                                                        <option value="<TMPL_VAR NAME="Date" /> 16:00"><TMPL_VAR NAME="ShortDate" /> 16:00</option>
+                                                                    </TMPL_IF>
+                                                                <TMPL_ELSE>
+                                                                    <option value="<TMPL_VAR NAME="Date" /> 10:00"><TMPL_VAR NAME="ShortDate" /> 10:00</option>
+                                                                    <option value="<TMPL_VAR NAME="Date" /> 12:00"><TMPL_VAR NAME="ShortDate" /> 12:00</option>                   
+                                                                    <option value="<TMPL_VAR NAME="Date" /> 14:00"><TMPL_VAR NAME="ShortDate" /> 14:00</option>
+                                                                    <option value="<TMPL_VAR NAME="Date" /> 16:00"><TMPL_VAR NAME="ShortDate" /> 16:00</option>
+                                                                </TMPL_IF>
+                                                            </TMPL_LOOP>
+	                                                    </select>
+	                                                    <label><TMPL_VAR NAME="LNG_Time" /></label>
+	                                                </div>
+	                                        </TMPL_IF>
+                            			</div>
+            						</TMPL_IF>
+           						 </div>
+            					<input type="hidden" name="ExhibitionID" value="<TMPL_VAR NAME='ExhibitionID' />">
+
+					            <a class="white-btn white-btn--registration" href="#"><TMPL_VAR NAME="LNG_AddChildOrParent" /></a>
+					            <input class="main-btn" name="RegistrationSubmit" value="<TMPL_VAR NAME='LNG_RegistrationSubmit' />" type="submit">
+            				</form>
+
+            				<div class="registration__textbottom"><TMPL_VAR NAME="LNG_ConfirmRegistration" /></div>
+
+        				</div>
+    				</div>
+			</TMPL_IF>
+		</div>
+	</div>
+</div>
+
+	<script>
+	    var successAuthMessage = "<TMPL_VAR NAME='LNG_SuccessAuthMessage'>";
+	    window.vkAsyncInit = function() {
+	        VK.init({
+	            apiId: "<TMPL_VAR NAME='VK_APP_ID' />",
+	            status: false
+	        });
+	    };
+	    window.fbAsyncInit = function() {
+	        FB.init({
+	            appId            : "<TMPL_VAR NAME='FB_APP_ID' />",
+	            autoLogAppEvents : true,
+	            xfbml            : true,
+	            version          : 'v2.11'
+	        });
+	    };
+	</script>
+
+<TMPL_ELSEIF NAME='OfflineRegistrationView'>
+    <div class="content-aside">
+        <div class="container page-registration">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="header-section"><TMPL_VAR NAME="LNG_RegistrationOnForum" /> <TMPL_VAR NAME="CityTitle"></h1>
+                </div>
+                <div class="col-xs-4 aside">
+                    страница офлайн регистрации
+                </div>
+
+                <div class="col-xs-8">
+                    <div class="content-main">
+                        <TMPL_IF NAME='MessageList'>
+                            <p class="p-header">
+                                <TMPL_LOOP NAME='MessageList'>
+                                    <TMPL_VAR NAME='Message'><br/>
+                                </TMPL_LOOP>
+                            </p>
+                        </TMPL_IF>
+                        <TMPL_IF NAME='ErrorList'>
+                            <p class="p-header" style="color: red;">
+                                <TMPL_LOOP NAME='ErrorList'>
+                                    <TMPL_VAR NAME='Message'><br/>
+                                </TMPL_LOOP>
+                            </p>
+                        </TMPL_IF>
+                        <form method="post" onsubmit="$('.loading').show();">
+
+                            <div class="wrap-block-registration">
+                                <div class="block-registration">
+
+                                    <div class="form-group">
+                                        <input type="text" name="RegisterForm[UserName][]" required class="form-control" id="formName" value="<TMPL_VAR NAME='UserName' />">
+                                        <label for="formName"><TMPL_VAR NAME="LNG_UserName" /></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="RegisterForm[UserLastName][]" required class="form-control" id="formName" value="<TMPL_VAR NAME='UserLastName' />">
+                                        <label for="formName"><TMPL_VAR NAME="LNG_UserLastName" /></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="RegisterForm[UserPhone][]" required class="form-control form--phone" id="formPhone" value="<TMPL_VAR NAME='UserPhone' />">
+                                        <label for="formPhone"><TMPL_VAR NAME="LNG_UserPhone" /></label>
+                                    </div>
+                                    <div class="form-group custom-select">
+                                        <select class="form-control formWho" name="RegisterForm[UserWho][]">
+                                            <option value="child" <TMPL_IF NAME='UserWho' VALUE="child"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IChild" /></option>
+                                            <option value="teacher" <TMPL_IF NAME='UserWho' VALUE="teacher"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_ITeacher" /></option>
+                                            <option value="parent" <TMPL_IF NAME='UserWho' VALUE="parent"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IParent" /></option>
+                                            <option value="student" <TMPL_IF NAME='UserWho' VALUE="student"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_IStudent" /></option>
+                                        </select>
+                                        <label><TMPL_VAR NAME="LNG_WhoAreYou" /></label>
+                                    </div>
+                                    <div class="form-group formClass-group" id="formClass-group" <TMPL_IF NAME='UserItemWho' VALUE="student"> style="display: none;"</TMPL_IF>>
+                                    <input type="number" name="RegisterForm[UserClassNumber][]" required <TMPL_IF NAME='UserItemWho' VALUE="student"> disabled</TMPL_IF> class="form-control" min="0" max="11" id="formClass" value="<TMPL_VAR NAME='UserClassNumber' />">
+                                    <label for="formClass">
+                                        <TMPL_IF NAME="UserWho" VALUE="parent"><TMPL_VAR NAME="LNG_WhichClassChild" /><TMPL_ELSE><TMPL_VAR NAME="LNG_WhatClassYou" /></TMPL_IF>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="RegisterForm[RegistrationID][]" required class="form-control form--registration" id="formName" value="<TMPL_VAR NAME='RegistrationID' />">
+                                    <label for="formName">Номер билета</label>
+                                </div>
+                            </div>
+                    </div>
+                    <input type="hidden" name="ExhibitionID" value="<TMPL_VAR NAME='ExhibitionID' />">
+                    <input class="main-btn" name="RegistrationSubmit" value="<TMPL_VAR NAME='LNG_RegistrationSubmit' />" type="submit">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<TMPL_ELSE>
+
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <div class="forum" itemscope itemtype="http://schema.org/Organization">
+
+        <div class="forum__header">
+            <div class="container">
+
+                <ol class="breadcrumb white">
+                </ol>
+
+                <ul class="list-towns white">
+                    <TMPL_LOOP NAME="CityList">
+                        <TMPL_IF NAME='Active' VALUE='Y'>
+                            <li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>>
+                            <a href="<TMPL_VAR NAME='BaseURL' /><TMPL_VAR NAME='StaticPath' />/">
+                                <TMPL_VAR NAME="CityTitle" />
+                            </a>
+                            </li>
+                        </TMPL_IF>
+                    </TMPL_LOOP>
+                </ul>
+
+                <div class="forum__header-content">
+                    <div class="forum__header-content_text">
+                        <div>
+                            <h1 class="header-section" itemprop="name"><TMPL_VAR NAME="Title" /></h1>
+                            <p><TMPL_VAR NAME="Description" ESCAPE='notags' /></p>
+                        </div>
+                    </div>
+                    <div class="forum__header-content_info">
+                        <TMPL_IF NAME='StaticPath' VALUE='online'><!-- HACK: temporary for all cities -->
+                            <span class="first">трансляция состоится</span>
+                            <TMPL_ELSE>
+                                <span class="first"><TMPL_VAR NAME="LNG_ExhibitionStart" /></span>
+                        </TMPL_IF>
+                        <span class="date">
+                <TMPL_IF NAME='ManualDate'>
+                    <TMPL_VAR NAME="ManualDate" /></span>
+                <TMPL_ELSE>
+                    <TMPL_VAR NAME="Date" FORMAT="date" /> в <TMPL_VAR NAME="Date" FORMAT="time" /></span>
+                </TMPL_IF>
+                    <span class="town">
+                    <TMPL_IF NAME='StaticPath' VALUE='online'><!-- HACK: temporary for all cities -->
+                    <TMPL_ELSE>
+                    г.
+                    </TMPL_IF>
+                    <TMPL_VAR NAME="CityTitle" />
+                    </span>
+                    <span class="text"><TMPL_VAR NAME="Address" /></span>
+
+                <TMPL_IF NAME='UserRegistered'>
+                    <span class="disabled-btn"><span class="checkicon"></span>Вы зарегистрированы</span>
+                    <a class="add-more main-link" href="<TMPL_VAR NAME='BaseURLCity' />Registration">Добавить ученика или родителя</a>
+                    <TMPL_ELSE>
+                        <a href="<TMPL_VAR NAME='BaseURLCity' />Registration" class="main-btn" onclick="yaCounter47132955.reachGoal('Click_main');"><TMPL_VAR NAME="LNG_Registration" /></a>
+                </TMPL_IF>
+            </div>
+        </div>
+
+        </div>
+        <div class="forum__header-color gradient-overlay"></div>
+    </div>
+
+    <div style="display:none;">
+        <span itemprop="address"><TMPL_VAR NAME="CityTitle" /> <TMPL_VAR NAME="Address" /></span>
+        <span itemprop="addressLocality"><TMPL_VAR NAME="CityTitle" /></span>
+        <span itemprop="telephone">74957771026</span>
+        <span itemprop="location"><TMPL_VAR NAME="CityTitle" /> <TMPL_VAR NAME="Address" /></span>
+        <span itemprop="logo">http://propostuplenie.ru/website/navigator/template/img/logo.svg</span>
+    </div>
+
+    <TMPL_IF NAME="UniversityList">
+
+        <div class="section-owl">
+            <div id="owl-carousel" class="owl-carousel">
+                <TMPL_LOOP NAME="UniversityList">
+                    <div class="item">
+                        <div class="owl-carousel__item">
+                            <div class="owl-carousel__image">
+                                <TMPL_IF NAME="UniversityLogoThumbPath">
+                                    <img src="<TMPL_VAR NAME='UniversityLogoThumbPath' />" alt="<TMPL_VAR NAME='Title'>" title="<TMPL_VAR NAME='Title'>">
+                                </TMPL_IF>
+                            </div>
+                            <div class="owl-carousel__text"><TMPL_VAR NAME="ShortTitle" /></div>
+                        </div>
+                    </div>
+                </TMPL_LOOP>
+            </div>
+        </div>
+
+    </TMPL_IF>
+
+    <TMPL_IF NAME="InfoList">
+        <div class="section-action">
+
+            <TMPL_LOOP NAME="InfoList">
+                <div class="block-action<TMPL_IF NAME='__EVEN__'>  block-action--left</TMPL_IF>">
+                    <div class="container">
+                        <div class="clearfix">
+                            <div class="block-action__text">
+                                <h3 class="header-section"><TMPL_VAR NAME="Title" /></h3> <br>
+                                <TMPL_VAR NAME="Description" ESCAPE="nl2br" />
+                            </div>
+                        </div>
+                    </div>
+                    <TMPL_IF NAME="ItemImageMainPath">
+                        <img src="<TMPL_VAR NAME='ItemImageMainPath' />" class="block-action__img">
+                    </TMPL_IF>
+                </div>
+            </TMPL_LOOP>
+
+        </div>
+    </TMPL_IF>
+
+    <TMPL_IF NAME="Schedule">
+        <div class="forum-schedule schedule">
+            <section>
+                <div class="container">
+                    <h2 class="header-section"><TMPL_IF NAME="TitleSchedule"><TMPL_VAR NAME="TitleSchedule" /><TMPL_ELSE><TMPL_VAR NAME="LNG_ScheduleForum" /></TMPL_IF></h2>
+                    <div class="section-event--type2">
+
+                        <ul class="nav nav-tabs dates" role="tablist">
+                            <TMPL_LOOP NAME="Schedule">
+                                <TMPL_IF NAME="Schedule.ShortDate">
+                                    <li role="presentation" class="item double<TMPL_IF NAME='__FIRST__'> active</TMPL_IF>">
+                                        <a class="date-link" href="#tab-shedule-<TMPL_VAR NAME='StaticPath' />-<TMPL_VAR NAME='__ROWNUM__' />" data-toggle="tab">
+                                            <span><TMPL_VAR NAME="Schedule.ShortDate" /></span>
+                                        </a>
+                                    </li>
+                                </TMPL_IF>
+                            </TMPL_LOOP>
+                        </ul>
+                        <TMPL_LOOP NAME="Schedule">
+                            <div role="tabpanel" class="tab-pane fade<TMPL_IF NAME='__FIRST__'> in active</TMPL_IF> rooms" id="tab-shedule-<TMPL_VAR NAME='StaticPath' />-<TMPL_VAR NAME='__ROWNUM__' />">
+                                <ul class="nav nav-tabs nav-tabs--big_2 list-filter" role="tablist">
+                                    <TMPL_LOOP NAME="RoomList">
+                                        <li role="presentation" class="double<TMPL_IF NAME='__FIRST__'> active</TMPL_IF>">
+                                            <a href="#tab-shedule-<TMPL_VAR NAME='StaticPath' />-<TMPL_VAR NAME='Schedule.__ROWNUM__' />-<TMPL_VAR NAME='__ROWNUM__' />" data-toggle="tab" class="no-animate">
+                                                <span><TMPL_VAR NAME="Title" /></span>
+                                            </a>
+                                        </li>
+                                    </TMPL_LOOP>
+                                </ul>
+                            </div>
+                        </TMPL_LOOP>
+                        <div class="tab-content">
+                            <TMPL_LOOP NAME="Schedule">
+                                <TMPL_LOOP NAME="RoomList">
+                                    <div role="tabpanel" class="tab-pane fade<TMPL_IF NAME='__FIRST__'> <TMPL_IF NAME='Schedule.__FIRST__'>  in active</TMPL_IF></TMPL_IF> actions" id="tab-shedule-<TMPL_VAR NAME='StaticPath' />-<TMPL_VAR NAME='Schedule.__ROWNUM__' />-<TMPL_VAR NAME='__ROWNUM__' />">
+                                        <TMPL_LOOP NAME="ActionList">
+
+                                            <div class="block-event-wrap">
+                                                <div class="event-date">
+                                                    <span class="event-date__time"><TMPL_VAR NAME="Title" /></span>
+                                                </div>
+
+                                                <TMPL_LOOP NAME="ItemList">
+                                                    <div class="block-event block-event--<TMPL_VAR NAME='Type'>">
+                                                        <section>
+                                                            <header>
+                                                                <span class="block-event__time"><TMPL_VAR NAME="TimeFrom" /> – <TMPL_VAR NAME="TimeTo" /></span>
+                                                                <span class="block-event__hall"><TMPL_VAR NAME="RoomTitle" /></span>
+                                                                <h3 class="block-event__header<TMPL_IF NAME='Description'> toggled</TMPL_IF>"><TMPL_VAR NAME="Title" /></h3>
+                                                            </header>
+
+                                                            <TMPL_IF NAME="Description">
+                                                                <div class="block-event__toggle"><TMPL_VAR NAME="Description" ESCAPE="nl2br" /></div>
+                                                            </TMPL_IF>
+
+                                                            <div class="block-event__info">
+                                                                <ul>
+                                                                    <li>
+                                                                        <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/places.svg">
+                                                                        <span><TMPL_VAR NAME="Name" /></span>
+                                                                        <small><TMPL_VAR NAME="Post" /></small>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+
+                                                    <TMPL_IF NAME="__ROWNUM__" OP=">=" VALUE="3"><?php break;?></TMPL_IF>
+                                                </TMPL_LOOP>
+                                            </div>
+
+                                            <TMPL_IF NAME="__ROWNUM__" OP=">=" VALUE="2"><?php break;?></TMPL_IF>
+                                        </TMPL_LOOP>
+                                    </div>
+                                </TMPL_LOOP>
+                            </TMPL_LOOP>
+                        </div>
+
+                    </div>
+
+                    <a class="white-btn" href="<TMPL_VAR NAME='BaseURLCity' />?Schedule"><TMPL_VAR NAME="LNG_ShowAllEvents" /></a>
+                </div>
+            </section>
+        </div>
+    </TMPL_IF>
+
+    <div class="section_forum-contacts">
+        <div class="container">
+
+
+            <div class="forum-how">
+                <div class="forum-how__text">
+                    <h3 class="header-section"><TMPL_VAR NAME="LNG_HowTo" ESCAPE="nl2br" /></h3>
+                    <TMPL_IF NAME='StaticPath' VALUE='online'><!-- HACK: temporary for all cities -->
+                        <p>Для участия необходимо зарегистрироваться.<br/>В день трансляции мы пришлем тебе ссылку на трансляцию и подробные инструкции.</p>
+                        <TMPL_ELSE>
+                            <p><TMPL_VAR NAME="LNG_HowToDescription" ESCAPE="nl2br" /></p>
+                    </TMPL_IF>
+                </div>
+                <div class="forum-count">
+                    <div class="block-timer">
+                        <div class="block-timer__text"><TMPL_VAR NAME="LNG_ExpireToStart" /></div>
+                        <div class="block-timer__count">
+                            <div id="countdown">
+                                <TMPL_VAR NAME="Date" FORMAT="countdown" />
+                            </div>
+                        </div>
+                        <TMPL_IF NAME='UserRegistered'>
+                            <span class="disabled-btn"><span class="checkicon"></span>Вы зарегистрированы</span>
+                            <a class="add-more main-link" href="<TMPL_VAR NAME='BaseURLCity' />Registration">Добавить ученика или родителя</a>
+                            <TMPL_ELSE>
+                                <a href="<TMPL_VAR NAME='BaseURLCity' />Registration" class="main-btn" onclick="yaCounter47132955.reachGoal('Registration_main');"><TMPL_VAR NAME="LNG_Registration" /></a>
+                        </TMPL_IF>
+                    </div>
+                </div>
+            </div>
+
+            <TMPL_IF NAME='StaticPath' VALUE='online'><!-- HACK: temporary for all cities -->
+            <TMPL_ELSE>
+                <div class="forum-contacts">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <TMPL_IF NAME="Latitude">
+                                <TMPL_IF NAME="Longitude">
+                                    <div class="map" id="yamap"></div>
+                                    <script type="text/javascript">
+                                        ymaps.ready(function init(){
+                                            var myMap = new ymaps.Map("yamap", {
+                                                center: ["<TMPL_VAR NAME='Latitude' />", "<TMPL_VAR NAME='Longitude' />"],
+                                                zoom: 15
+                                            });
+
+                                            var myPlacemark = new ymaps.Placemark(["<TMPL_VAR NAME='Latitude' />", "<TMPL_VAR NAME='Longitude' />"]);
+                                            myMap.geoObjects.add(myPlacemark);
+                                        });
+                                    </script>
+                                </TMPL_IF>
+                            </TMPL_IF>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="forum-contacts__info">
+                                <h3 class="header-section"><TMPL_VAR NAME="LNG_Contacts" /></h3>
+                                <span class="town">г. <TMPL_VAR NAME="CityTitle" /></span>
+                                <p><TMPL_VAR NAME="Address" /></p>
+                                <TMPL_IF NAME="CityEmail">
+                                    <p><TMPL_VAR NAME="LNG_Email" />: <a class="main-link" href="mailto:<TMPL_VAR NAME='CityEmail' />"><TMPL_VAR NAME="CityEmail" /></a></p>
+                                    <TMPL_ELSEIF NAME="Email">
+                                        <p><TMPL_VAR NAME="LNG_Email" />: <a class="main-link" href="mailto:<TMPL_VAR NAME='Email' />"><TMPL_VAR NAME="Email" /></a></p>
+                                </TMPL_IF>
+                                <TMPL_IF NAME="CityPhone">
+                                    <p><TMPL_VAR NAME="LNG_CallOur" /></p>
+                                    <a class="phone" href="tel:<TMPL_VAR NAME="CityPhone" />"><TMPL_VAR NAME="CityPhone" /></a>
+                                    <TMPL_ELSEIF NAME="Phone">
+                                        <p><TMPL_VAR NAME="LNG_CallOur" /></p>
+                                        <a class="phone" href="tel:<TMPL_VAR NAME="Phone" />"><TMPL_VAR NAME="Phone" /></a>
+                                </TMPL_IF>
+
+                                <TMPL_IF NAME="Latitude">
+                                    <TMPL_IF NAME="Longitude">
+                                        <a class="main-link" href="https://yandex.ru/maps/?ll=<TMPL_VAR NAME='Longitude' />,<TMPL_VAR NAME='Latitude' />&z=15&pt=<TMPL_VAR NAME='Longitude' />,<TMPL_VAR NAME='Latitude' />" target="_blank">
+                                            <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/print.png" alt="">
+                                            <TMPL_VAR NAME="LNG_PrintMap" />
+                                        </a>
+                                    </TMPL_IF>
+                                </TMPL_IF>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </TMPL_IF>
+        </div>
+    </div>
+
+    <TMPL_IF NAME="MainPartnerList">
+        <div class="forum-partners">
+            <div class="container">
+                <h3 class="header-section"><TMPL_VAR NAME="LNG_MainPartners" /></h3>
+                <ul>
+                    <TMPL_LOOP NAME="MainPartnerList">
+                        <li>
+                            <img src="<TMPL_VAR NAME='PartnerImageThumbPath' />">
+                        </li>
+                    </TMPL_LOOP>
+                </ul>
+            </div>
+        </div>
+    </TMPL_IF>
+
+    <TMPL_IF NAME="PartnerList">
+        <div class="forum-partners">
+            <div class="container">
+                <h3 class="header-section"><TMPL_VAR NAME="LNG_OurPartners" /></h3>
+                <ul>
+                    <TMPL_LOOP NAME="PartnerList">
+                        <li>
+                            <img src="<TMPL_VAR NAME='PartnerImageThumbPath' />">
+                        </li>
+                    </TMPL_LOOP>
+                </ul>
+            </div>
+        </div>
+    </TMPL_IF>
+
+    <TMPL_IF NAME="UniversityList">
+        <div class="forum-partners">
+            <div class="container">
+                <h3 class="header-section"><TMPL_VAR NAME="LNG_OurPartners" /></h3>
+                <ul>
+                    <TMPL_LOOP NAME="UniversityList">
+                        <TMPL_IF NAME="UniversityLogoThumbPath">
+                            <li>
+                                <img src="<TMPL_VAR NAME='UniversityLogoThumbPath' />">
+                            </li>
+                        </TMPL_IF>
+                    </TMPL_LOOP>
+                </ul>
+            </div>
+        </div>
+    </TMPL_IF>
+
+</div>
+
+</TMPL_IF>
+
+<script type="text/javascript">
+    <TMPL_IF NAME='LNG_WhatClassYou'>
+    var LNG_WhatClassYou = "<TMPL_VAR NAME='LNG_WhatClassYou'>";
+    </TMPL_IF>
+
+    <TMPL_IF NAME='LNG_WhichClassChild'>
+    var LNG_WhichClassChild = "<TMPL_VAR NAME='LNG_WhichClassChild'>";
+    </TMPL_IF>
+
+</script>

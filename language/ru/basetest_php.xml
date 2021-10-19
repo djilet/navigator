@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Базовый тест</module-title>
+	<module-admin-title>Базовый тест</module-admin-title>
+
+	<test-list>Список тестов</test-list>
+
+	<!-- sections -->
+	<module-user-title>Пользователи</module-user-title>
+	<module-statistic-title>Статистика</module-statistic-title>
+	<profession-statistic>Статистика профессий</profession-statistic>
+</Root>

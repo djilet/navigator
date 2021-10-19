@@ -1,0 +1,110 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<h2 class="title"><TMPL_VAR NAME='LNG_ArticleList'></h2>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" id="item-list" method="get">
+				<TMPL_UNLESS NAME="EditorMode">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="form-group form-inline pull-left right15">
+										<label for="Best">Лучшая</label><br />
+										<input type="checkbox" name="ArticleFilter[Best]" id="Best" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Best' VALUE='Y'>checked<TMPL_ELSEIF NAME='Best' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+									</div>
+
+									<div class="form-group form-inline pull-left right15">
+										<label for="Hidden">Скрытые</label><br />
+										<input type="checkbox" name="ArticleFilter[Hidden]" id="Hidden" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Hidden' VALUE='Y'>checked<TMPL_ELSEIF NAME='Hidden' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+									</div>
+
+									<div class="form-group form-inline pull-left right15">
+										<label for="NoIndex">Без индексации</label><br />
+										<input type="checkbox" name="ArticleFilter[NoIndex]" id="NoIndex" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='NoIndex' VALUE='Y'>checked<TMPL_ELSEIF NAME='NoIndex' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group form-inline">
+								<label for="SimilarList">Только список "Похожие"</label><br />
+								<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ArticleFilter[SimilarList]=Y">
+									<input type="checkbox" name="ArticleFilter[SimilarList]" id="SimilarList" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='SimilarList' VALUE='Y'>checked<TMPL_ELSEIF NAME='SimilarList' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+								</a>
+							</div>
+						</div>
+					</div>
+				</TMPL_UNLESS>
+
+				<div class="col-md-6 no-padding form-group form-inline">
+					<input type="text" name="ArticleFilter[ArticleSearch]" placeholder="Введите название" value="<TMPL_IF NAME='ArticleSearch'><TMPL_VAR NAME='ArticleSearch'></TMPL_IF>" class="form-control">
+					<!-- <a href="<TMPL_VAR NAME='BaseURL' />" id="user-filter-submit" class="btn btn-success">Найти</a> -->
+					<input type="submit" class="btn btn-success" value="Найти" >
+                    <TMPL_IF NAME='ArticleFilter'>
+                        <a href="<TMPL_VAR NAME='BaseURL' />" class="btn btn-success">Очистить</a>
+                    </TMPL_IF>
+				</div>
+				<div class="col-md-6 no-padding form-group">
+					<ul class="pagination pagination pull-right">
+						<TMPL_VAR NAME='Paging' ESCAPE='none'>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-12 no-padding form-group">
+					<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ArticleID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i><TMPL_VAR NAME='LNG_Add'></a>
+				</div>
+				<div class="clearfix"></div>
+				
+				<TMPL_IF NAME='ErrorList'>
+					<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+				</TMPL_IF>
+				<TMPL_IF NAME='MessageList'>
+					<div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+				</TMPL_IF>
+				<TMPL_IF NAME='ArticleList'>
+					<p><TMPL_VAR NAME='ListInfo'></p>
+					<table class="table" id="listing">
+						<thead>
+							<tr>
+								<th><TMPL_VAR NAME='LNG_DateTime'></th>
+								<th><TMPL_VAR NAME='LNG_Title'></th>
+								<th width="40">&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<TMPL_LOOP NAME='ArticleList'>
+								<tr>
+									<td><TMPL_VAR NAME='DateTime' FORMAT='datetime'></td>
+									<td><a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ArticleID=<TMPL_VAR NAME='ArticleID'>"><TMPL_VAR NAME='Title'></a></td>
+									<td>
+										<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=Remove&ArticleIDs[]=<TMPL_VAR NAME='ArticleID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='Title' ESCAPE='js'>', this); return false;"><i class="fa fa-close delete"></i></a>
+									</td>
+								</tr>
+							</TMPL_LOOP>
+						</tbody>
+					</table>
+				<TMPL_ELSE>
+					<div class="alert alert-success"><TMPL_VAR NAME='LNG_Empty'></div>
+				</TMPL_IF>
+			
+				<div class="clearfix"></div>
+				<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+				<input type="hidden" name="Do" value="" />
+				<input type="hidden" name="load" value="data" />
+			</form>			
+		</div>
+	</section>
+</div>
+
+<script type="text/javascript">
+	function ConfirmRemove(title, a)
+	{
+		var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove' ESCAPE='js'>';
+		msg = msg.replace(/%Title%/g, title);
+		ModalConfirm(msg, function(){
+			window.location.href = $(a).attr('href');
+		});
+	}
+</script>

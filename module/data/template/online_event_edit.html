@@ -1,0 +1,369 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='OnlineEventID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditOnlineEvent'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddOnlineEvent'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			<ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-1" data-toggle='tab'><TMPL_VAR NAME='LNG_TabInfo'></a></li>
+                <li><a href="#tab-2" data-toggle='tab'><TMPL_VAR NAME='LNG_TabUniversity'></a></li>
+                <li><a href="#tab-3" data-toggle='tab'><TMPL_VAR NAME='LNG_TabDirection'></a></li>
+                <li><a href="#tab-4" data-toggle='tab'><TMPL_VAR NAME='LNG_TabProfession'></a></li>
+                <li><a href="#tab-5" data-toggle='tab'><TMPL_VAR NAME='LNG_TabLinks'></a></li>
+            </ul>
+		
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="row">
+							<TMPL_IF NAME='ErrorList'>
+								<div class="col-md-12">
+									<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+								</div>
+							</TMPL_IF>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="EventDateTime" class="form-label required"><TMPL_VAR NAME='LNG_EventDateTime'></label><br />
+									<input class="form-control datetimepicker" name="EventDateTime" value="<TMPL_VAR NAME='EventDateTime' FORMAT='datetimepicker'>"<TMPL_UNLESS NAME='FullAccess'> readonly="readonly"</TMPL_UNLESS> />
+								</div>
+								<div class="form-group">
+									<label for="Duration" class="form-label"><TMPL_VAR NAME='LNG_Duration'></label><br />
+									<input class="form-control timepicker" name="Duration" value="<TMPL_VAR NAME='Duration' FORMAT='timepicker'>" />
+								</div>
+								<div class="form-group">
+									<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+									<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>"<TMPL_UNLESS NAME='FullAccess'> readonly="readonly"</TMPL_UNLESS> />
+								</div>
+								<div class="form-group">
+									<label for="Description" class="form-label"><TMPL_VAR NAME='LNG_Description'></label><br />
+									<textarea class="form-control" name="Description" id="Description"><TMPL_VAR NAME='Description'></textarea>
+								</div>
+								<div class="form-group">
+									<label for="URL" class="form-label"><TMPL_VAR NAME='LNG_URL'></label><br />
+									<input class="form-control" type="text" name="URL" id="URL" value="<TMPL_VAR NAME='URL'>" />
+								</div>
+								<div class="form-group">
+									<label for="ButtonTitle" class="form-label"><TMPL_VAR NAME='LNG_ButtonTitle'></label><br />
+									<input class="form-control" type="text" name="ButtonTitle" id="ButtonTitle" value="<TMPL_VAR NAME='ButtonTitle'>" />
+								</div>
+								<div class="form-group">
+									<label for="ButtonURL" class="form-label"><TMPL_VAR NAME='LNG_ButtonURL'></label><br />
+									<input class="form-control" type="text" name="ButtonURL" id="ButtonURL" value="<TMPL_VAR NAME='ButtonURL'>" />
+								</div>
+								<div class="form-group">
+									<label for="GUID" class="form-label"><TMPL_VAR NAME='LNG_GUID'></label><br />
+									<input class="form-control" type="text" name="GUID" id="GUID" value="<TMPL_VAR NAME='GUID'>" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group form-inline">
+									<label for="Active"><TMPL_VAR NAME='LNG_Active'></label><br />
+									<input type="checkbox" name="Active" id="Active" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Active' VALUE='Y'>checked<TMPL_ELSEIF NAME='Active' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+								<div class="form-group form-inline">
+									<label for="Chat"><TMPL_VAR NAME='LNG_Chat'></label><br />
+									<input type="checkbox" name="Chat" id="Chat" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Chat' VALUE='Y'>checked<TMPL_ELSEIF NAME='Chat' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+								<div class="form-group form-inline">
+									<label for="ShowInList"><TMPL_VAR NAME='LNG_ShowInList'></label><br />
+									<input type="checkbox" name="ShowInList" id="ShowInList" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='ShowInList' VALUE='Y'>checked<TMPL_ELSEIF NAME='ShowInList' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+								<div class="form-group form-inline">
+									<label for="RegistrationRequired"><TMPL_VAR NAME='LNG_RegistrationRequired'></label><br />
+									<input type="checkbox" name="RegistrationRequired" id="RegistrationRequired" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='RegistrationRequired' VALUE='Y'>checked<TMPL_ELSEIF NAME='RegistrationRequired' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+								<div class="form-group form-inline">
+									<label for="EventType"><TMPL_VAR NAME='LNG_EventType'></label> <br>
+									<select name="EventType" id="EventType" class="form-control">
+										<TMPL_LOOP NAME="EventTypeList">
+											<option value="<TMPL_VAR NAME='Type' />"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME="Title" /></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group form-inline">
+									<label for="Template"><TMPL_VAR NAME='LNG_Template'></label> <br>
+									<select name="Template" id="Template" class="form-control">
+										<option value="normal"<TMPL_IF NAME='Template' VALUE='normal'> selected</TMPL_IF>><TMPL_VAR NAME="LNG_TemplateNormal" /></option>
+										<option value="career"<TMPL_IF NAME='Template' VALUE='career'> selected</TMPL_IF>><TMPL_VAR NAME="LNG_TemplateCareer" /></option>
+										<option value="prof"<TMPL_IF NAME='Template' VALUE='prof'> selected</TMPL_IF>><TMPL_VAR NAME="LNG_TemplateProf" /></option>
+									</select>
+								</div>
+								<div class="form-group form-inline">
+									<label for="RegistrationType"><TMPL_VAR NAME='LNG_RegistrationType'></label> <br>
+									<select name="RegistrationType" id="RegistrationType" class="form-control">
+										<option value="normal"<TMPL_IF NAME='RegistrationType' VALUE='normal'> selected</TMPL_IF>><TMPL_VAR NAME="LNG_RegistrationTypeNormal" /></option>
+										<option value="student"<TMPL_IF NAME='RegistrationType' VALUE='student'> selected</TMPL_IF>><TMPL_VAR NAME="LNG_RegistrationTypeStudent" /></option>
+									</select>
+								</div>
+								<div id="HeadImage-box">
+									<label for="HeadImage"><TMPL_VAR NAME='LNG_HeadImage'></label><br />
+								</div>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										params = new Array();
+										<TMPL_LOOP NAME='HeadImageParamList'>
+											params.push({
+												"Name" : "<TMPL_VAR NAME='SourceName'>",
+												"Width" : "<TMPL_VAR NAME='Width'>",
+												"Height" : "<TMPL_VAR NAME='Height'>",
+												"Resize" : "<TMPL_VAR NAME='Resize'>",
+												"X1" : "<TMPL_VAR NAME='X1'>",
+												"X2" : "<TMPL_VAR NAME='X2'>",
+												"Y1" : "<TMPL_VAR NAME='Y1'>",
+												"Y2" : "<TMPL_VAR NAME='Y2'>"
+											});
+										</TMPL_LOOP>
+										CreateImageInput('HeadImage', '<TMPL_VAR NAME='HeadImageAdminPath'>', '<TMPL_VAR NAME='HeadImageFullPath'>', '<TMPL_VAR NAME='HeadImage'>', '<TMPL_VAR NAME='OnlineEventID'>', 'RemoveOnlineEventHeadImage', '<TMPL_VAR NAME='MODULE_PATH'>ajax.php', 0, params);
+									});
+								</script>
+								<div class="clearfix"></div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="Content" class="form-label"><TMPL_VAR NAME='LNG_Content'></label><br />
+									<textarea name="Content" id="Content"><TMPL_VAR NAME="Content" /></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+		        	<div id="tab-2" class="tab-pane">
+	                    <div class="form-group">
+			                <table id="LinkedUniversity" class="table table-borderless">
+			                    <tbody>
+			                        <TMPL_LOOP NAME='LinkedUniversityList'>
+			                            <tr>
+			                                <td class="sort"><i class="fa fa-bars"></i></td>
+			                                <td>
+			                                    <input type="hidden" name="LinkedUniversity[]" value="<TMPL_VAR NAME='UniversityID' />" >
+			                                    <TMPL_VAR NAME='Title' />
+			                                </td>
+			                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+			                            </tr>
+			                        </TMPL_LOOP>
+			                    </tbody>
+			                    <tfoot>
+			                        <tr>
+			                            <td colspan="3">
+			                                <input id="linked-university" type="text" placeholder="Начните вводить название ВУЗа(минимум 3 символа)" class="form-control">
+			                            </td>
+			                        </tr>
+			                    </tfoot>
+			                </table>
+			            </div>
+			            <div class="clearfix"></div>
+	        		</div>
+	        		<div id="tab-3" class="tab-pane">
+	        			<div class="form-group">
+			                <table id="LinkedDirection" class="table table-borderless">
+			                    <tbody>
+			                        <TMPL_LOOP NAME='LinkedDirectionList'>
+			                            <tr>
+			                                <td class="sort"><i class="fa fa-bars"></i></td>
+			                                <td>
+			                                    <input type="hidden" name="LinkedDirection[]" value="<TMPL_VAR NAME='DirectionID' />" >
+			                                    <TMPL_VAR NAME='Title' />
+			                                </td>
+			                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+			                            </tr>
+			                        </TMPL_LOOP>
+			                    </tbody>
+			                    <tfoot>
+			                        <tr>
+			                            <td colspan="3">
+			                                <input id="linked-direction" type="text" placeholder="Начните вводить название направления(минимум 3 символа)" class="form-control">
+			                            </td>
+			                        </tr>
+			                    </tfoot>
+			                </table>
+			            </div>
+			            <div class="clearfix"></div>
+	        		</div>
+	        		<div id="tab-4" class="tab-pane">
+	        			<div class="form-group">
+			                <table id="LinkedProfession" class="table table-borderless">
+			                    <tbody>
+			                        <TMPL_LOOP NAME='LinkedProfessionList'>
+			                            <tr>
+			                                <td class="sort"><i class="fa fa-bars"></i></td>
+			                                <td>
+			                                    <input type="hidden" name="LinkedProfession[]" value="<TMPL_VAR NAME='ProfessionID' />" >
+			                                    <TMPL_VAR NAME='Title' />
+			                                </td>
+			                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+			                            </tr>
+			                        </TMPL_LOOP>
+			                    </tbody>
+			                    <tfoot>
+			                        <tr>
+			                            <td colspan="3">
+			                                <input id="linked-profession" type="text" placeholder="Начните вводить название профессии(минимум 3 символа)" class="form-control">
+			                            </td>
+			                        </tr>
+			                    </tfoot>
+			                </table>
+			            </div>
+			            <div class="clearfix"></div>
+	        		</div>
+					<div id="tab-5" class="tab-pane">
+						<div class="form-group">
+							<table id="Links" class="table table-borderless">
+								<thead>
+									<tr>
+										<th><TMPL_VAR NAME='LNG_Title'></th>
+										<th><TMPL_VAR NAME='LNG_EventUrl'></th>
+										<th><TMPL_VAR NAME='LNG_OpenInNewTab'></th>
+										<th><TMPL_VAR NAME='LNG_Active'></th>
+									</tr>
+								</thead>
+								<tbody>
+								<TMPL_LOOP NAME='LinkList'>
+									<tr>
+										<td width="30%">
+											<input type="hidden" name="LinkID[<TMPL_VAR NAME='__ROWNUM__' />]" value="<TMPL_VAR NAME='LinkID' />" class="form-control">
+											<input type="text" name="LinkTitle[<TMPL_VAR NAME='__ROWNUM__' />]" value="<TMPL_VAR NAME='Title' />" class="form-control"></td>
+										<td><input type="text" name="LinkUrl[<TMPL_VAR NAME='__ROWNUM__' />]" value="<TMPL_VAR NAME='URL' />" class="form-control"></td>
+										<td width="10%">
+											<input type="checkbox" name="LinkBlank[<TMPL_VAR NAME='__ROWNUM__' />]" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Blank' VALUE="Y"> checked </TMPL_IF>/>
+										</td>
+										<td width="10%">
+											<input type="checkbox" name="LinkActive[<TMPL_VAR NAME='__ROWNUM__' />]" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Active' VALUE="Y"> checked </TMPL_IF>/>
+										</td>
+									</tr>
+								</TMPL_LOOP>
+								</tbody>
+							</table>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+			    </div>
+			    <div class="col-md-12 top15">
+					<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+					<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+				</div>
+				<input type="hidden" name="Save" value="1" />
+				<input type="hidden" name="OnlineEventID" value="<TMPL_VAR NAME='OnlineEventID'>" />
+				<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+				
+				<div class="clearfix"></div>
+		    </form>
+		</div>
+	</section>
+	
+	<section class="box">
+		<header class="panel_header">
+			<h2 class="title"><TMPL_VAR NAME='LNG_UserStatusList'> (<TMPL_VAR NAME='UserStatusCount'>)</h2>
+		</header>
+		<div class="content-body">
+			<TMPL_IF NAME='UserStatusList'>
+				<table class="table">
+					<tr>
+						<th><TMPL_VAR NAME='LNG_UserName'></th>
+						<th><TMPL_VAR NAME='LNG_UserEmail'></th>
+						<th><TMPL_VAR NAME='LNG_UserPhone'></th>
+						<th><TMPL_VAR NAME='LNG_UserWho'></th>
+						<th><TMPL_VAR NAME='LNG_ClassNumber'></th>
+						<th><TMPL_VAR NAME='LNG_City'></th>
+						<th><TMPL_VAR NAME='LNG_UserCreated'></th>
+						<th><TMPL_VAR NAME='LNG_Status'></th>
+						<th><TMPL_VAR NAME='LNG_RegUTM'></th>
+						<th><TMPL_VAR NAME='LNG_Source'></th>
+						<th><TMPL_VAR NAME='LNG_ShortLink'></th>
+					</tr>
+					<TMPL_LOOP NAME='UserStatusList'>
+						<tr>
+							<td><TMPL_VAR NAME='UserName'></td>
+							<td><TMPL_VAR NAME='UserEmail'></td>
+							<td><TMPL_VAR NAME='UserPhone'></td>
+							<td>
+								<TMPL_IF NAME='UserWho' VALUE='parent'>
+									<TMPL_VAR NAME='LNG_UserWhoParent'>
+								<TMPL_ELSEIF NAME='UserWho' VALUE='child'>
+									<TMPL_VAR NAME='LNG_UserWhoChild'>
+								<TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+									<TMPL_VAR NAME='LNG_UserWhoStudent'>
+								</TMPL_IF>
+							</td>
+							<td><TMPL_VAR NAME='ClassNumber'></td>
+							<td><TMPL_VAR NAME='City'></td>
+							<td><TMPL_VAR NAME='UserCreated' FORMAT='datetime'></td>
+							<td>
+								<TMPL_IF NAME='Status' VALUE='signed'>
+									<TMPL_VAR NAME='LNG_StatusSigned'>
+								<TMPL_ELSEIF NAME='Status' VALUE='watched'>
+									<TMPL_VAR NAME='LNG_StatusWatched'>
+								</TMPL_IF>
+							</td>
+							<td><TMPL_VAR NAME='UTM'></td>
+							<td>
+								<TMPL_IF NAME='Source' VALUE='website'>
+									<TMPL_VAR NAME='LNG_SourceWebsite'>
+								<TMPL_ELSEIF NAME='Source' VALUE='mobile'>
+									<TMPL_VAR NAME='LNG_SourceMobile'>
+								</TMPL_IF>
+							</td>
+							<td><TMPL_VAR NAME='ShortLink'></td>
+						</tr>
+					</TMPL_LOOP>
+				</table>
+			<TMPL_ELSE>
+				<div class="alert alert-success"><TMPL_VAR NAME='LNG_Empty'></div>
+			</TMPL_IF>
+		</div>
+	</section>
+</div>
+
+<script type="text/javascript">
+	createCKEditor('Content');
+	createCKEditor('Description');
+	
+	function initLinkedObjects(controlID, tableID)
+	{
+		$( "#" + controlID ).autocomplete({
+			classes: {
+				"ui-autocomplete": "highlight"
+			},
+			minLength: 3,
+			source: function(request, response) {
+				var ids = $('input[name="' + tableID + '[]"]').map(function(){return this.value}).get();
+				ids.push(<TMPL_VAR NAME='UniversityID' />);
+				$.ajax({
+					url: "<TMPL_VAR NAME='MODULE_PATH' />ajax.php",
+					type: "post",
+					data: {"Action":controlID, "term":request.term, "ItemIDs":ids},
+					dataType: 'json',
+					success: function (data) {
+						response(data);
+					}
+				});
+			},
+			select: function( event, ui ) {
+				if (ui.item) {
+					event.preventDefault();
+					var row = '<tr>\
+						<td class="sort"><i class="fa fa-bars"></i></td> \
+						<td>\
+							<input type="hidden" name="' + tableID + '[]" value="'+ui.item.value+'" >\
+							'+ui.item.label+'\
+						</td> \
+						<td onclick="$(this).closest(\'tr\').remove()" class="delete">X</td> \
+					</tr>';
+					$('#' + tableID + ' tbody').append(row);
+					$(this).val("");
+				}
+			},
+			focus: function( event, ui ) {
+				event.preventDefault();
+				$(this).val(ui.item.label);
+			}
+		});
+	}
+	initLinkedObjects('linked-university', 'LinkedUniversity');
+	initLinkedObjects('linked-direction', 'LinkedDirection');
+	initLinkedObjects('linked-profession', 'LinkedProfession');
+</script>

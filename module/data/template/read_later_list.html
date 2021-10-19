@@ -1,0 +1,98 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<h2 class="title">Прочитать позже</h2>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" id="item-list-from" method="get">
+				<div class="row">
+					<div class="col-md-8">
+	                    <div class="form-group">
+		                    <label class="form-label">Дата запроса</label><br>
+		                    <div class="col-md-4 no-padding">
+		                        <div class="col-md-3">от</div>
+		                        <div class="col-md-9 no-padding">
+		                            <input class="form-control datepicker" name="DateFrom" value="<TMPL_VAR NAME='DateFrom'>" />
+		                        </div>
+		                    </div>
+		                    <div class="col-md-4 no-padding">
+		                        <div class="col-md-3">до</div>
+		                        <div class="col-md-9 no-padding">
+		                            <input class="form-control datepicker" name="DateTo"  value="<TMPL_VAR NAME='DateTo'>" />
+		                        </div>
+		                    </div>
+		                </div>
+					</div>
+					<div class="col-md-4 no-padding form-group">
+						<ul class="pagination pagination pull-right">
+							<TMPL_VAR NAME='Paging' ESCAPE='none'>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="col-md-12">
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								<button type="submit" class="btn btn-success">Применить</button>
+							</div>
+
+							<div class="col-md-6 text-right">
+								Количество записей - <TMPL_VAR NAME='ItemsCount'>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-md-12">
+						<TMPL_IF NAME='ErrorList'>
+							<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+						</TMPL_IF>
+						<TMPL_IF NAME='MessageList'>
+							<div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+						</TMPL_IF>
+					</div>
+
+					<div class="col-md-12">
+						<TMPL_IF NAME='ReadLaterList'>
+							<p><TMPL_VAR NAME='ListInfo'></p>
+							<table class="table" id="listing">
+								<thead>
+									<tr>
+										<th>Статья</th>
+										<th>Email</th>
+										<th>Дата</th>
+									</tr>
+								</thead>
+								<tbody>
+									<TMPL_LOOP NAME='ReadLaterList'>
+										<tr>
+											<td><a href="<TMPL_VAR NAME='MODULE_URL'>&Section=article&ArticleID=<TMPL_VAR NAME='ArticleID'>"><TMPL_VAR NAME='Title'></a></td>
+											<td><TMPL_VAR NAME='Email'></td>
+											<td><TMPL_VAR NAME='Created'></td>
+										</tr>
+									</TMPL_LOOP>
+								</tbody>
+							</table>
+
+							<div href="#" class="btn btn-success" OnClick="doAction('ExportCSV', $('#item-list-from'))">Экспорт .csv</div>
+						<TMPL_ELSE>
+							<br>
+							<div class="alert alert-success">Не найдено</div>
+						</TMPL_IF>
+					</div>
+
+					<div class="clearfix"></div>
+					<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+					<input type="hidden" name="load" value="data" />
+				</div>
+			</form>			
+		</div>
+	</section>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+});
+</script>

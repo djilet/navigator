@@ -1,0 +1,16 @@
+<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" >
+<section class=" aside__first">
+    <div class="aside__header">Типы событий</div>
+    <a href="<TMPL_VAR NAME='PROJECT_PATH' />events" class="aside__section aside__section-webinar">
+        <span>Вебинар</span>
+        <span class="icon checkbox <TMPL_IF NAME='SelectedEventType' OP='==' VALUE='webinar'>checked</TMPL_IF>"></span>
+    </a>
+    <a href="<TMPL_VAR NAME='PROJECT_PATH' />opendays" class="aside__section aside__section-dod">
+        <span>ДОД</span>
+        <span class="icon checkbox <TMPL_IF NAME='SelectedEventType' OP='==' VALUE='openday'>checked</TMPL_IF>"></span>
+    </a>
+    <div class="aside__section aside__section-public_lesson">
+        <span>Открытые уроки</span>
+        <span class="icon checkbox"></span>
+    </div>
+</section>

@@ -1,0 +1,72 @@
+<div class="content-aside marathon">
+	<div class="container">
+		<ol class="marathon breadcrumb">
+			<li>
+				<a href="<TMPL_VAR NAME='PROJECT_PATH'>">Главная</a>
+			</li>
+			<li class="active">
+				<TMPL_VAR NAME='PageTitle'>			
+			</li>
+		</ol>
+		<div class="row">
+			<div class="marathon-block max-width quiz-block">
+				<div class="status-bar-wrap">
+					<div class="status-bar">
+						<ul class="stages-list horizontal left numeric scroll">
+							<TMPL_LOOP NAME='TaskList'>
+								<TMPL_IF NAME='Current'>
+									<li data-hash="<TMPL_VAR NAME='__ROWNUM__'>" class="active"><span></span></li>
+								<TMPL_ELSE>
+									<li data-hash="<TMPL_VAR NAME='__ROWNUM__'>" <TMPL_IF NAME='Complete'><TMPL_ELSE> class="disabled"</TMPL_IF>><a href="<TMPL_VAR NAME='BaseURL'>?Start=1&DirectTaskID=<TMPL_VAr NAME='TaskID'>"><span></span></a></li>
+								</TMPL_IF>
+							</TMPL_LOOP>
+						</ul>
+					</div>
+				</div>
+
+				<div class="quiz">
+					<div class="title">
+						<h2><TMPL_VAR NAME='Title'></h2>
+					</div>
+
+					<div class="content task">
+						<p class="sub-title two-gray-text">
+							<TMPL_VAR NAME='Prefix' ESCAPE='none'>
+						</p>
+						<p>
+							<TMPL_VAR NAME='Text' ESCAPE='none'>
+						</p>
+					</div>
+
+					<form action="<TMPL_VAR NAME='BaseURL'>" method="post">
+						<TMPL_IF NAME='ErrorList'>
+						<div class="navigation no-border error-message">
+							<TMPL_LOOP NAME='ErrorList'>
+							<TMPL_VAR NAME='Message'><br/>
+							</TMPL_LOOP>
+						</div>
+						</TMPL_IF>
+						<ul class="answer-list proftest one-col radiobutton">
+							<TMPL_LOOP NAME='AnswerList'>
+							<li class="item<TMPL_IF NAME='Selected'> selected</TMPL_IF>"><TMPL_VAR NAME='Title'><input type="checkbox" name="Answer[]" value="<TMPL_VAR NAME='AnswerID'>"<TMPL_IF NAME='Selected'> checked="checked"</TMPL_IF>></li>
+							</TMPL_LOOP>
+						</ul>
+						<div class="navigation">
+							<div class="left-col">
+								<TMPL_IF NAME='PrevTaskID'>
+								<a href="<TMPL_VAR NAME='BaseURL'>?Start=1&DirectTaskID=<TMPL_VAR NAME='PrevTaskID'>" class="sub-title blue-text prev icon">Вернуться назад</a>
+								</TMPL_IF>
+							</div>
+							<div class="right-col for-list">
+								<input type="submit" class="btn black" value="Следующее задание" />
+							</div>
+						</div>
+						<input type="hidden" name="Action" value="completeTask" />
+						<input type="hidden" name="TaskID" value="<TMPL_VAR NAME='TaskID'>" />
+						<input type="hidden" name="Start" value="1" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

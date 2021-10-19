@@ -1,0 +1,27 @@
+<TMPL_LOOP NAME='Content'>
+<div class="awsner-block">
+	<h3 class="list-title"><TMPL_VAR NAME='ListTitle'></h3>
+	<div class="marathon-droplist search">
+		<div class="search-wrap">
+			<input type="text sub-title" class="droplist-search" placeholder="Показать">
+		</div>
+
+		<ul class="drop-list checkbox" <TMPL_IF NAME='MaxSelectCount'>data-max-count=<TMPL_VAR NAME='MaxSelectCount'></TMPL_IF>>
+			<TMPL_LOOP NAME="List">
+				<li class="item <TMPL_IF NAME='Selected'>selected</TMPL_IF>"">
+					<span class="title"><TMPL_VAR NAME='Title'></span>
+					<input type="checkbox" name="answers[]" value="<TMPL_VAR NAME='ID'>" <TMPL_IF NAME='Selected'>checked="checked"</TMPL_IF>>
+				</li>
+			</TMPL_LOOP>
+		</ul>
+	</div>
+
+	<ul class="selected-list align-left">
+		<TMPL_LOOP NAME="List">
+			<TMPL_IF NAME='Selected'>
+				<li class="item"><span class="name"><TMPL_VAR NAME='Title'></span><a class="remove" data-remove="<TMPL_VAR NAME='ID'>"></a></li>
+			</TMPL_IF>
+		</TMPL_LOOP>
+	</ul>
+</div>
+</TMPL_LOOP>

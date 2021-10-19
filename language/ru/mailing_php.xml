@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Рассылки</module-title>
+	<module-admin-title>Рассылки</module-admin-title>
+	<mailing-from-empty>Не указан адрес отправителя</mailing-from-empty>
+	<mailing-theme-empty>Не указана тема письма</mailing-theme-empty>
+	<mailing-text-empty>Не указан текст письма</mailing-text-empty>
+	<mailing-emails-empty>Не указан список адресатов</mailing-emails-empty>
+	<mailing-emails-many>Слишком много адресатов (ограничение 1000 строк)</mailing-emails-many>
+	<mailing-time-empty>Не указано время отправки</mailing-time-empty>
+	<mailing-status-empty>Не указан статус рассылки</mailing-status-empty>
+</Root>

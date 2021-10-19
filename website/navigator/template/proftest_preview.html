@@ -1,0 +1,35 @@
+<div class="content-aside marathon proftest-result">
+	<div class="container">
+		<ol class="marathon breadcrumb">
+			<li>
+				<a href="<TMPL_VAR NAME='PROJECT_PATH'>">Главная</a>
+			</li>
+			<li class="active">
+				<TMPL_VAR NAME='PageTitle'>	
+			</li>
+		</ol>
+
+		<div class="row">
+			<div class="marathon-block max-width quiz-block">
+				<div class="quiz">
+					<h2 class="text-center"><TMPL_VAR NAME='PageTitle'></h2>
+
+					<div class="content">
+						<TMPL_VAR NAME='ProftestText' ESCAPE='none'>
+					</div>
+
+					<div class="navigation">
+						<a href="<TMPL_VAR NAME='BaseURL>?Start=1" class="btn half black">
+							<TMPL_IF NAME='FirstInit'>
+								Начать тест
+							<TMPL_ELSE>
+								Продолжить тест
+							</TMPL_IF>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

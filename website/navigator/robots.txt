@@ -1,0 +1,43 @@
+User-agent: Yandex
+Disallow: /admin/
+Disallow: /article/?ArticleSearch*
+Disallow: /profile/
+Disallow: /profile/auth/*
+Disallow: /include/
+Disallow: *Text=*
+Disallow: *StudyYear=*
+Host: [host]
+
+User-agent: *
+Disallow: /admin/
+Disallow: /article/?ArticleSearch*
+Disallow: /test/
+Disallow: /profile/
+Disallow: /profile/auth/*
+Disallow: /include/
+Disallow: *Text=*
+Disallow: *StudyYear=*
+Disallow: *Industry*
+Disallow: *WhoWork*
+Disallow: *WantWork*
+Disallow: *Schedule*
+Disallow: *Operation*
+Disallow: *CollegeBigDirection*
+Disallow: *AdmissionBase*
+Disallow: *BestOfBest*
+Disallow: *Hostel*
+Disallow: *OVZ*
+Disallow: *AtUniversity*
+Disallow: *Region[]*
+Disallow: *AdditionalExam*
+Disallow: *BigDirection*
+Disallow: *Profession[]*
+Disallow: *Achievement*
+Disallow: *StudType*
+Disallow: *Military*
+Disallow: *Delay*
+Disallow: *SortOrder*
+Disallow: *ProfessionLike*
+
+
+Sitemap: [host]sitemap.xml

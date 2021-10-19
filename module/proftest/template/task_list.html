@@ -1,0 +1,25 @@
+<div class="col-md-6 no-padding form-group form-inline">
+    <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&TaskID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i>Добавить</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Вопрос</th>
+            <th width="200">&nbsp;</th>
+            <th>Позиция</th>
+            <th width="40">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<TMPL_LOOP NAME='TaskList'>
+        	<tr>
+        		<td><a class="" href="<TMPL_VAR NAME='BaseURL'>&<TMPL_VAR NAME='ParamsForURL'>&TaskID=<TMPL_VAR NAME='TaskID'>"><TMPL_VAR NAME='Text'></a></td>
+        		<td><a class="" href="<TMPL_VAR NAME='BaseURL'>&<TMPL_VAR NAME='ParamsForURL'>&TaskAnswerList=<TMPL_VAR NAME='TaskID'>">Список ответов</a></td>
+        		<td><TMPL_VAR NAME='SortOrder'></td>
+        		<td>
+					<a href="<TMPL_VAR NAME='BaseURL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=Remove&TaskID=<TMPL_VAR NAME='TaskID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='Text' ESCAPE='js'>', this); return false;"><i class="fa fa-close delete"></i></a>
+				</td>
+            </tr>
+		</TMPL_LOOP>
+    </tbody>
+</table>

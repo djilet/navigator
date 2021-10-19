@@ -1,0 +1,14 @@
+<TMPL_LOOP NAME='DirectionList'>
+<div class="block-prof">
+	<div class="block-prof__left">
+		<a class="block-prof__header" href="<TMPL_VAR NAME='BaseURL' /><TMPL_VAR NAME='DirectionList.StaticPath' />" target="_blank"><TMPL_VAR NAME='Title'></a>
+		<span class="block-prof__direction"><TMPL_VAR NAME='Number'></span>
+	</div>
+</div>
+</TMPL_LOOP>
+
+<nav aria-label="Навигация по страницам">
+	<ul class="pagination">
+		<TMPL_VAR NAME='ProfessionPager' ESCAPE='none'>
+	</ul>
+</nav>

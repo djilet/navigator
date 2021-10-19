@@ -1,0 +1,77 @@
+<div class="col-md-12 top15">
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='<MailingID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditMailing'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddMailing'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="row">
+					<TMPL_IF NAME='ErrorList'>
+						<div class="col-md-12">
+							<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+						</div>
+					</TMPL_IF>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="From" class="form-label required"><TMPL_VAR NAME='LNG_From'></label><br />
+							<select name="From" id="From" class="form-control"<TMPL_IF NAME='Disabled'> disabled</TMPL_IF>>
+								<TMPL_LOOP NAME="FromList">
+								<option value="<TMPL_VAR NAME='From' />"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME="From" /></option>
+								</TMPL_LOOP>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="Theme" class="form-label required"><TMPL_VAR NAME='LNG_Theme'></label><br />
+							<input class="form-control" type="text" name="Theme" id="Theme" value="<TMPL_VAR NAME='Theme'>" <TMPL_IF NAME='Disabled'> disabled</TMPL_IF>/>
+						</div>
+						<div class="form-group">
+							<label for="Time" class="form-label required"><TMPL_VAR NAME='LNG_Time'></label><br />
+							<input class="form-control datetimepicker" type="text" name="Time" id="Time" value="<TMPL_VAR NAME='Time' FORMAT='datetimepicker'>" <TMPL_IF NAME='Disabled'> disabled</TMPL_IF>/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="Emails" class="form-label required"><TMPL_VAR NAME='LNG_Emails'></label><br />
+							<textarea name="Emails" id="Emails" rows="10" cols="50" <TMPL_IF NAME='Disabled'> disabled</TMPL_IF>><TMPL_VAR NAME="Emails" /></textarea>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="Text" class="form-label required"><TMPL_VAR NAME='LNG_Text'></label><br />
+							<textarea name="Text" id="Text"><TMPL_VAR NAME="Text" /></textarea>
+						</div>
+					</div>
+					<div class="col-md-12 top15">
+						<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+						<TMPL_IF NAME='Status' VALUE='new'>
+						<button type="submit" class="btn btn-success btn-icon right15" onclick="setStatus(this, 'confirmed')"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Confirm'></button>
+						<TMPL_ELSEIF NAME='Status' VALUE='confirmed'>
+						<button type="submit" class="btn btn-icon right15" onclick="setStatus(this, 'new')"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_CancelMailing'></button>
+						</TMPL_IF>
+						<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+					</div>
+					<input type="hidden" name="Save" value="1" />
+					<input type="hidden" name="MailingID" value="<TMPL_VAR NAME='MailingID'>" />
+					<input type="hidden" name="Status" value="<TMPL_IF NAME='Status'><TMPL_VAR NAME='Status'><TMPL_ELSE>new</TMPL_IF>" />
+					<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>
+<script type="text/javascript">
+	<TMPL_IF NAME='Disabled'>
+	CKEDITOR.config.readOnly = true;
+	</TMPL_IF>
+	createCKEditor('Text');
+	
+	
+	function setStatus(button, status){
+		$(button).closest('form').find('input[name=Status]').val(status);
+	}
+</script>

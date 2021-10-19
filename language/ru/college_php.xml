@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<!-- Admin page -->
+	<module-title>Колледжи</module-title>
+	<module-admin-title>Колледжи</module-admin-title>
+
+    <section-college>Колледжи</section-college>
+    <college-removed>Удалено коллеждей: %Count%</college-removed>
+    <title-college-add>Добавить колледж</title-college-add>
+    <title-college-edit>Редактировать колледж</title-college-edit>
+    <college-title-empty>Заполните название</college-title-empty>
+
+    <section-awards>Награды</section-awards>
+    <title-awards-add>Добавить награду</title-awards-add>
+    <title-awards-edit>Редактировать награду</title-awards-edit>
+    <awards-removed>Награда удалена</awards-removed>
+
+    <section-bigdirection>Крупные направления</section-bigdirection>
+    <title-bigdirection-add>Добавить награду</title-bigdirection-add>
+    <title-bigdirection-edit>Редактировать награду</title-bigdirection-edit>
+    <bigdirection-removed>Награда удалена</bigdirection-removed>
+
+    <section-speciality>Специальности</section-speciality>
+    <title-speciality-add>Добавить специальность</title-speciality-add>
+    <title-speciality-edit>Редактировать специальность</title-speciality-edit>
+    <speciality-removed>Специальность удалена</speciality-removed>
+
+    <section-list>Списки</section-list>
+    <title-list-edit>Редактировать список</title-list-edit>
+    <title-list-add>Добавить список</title-list-add>
+    <list-removed>Удалено списков: %Count%</list-removed>
+    <list-title-empty>Заполните поле "Название"</list-title-empty>
+</Root>

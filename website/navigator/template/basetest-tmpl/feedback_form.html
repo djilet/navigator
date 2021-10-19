@@ -1,0 +1,53 @@
+<form action="<TMPL_VAR NAME='PROJECT_PATH' />module/basetest/ajax_public.php" method="POST" class="ajax-form">
+	<div class="feedback-from material">
+		<div class="content">
+			<div class="form-text">
+				<h2 class="title bold">
+					<TMPL_VAR NAME='LNG_BaseTestFeedbackFormTitle'>
+				</h2>
+				<div class="rating">
+					<span class="sub-title"><TMPL_VAR NAME='LNG_BaseTestFeedbackRatingBad'></span>
+					<div class="rating-list">
+						<div class="item">
+							<input type="checkbox" name="Rating" value="1">
+						</div>
+						<div class="item">
+							<input type="checkbox" name="Rating" value="2">
+						</div>
+						<div class="item">
+							<input type="checkbox" name="Rating" value="3">
+						</div>
+						<div class="item">
+							<input type="checkbox" name="Rating" value="4">
+						</div>
+						<div class="item">
+							<input type="checkbox" name="Rating" value="5">
+						</div>
+					</div>
+					<span class="sub-title"><TMPL_VAR NAME='LNG_BaseTestFeedbackRatingGood'></span>
+				</div>
+				
+				<div class="text">
+				<p class="sub-title">
+					<TMPL_VAR NAME='LNG_BaseTestFeedbackTextArea'>
+				</p>
+
+				<textarea name="Message" maxlength="255"></textarea>
+				</div>
+
+				<a href="#" class="btn black" id="feedback-from-submit">
+					<TMPL_VAR NAME='LNG_BaseTestFeedbackBtn'>
+				</a>
+			</div>
+			<div class="success-text">
+				<a href="#" class="feedback-from-hide-btn" data-hide=".feedback-from">
+				</a>
+				<TMPL_VAR NAME='LNG_BaseTestFeedbackFormSuccess' ESCAPE='none'>
+			</div>
+		</div>
+		<div class="image">
+
+		</div>
+	</div>
+	<input type="hidden" name="Action" value="Feedback">
+</form>

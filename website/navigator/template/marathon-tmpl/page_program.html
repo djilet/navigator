@@ -1,0 +1,82 @@
+<div class="content-aside marathon all-stages-block">
+	<div class="container">
+		<ol class="marathon breadcrumb">
+			<li>
+				<a href="<TMPL_VAR NAME='StaticPath'>">Главная</a>
+			</li>
+			<li class="active">
+				Вся программа
+			</li>
+		</ol>
+		<TMPL_LOOP NAME='StageList'>
+		<div class="row">
+			<div class="top-title marathon-block material max-width <TMPL_IF NAME='Current'>current<TMPL_ELSEIF NAME='Opened'>opened<TMPL_ELSE>locked</TMPL_IF>">
+				<h3>Этап №<TMPL_VAR NAME='StageNumber'> - <TMPL_VAR NAME='StageTitle'></h3>
+			</div>
+			<TMPL_IF NAME='Opened'>
+			<div class="border-wrap <TMPL_IF NAME='Current'>blue-style<TMPL_ELSEIF NAME='Opened'>purple-style</TMPL_IF> nopadding stages-block big-title">
+				<div class="col-sm-4 col-xs-12">
+					<div class="marathon-block material left">
+						<ul class="stages-list vertical">
+							<TMPL_LOOP NAME='PartList'>
+								<TMPL_IF NAME='Status' VALUE='available'>
+								<li class="available <TMPL_IF NAME='Current'>current</TMPL_IF>"><a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?ShowProgram=1&CustomPartID=<TMPL_VAR NAME='PartID'>"><span></span><p><TMPL_VAR NAME='Title'></p></a></li>
+								<TMPL_ELSEIF NAME='Status' VALUE='complete'>
+								<li class="<TMPL_IF NAME='Current'>current</TMPL_IF>"><a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?ShowProgram=1&CustomPartID=<TMPL_VAR NAME='PartID'>"><span></span><p><TMPL_VAR NAME='Title'></p></a></li>
+								<TMPL_ELSE>
+								<li class="disabled sub-title gray-text"><div class="stages-list-div"><span></span><p><TMPL_VAR NAME='Title'></p></div></li>
+								</TMPL_IF>
+							</TMPL_LOOP>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-8 col-xs-12">
+					<div class="info">
+						<div class="title">
+							<h3><TMPL_VAR NAME='PartTitle'></h3>
+							<TMPL_IF NAME='PartXP'>
+							<!-- div class="xp">
+								<span class="<TMPL_IF NAME='PartComplete'>blue<TMPL_ELSE>blue-border</TMPL_IF>">+<TMPL_VAR NAME='PartXP'>XP</span>
+							</div-->
+							</TMPL_IF>
+						</div>
+						
+						<?php //print_r($this) ?>
+						<TMPL_IF NAME='PartType' VALUE='webinar'>
+							<p><TMPL_VAR NAME='PartDescription' ESCAPE='none'></p>
+							<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?PartID=<TMPL_VAR NAME='PartID'>&RedirectPath=<TMPL_VAR NAME='RedirectPath'>" class="btn">Посмотреть вебинар</a>
+						<TMPL_ELSEIF NAME='PartType' VALUE='video'>
+							<p><TMPL_VAR NAME='PartDescription' ESCAPE='none'></p>
+							<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?PartID=<TMPL_VAR NAME='PartID'>&RedirectPath=<TMPL_VAR NAME='RedirectPath'>" class="btn">Посмотреть видео</a>
+						<TMPL_ELSEIF NAME='PartType' VALUE='tasks'>
+							<p class="sub-title"><TMPL_VAR NAME='TaskCountText'></p>
+							<p><TMPL_VAR NAME='PartDescription' ESCAPE='none'></p>
+							<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?PartID=<TMPL_VAR NAME='PartID'>&RedirectPath=<TMPL_VAR NAME='RedirectPath'>" class="btn">Выполнить задания</a>
+						<TMPL_ELSEIF NAME='PartType' VALUE='map'>
+							<p><TMPL_VAR NAME='PartDescription' ESCAPE='none'></p>
+							<a href="#" data-redirect="<TMPL_VAR NAME='RedirectPath'>" data-step-id="<TMPL_VAR NAME='StepID'>" id="map-link-btn" class="btn">Заполнить карту</a>
+						</TMPL_IF>
+					</div>
+				</div>
+			</div>
+			</TMPL_IF>
+		</div>
+		</TMPL_LOOP>
+	</div>
+
+	<div class="modal fade" id="modal-data" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<span class="col-xs-12">
+							<span class="content">
+								
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<div class="col-md-12">
+    <section class="box">
+        <div class="content-body">
+        	<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&AllOrders=1" class="btn btn-success btn-icon right15"><TMPL_VAR NAME='LNG_AllOrders'></a>
+			<TMPL_IF NAME='PageList'>
+                <table class="table" id="listing">
+                    <thead>
+                    <tr>
+                        <th class="text-nowrap"><TMPL_VAR NAME='LNG_Page' /></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <TMPL_LOOP NAME='PageList'>
+                        <tr>
+                            <td class="text-nowrap"><a href="<TMPL_VAR NAME='BaseURL' />&PageID=<TMPL_VAR NAME='PageID' />"><TMPL_VAR NAME='PageTitle'></a></td>
+                            <td><a href="<TMPL_VAR NAME='BaseURL' />&PageID=<TMPL_VAR NAME='PageID' />&Section=limits"><TMPL_VAR NAME='LNG_Settings'></a></td>
+                        </tr>
+                    </TMPL_LOOP>
+                    </tbody>
+                </table>            
+            </TMPL_IF>
+        </div>
+    </section>
+</div>

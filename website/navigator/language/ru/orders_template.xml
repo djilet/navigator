@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<common>
+	</common>
+	<public>
+		<orders-default_form.html>
+			<FormTitle>Запись на консультацию</FormTitle>
+			<FormFirstName>Имя</FormFirstName>
+			<FormLastName>Фамилия</FormLastName>
+			<FormPhone>Телефон</FormPhone>
+			<FormSubmit>Записаться</FormSubmit>
+			<Free>Бесплатно</Free>
+			<MessageSuccess><![CDATA[Ваша заявка отправлена!
+В ближайшее время мы вам позвоним и назначим удобные день и время для консультации.]]></MessageSuccess>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IChild>Ученик</IChild>
+			<IParent>Родитель</IParent>
+			<UserClass>Класс</UserClass>
+			<Other>Другое</Other>
+		</orders-default_form.html>
+		<orders-default-maximum_form.html>
+			<FormTitle>Запись на консультацию в учебном центре MAXIMUM</FormTitle>
+			<FormFirstName>Имя</FormFirstName>
+			<FormLastName>Фамилия</FormLastName>
+			<FormPhone>Телефон</FormPhone>
+			<FormSubmit>Записаться</FormSubmit>
+			<Free>Бесплатно</Free>
+			<MessageSuccess><![CDATA[Ваша заявка отправлена!
+В ближайшее время вам позвонит эксперт учебного центра MAXIMUM и назначит удобные день и время для консультации.]]></MessageSuccess>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IChild>Ученик</IChild>
+			<IParent>Родитель</IParent>
+			<UserClass>Класс</UserClass>
+			<Other>Другое</Other>
+		</orders-default-maximum_form.html>
+		<orders-callback_form.html>
+			<FormTitle>Оставить заявку</FormTitle>
+			<FormFirstName>Имя</FormFirstName>
+			<FormLastName>Фамилия</FormLastName>
+			<FormPhone>Телефон</FormPhone>
+			<FormSubmit>Заказать</FormSubmit>
+			<BottomBlock type="html"><![CDATA[<h2>Что нужно сделать сейчас?</h2>
+
+<div class="bottom-left">
+<ul>
+	<li>&mdash; Оставить заявку на консультацию</li>
+	<li>&mdash; Дождаться звонка от нашего эксперта</li>
+	<li>&mdash; Назначить дату и время консультации</li>
+</ul>
+
+<p class="info">Длительность консультации &ndash; 45 минут</p>
+</div>
+]]></BottomBlock>
+			<MessageSuccess>Ваша заявка отправлена!</MessageSuccess>
+		</orders-callback_form.html>
+		<orders-country_form.html>
+			<FormTitle>Запись на бесплатную консультацию</FormTitle>
+			<FormFirstName>Имя</FormFirstName>
+			<FormLastName>Фамилия</FormLastName>
+			<FormPhone>Телефон</FormPhone>
+			<FormCountry>Интересующие страны</FormCountry>
+			<FormSubmit>Записаться</FormSubmit>
+			<Free>Бесплатно</Free>
+			<MessageSuccess>Ваша заявка отправлена!</MessageSuccess>
+		</orders-country_form.html>
+	</public>
+</Root>

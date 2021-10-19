@@ -1,0 +1,308 @@
+ <div class="main-page">
+      
+	 <!--<div class="main-page__header">
+    	<div class="container">
+        	<div class="main-page__header-content">
+              	<div class="main-page__header-content_text">
+                	<div>
+                  		<TMPL_VAR NAME='LNG_TopBanner' ESCAPE='none'>
+                	</div>
+              	</div>
+         	</div>
+    	</div>
+        <div class="main-page__header-color gradient-overlay"></div>
+	</div>-->
+
+	<div class="main-page__first">
+    	<div class="container">
+			<div class="main-page__first-wrap overlay-top mb-5">
+            	<div class="row">
+
+	                <div class="col-xs-8">
+	                	<div class="main-page__first-content">
+	                    	<h1 class="header-section"><TMPL_VAR NAME='TitleH1'></h1>
+	                  		<TMPL_VAR NAME='Content' ESCAPE='none'>
+	                  	</div>
+	                  	<div class="main-page__first-3blocks">
+	                    	<div class="row">
+	                      		<a href="<TMPL_VAR NAME='PROJECT_PATH'>vuzi/" class="col-xs-4">
+	                        		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/23.png" alt="">
+	                        		<div class="count"><TMPL_VAR NAME='CountUniversities' FORMAT='count'></div>
+	                        		<span class="link"><TMPL_VAR NAME='CountUniversities' FORMAT='suffixuniversity'></span>
+	                      		</a>
+	                      		<a href="<TMPL_VAR NAME='PROJECT_PATH'>vuzi/#tab-2" class="col-xs-4">
+	                        		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/24.png" alt="">
+	                        		<div class="count"><TMPL_VAR NAME='CountSpecialities' FORMAT='count'></div>
+	                        		<span class="link"><TMPL_VAR NAME='CountSpecialities' FORMAT='suffixspeciality'></span>
+	                      		</a>
+	                      		<a href="<TMPL_VAR NAME='PROJECT_PATH'>profession/" class="col-xs-4">
+	                        		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/25.png" alt="">
+	                        		<div class="count"><TMPL_VAR NAME='CountProfesssions' FORMAT='count'></div>
+	                        		<span class="link"><TMPL_VAR NAME='CountProfesssions' FORMAT='suffixprofession'></span>
+	                      		</a>
+	                    	</div>
+	                  	</div>
+	                </div>
+
+	                <div class="col-xs-4">
+	                	<div class="date-tablist">
+	                    	<section>
+	                      		<h3 class="date-tablist__header"><TMPL_VAR NAME='LNG_Events'></h3>
+			                    <!-- Nav tabs -->
+			                    <ul class="nav nav-tabs" role="tablist">
+			                    	<TMPL_LOOP NAME='OnlineEventList'>
+			                        <li role="presentation"<TMPL_IF NAME='__ROWNUM__' VALUE='1'> class="active"</TMPL_IF>>
+			                          	<a href="#tab-<TMPL_VAR NAME='__ROWNUM__'>" aria-controls="tab-<TMPL_VAR NAME='__ROWNUM__'>" role="tab" data-toggle="tab">
+			                            	<span><b><TMPL_VAR NAME='Day'></b><TMPL_VAR NAME='Month'></span>
+			                          	</a>
+			                        </li>
+			                        </TMPL_LOOP>
+			                    </ul>
+			                      
+			                    <!-- Tab panes -->
+			                    <div class="tab-content">
+			                        <TMPL_LOOP NAME='OnlineEventList'>
+			                        <div role="tabpanel" class="tab-pane fade<TMPL_IF NAME='__ROWNUM__' VALUE='1'> in active</TMPL_IF>" id="tab-<TMPL_VAR NAME='__ROWNUM__'>">
+			                          	<TMPL_LOOP NAME='Children'>
+			                          	<div class="date-tablist__event">
+			                          		<span class="small"><TMPL_VAR NAME='TimePrefix'> в <TMPL_VAR NAME="EventDateTime" FORMAT="time" /></span>
+			                            	<div class="date-tablist__event_header">
+			                              		<a href="<TMPL_VAR NAME='OnlineEventURL' />"><TMPL_VAR NAME="Title"/></a>
+			                            	</div>
+			                            	<span class="small"><TMPL_VAR NAME="TypeTitle"/></span>
+			                        	</div>
+			                        	</TMPL_LOOP>
+			                        	<!-- a class="link" href="">В этот день проходят ещё 3 события</a-->
+			                        </div>
+			                        </TMPL_LOOP>
+			                    </div>
+			                    <a class="main-link" href="<TMPL_VAR NAME='PROJECT_PATH'>events"><TMPL_VAr NAME='LNG_AllEvents'></a>
+	                    	</section>
+	                  	</div>
+	                </div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="main-page__articles">
+    	<div class="container">
+        	<div class="main-page__articles-wrap">
+              	<div class="row">
+                	<div class="col-xs-8">
+                		<TMPL_LOOP NAME='ArticleList'>
+						<TMPL_IF NAME='__ROWNUM__' VALUE='1'>
+	                  	<div class="article__headblock"<TMPL_IF NAME='ArticleMainImageFullPath'> style="background-image: url('<TMPL_VAR NAME='ArticleMainImageFullPath'>')"</TMPL_IF>>
+	                    	<div class="article__headblock-wrap">
+								<div class="article__headblock-content">
+			                    	<div class="article__headblock-content_text">
+			                        	<div>
+			                            	<h2 class="header-section"><a href="<TMPL_VAR NAME='ArticleURL'>"><TMPL_VAR NAME='Title'>&nbsp;→</a></h2>
+			                            	<p><TMPL_VAR NAME='Tags'></p>
+			                          	</div>
+			                        </div>
+			                    </div>	
+			                    <div class="article__headblock-info">
+			                    	<ul>
+			                          	<li><TMPL_VAR NAME='LNG_ArticleAuthor'></li>
+			                          	<li><b><TMPL_VAR NAME='Author'></b></li>
+			                          	<li><TMPL_VAR NAME='AuthorDescription'></li>
+			                        </ul>
+			                        <ul>
+			                          	<li><TMPL_VAr NAME='LNG_ArticleDate'></li>
+			                          	<li><b><TMPL_VAR NAME='DateTime' FORMAT='date'></b></li>
+			                        </ul>
+			                    </div>
+			            	</div>
+	                    	<div class="article__headblock-color gradient-overlay"></div>
+	                  	</div>
+	                  	</TMPL_IF>
+			            </TMPL_LOOP>
+	                </div>
+	                <div class="col-xs-4">
+	                	<div class="main-page__articles-aside">
+	                  		<div class="aside__header"><TMPL_VAr NAME='LNG_ArticleOther'></div>
+							<div class="slide-list" data-slide-list>
+								<TMPL_IF NAME="OnMainArticleBlockList">
+									<TMPL_LOOP NAME='OnMainArticleBlockList'>
+										<ul class="item <TMPL_IF NAME='__ROWNUM__' OP='==' VALUE='1'>active</TMPL_IF>">
+											<TMPL_LOOP NAME="ArticleList">
+												<li>
+													<a href="<TMPL_VAR NAME='ArticleURL'>">
+														<TMPL_VAR NAME='Title'><span class="arrow">→</span>
+													</a>
+													<span class="articles-aside__info">
+														<span><TMPL_VAR NAME='Author'></span>
+														<span><TMPL_VAR NAME='DateTime' FORMAT='date'></span>
+													</span>
+												</li>
+											</TMPL_LOOP>
+										</ul>
+									</TMPL_LOOP>
+
+									<div class="nav-btn next" data-nav-btn="next">
+										<span class="text">Показать ещё</span>
+										<img class="image" src="<TMPL_VAR NAME='PATH2MAIN'>/img/icons/refresh.svg" alt="">
+									</div>
+
+									<div class="nav-btn reload" data-nav-btn="reload" style="display: none">
+										<span class="text">Начать заново</span>
+										<img class="image" src="<TMPL_VAR NAME='PATH2MAIN'>/img/icons/refresh.svg" alt="">
+									</div>
+								</TMPL_IF>
+							</div>
+	                    	<a class="main-link" href="<TMPL_VAR NAME='URL_PREFIX_WITHOUT_SUB_DOMAIN'>article"><TMPL_VAR NAME='LNG_AllArticles'></a>
+	                  	</div>
+	            	</div>
+				</div>
+          	</div>
+		</div>
+	</div>
+
+ <TMPL_IF NAME="DirectionList">
+ 	<div class="directions mt-5">
+		<div class="container">
+			<div class="row card-list">
+				<div class="col-md-12">
+					<h2 class="mb-5">Направления <TMPL_VAR NAME="CityTitleInRodCase"/></h2>
+				</div>
+				<div class="col-md-3">
+					<div class="item bg-purple">
+						<div class="content">
+							<p>
+								<TMPL_VAR NAME="DirectionsCountTitle">
+							</p>
+							<p>
+								<TMPL_VAR NAME="SpecialitiesCountTitle">
+							</p>
+						</div>
+
+						<div class="gradient-overlay rounded"></div>
+					</div>
+				</div>
+
+				<TMPL_LOOP NAME="DirectionList">
+					<TMPL_IF NAME='__ROWNUM__' OP="==" VALUE="8">
+						<div class="collapse" id="index-more-directions">
+				 	</TMPL_IF>
+					<div class="col-md-3">
+						<div class="item">
+							<h4>
+								<TMPL_VAR NAME="Title">
+							</h4>
+
+							<div class="info">
+								<p>
+									<TMPL_VAR NAME="DirectionList.DirectionsCountTitle">
+								</p>
+								<p>
+									<TMPL_VAR NAME="DirectionList.SpecialitiesCountTitle">
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<TMPL_IF NAME='__ROWNUM__' OP=">" VALUE="8">
+						<TMPL_IF NAME='__LAST__'>
+							</div>
+ 						</TMPL_IF>
+				 	</TMPL_IF>
+				</TMPL_LOOP>
+
+				<div class="col-md-12 text-center mt-2">
+					<span data-toggle="collapse" data-target="#index-more-directions" class="cursor-pointer" onclick="this.remove()">
+						<span class="text mr-2">Показать все</span>
+						<img class="image" width="20" src="<TMPL_VAR NAME='PATH2MAIN'>/img/icons/refresh.svg" alt="load more">
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+ </TMPL_IF>
+
+<TMPL_IF NAME="DirectionList">
+	<div class="directions mt-5">
+		<div class="container">
+			<div class="row card-list">
+				<TMPL_LOOP NAME="ListList">
+					<div class="col-md-3">
+						<a class="item" href="<TMPL_VAR NAME='ListURL'/>">
+							<h4>
+								<TMPL_VAR NAME="Title"> <TMPL_VAR NAME="CityTitleInRodCase"/>
+							</h4>
+						</a>
+					</div>
+				</TMPL_LOOP>
+			</div>
+		</div>
+	</div>
+</TMPL_IF>
+
+	 <TMPL_IF NAME='UniversityList'>
+		 <div class="universities mt-5">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <h2>Вузы <TMPL_VAR NAME="CityTitleInRodCase"/></h2>
+						 <TMPL_LOOP NAME='UniversityList'>
+							 <div class="university-item">
+								 <div class="row">
+									 <div class="col-xs-3">
+										 <img src="<TMPL_IF NAME='ItemImagePreviewPath'><TMPL_VAR NAME='ItemImagePreviewPath'><TMPL_ELSE><TMPL_VAR NAME='PATH2MAIN'>img/univer-stub.png</TMPL_IF>" />
+									 </div>
+									 <div class="col-xs-9 head">
+										 <span class="type"><TMPL_VAR NAME="Address" /></span><br/>
+										 <a class="title<TMPL_IF NAME='Opened' VALUE='N'> closed-alert</TMPL_IF>" href="<TMPL_VAR NAME='UniversityURL' />" target="_blank"><TMPL_VAR NAME="Title" /></a>
+									 </div>
+								 </div>
+							 </div>
+						 </TMPL_LOOP>
+					 </div>
+
+					 <div class="col-md-12 text-center">
+						 <br>
+						 <a class="main-link" href="<TMPL_VAR NAME='PROJECT_PATH'>vuzi">Все вузы <TMPL_VAR NAME="CityTitleInRodCase"/></a>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+	 </TMPL_IF>
+
+	 <TMPL_IF NAME='CollegeList'>
+		 <div class="universities mt-5">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <h2>Колледжи <TMPL_VAR NAME="CityTitleInRodCase"/></h2>
+						 <TMPL_LOOP NAME='CollegeList'>
+							 <div class="university-item">
+								 <div class="row">
+									 <div class="col-xs-3">
+										 <img src="<TMPL_IF NAME='ItemLogoPreviewPath'><TMPL_VAR NAME='ItemLogoPreviewPath'><TMPL_ELSE><TMPL_VAR NAME='PATH2MAIN'>img/univer-stub.png</TMPL_IF>" />
+									 </div>
+									 <div class="col-xs-9 head">
+										 <span class="type"><TMPL_VAR NAME="Address" /></span><br/>
+										 <a class="title<TMPL_IF NAME='Opened' VALUE='N'> closed-alert</TMPL_IF>" href="<TMPL_VAR NAME='CollegeURL' />" target="_blank"><TMPL_VAR NAME="Title" /></a>
+									 </div>
+								 </div>
+							 </div>
+						 </TMPL_LOOP>
+					 </div>
+
+					 <div class="col-md-12 text-center">
+						 <br>
+						 <a class="main-link" href="<TMPL_VAR NAME='PROJECT_PATH'>college">Все колледжи <TMPL_VAR NAME="CityTitleInRodCase"/></a>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+	 </TMPL_IF>
+
+ <br>
+ <br>
+	<!--<div class="main-page__2section">
+		&lt;!&ndash; products and olinpiads &ndash;&gt;
+	</div>-->
+
+</div><!-- End main-page -->

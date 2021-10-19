@@ -1,0 +1,9 @@
+<TMPL_IF NAME='BannerSidebar'>
+	<div class="banner sidebar" id="sidebar-banner">
+		<TMPL_LOOP NAME='BannerSidebar'>
+			<a href="<TMPL_VAR NAME='Link'>" data-name="<TMPL_VAR NAME='Name'>">
+	            <img src="<TMPL_VAR NAME='ItemImageFullPath' />" alt="">
+	        </a>
+		</TMPL_LOOP>
+	</div>
+</TMPL_IF>

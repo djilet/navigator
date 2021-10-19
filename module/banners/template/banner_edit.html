@@ -1,0 +1,57 @@
+<section class="box">
+    <header class="panel_header">
+        <h2 class="title pull-left">
+            <TMPL_IF NAME='BoxTitle'>
+                <TMPL_VAR NAME='BoxTitle'>
+            <TMPL_ELSE>
+                <TMPL_VAR NAME='PageTitle'>
+            </TMPL_IF>
+        </h2>
+    </header>
+    <div class="content-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+                    <div class="row">
+                        <TMPL_IF NAME='ErrorList'>
+                            <div class="col-md-12">
+                                <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                            </div>
+                        </TMPL_IF>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="Name" class="form-label required">Название</label><br />
+                                <input class="form-control" type="text" name="Name" id="Name" value="<TMPL_VAR NAME='Name'>" required/>
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label for="RotateInterval" class="form-label">Интервал (сек.)</label><br />
+                                <input class="form-control" type="number" name="RotateInterval" id="RotateInterval" value="<TMPL_VAR NAME='RotateInterval'>" />
+                            </div> -->
+
+                            <div class="form-group">
+                                <label for="ImageConfig" class="form-label">Параметры изображения</label><br />
+                                <input class="form-control" type="text" name="ImageConfig" id="ImageConfig" value="<TMPL_VAR NAME='ImageConfig'>" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group form-inline">
+                                <label for="Active">Активный</label><br />
+                                <input type="checkbox" name="Active" id="Active" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Active' VALUE='Y'>checked<TMPL_ELSEIF NAME='Active' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 top15">
+                            <button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+                            <a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+                        </div>
+                        <input type="hidden" name="Action" value="Save" />
+                        <input type="hidden" name="BannerID" value="<TMPL_VAR NAME='BannerID'>" />
+                        <input type="hidden" name="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

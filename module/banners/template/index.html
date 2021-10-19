@@ -1,0 +1,103 @@
+<div class="col-md-12 top15">
+    <nav class="navbar navbar-default navbar-primary">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <TMPL_LOOP NAME='SectionMenu'>
+                        <li <TMPL_IF NAME='Selected'>class="active"</TMPL_IF>>
+                        <a href="<TMPL_VAR NAME='Link'>"><TMPL_VAR NAME='Title'></a>
+                        </li>
+                    </TMPL_LOOP>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="box">
+        <ol class="breadcrumb primary">
+            <TMPL_LOOP NAME='Navigation'>
+                <li <TMPL_IF NAME='__LAST__'>class="active"</TMPL_IF>>
+                <TMPL_IF NAME='__LAST__'><strong></TMPL_IF>
+                <a href="<TMPL_VAR NAME='Link'>"><TMPL_IF NAME='__FIRST__'><i class="fa fa-home"></i></TMPL_IF><TMPL_VAR NAME='Title'></a>
+                <TMPL_IF NAME='__LAST__'></strong></TMPL_IF>
+                </li>
+            </TMPL_LOOP>
+        </ol>
+    </section>
+
+    <TMPL_IF NAME='ItemEdit'>
+        <TMPL_INCLUDE FILE='item_edit.html'>
+    <TMPL_ELSEIF NAME='TemplateItemList'>
+        <TMPL_INCLUDE FILE='item_list.html'>
+    <TMPL_ELSEIF NAME='BannerEdit'>
+        <TMPL_INCLUDE FILE='banner_edit.html'>
+    <TMPL_ELSE>
+        <TMPL_INCLUDE FILE='banner_list.html'>
+    </TMPL_IF>
+
+    <script type="text/javascript">
+        function initLinkedObjects(controlID, tableID, minLength, formData = null){
+            $( "#" + controlID ).autocomplete({
+                classes: {
+                    "ui-autocomplete": "highlight"
+                },
+                minLength: minLength,
+                source: function(request, response) {
+                    var ids = $('input[name="' + tableID + '[]"]').map(function(){return this.value}).get();
+                    /*ids.push(<TMPL_VAR NAME='UniversityID' />);*/
+
+                    var requestData = {"Action":controlID, "term":request.term, "ItemIDs":ids};
+                    if (formData == true) {
+                        var form = $('#'+ tableID).parents('form').serializeArray();
+                        for (var i = form.length - 1; i >= 0; i--) {
+                            requestData[form[i].name] = form[i].value;
+                        }
+                    }
+
+                    $.ajax({
+                        url: "<TMPL_VAR NAME='MODULE_PATH' />ajax.php",
+                        type: "post",
+                        data: requestData,
+                        dataType: 'json',
+                        success: function (data) {
+                            //console.log(data);
+                            console.log(data);
+                            response(data);
+                        }
+                    });
+                },
+                select: function( event, ui ) {
+                    if (ui.item) {
+                        event.preventDefault();
+                        var row = '<tr>\
+                        <td class="sort"><i class="fa fa-bars"></i></td> \
+                        <td>\
+                            <input type="hidden" name="' + tableID + '[]" value="'+ui.item.value+'" >\
+                            '+ui.item.label+'\
+                        </td> \
+                        <td onclick="$(this).closest(\'tr\').remove()" class="delete">X</td> \
+                    </tr>';
+                        $('#' + tableID + ' tbody').append(row);
+                        $(this).val("");
+                    }
+                },
+                focus: function( event, ui ) {
+                    event.preventDefault();
+                    $(this).val(ui.item.label);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            $('.filter-action').click(function(event){
+                event.preventDefault();
+                var form = $(this).closest('form');
+                //form.append('<input type="hidden" name="Do" value="' + $(this).data('do') + '" />');
+                //console.log(form.attr('action') + form.serialize());
+                window.open(form.attr('action') + '&' + form.serialize() + '&Do=' + $(this).data('do'), '_blank');
+                //form.submit();
+                return false;
+            });
+        });
+    </script>
+</div>

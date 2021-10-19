@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Баннеры</module-title>
+	<module-admin-title>Баннеры</module-admin-title>
+
+	<banner-edit>Редактировать баннер</banner-edit>
+	<item-list>Список ссылок</item-list>
+	<item-edit>Редактировать ссылку</item-edit>
+
+	<module-banner-list-title>Баннеры</module-banner-list-title>
+
+	<empty-image>Пустое изображение</empty-image>
+	<empty-link>Узкажите ссылку</empty-link>
+</Root>

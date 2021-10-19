@@ -1,0 +1,34 @@
+<div class="modal fade modal-restore sing-in-form" id="modal-restore" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <a href="#" class="modal-close-btn"></a>
+        <div class="modal-dialog-wrap">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5 col-center">
+                            <div class="form sign-in">
+                                <div class="title color-gray extra-bold text-uppercase">
+                                    Восстановление пароля
+                                </div>
+
+                                <p class="semi-bold">Email для восстановления</p>
+                                <form action="<TMPL_VAR NAME='PROJECT_PATH' />module/users/ajax_public.php" method="post">
+                                    <div class="form-group">
+                                        <input type="text" name="Email" required class="form-control" id="formEmail4">
+                                        <label for="formEmail4">Email</label>
+                                    </div>
+                                    <input type="submit" class="btn main extra-bold" value="Восстановить">
+                                    <input type="hidden" name="Action" value="Restore">
+                                </form>
+
+                                <div class="navigate">
+                                    <a class="semi-bold link-btn icon arrow-right" data-dismiss="modal" data-toggle="modal" data-target="#modal-signin" href="" data-redirect-default="<TMPL_VAR NAME='FullPageURL'>">Войти</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<page_list.html>
+			<AllOrders>Полный список</AllOrders>
+			<Page>Страница заявки</Page>
+		</page_list.html>
+		<order_list.html>
+			<Created>Дата заявки</Created>
+			<FirstName>Имя</FirstName>
+			<LastName>Фамилия</LastName>
+			<Phone>Телефон</Phone>
+			<UserWho>Статус</UserWho>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<Country>Страны</Country>
+			<City>Город</City>
+			<ContactType>Способ связи</ContactType>
+			<ContactAdditional>Дополнительно</ContactAdditional>
+			<UTM>UTM</UTM>
+			<EmptyList>Заявки отсутствуют</EmptyList>
+		</order_list.html>
+		<order_list_full.html>
+			<Back>Назад</Back>
+			<Created>Дата заявки</Created>
+			<FirstName>Имя</FirstName>
+			<LastName>Фамилия</LastName>
+			<Phone>Телефон</Phone>
+			<UserWho>Статус</UserWho>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<Country>Страны</Country>
+			<City>Город</City>
+			<ContactType>Способ связи</ContactType>
+			<ContactAdditional>Дополнительно</ContactAdditional>
+			<PageTitle>Лендинг</PageTitle>
+			<UTMSource>UTM source</UTMSource>
+			<UTMMedium>UTM medium</UTMMedium>
+			<UTMCampaign>UTM campaign</UTMCampaign>
+			<UTMTerm>UTM term</UTMTerm>
+			<UTMContent>UTM content</UTMContent>
+			<EmptyList>Заявки отсутствуют</EmptyList>
+		</order_list_full.html>
+	</admin>
+</Root>

@@ -1,0 +1,33 @@
+<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="task-form" enctype="multipart/form-data" autocomplete="off">
+	<div class="row">
+		<TMPL_IF NAME='ErrorList'>
+			<div class="col-md-12">
+				<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+			</div>
+		</TMPL_IF>
+
+		<div class="col-md-12">
+			<div class="form-group">
+                <label for="Title" class="form-label required">Заголовок</label><br />
+                <input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+            </div>
+			<div class="form-group">
+				<label for="Points" class="form-label required">Баллы</label><br />
+				<input class="form-control" type="text" name="Points" id="Points" value="<TMPL_VAR NAME='Points'>" />
+			</div>
+			<div class="form-group">
+				<label for="SortOrder" class="form-label required">Позиция</label><br />
+				<input class="form-control" type="text" name="SortOrder" id="SortOrder" value="<TMPL_IF NAME='SortOrder'><TMPL_VAR NAME='SortOrder'><TMPL_ELSE>0</TMPL_IF>" />
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="col-md-12 top15">
+			<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+		</div>
+	</div>
+
+    <input type="hidden" name="Save" value="1" />
+	<input type="hidden" name="AnswerID" value="<TMPL_VAR NAME='AnswerID'>" />
+	<input type="hidden" name="TaskID" value="<TMPL_VAR NAME='TaskID'>" />
+    <TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+</form>

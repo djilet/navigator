@@ -1,0 +1,72 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<h2 class="title"><TMPL_VAR NAME='LNG_WantWorkList'></h2>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" id="item-list" method="post">
+				<div class="col-md-6 no-padding form-group form-inline">
+					<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&WantWorkID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i><TMPL_VAR NAME='LNG_Add'></a>
+				</div>
+				<div class="col-md-6 no-padding form-group">
+					<ul class="pagination pagination pull-right">
+						<TMPL_VAR NAME='Paging' ESCAPE='none'>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+				
+				<TMPL_IF NAME='ErrorList'>
+					<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+				</TMPL_IF>
+				<TMPL_IF NAME='MessageList'>
+					<div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+				</TMPL_IF>
+				<TMPL_IF NAME='WantWorkList'>
+					<p><TMPL_VAR NAME='ListInfo'></p>
+					<table class="table" id="listing">
+						<thead>
+							<tr>
+								<th><TMPL_VAR NAME='LNG_Title'></th>
+								<th width="50"></th>
+								<th width="40">&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<TMPL_LOOP NAME='WantWorkList'>
+								<tr <TMPL_IF NAME='Active' VALUE='N'>class="inactive"</TMPL_IF> WantWorkID="<TMPL_VAR NAME='WantWorkID'>">
+									<td><a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&WantWorkID=<TMPL_VAR NAME='WantWorkID'>"><TMPL_VAR NAME='WantWorkTitle'></a></td>
+									<td><TMPL_VAR NAME='SortOrder'></td>
+									<td>
+										<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=Remove&WantWorkID=<TMPL_VAR NAME='WantWorkID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='WantWorkTitle' ESCAPE='js'>', this); return false;"><i class="fa fa-close delete"></i></a>
+									</td>
+								</tr>
+							</TMPL_LOOP>
+						</tbody>
+					</table>
+				<TMPL_ELSE>
+					<div class="alert alert-success"><TMPL_VAR NAME='LNG_Empty'></div>
+				</TMPL_IF>
+
+				<div class="clearfix"></div>
+				<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+				<input type="hidden" name="Do" value="" />
+			</form>			
+		</div>
+	</section>
+</div>
+
+<script type="text/javascript">
+function ConfirmRemove(title, a)
+{
+	var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove' ESCAPE='js'>';
+	msg = msg.replace(/%Title%/g, title);
+	ModalConfirm(msg, function(){
+		window.location.href = $(a).attr('href');
+	});
+}
+$(document).ready(function(){
+	
+});
+</script>

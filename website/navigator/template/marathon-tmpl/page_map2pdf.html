@@ -1,0 +1,171 @@
+<?php //print_r($this) ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<TMPL_IF NAME='Print'>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&amp;subset=cyrillic" rel="stylesheet">
+		<link href="<TMPL_VAR NAME='TemplatePath' />css/libs/bootstrap.min.css" rel="stylesheet">
+		<link href="<TMPL_VAR NAME='TemplatePath' />css/source/main.css" rel="stylesheet">
+		<link href="<TMPL_VAR NAME='TemplatePath' />css/source/marathon.css" rel="stylesheet">
+		<TMPL_ELSE>
+			<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&amp;subset=cyrillic" rel="stylesheet">
+			<link href="<TMPL_VAR NAME='PATH2MAIN' />css/libs/bootstrap.min.css" rel="stylesheet">
+			<link href="<TMPL_VAR NAME='PATH2MAIN' />css/source/main.css" rel="stylesheet">
+			<link href="<TMPL_VAR NAME='PATH2MAIN' />css/source/marathon.css" rel="stylesheet">
+	</TMPL_IF>
+</head>
+<body>
+<div class="marathon A4-wrap" id="graduate-map2print" pdf-path="<TMPL_VAR NAME='MapPdfDir'>">
+	<h2>Ваша карта</h2>
+	<div class="graduate-map2pdf">
+		<TMPL_LOOP NAME='Content'>
+			<div class="map-item <TMPL_IF NAME='Status' VALUE='available'>active<TMPL_ELSEIF NAME='Status' VALUE='completed'>completed<TMPL_ELSE>disabled</TMPL_IF>">
+				<div class="image-wrap">
+					<div class="image">
+						<img src="<TMPL_VAR NAME='ImagePath'>" alt="">
+					</div>
+				</div>
+				<div class="content">
+					<p class="title"><TMPL_VAR NAME='Title'></p>
+					<p><TMPL_VAR NAME='PDFComment'></p>
+
+					<TMPL_IF NAME='Answers'>
+						<TMPL_IF NAME='Status' VALUE='completed'>
+							<ul class="selected-list to-pdf align-left">
+								<TMPL_LOOP NAME='Answers'>
+									<li class="item">
+										<p class="name">
+											<TMPL_VAR NAME='Name'>
+												<TMPL_UNLESS NAME='AnswersList'>
+													<TMPL_IF NAME='Print'>
+														<img src="<TMPL_VAR NAME='TemplatePath>img/icons/marathon/check-black.svg" alt="">
+														<TMPL_ELSE>
+															<img src="<TMPL_VAR NAME='PATH2MAIN>img/icons/marathon/check-black.svg" alt="">
+													</TMPL_IF>
+												</TMPL_UNLESS>
+										</p>
+									</li>
+								</TMPL_LOOP>
+							</ul>
+						</TMPL_IF>
+					</TMPL_IF>
+
+					<TMPL_IF NAME='AnswersList'>
+						<TMPL_LOOP NAME='AnswersList'>
+							<div class="list-item">
+								<p class="list-title"><TMPL_VAR NAME='__ROWNUM__'> - <TMPL_VAR NAME='ListTitle'></p>
+								<ul class="selected-list to-pdf align-left">
+									<TMPL_LOOP NAME='Answers'>
+										<li class="item">
+
+											<TMPL_IF NAME='BudgetNext'>
+												<p class="name">
+													<TMPL_VAR NAME='Name'>
+												</p>
+
+												<p class="budget purple-text">
+													<TMPL_VAR NAME='BudgetNext'>
+														<TMPL_IF NAME='Print'>
+															<img src="<TMPL_VAR NAME='TemplatePath>img/icons/marathon/check-pink.svg" width="10" alt="">
+															<TMPL_ELSE>
+																<img src="<TMPL_VAR NAME='PATH2MAIN>img/icons/marathon/check-pink.svg" width="10" alt="">
+														</TMPL_IF>
+												</p>
+												<TMPL_ELSEIF NAME='BudgetText'>
+													<p class="name">
+														<TMPL_VAR NAME='Name'>
+													</p>
+
+													<p class="budget-text gray-text">
+														<TMPL_VAR NAME='BudgetText'>
+															<TMPL_IF NAME='Print'>
+																<img src="<TMPL_VAR NAME='TemplatePath>img/icons/marathon/check-pink.svg" width="10" alt="">
+																<TMPL_ELSE>
+																	<img src="<TMPL_VAR NAME='PATH2MAIN>img/icons/marathon/check-pink.svg" width="10" alt="">
+															</TMPL_IF>
+													</p>
+													<TMPL_ELSE>
+														<p class="name">
+															<TMPL_VAR NAME='Name'>
+														</p>
+														<TMPL_IF NAME='Print'>
+															<img src="<TMPL_VAR NAME='TemplatePath>img/icons/marathon/check-black.svg" width="10" alt="">
+															<TMPL_ELSE>
+																<img src="<TMPL_VAR NAME='PATH2MAIN>img/icons/marathon/check-black.svg" width="10" alt="">
+														</TMPL_IF>
+											</TMPL_IF>
+										</li>
+									</TMPL_LOOP>
+								</ul>
+							</div>
+						</TMPL_LOOP>
+					</TMPL_IF>
+				</div>
+
+				<span class="line"></span>
+			</div>
+		</TMPL_LOOP>
+	</div>
+	<!-- <div class="graduate-map not-decor">
+        <ul class="stages-list vertical-big ajax">
+            <TMPL_LOOP NAME='Content'>
+                            <li id="<TMPL_VAR NAME='StepID'>" class="<TMPL_IF NAME='Status' VALUE='available'>active<TMPL_ELSEIF NAME='Status' VALUE='completed'>completed<TMPL_ELSE>disabled</TMPL_IF>">
+                                <span>
+                                    <img src="<TMPL_VAR NAME='ImagePath'>" alt="">
+                                </span>
+
+                                <div class="text">
+                                    <p class="title"><TMPL_VAR NAME='Title'></p>
+                        <TMPL_IF NAME='Status' VALUE='completed'>
+                            <TMPL_IF NAME='Answers'>
+                                <ul class="selected-list align-left">
+                                    <TMPL_LOOP NAME='Answers'>
+                                        <li class="item">
+                                            <p class="name"><TMPL_VAR NAME='Name'></p>
+                                        </li>
+                                    </TMPL_LOOP>
+                                </ul>
+                            </TMPL_IF>
+
+                            <TMPL_IF NAME='AnswersList'>
+                                <TMPL_LOOP NAME='AnswersList'>
+                                    <p class="list-title"><TMPL_VAR NAME='ListTitle'></p>
+                                    <ul class="selected-list align-left">
+                                        <TMPL_LOOP NAME='Answers'>
+                                            <li class="item">
+                                                <TMPL_IF NAME='BudgetLevel'>
+                                                    <p><TMPL_VAR NAME='Name'></p>
+                                                    <p class="budget">
+                                                        <TMPL_VAR NAME='BudgetLevel'>
+                                                    </p>
+                                                <TMPL_ELSEIF NAME='BudgetText'>
+                                                    <p><TMPL_VAR NAME='Name'></p>
+                                                    <p class="budget-text gray-text">
+                                                        <TMPL_VAR NAME='BudgetText'>
+                                                    </p>
+                                                <TMPL_ELSE>
+                                                    <p class="name"><TMPL_VAR NAME='Name'></p>
+                                                </TMPL_IF>
+                                            </li>
+                                        </TMPL_LOOP>
+                                    </ul>
+                                </TMPL_LOOP>
+                            </TMPL_IF>
+                        </TMPL_IF>
+                                </div>
+
+                            </li>
+            </TMPL_LOOP>
+        </ul>
+    </div> -->
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $('.map-item.disabled').prev('.map-item').addClass('line-disabled');
+    $('.map-item.active').prev('.map-item').addClass('line-gradient');
+    $('.map-item.completed').prev('.map-item').addClass('line-completed');
+</script>
+</body>
+<!-- <a href="#" id="download-map-btn">Скачать</a> -->
+</html>

@@ -1,0 +1,66 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='TypeID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditType'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddType'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="row">
+					<TMPL_IF NAME='ErrorList'>
+						<div class="col-md-12">
+							<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+						</div>
+					</TMPL_IF>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+							<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+						</div>
+						<div class="form-group">
+							<label for="SortOrder" class="form-label"><TMPL_VAR NAME='LNG_SortOrder'></label><br />
+							<input class="form-control" type="text" name="SortOrder" id="SortOrder" value="<TMPL_VAR NAME='SortOrder'>" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div id="TypeImage-box">
+							<label for="TypeImage"><TMPL_VAR NAME='LNG_Image'></label><br />
+						</div>
+						<script type="text/javascript">
+							$(document).ready(function(){
+								params = new Array();
+								<TMPL_LOOP NAME='TypeImageParamList'>
+									params.push({
+										"Name" : "<TMPL_VAR NAME='SourceName'>",
+										"Width" : "<TMPL_VAR NAME='Width'>",
+										"Height" : "<TMPL_VAR NAME='Height'>",
+										"Resize" : "<TMPL_VAR NAME='Resize'>",
+										"X1" : "<TMPL_VAR NAME='X1'>",
+										"X2" : "<TMPL_VAR NAME='X2'>",
+										"Y1" : "<TMPL_VAR NAME='Y1'>",
+										"Y2" : "<TMPL_VAR NAME='Y2'>"
+									});
+								</TMPL_LOOP>
+								CreateImageInput('TypeImage', '<TMPL_VAR NAME='TypeImageAdminPath'>', '<TMPL_VAR NAME='TypeImageFullPath'>', '<TMPL_VAR NAME='TypeImage'>', '<TMPL_VAR NAME='TypeID'>', 'RemoveTypeImage', '<TMPL_VAR NAME='MODULE_PATH'>ajax.php', 0, params);
+							});
+						</script>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-12">
+					</div>
+					<div class="col-md-12 top15">
+						<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+						<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+					</div>
+					<input type="hidden" name="Save" value="1" />
+					<input type="hidden" name="TypeID" value="<TMPL_VAR NAME='TypeID'>" />
+					<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<!-- Admin page -->
+	<module-title>Марафон</module-title>
+	<module-admin-title>Марафон</module-admin-title>
+	
+	<stage-task-extended-answer-empty>Необходимо заполнить ответ</stage-task-extended-answer-empty>
+	<taskcountsuffixes>задание,задания,заданий</taskcountsuffixes>
+
+	<section-user_info>Информация о пользователях "Марафона"</section-user_info>
+</Root>

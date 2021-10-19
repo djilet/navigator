@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<page_list.html>
+			<AllOrders>Полный список</AllOrders>
+			<Page>Страница услуги</Page>
+		</page_list.html>
+		<order_list.html>
+			<Created>Дата заявки</Created>
+			<Name>Имя</Name>
+			<Phone>Телефон</Phone>
+			<UserWho>Статус</UserWho>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<Summ>Стоимость(руб.)</Summ>
+			<Payment>Оплата</Payment>
+			<PaymentNo>нет</PaymentNo>
+			<City>Город</City>
+			<UTM>UTM</UTM>
+			<EmptyList>Заявки отсутствуют</EmptyList>
+		</order_list.html>
+		<order_list_full.html>
+			<Created>Дата заявки</Created>
+			<Name>Имя</Name>
+			<Phone>Телефон</Phone>
+			<UserWho>Статус</UserWho>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<Summ>Стоимость(руб.)</Summ>
+			<Payment>Оплата</Payment>
+			<PaymentNo>нет</PaymentNo>
+			<City>Город</City>
+			<PageTitle>Услуга</PageTitle>
+			<UTM>UTM</UTM>
+			<EmptyList>Заявки отсутствуют</EmptyList>
+		</order_list_full.html>
+	</admin>
+</Root>

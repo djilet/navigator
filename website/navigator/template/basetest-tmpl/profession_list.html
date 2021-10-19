@@ -1,0 +1,262 @@
+<TMPL_IF NAME='ProfessionList'>
+	<ul class="information-list">
+		<TMPL_LOOP NAME='ProfessionList'>
+			<li class="item<TMPL_IF NAME='Medal'> <TMPL_VAR NAME='Medal'></TMPL_IF><TMPL_IF NAME='__ROWNUM__' OP='>=' VALUE='25'> hidden</TMPL_IF>" data-id="<TMPL_VAR NAME='ProfessionID'>">
+				<div class="wrap">
+					<div class="content">
+						<h3 class="title left">
+							<div class="icon" style="
+							background-image: url('<TMPL_IF NAME='Medal' OP='==' VALUE='Gold'><TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/cap-gold.svg<TMPL_ELSEIF NAME='Medal' OP='==' VALUE='Silver'><TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/cap-silver.svg<TMPL_ELSEIF NAME='Medal' OP='==' VALUE='Bronze'><TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/cap-bronze.svg<TMPL_ELSE><TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/double-point.svg</TMPL_IF>');
+							">
+								
+								<TMPL_IF NAME='Position'>
+									<span class="position">
+										<TMPL_VAR NAME='Position'>
+									</span>
+								</TMPL_IF>
+							</div>
+							<span class="name">
+								<TMPL_VAR NAME='Title'>
+							</span>
+						</h3>
+						<div class="sub-title bold">
+							Из чего состоит 
+						</div>
+						<div class="short-info">
+							<TMPL_VAR NAME='IndustryTitle'>
+							<TMPL_IF NAME='WhoWork'>
+								/
+								<TMPL_LOOP NAME='WhoWork'>
+									<TMPL_VAR NAME='WhoWorkTitle'>
+									<TMPL_UNLESS NAME='__LAST__'>
+									,
+									</TMPL_UNLESS>
+								</TMPL_LOOP>
+							</TMPL_IF>
+							<TMPL_IF NAME='WantWork'>
+								/
+								<TMPL_LOOP NAME='WantWork'>
+									<TMPL_VAR NAME='WantWorkTitle'>
+									<TMPL_UNLESS NAME='__LAST__'>
+									,
+									</TMPL_UNLESS>
+								</TMPL_LOOP>
+							</TMPL_IF>
+						</div>
+						<ul class="category-list">
+							<TMPL_IF NAME='Schedule'>
+								<li class="item">
+									<div class="title">
+										<TMPL_VAR NAME='Schedule'>
+									</div>
+								</li>
+							</TMPL_IF>
+
+							<TMPL_IF NAME='WageLevel'>
+								<li class="item">
+									<div class="title">
+										<TMPL_VAR NAME='LNG_WageLevel'> <TMPL_VAR NAME='WageLevel' FORMAT='price'>
+									</div>
+								</li>
+							</TMPL_IF>
+							
+							<TMPL_IF NAME='Operation'>
+								<TMPL_LOOP NAME='Operation'>
+									<li class="item">
+										<div class="title">
+											<TMPL_VAR NAME='OperationTitle'>
+										</div>
+									</li>
+								</TMPL_LOOP>
+							</TMPL_IF>
+						</ul>
+
+						<div href="#" class="more-info-btn">
+							<span class="text">
+								Развернуть подробные характеристики профессии
+							</span>
+
+							<span class="text-active">
+								Свернуть
+							</span>
+
+							<span class="icon">
+								
+							</span>
+						</div>
+
+						<div class="more-info">
+							<div class="description wage">
+								<h4 class="title bold">
+									<div class="icon">
+										<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/purse.svg" alt="">
+									</div>
+									<span>
+										Заработная плата
+									</span>
+								</h4>
+
+								<div class="col-2">
+									<div class="col">
+										<h4 class="extra-bold color-medium-gray">
+											от <TMPL_VAR NAME='WageLevel'>
+										</h4>
+										<p>
+											Начинающий специалист
+										</p>
+									</div>
+									<div class="col">
+										<h4 class="extra-bold color-medium-gray">
+											до <TMPL_VAR NAME='ProWageLevel'>
+										</h4>
+										<p>
+											Ведущий специалист
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="description wage">
+								<h4 class="title bold">
+									<div class="icon">
+										<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/tools.svg" alt="">
+									</div>
+									<span>
+										График работы и характер труда
+									</span>
+								</h4>
+								
+								<div class="list-marker">
+									<ul>
+										<li>
+											<TMPL_VAR NAME='Schedule'>
+										</li>
+										<TMPL_LOOP NAME='Operation'>
+											<li>
+												<TMPL_VAR NAME='OperationTitle'>
+											</li>
+										</TMPL_LOOP>
+									</ul>
+								</div>
+							</div>
+
+							<div class="description 2col">
+								<h4 class="title bold">
+									<div class="icon">
+										<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/doc.svg" alt="">
+									</div>
+									<span>
+										В каких областях можно работать
+									</span>
+								</h4>
+
+								<div class="list-marker">
+									<TMPL_VAR NAME='AreaWork' ESCAPE='HTML'>
+								</div>
+							</div>
+
+							<div class="description">
+								<h4 class="title bold">
+									<div class="icon">
+										<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/man_in_cap.svg" alt="">
+									</div>
+									<span>
+										Профессиональные качества
+									</span>
+								</h4>
+								<div class="list-marker">
+									<TMPL_VAR NAME='Employee' ESCAPE='HTML'>
+								</div>
+							</div>
+
+							<!-- <div class="description">
+								<h4 class="bold">
+									Что делает <TMPL_VAR NAME='Title'>
+								</h4>
+								<TMPL_VAR NAME='Description' ESCAPE='HTML'>
+							</div> -->
+
+							<div class="description book">
+								<h4 class="title bold">
+									<div class="icon">
+										<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/base-test/book.svg" alt="">
+									</div>
+									<span>
+										Книги и ссылки для саморазвития
+									</span>
+								</h4>
+
+								<TMPL_VAR NAME='Books' ESCAPE='HTML'>
+							</div>
+
+							<a href="<TMPL_VAR NAME='URL_PREFIX'>profession/<TMPL_VAR NAME='StaticPath'>/?Select=Y#tab-2" target="blank" class="btn purple" id="where-learn-btn">
+								Где учиться?
+							</a>
+
+							<!-- <div class="description films">
+								<h4 class="bold">
+									Фильмы, влоги, передачи про профессию <TMPL_VAR NAME='Title'> (18+)
+								</h4>
+							</div> -->
+
+							<!-- <div class="col-list two">
+								<TMPL_IF NAME='AreaWork'>
+									<div class="item">
+										<div class="col left color-light-gray">
+											<TMPL_VAR NAME='LNG_AreaWork'>
+										</div>
+										<TMPL_VAR NAME='AreaWork' ESCAPE='HTML'>
+									</div>
+								</TMPL_IF>
+							
+								<TMPL_IF NAME='Employee'>
+									<div class="item">
+										<div class="col left color-light-gray"><TMPL_VAR NAME='LNG_Employee'></div>
+										<div class="col right"><TMPL_VAR NAME='Employee' ESCAPE='HTML'></div>
+									</div>
+								</TMPL_IF>
+							</div> -->
+						</div>
+
+						<TMPL_IF NAME='ShowEge'>
+							<div class="description">
+								<TMPL_IF NAME='Subject'>
+									<div class="ege-info">
+										<div class="title bold">
+											ЕГЭ
+										</div>
+										<div class="list">
+											<TMPL_LOOP NAME='Subject'>
+												<div class="item">
+													<TMPL_VAR NAME='Title'>
+												</div>
+											</TMPL_LOOP>
+										</div>
+									</div>
+								</TMPL_IF>
+							</div>
+						</TMPL_IF>
+					</div>
+				</div>
+			</li>
+
+			<!-- <TMPL_IF NAME='__ROWNUM__' OP='==' VALUE='9'>
+				<TMPL_IF NAME='FeedbackForm'>
+					<TMPL_INCLUDE NAME="basetest-tmpl/feedback_form.html"/>
+				</TMPL_IF>
+			<TMPL_ELSEIF NAME='__LAST__'>
+				<TMPL_IF NAME='FeedbackForm'>
+					<TMPL_INCLUDE NAME="basetest-tmpl/feedback_form.html"/>
+				</TMPL_IF>
+			</TMPL_IF> -->
+		</TMPL_LOOP>
+
+		<div id="feedback-block" data-viewed="false">
+			<TMPL_IF NAME='FeedbackForm'>
+				<TMPL_INCLUDE NAME="basetest-tmpl/feedback_form.html"/>
+			</TMPL_IF>
+		</div>
+	</ul>
+<TMPL_ELSE>
+	<TMPL_VAR NAME='LNG_ProfessionEmpty'>
+</TMPL_IF>

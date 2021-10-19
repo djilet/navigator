@@ -1,0 +1,61 @@
+<section class="box">
+    <header class="panel_header">
+        <h2 class="title pull-left">
+            <TMPL_IF NAME='BoxTitle'>
+                <TMPL_VAR NAME='BoxTitle'>
+            <TMPL_ELSE>
+                <TMPL_VAR NAME='PageTitle'>
+            </TMPL_IF>
+        </h2>
+    </header>
+    <div class="content-body">
+        <div class="row">
+            <div class="col-md-12">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table" id="listing">
+                    <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Расположение</th>
+                        <th>Телефон</th>
+                        <th>Сайт</th>
+                        <th width="25">&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <TMPL_LOOP NAME='SalonList'>
+                        <tr>
+                            <td>
+                                <a href="<TMPL_VAR NAME='CurrentURL'/>&SalonID=<TMPL_VAR NAME='SalonID' />">
+                                    <TMPL_VAR NAME='Name' />
+                                </a>
+                            </td>
+
+                            <td>
+                                <TMPL_VAR NAME='Location' />
+                            </td>
+
+                            <td>
+                                <TMPL_VAR NAME='Phone' />
+                            </td>
+
+                            <td>
+                                <TMPL_VAR NAME='Site' />
+                            </td>
+
+                            <td>
+                                <a href="<TMPL_VAR NAME='BaseURL' />&<TMPL_VAR NAME='ParamsForURL' />&SalonID=<TMPL_VAR NAME='SalonID' />&Action=remove" class="fa fa-remove" onclick="ConfirmHref('Удалить %Title%','<TMPL_VAR NAME='Name' />', $(this)); return false;"></a>
+                            </td>
+                        </tr>
+                    </TMPL_LOOP>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

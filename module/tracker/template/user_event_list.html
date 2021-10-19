@@ -1,0 +1,132 @@
+<div class="col-md-12 top15">
+        <section class="box">
+            <header class="panel_header">
+                <h2 class="title"><TMPL_VAR NAME='LNG_Title'></h2>
+            </header>
+            <div class="content-body">
+                <form action="<TMPL_VAR NAME='MODULE_URL'>" id="item-list-from" method="post">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <div class="col-md-3"><TMPL_VAR NAME='LNG_FilterDateFrom'></div>
+                                    <div class="col-md-9 no-padding">
+                                        <input class="form-control datepicker" name="FilterDateFrom" value="<TMPL_VAR NAME='FilterDateFrom'>" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-3"><TMPL_VAR NAME='LNG_FilterDateTo'></div>
+                                    <div class="col-md-9 no-padding">
+                                        <input class="form-control datepicker" name="FilterDateTo"  value="<TMPL_VAR NAME='FilterDateTo'>" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                	&nbsp;
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-2"><TMPL_VAR NAME='LNG_LeadTo'></div>
+                                    <div class="col-md-10 no-padding">
+                                        <select class="form-control" name="FilterLeadTo" id="FilterLeadTo">
+											<option value="">&nbsp;</option>
+											<option value="exhibition"<TMPL_IF NAME='FilterLeadTo' VALUE='exhibition'> selected</TMPL_IF>><TMPL_VAR NAME='LNG_LeadToExhibition'></option>
+											<option value="order"<TMPL_IF NAME='FilterLeadTo' VALUE='order'> selected</TMPL_IF>><TMPL_VAR NAME='LNG_LeadToOrder'></option>
+										</select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-2"><TMPL_VAR NAME='LNG_Event'></div>
+                                    <div class="col-md-10 no-padding">
+                                        <select class="form-control" name="FilterEvent" id="FilterEvent">
+											<option value="">&nbsp;</option>
+											<option value="BlogPrevPage"<TMPL_IF NAME='FilterEvent' VALUE='BlogPrevPage'> selected</TMPL_IF>><TMPL_VAR NAME='LNG_EventBlogPrevPage'></option>
+											<option value="BlogFirstPage"<TMPL_IF NAME='FilterEvent' VALUE='BlogFirstPage'> selected</TMPL_IF>><TMPL_VAR NAME='LNG_EventBlogFirstPage'></option>
+										</select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 no-padding">
+                            <button type="submit" class="btn btn-success pull-right"><TMPL_VAR NAME='LNG_FilterApply'></button>
+                        </div>
+
+                        <div class="col-md-12">
+                        	<br/>
+                            <TMPL_IF NAME='ErrorList'>
+                                <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                            </TMPL_IF>
+                            <TMPL_IF NAME='MessageList'>
+                                <div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                            </TMPL_IF>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <p><TMPL_VAR NAME='ListInfo'></p>
+                        </div>
+                        <div class="col-md-4 no-padding form-group">
+                            <ul class="pagination pagination pull-right">
+                                <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <TMPL_IF NAME='EventList'>
+                                <table class="table" id="listing">
+                                    <thead>
+                                    <tr>
+                                        <th><TMPL_VAR NAME='LNG_Date'></th>
+                                        <th><TMPL_VAR NAME='LNG_FirstName'></th>
+                                        <th><TMPL_VAR NAME='LNG_LastName'></th>
+                                        <th><TMPL_VAR NAME='LNG_Phone'></th>
+                                        <th><TMPL_VAR NAME='LNG_Email'></th>
+                                        <th><TMPL_VAR NAME='LNG_ContactType'></th>
+                                        <th><TMPL_VAR NAME='LNG_LeadTo'></th>
+                                        <th><TMPL_VAR NAME='LNG_Event'></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <TMPL_LOOP NAME='EventList'>
+                                        <tr>
+                                            <td><TMPL_VAR NAME='Created'></td>
+                                            <td><TMPL_VAR NAME='FirstName'></td>
+                                            <td><TMPL_VAR NAME='LastName'></td>
+                                            <td><TMPL_VAR NAME='Phone'></td>
+                                            <td><TMPL_VAR NAME='Email'></td>
+                                            <td><TMPL_VAR NAME='ContactType'></td>
+                                            <td>
+                                                <TMPL_IF NAME='LeadTo' VALUE='exhibition'>
+                                                    <TMPL_VAR NAME='LNG_LeadToExhibition'>
+                                                <TMPL_ELSEIF NAME='LeadTo' VALUE='order'>
+                                                    <TMPL_VAR NAME='LNG_LeadToOrder'>
+                                                <TMPL_ELSE>
+                                                	&nbsp;
+                                                </TMPL_IF>
+                                            </td>
+                                            <td>
+                                                <TMPL_IF NAME='Event' VALUE='BlogPrevPage'>
+                                                    <TMPL_VAR NAME='LNG_EventBlogPrevPage'>
+                                                <TMPL_ELSEIF NAME='Event' VALUE='BlogFirstPage'>
+                                                    <TMPL_VAR NAME='LNG_EventBlogFirstPage'>
+                                                <TMPL_ELSE>
+                                                    &nbsp;
+                                                </TMPL_IF>
+                                            </td>
+                                        </tr>
+                                    </TMPL_LOOP>
+                                    </tbody>
+                                </table>
+
+								<div href="#" class="btn btn-success" OnClick="doAction('ExportCSV', $('#item-list-from'))"><TMPL_VAR NAME='LNG_Export'></div>
+                            <TMPL_ELSE>
+                                <br>
+                                <div class="alert alert-success"><TMPL_VAR NAME='LNG_Empty'></div>
+                            </TMPL_IF>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <input type="hidden" name="load" value="tracker" />
+                    </div>
+                </form>
+            </div>
+        </section>
+</div>

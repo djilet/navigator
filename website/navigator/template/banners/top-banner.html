@@ -1,0 +1,34 @@
+<TMPL_UNLESS NAME='HideBannerTop'>
+    <div class="banner top" id="top-banner">
+        <div class="container-fluid">
+            <TMPL_IF NAME='BannerTopLg'>
+                <div class="hidden-xs">
+                    <TMPL_LOOP NAME='BannerTopLg'>
+                        <a href="<TMPL_VAR NAME='Link'>" data-name="<TMPL_VAR NAME='Name'>" style="float: left">
+                            <img src="<TMPL_VAR NAME='ItemImageFullPath' />" alt="">
+                        </a>
+                    </TMPL_LOOP>
+                </div>
+            </TMPL_IF>
+
+            <TMPL_IF NAME='BannerTopSm'>
+                <div class="visible-xs">
+                    <TMPL_LOOP NAME='BannerTopSm'>
+                        <a href="<TMPL_VAR NAME='Link'>" data-name="<TMPL_VAR NAME='Name'>">
+                            <img src="<TMPL_VAR NAME='ItemImageFullPath' />" alt="">
+                        </a>
+                    </TMPL_LOOP>
+                </div>
+            </TMPL_IF>
+            <!-- <a href="<TMPL_VAR NAME='URL_PREFIX'>consultation/">
+                <div class="hidden-xs">
+                    <img src="<TMPL_VAR NAME='PATH2MAIN' />/img/banner-proftest-top.png" alt="">
+                </div>
+            
+                <div class="visible-xs">
+                    <img src="<TMPL_VAR NAME='PATH2MAIN' />/img/banner-proftest-top-sm.png" alt="">
+                </div>
+            </a> -->
+        </div>
+    </div>
+</TMPL_UNLESS>

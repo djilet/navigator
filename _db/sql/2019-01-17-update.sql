@@ -1,0 +1,1 @@
+ALTER TABLE `proftest_user` ADD `ShortLink` VARCHAR(30) NULL DEFAULT NULL AFTER `LinkID`;

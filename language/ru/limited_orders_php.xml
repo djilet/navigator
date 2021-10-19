@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<config-details><![CDATA[
+	<h3>Поля для настройки шаблона</h3>
+	<p>Варианты:</p>
+	<ul>
+		<li>
+		"0" - Не будет отображаться на странице
+		</li>
+		<li>
+		"1" - Будет отображаться на странице
+		</li>
+	</ul>
+	]]></config-details>
+
+	<config-TemplateUserClassNumber>
+		Выбор класса в форме (настройка шаблона)
+	</config-TemplateUserClassNumber>
+	<config-TemplateUserWho>
+		Выбор ученик/родитель в форме (настройка шаблона)
+	</config-TemplateUserWho>
+	<config-SendToZapier>
+		Отправлять форму в Zapier
+	</config-SendToZapier>
+
+	<module-title>Заявки с лимитом</module-title>
+	<module-admin-title>Заявки с лимитом</module-admin-title>
+	<order-pageid-empty>Не указана привязка к странице заявки</order-pageid-empty>
+	<order-name-empty>Не указано имя</order-name-empty>
+	<order-phone-empty>Не указан номер телефона</order-phone-empty>
+	<order-date-time-empty>Не указано время регистрации</order-date-time-empty>
+	<order-contacttype-empty>Не указан способ связи</order-contacttype-empty>
+	<order-exists>Заявка с таким номером телефона уже поступила ранее</order-exists>
+	<limit-doesnt-exist>На данное время регистрации нет</limit-doesnt-exist>
+	<limit-pageid-empty>Не указана привязка к странице заявки</limit-pageid-empty>
+	<limit-date-empty>Не указана дата</limit-date-empty>
+	<limit-time-from-empty>Не указано время начала</limit-time-from-empty>
+	<limit-time-to-empty>Не указано время конца</limit-time-to-empty>
+</Root>

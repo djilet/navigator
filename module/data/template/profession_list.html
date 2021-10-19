@@ -1,0 +1,85 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'>
+        <section class="box">
+            <header class="panel_header">
+                <h2 class="title"><TMPL_VAR NAME='LNG_ProfessionList'></h2>
+            </header>
+            <div class="content-body">
+            	<form action="" id="item-list" method="post">
+					<div class="col-md-1"><TMPL_VAR NAME='LNG_ReportFrom'> </div>
+					<div class="col-md-2"><div class="form-group"><input class="form-control datepicker" name="ReportDateFrom" value="<TMPL_VAR NAME='NowDate' FORMAT='datepicker'>" /></div></div>
+					<div class="col-md-1"><TMPL_VAR NAME='LNG_ReportTo'> </div>
+					<div class="col-md-2"><div class="form-group"><input class="form-control datepicker" name="ReportDateTo" value="<TMPL_VAR NAME='NowDate' FORMAT='datepicker'>" /></div></div>
+					<div class="col-md-2"><div class="form-group"><button type="submit" class="btn btn-success btn-icon right15"><TMPL_VAR NAME='LNG_ReportSubmit'></button></div></div>
+					<input type="hidden" name="Do" value="ReportCSV" />
+					<div class="clearfix"></div>
+				</form>
+                <form action="<TMPL_VAR NAME='MODULE_URL'>" id="item-list" method="post">
+                    <div class="col-md-6 no-padding form-group form-inline">
+                        <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ProfessionID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i><TMPL_VAR NAME='LNG_Add'></a>
+                    </div>
+                    <div class="col-md-6 no-padding form-group">
+                        <ul class="pagination pagination pull-right">
+                            <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <TMPL_IF NAME='ErrorList'>
+                        <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                    </TMPL_IF>
+                    <TMPL_IF NAME='MessageList'>
+                        <div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                    </TMPL_IF>
+                    <TMPL_IF NAME='ProfessionList'>
+                        <p><TMPL_VAR NAME='ListInfo'></p>
+                        <table class="table" id="listing">
+                            <thead>
+                            <tr>
+                                <th><TMPL_VAR NAME='LNG_Title' /></th>
+                                <th><TMPL_VAR NAME='LNG_Industry' /></th>
+                                <th><TMPL_VAR NAME='LNG_WageLevel' /></th>
+                                <th width="50">&nbsp;</th>
+                                <th width="50">&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <TMPL_LOOP NAME='ProfessionList'>
+                                <td>
+                                    <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ProfessionID=<TMPL_VAR NAME='ProfessionID' />">
+                                        <TMPL_VAR NAME='Title' />
+                                    </a>
+                                </td>
+                                <td><TMPL_VAR NAME='IndustryTitle' /></td>
+                                <td><TMPL_VAR NAME='WageLevel' /></td>
+                                <td><TMPL_VAR NAME='SortOrder'></td>
+                                <td>
+                                    <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=RemoveDirection&DirectionIDs[]=<TMPL_VAR NAME='DirectionID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='Title' ESCAPE='js'>', this); return false;"><i class="fa fa-close delete"></i></a>
+                                </td>
+                                </tr>
+                            </TMPL_LOOP>
+                            </tbody>
+                        </table>
+                        <TMPL_ELSE>
+                            <div class="alert alert-success"><TMPL_VAR NAME='LNG_Empty'></div>
+                    </TMPL_IF>
+
+                    <div class="clearfix"></div>
+                    <TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+                        <input type="hidden" name="Do" value="" />
+                </form>
+            </div>
+        </section>
+</div>
+
+<script type="text/javascript">
+	function ConfirmRemove(title, a)
+	{
+		var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove' ESCAPE='js'>';
+		msg = msg.replace(/%Title%/g, title);
+		ModalConfirm(msg, function(){
+			window.location.href = $(a).attr('href');
+		});
+	}
+</script>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<item_edit.html>
+			<PersonalData>О пользователе</PersonalData>
+			<DevicesList>Список девайсов</DevicesList>
+			<UserName>ФИО</UserName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<UserWho>Кто я?</UserWho>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>В каком классе</ClassNumber>
+			<ChatStatus>Статус в чате</ChatStatus>
+			<ChatStatusSimple>Обычный</ChatStatusSimple>
+			<ChatStatusModerator>Модератор</ChatStatusModerator>
+			<ChatStatusLocked>Заблокирован</ChatStatusLocked>
+			<CommentsStatusOpen>Открыты</CommentsStatusOpen>
+			<CommentsStatusLocked>Закрыты</CommentsStatusLocked>
+			<DeviceID>Device ID</DeviceID>
+			<SocialType>Тип соцсети</SocialType>
+			<Created>Дата</Created>
+			<Client>ОС устройства</Client>
+		</item_edit.html>
+		
+		<item_list.html>
+			<ReportSubmit>Скачать</ReportSubmit>
+			<Created>Дата регистрации</Created>
+			<UserFIO>ФИО</UserFIO>
+			<Phone>Телефон</Phone>
+			<Email>E-mail</Email>
+			<UserWho>Статус</UserWho>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<City>Город</City>
+			<RemoveMultiple>Удалить отмеченные</RemoveMultiple>
+			<ConfirmRemove>Действительно хотите удалить "%Title%"?</ConfirmRemove>
+			<ConfirmRemoveMultiple>Удалить отмеченные позиции?</ConfirmRemoveMultiple>
+			<NoSelection>Нет отмеченных позиций</NoSelection>
+		</item_list.html>
+	</admin>
+</Root>

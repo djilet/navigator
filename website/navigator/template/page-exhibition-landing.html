@@ -1,0 +1,493 @@
+<TMPL_IF NAME="RegistrationView">
+	<div class="regtemplate">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 d-flex justify-content-center align-items-center">
+					<img alt="" src="<TMPL_VAR NAME='PATH2MAIN' />img/heart-reg.png" class="heart-reg">
+				</div>
+				<div class="col-12 d-flex justify-content-center thanks-for-reg">
+					<h1>Спасибо за регистрацию</h1>
+				</div>
+				<div class="blueunderline ml-auto"></div>
+				<div class="col-12 d-flex justify-content-center">
+					<h2 class="waiting-reg">Ждем Вас и Ваших друзей на выставке</h2>
+				</div>
+				<div class="col-12 watch-reg d-flex justify-content-center">
+					<h2>А пока можете посмотреть</h2>
+				</div>
+				<div class="col-12 watch-reg-block d-flex justify-content-center">
+					<div class="watch-reg-block-item">
+						<a href="<TMPL_VAR NAME='PROJECT_PATH'>events.html">
+							<img alt="Онлайн-трансляции" src="<TMPL_VAR NAME='PATH2MAIN' />img/watch-reg-1.png" class="watch-reg-img">
+							<h3>Онлайн-трансляции</h3>
+						</a>
+					</div>
+					<div class="watch-reg-block-item">
+						<a href="<TMPL_VAR NAME='PROJECT_PATH'>profession.html">
+							<img alt="Информацию о профессиях" src="<TMPL_VAR NAME='PATH2MAIN' />img/watch-reg-2.png" class="watch-reg-img">
+							<h3>Информацию о профессиях</h3>
+						</a>
+					</div>
+					<div class="watch-reg-block-item">
+						<a href="<TMPL_VAR NAME='PROJECT_PATH'>vuzi.html">
+							<img alt="Информацию о вузах" src="<TMPL_VAR NAME='PATH2MAIN' />img/watch-reg-3.png" class="watch-reg-img">
+							<h3>Информацию о вузах</h3>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		yaCounter47132955.reachGoal('Uspeshnaya_registratsiya');
+	</script>
+<TMPL_ELSEIF NAME="RegistrationAdditionalView">
+	<div class="regtemplate">
+		<form action="../RegisteredSuccess/" method="post" id="regfrom">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 d-flex justify-content-center align-items-center">
+						<img alt="" src="<TMPL_VAR NAME='PATH2MAIN' />img/heart-reg.png" class="heart-reg">
+					</div>
+					<div class="col-12 d-flex justify-content-center thanks-for-reg">
+						<h1>Спасибо за регистрацию</h1>
+					</div>
+					<div class="blueunderline ml-auto"></div>
+					<div class="col-12 d-flex justify-content-center">
+						<h2 class="waiting-reg">Ответьте, пожалуйста, на дополнительные вопросы:</h2>
+					</div>
+				</div>
+				<div class="row start-form">
+					<TMPL_LOOP NAME='RegistrationList'>
+					<div class="col-12 d-flex flex-column align-items-center">
+						<TMPL_IF NAME='Multiple'>
+						<div class="group">
+							<div class="input-type" style="padding-top:0px;">
+								<label class="registration-label"><TMPL_VAR NAME='FirstName'> <TMPL_VAR NAME='LastName'></label>
+							</div>
+						</div>
+						</TMPL_IF>
+						<div class="group custom-multiselect select-of-bottom-lending">
+							<input type="text" class="search checkempty">
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label class="material-label">Какие направления интересуют?</label>
+							<ul>
+								<TMPL_LOOP NAME='BigDirectionList'>
+								<li data-value="<TMPL_VAR NAME='BigDirectionID'>"><TMPL_VAR NAME='Title'></li>
+								</TMPL_LOOP>
+							</ul>
+							<div class="result"></div>
+							<input type="hidden" name="RegisterForm[BigDirection][]" value="" />
+						</div>
+						<div class="group custom-multiselect select-of-bottom-lending">
+							<input type="text" class="search checkempty">
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label class="material-label">В какие вузы планируете поступать?</label>
+							<ul>
+								<TMPL_LOOP NAME='UniversityList'>
+								<li data-value="<TMPL_VAR NAME='UniversityID'>"><TMPL_VAR NAME='ShortTitle'></li>
+								</TMPL_LOOP>
+							</ul>
+							<div class="result"></div>
+							<input type="hidden" name="RegisterForm[University][]" value="" />
+						</div>
+						<div class="group">
+							<div class="input-type">
+								<a href="#" class="program-filter-button program-filter-type experts" data-value="experts">ЕГЭ И ОГЭ</a>
+								<a href="#" class="program-filter-button program-filter-type parent" data-value="parent">Для родителей</a>
+								<a href="#" class="program-filter-button program-filter-type abroad" data-value="abroad">Обучение за рубежом</a>
+								<a href="#" class="program-filter-button program-filter-type prof" data-value="prof">Профориентация</a>
+								<a href="#" class="program-filter-button program-filter-type univer" data-value="univer">Лекция от вуза</a>
+								<a href="#" class="program-filter-button program-filter-type toefl" data-value="toefl">English</a>
+							</div>
+							<label class="material-label">Какие МК интересно посетить?</label>
+							<input type="hidden" class="filter-type-value" name="RegisterForm[Type][]" value="" />
+						</div>
+						<input type="hidden" name="RegisterForm[RegistrationID][]" value="<TMPL_VAR NAME='RegistrationID'>"/>
+					</div>
+					</TMPL_LOOP>
+					<div class="col-12 d-flex flex-column align-items-center">
+						<button type="submit" class="blue-button additional-form-button">OK</button>
+					</div>
+				</div>
+			</div>
+			<input type="hidden" name="RegistrationAdditionalFormSubmit" value="1"/>
+		</form>
+	</div>
+<TMPL_ELSE>
+
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org/",
+			"@type": "EducationEvent",
+			"name": "<TMPL_VAR NAME="Title" />",
+			"description": "<TMPL_VAR NAME="Type" />",
+			"typicalAgeRange": "от 16 до 18 лет",
+			"startDate": "<TMPL_VAR NAME="StartDateUTC" />",
+			"endDate": "<TMPL_VAR NAME="EndDateUTC" />",
+			"inLanguage": "Русский",
+			"organizer": {
+				"@type": "Thing",
+				"name": "Навигатор поступления"
+			}
+		}
+	</script>
+
+	<nav id="menu">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-6 d-block d-md-none">
+					<span class="hamburger"></span>
+				</div>
+				<div class="col-6 col-md-4 col-lg-4 order-1 order-md-0">
+					<a href="<TMPL_VAR NAME='PROJECT_PATH' />">
+						<img alt="Навигатор поступления" src="<TMPL_VAR NAME='PATH2MAIN' />img/logo.png" class="logo">
+					</a>
+					<span class="nav-city d-none d-md-inline"><TMPL_VAR NAME="CityTitle" /></span>
+					<a href="#" data-toggle="modal" data-target="#city-modal" class="d-none d-md-inline">
+						<div class="nav-triangle"></div>
+					</a>
+				</div>
+				<div class="d-none d-md-block col-md-8 col-lg-5">
+					<div class="d-flex justify-content-around top-menu">
+						<a href="#aboutInNumber"><span><TMPL_VAR NAME='LNG_MenuAbout'></span></a>
+						<a href="#programssection"><span><TMPL_VAR NAME='LNG_MenuProgram'></span></a>
+						<a href="#partners"><span><TMPL_VAR NAME='LNG_MenuPartners'></span></a>
+						<a href="#univer"><span><TMPL_VAR NAME='LNG_MenuUniversities'></span></a>
+						<a href="#contacts"><span><TMPL_VAR NAME='LNG_MenuContacts'></span></a>
+					</div>
+				</div>
+				<div class="d-none d-lg-block col-lg-3">
+					<div class="nav-regbutton" data-toggle="modal" data-target="#reg-modal"><TMPL_VAR NAME='LNG_Register'></div>
+				</div>
+			</div>
+			<div class="row mobilemenu">
+				<div class="col-6 d-flex flex-column">
+					<a href="#aboutInNumber"><span><TMPL_VAR NAME='LNG_MenuAbout'></span></a>
+					<a href="#programssection"><span><TMPL_VAR NAME='LNG_MenuProgram'></span></a>
+					<a href="#partners"><span><TMPL_VAR NAME='LNG_MenuPartners'></span></a>
+					<a href="#univer"><span><TMPL_VAR NAME='LNG_MenuUniversities'></span></a>
+					<a href="#contacts"><span><TMPL_VAR NAME='LNG_MenuContacts'></span></a>
+					<br>
+				</div>
+				<div class="col-6">
+					<div class="nav-regbutton" data-toggle="modal" data-target="#reg-modal"><TMPL_VAR NAME='LNG_Register'></div>
+				</div>
+			</div>
+			<div class="row mobilemenu nav-city-for-menu">
+				<div class="col-12">
+					<span class="nav-city nav-city-mob"><TMPL_VAR NAME="CityTitle" /></span>
+					<a href="#" data-toggle="modal" data-target="#city-modal">
+						<div class="nav-triangle"></div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<main id="general">
+		<div class="container">
+			<div class="row header-h2-general">
+				<div class="col-8 col-md-4">
+					<h2><TMPL_VAR NAME='TitleH1'></h2>
+				</div>
+			</div>
+			<hr class="mainhr">
+			<div class="row header-h2-general-second">
+				<div class="col-12">
+					<TMPL_VAR NAME="Description" ESCAPE='none' />
+				</div>
+			</div>
+			<br><br>
+			<div class="row align-items-center main-location-address-block">
+				<div class="col-12 col-md-4 main-date-block">
+					<span class="header-main-number"><TMPL_VAR NAME='DateDay'></span>
+					<div class="header-main-number-near">
+						<p><TMPL_VAR NAME='DateMonth'></p>
+						<p><TMPL_VAR NAME="Date" FORMAT="time" /></p>
+					</div>
+				</div>
+				<div class="col-12 col-md-12 col-lg-8 col-xl-5 d-flex justify-content-center order-1 order-lg-0">
+					<div class="main-regbutton" data-toggle="modal" data-target="#reg-modal"><TMPL_VAR NAME='LNG_Register'></div>
+				</div>
+				<div class="col-6 col-md-4 address">
+					<TMPL_VAR NAME='Address'>
+				</div>
+			</div>
+		</div>
+		<div class="spacer"></div>
+	</main>
+	<section id="aboutInNumber">
+		<TMPL_VAR NAME='Content' ESCAPE='none'>
+	</section>
+	<section id="programssection">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<h2 class="header-of-section" style="color: black"><TMPL_VAR NAME='LNG_ScheduleTitle'></h2>
+				</div>
+				<div class="col-6">
+					<!-- div class="nav-regbutton download-pdf ml-auto"><TMPL_VAR NAME='LNG_ScheduleDownload'></div-->
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr class="mainhr2" style="margin-top: 40px;">
+		</div>
+		<section id="programs">
+			<div class="container">
+				<form method="post" action="<TMPL_VAR NAME='PROJECT_PATH' />module/data/ajax_public.php">
+					<input type="hidden" name="Action" value="loadExhibitionSchedule" />
+					<input type="hidden" name="CityID" value="<TMPL_VAR NAME='CityID'>" />
+					<input type="hidden" name="Filter-type" value="" />
+					<input type="hidden" name="Filter-time" value="" />
+					<input type="hidden" name="Filter-room" value="" />
+					<input type="hidden" name="LineLimit" value="<TMPL_VAR NAME='ScheduleLineLimit'>" />
+					<div class="row">
+						<div class="col-sm-2 col-md-1"></div>
+						<div class="col-12 col-sm-10 col-md-11">
+							<a href="#" class="program-filter-tab active" data-block="type">Лекции</a>
+							<a href="#" class="program-filter-tab" data-block="time">Время</a>
+							<a href="#" class="program-filter-tab"  data-block="room">Залы</a>
+						</div>
+					</div>
+					<br>
+					<div class="row program-filter-block visible" id="block-type">
+						<div class="col-sm-2 col-md-1"></div>
+						<div class="col-12 col-sm-10 col-md-11 d-flex flex-wrap">
+							<a href="#" class="program-filter-button program-filter-type experts" data-value="experts">ЕГЭ И ОГЭ</a>
+							<a href="#" class="program-filter-button program-filter-type parent" data-value="parent">Для родителей</a>
+							<a href="#" class="program-filter-button program-filter-type abroad" data-value="abroad">Обучение за рубежом</a>
+							<a href="#" class="program-filter-button program-filter-type prof" data-value="prof">Профориентация</a>
+							<a href="#" class="program-filter-button program-filter-type univer" data-value="univer">Лекция от вуза</a>
+							<a href="#" class="program-filter-button program-filter-type toefl" data-value="toefl">English</a>
+						</div>
+					</div>
+					<div class="row program-filter-block" id="block-time">
+						<div class="col-sm-2 col-md-1"></div>
+						<div class="col-12 col-sm-10 col-md-11 d-flex flex-wrap">
+							<a href="#" class="program-filter-button program-filter-time" data-value="10:00">10:00</a>
+							<a href="#" class="program-filter-button program-filter-time" data-value="11:00">11:00</a>
+							<a href="#" class="program-filter-button program-filter-time" data-value="12:00">12:00</a>
+							<a href="#" class="program-filter-button program-filter-time" data-value="13:00">13:00</a>
+							<a href="#" class="program-filter-button program-filter-time" data-value="14:00">14:00</a>
+							<a href="#" class="program-filter-button program-filter-time" data-value="15:00">15:00</a>
+							<a href="#" class="program-filter-button program-filter-time" data-value="16:00">16:00</a>
+							<a href="#" class="program-filter-button program-filter-time" data-value="17:00">17:00</a>
+							<a href="#" class="program-filter-button program-filter-time" data-value="18:00">18:00</a>
+						</div>
+					</div>
+					<div class="row program-filter-block" id="block-room">
+						<div class="col-sm-2 col-md-1"></div>
+						<div class="col-12 col-sm-10 col-md-11 d-flex flex-wrap">
+							<TMPL_LOOP NAME='RoomList'>
+							<a href="#" class="program-filter-button program-filter-room" data-value="<TMPL_VAR NAME='Title'>"><TMPL_VAR NAME='Title'></a>
+							</TMPL_LOOP>
+						</div>
+					</div>
+					<div class="schedule-block ajax-content">
+						<TMPL_INCLUDE NAME="_data/exhibition_landing_schedule.html"/>
+					</div>
+				</form>
+			</div>
+		</section>
+	</section>
+	<section id="partners">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<h2 class="header-of-section">ПАРТНЁРЫ</h2>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr class="mainhr2" style="margin-top: 40px;">
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 d-flex flex-wrap">
+					<TMPL_LOOP NAME="MainPartnerList">
+					<div class="col d-flex justify-content-center">
+						<img class="slider-item" alt="" src="<TMPL_VAR NAME='PartnerImageThumbLandingPath' />">
+					</div>
+			        </TMPL_LOOP>
+			        <TMPL_LOOP NAME="PartnerList">
+			        <div class="col d-flex justify-content-center">
+						<img class="slider-item" alt="" src="<TMPL_VAR NAME='PartnerImageThumbLandingPath' />">
+					</div>
+			        </TMPL_LOOP>
+			    </div>
+			</div>
+		</div>
+	</section>
+	<section id="univer">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<h2 class="header-of-section">ВУЗЫ</h2>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr class="mainhr2" style="margin-top: 40px;">
+		</div>
+		<div class="container">
+			<div class="carousel-slick">
+				<TMPL_LOOP NAME="UniversityList">
+				<TMPL_IF NAME='UniversityLogoThumbLandingPath'>
+				<div>
+					<img class="slider-item" src="<TMPL_VAR NAME='UniversityLogoThumbLandingPath' />" alt="<TMPL_VAR NAME='Title'>" title="<TMPL_VAR NAME='Title'>">
+				</div>
+				</TMPL_IF>
+            	</TMPL_LOOP>
+			</div>
+		</div>
+	</section>
+	<section id="contacts">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<h2 class="header-of-section">КОНТАКТЫ</h2>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<hr class="mainhr2" style="margin-top: 40px;margin-bottom: 0px">
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+				</div>
+			</div>
+		</div>
+		<div class="contacts-wrapper">
+			<div class="map" id="yamap"></div>
+			<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+			<script type="text/javascript">
+                ymaps.ready(function init(){
+                    var myMap = new ymaps.Map("yamap", {
+                        center: ["<TMPL_VAR NAME='Latitude' />", "<TMPL_VAR NAME='Longitude' />"],
+                        zoom: 16
+                    });
+                    myMap.behaviors.disable('scrollZoom');
+                    var myPlacemark = new ymaps.Placemark(["<TMPL_VAR NAME='Latitude' />", "<TMPL_VAR NAME='Longitude' />"]);
+                    myMap.geoObjects.add(myPlacemark);
+                });
+            </script>
+			<div class="contacts-over-wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-6 offset-md-6">
+							<div class="contacts-over-map">
+								<h1><b>г. <TMPL_VAR NAME='CityTitle'></b></h1><br>
+								<p><TMPL_VAR NAME='Address'></p><br>
+								<p>E-mail: <a href="mailto:<TMPL_VAR NAME='Email'>"><TMPL_VAR NAME='Email'></a></p><br>
+								<p>Если у Вас остались какие-то вопросы или Вы хотите что-то уточнить - звоните и пишите нам, мы обязательно ответим!</p>
+								<br>
+								<h1><TMPL_VAR NAME='Phone'></h1><br>
+								<div class="d-flex align-items-center contacts-over-map-print">
+									<i class="material-icons" style="color: var(--purple)">print</i><a href="https://yandex.ru/maps/?ll=<TMPL_VAR NAME='Longitude' />,<TMPL_VAR NAME='Latitude' />&z=16&pt=<TMPL_VAR NAME='Longitude' />,<TMPL_VAR NAME='Latitude' />" target="_blank">Распечатать карту</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="howto">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 rectanglebottom">
+					<div class="rectanglebottom-header">
+						<h2 style="color: black">КАК СТАТЬ</h2>
+						<br>
+						<h2 style="color: black">УЧАСТНИКОМ ФОРУМА?</h2>
+					</div>
+					<div class="row rectanglebottom-all-rect">
+						<div class="col-12 col-md-6">
+							<p class="rectanglebottom-content">Все очень просто: нужно пройти регистрацию и получить бесплатный пригласительный билет. Прохождение профориентации и диагностического тестирования возможно только с родителями, при этом родитель также должен зарегистрироваться</p>
+							<br>
+						</div>
+						<div class="col-12 col-md-6 purplerect">
+							<br><br>
+							<h3>ДО НАЧАЛА ВЫСТАВКИ ОСТАЛОСЬ</h3>
+							<div id="countdown-landing" class="d-flex justify-content-around timegone">
+								<TMPL_VAR NAME="Date" FORMAT="countdown"/>
+							</div>
+							<br><br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<form action="<TMPL_VAR NAME='PROJECT_PATH' />module/data/ajax_public.php" method="post" id="regfrom">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 d-flex flex-column align-items-center">
+					<TMPL_INCLUDE NAME="_data/exhibition_landing_registration.html"/>
+					<button type="button" class="blue-button exhibition-register">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="modal fade" id="reg-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="col-12 close-line">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form action="<TMPL_VAR NAME='PROJECT_PATH' />module/data/ajax_public.php" method="post">
+					<div class="modal-body d-flex flex-column align-items-center">
+						<TMPL_INCLUDE NAME="_data/exhibition_landing_registration.html"/>
+					</div>
+					<div class="modal-footer d-flex justify-content-center">
+						<button type="button" class="blue-button exhibition-register">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+					</div>
+					<br>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="city-modal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="row no-gutters">
+					<div class="col-3">
+						<img alt="Навигатор поступления" src="<TMPL_VAR NAME='PATH2MAIN' />img/logo.png" class="logo-modal">
+					</div>
+					<div class="col-9 modal-line">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+				<p class="text-row-inmodal">Вы планируете посетить выставку в городе</p>
+				<div class="row">
+					<div class="col-12 d-flex justify-content-center">
+						<div class="mad-select">
+							<ul>
+								<TMPL_LOOP NAME='CityList'>
+								<TMPL_IF NAME='Active' VALUE='Y'>
+								<li data-value="<TMPL_VAR NAME='CityID'>" data-link="<TMPL_VAR NAME='BaseURL' /><TMPL_VAR NAME='StaticPath' />/?SetCity"><TMPL_VAR NAME='CityTitle'></li>
+								</TMPL_IF>
+								</TMPL_LOOP>
+							</ul>
+							<input type="hidden" name="modalCity" value="<TMPL_VAR NAME='CityID'>">
+						</div>
+					</div>
+				</div>
+				<div class="modal-body d-flex flex-column align-items-center">
+				</div>
+				<div class="modal-footer d-flex justify-content-center">
+					<button type="submit" id="citySelectSubmit" class="blue-button">OK</button>
+				</div>
+				<br>
+			</div>
+		</div>
+	</div>
+</TMPL_IF>

@@ -1,0 +1,79 @@
+<TMPL_LOOP NAME='CollegeList'>
+<div class="university-item">
+	<div class="row">
+		<div class="col-xs-3">
+			<TMPL_IF NAME='ItemLogoPreviewPath'>
+				<div class="image-wrap" style="background-image: url('<TMPL_VAR NAME='ItemLogoPreviewPath'>');"></div>
+			<TMPL_ELSE>
+				<img src="<TMPL_VAR NAME='PATH2MAIN'>img/univer-stub.png">
+			</TMPL_IF>
+			<!-- <img src="<TMPL_IF NAME='ItemImagePreviewPath'><TMPL_VAR NAME='ItemImagePreviewPath'><TMPL_ELSE><TMPL_VAR NAME='PATH2MAIN'>img/univer-stub.png</TMPL_IF>" /> -->
+		</div>
+		<div class="col-xs-9 head">
+			<span class="type"><TMPL_VAR NAME="Address" /></span><br/>
+			<a class="title" href="<TMPL_VAR NAME='CollegeURL' />" target="_blank"><TMPL_VAR NAME="Title" /></a>
+		</div>
+	</div>
+	<table class="speciality-list">
+		<thead>
+	    <tr class="information">
+	        <th width="40%">Специальности</th>
+	        <th width="25%">Ср. балл аттестата</th>
+	        <th width="15%">Образование</th>
+	        <th width="15%">Кол-во мест, бюджет</th>
+	        <th width="15%" align="right">Стоимость</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	    <TMPL_LOOP NAME='SpecialityList'>
+		    <tr class="hidden item">
+		        <td class="name"><a href="<TMPL_VAR NAME='SpecialityURL'>" class="stitle" target="_blank"><TMPL_VAR NAME='Title'></a></td>
+
+		        <td class="item-information">
+		        	<!-- <span class="name">Предметы</span> -->
+		        	<span class="name">Образование</span>
+		        	<span class="name">Кол-во мест, бюджет</span>
+		        	<span class="name">Стоимость</span>
+			    </td>
+
+		        <td>
+		        	<TMPL_IF NAME='GPA'>
+		        		от <TMPL_VAR NAME='GPA'>
+		        	</TMPL_IF>
+		        </td>
+		        <td class="subject">
+		        	<TMPL_IF NAME='AdmissionBase' OP='>' VALUE='1'>
+		        		<TMPL_VAR NAME='AdmissionBase'>
+		        	<TMPL_ELSEIF NAME='OVZ'>
+		        		ОВЗ
+		        	</TMPL_IF>
+		        </td>
+		        <td>
+		        	<TMPL_IF NAME='FullStudBudgetCount'>
+		        		<TMPL_VAR NAME='FullStudBudgetCount'>
+		        	</TMPL_IF>
+		        </td>
+		        <td align="right"><TMPL_VAR NAME='FullStudPaidPrice' FORMAT='price'></td>
+		    </tr>
+	    </TMPL_LOOP>
+	    </tbody>
+	</table>
+	<a class="more" href="#"></a>
+</div>
+</TMPL_LOOP>
+
+<TMPL_IF NAME='CollegePager'>
+	<nav aria-label="Навигация по страницам">
+	    <ul class="pagination ajax-paging" data-form="collegeFilterForm">
+	    	<TMPL_LOOP NAME='CollegePager'>
+		    	<TMPL_IF NAME='First'>
+		    	<TMPL_ELSEIF NAME='Last'>	
+		    	<TMPL_ELSE>	
+		    		<li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>>
+		    			<a href="<TMPL_VAR NAME='URL'>" data-page="<TMPL_VAR NAME='Page'>"><TMPL_VAR NAME='Title'></a>
+		    		</li>
+		    	</TMPL_IF>
+	    	</TMPL_LOOP>
+	    </ul>
+	</nav>
+</TMPL_IF>

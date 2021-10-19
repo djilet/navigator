@@ -1,0 +1,88 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="header-section">
+			<TMPL_IF NAME="Title"><TMPL_VAR NAME="Title" /><TMPL_ELSE><TMPL_VAR NAME="TitleH1" /></TMPL_IF>
+			<TMPL_IF NAME="Description"><small><TMPL_VAR NAME='Description'></small></TMPL_IF>
+		</h1>
+	</div>
+</div>
+
+<form id="OlympiadFilterForm" method="post" action="<TMPL_VAR NAME='PROJECT_PATH' />module/olympiad/ajax_public.php">
+	<div class="horizontal-fiter">
+		<section class="checkbox-filter-block horizontal">
+			<a href="#" class="checkbox-filter-more def-text">
+				<div class="title">Класс</div>
+			</a>
+			<div class="checkbox-filter">
+				<TMPL_LOOP NAME="ClassList">
+					<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+						<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Name" /> класс</a>
+						<input type="hidden" name="OlympiadFilter[ClassNumber][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+					</div>
+				</TMPL_LOOP>
+			</div>
+		</section>
+
+		<section class="checkbox-filter-block horizontal">
+			<a href="#" class="checkbox-filter-more def-text">
+				<div class="title">Регион</div>
+			</a>
+			<div class="checkbox-filter">
+				<TMPL_LOOP NAME="RegionList">
+					<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+						<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Name" /></a>
+						<input type="hidden" name="OlympiadFilter[Region][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+					</div>
+				</TMPL_LOOP>
+			</div>
+		</section>
+
+		<section class="checkbox-filter-block horizontal">
+			<a href="#" class="checkbox-filter-more def-text">
+				<div class="title">Предмет</div>
+			</a>
+			<div class="checkbox-filter">
+				<TMPL_LOOP NAME="SubjectList">
+					<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+						<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Name" /></a>
+						<input type="hidden" name="OlympiadFilter[Subject][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+					</div>
+				</TMPL_LOOP>
+			</div>
+		</section>
+
+		<section class="checkbox-filter-block horizontal">
+			<a href="#" class="checkbox-filter-more def-text">
+				<div class="title">Уровень</div>
+			</a>
+			<div class="checkbox-filter">
+				<TMPL_LOOP NAME="LevelList">
+					<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+						<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Level" /> уровень</a>
+						<input type="hidden" name="OlympiadFilter[Level][]" value="<TMPL_VAR NAME='Level' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+					</div>
+				</TMPL_LOOP>
+			</div>
+		</section>
+
+		<section class="checkbox-filter-block horizontal check-btn">
+			<div class="checkbox-filter">
+				<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+					<a class="checkbox-btn">
+			            <span class="icon checkbox"></span>
+						<span>Только предстоящие</span>
+					</a>
+					<input type="hidden" name="OlympiadFilter[Upcoming][]" value="1" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+				</div>
+			</div>
+		</section>
+
+		<input type="hidden" class="page" name="MainPager" value="<TMPL_VAR NAME='MainPager'>">
+		<input type="hidden" name="Action" value="LoadOlympiad">
+		<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID' />">
+	</div>
+</form>
+
+<div class="ajax-content">
+	<TMPL_INCLUDE NAME="olympiad-tmpl/olympiad_list.html"/>
+</div>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<college_list.html>
+			<ConfirmRemove>Удалить колледж "%Title%"?</ConfirmRemove>
+		</college_list.html>
+        <college_edit.html>
+            <AddCollege>Добавить колледж</AddCollege>
+            <EditCollege>Редактировать колледж</EditCollege>
+            <ShortTitle>Аббревиатура</ShortTitle>
+            <AtUniversity>При университете</AtUniversity>
+            <AccreditationValidity>Срок действия аккредитации</AccreditationValidity>
+            <Title>Название</Title>
+            <CollegeBigDirection>Направление колледжа</CollegeBigDirection>
+            <Region>Регион</Region>
+            <Save>Сохранить</Save>
+            <Cancel>Отмена</Cancel>
+            <City>Город</City>
+            <Address>Адрес</Address>
+            <Latitude>Широта</Latitude>
+            <Longitude>Долгота</Longitude>
+            <Type>Тип колледжа</Type>
+            <CollegeLogo>Логотип</CollegeLogo>
+            <PhoneSelectionCommittee>Телефон приемной комиссии</PhoneSelectionCommittee>
+            <Achievements>Достижения колледжа</Achievements>
+            <Hostel>Общежитие</Hostel>
+            <HostelPrice>Стоимость общежития (мес)</HostelPrice>
+            <Scholarship>Государственная академическая стипендия (мес.)</Scholarship>
+            <ScholarshipSocial>Стипендия по социальным льготам</ScholarshipSocial>
+            <Website>Официальный сайт</Website>
+            <VideoURL>Ссылка на видео youtube</VideoURL>
+            <QuestionUser>Вопрос-ответ: ответственный пользователь</QuestionUser>
+            <QuestionUserTitle>Вопрос-ответ: должность</QuestionUserTitle>
+        </college_edit.html>
+
+        <awards_list.html>
+            <Title>Название</Title>
+            <Add>Добавить</Add>
+            <Empty>Не найдено</Empty>
+            <ConfirmRemove>Удалить награду "%Title%"?</ConfirmRemove>
+        </awards_list.html>
+        <awards_edit.html>
+            <Title>Название</Title>
+            <Add>Добавить награду</Add>
+            <Empty>Не найдено</Empty>
+            <ConfirmRemove>Удалить специальности "%Title%"?</ConfirmRemove>
+        </awards_edit.html>
+
+        <speciality_edit.html>
+            <CollegeBigDirection>Крупное направление</CollegeBigDirection>
+        </speciality_edit.html>
+        <speciality_list.html>
+            <Title>Название</Title>
+            <Add>Добавить</Add>
+            <Empty>Не найдено</Empty>
+            <ConfirmRemove>Удалить специальности "%Title%"?</ConfirmRemove>
+        </speciality_list.html>
+        <speciality_edit.html>
+            <AddSpeciality>Добавить специальность</AddSpeciality>
+            <EditSpeciality>Редактировать специальность</EditSpeciality>
+            <College>Колледж</College>
+            <Title>Название</Title>
+            <AdmissionBase>База для поступления</AdmissionBase>
+            <GPA>Средний балл аттестата</GPA>
+            <Address1>Адресс 1</Address1>
+            <Address2>Адресс 2</Address2>
+            <Address3>Адресс 3</Address3>
+            <Address4>Адресс 4</Address4>
+            <Latitude1>Широта 1</Latitude1>
+            <Longitude1>Долгота 1</Longitude1>
+            <Latitude2>Широта 2</Latitude2>
+            <Longitude2>Долгота 2</Longitude2>
+            <Latitude3>Широта 3</Latitude3>
+            <Longitude3>Долгота 3</Longitude3>
+            <Latitude4>Широта 4</Latitude4>
+            <Longitude4>Долгота 4</Longitude4>
+            <Qualification>Квалификация (через ";")</Qualification>
+            <FullStud>очное обучение</FullStud>
+            <PartStud>очно-заочное обучение</PartStud>
+            <ExtramuralStud>Заочное обучение</ExtramuralStud>
+            <RemoteStud>дистанционное обучение</RemoteStud>
+            <BudgetCount>Количество бюджетных мест</BudgetCount>
+            <PaidCount>Количество платных мест</PaidCount>
+            <Period>Срок обучения</Period>
+            <PaidPrice>Стоимость обучения (в год)</PaidPrice>
+            <SortOrder>Позиция</SortOrder>
+        </speciality_edit.html>
+
+        <bigdirection_list.html>
+            <Add>Добавить</Add>
+            <Empty>Не найдено</Empty>
+            <ConfirmRemove>Удалить крупное направление "%Title%"?</ConfirmRemove>
+        </bigdirection_list.html>
+        <bigdirection_edit.html>
+            <Title>Название</Title>
+            <SortOrder>Позиция</SortOrder>
+        </bigdirection_edit.html>
+
+        <list_list.html>
+            <ListList>Списки</ListList>
+            <Add>Добавить</Add>
+            <Title>Название</Title>
+            <Empty>Списков не найдено</Empty>
+            <ConfirmRemove>Удалить список '%Title%'?</ConfirmRemove>
+        </list_list.html>
+        <list_edit.html>
+            <AddList>Добавить список</AddList>
+            <EditList>Редактировать список</EditList>
+            <TabInfo>Параметры списка</TabInfo>
+            <TabFilter>Настройки фильтра</TabFilter>
+            <Title>Название</Title>
+            <TypeFilter>поиск по фильтру</TypeFilter>
+            <Description>Описание</Description>
+            <MetaTitle>Заголовок вкладки (title)</MetaTitle>
+            <MetaDescription>Мета-описание (description)</MetaDescription>
+            <StaticPath>URL (латинницей)</StaticPath>
+            <Public>Выводить список в вузах</Public>
+            <FilterRegion>Регионы</FilterRegion>
+            <FilterCollegeBigDirection>Направления</FilterCollegeBigDirection>
+            <FilterAdmissionBase>База поступления</FilterAdmissionBase>
+            <SortOrder>Позиция</SortOrder>
+        </list_edit.html>
+	</admin>
+</Root>

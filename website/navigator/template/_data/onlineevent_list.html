@@ -1,0 +1,75 @@
+<TMPL_LOOP NAME="OnlineEventList">
+    <div class="block-event-wrap">
+        <div class="event-date">
+            <span class="event-date__time"><TMPL_VAR NAME="Date" /></span>
+            <span class="event-date__day"><TMPL_VAR NAME="DayOfTheWeek" /></span>
+        </div>
+        
+        <TMPL_LOOP NAME="Children">
+
+            <div class="block-event block-event--<TMPL_VAR NAME='EventType' />">
+                <section>
+                    <header class="toggled">
+                        <span class="block-event__time">в <TMPL_VAR NAME="EventDateTime" FORMAT="time" /> </span>
+                        <h3 class="block-event__header"><TMPL_VAR NAME="Title" /></h3>
+                        <span class="block-event__type"><TMPL_VAR NAME="TypeTitle" /></span>
+                    </header>
+
+                    <div class="block-event__toggle">
+                        <TMPL_VAR NAME="Description" ESCAPE='none'/>
+                        
+                        <TMPL_IF NAME="isFinished">
+                            <div class="block__progressbar clearfix">
+                                <div class="progressbar">
+                                    <div class="progressbar__load" style="width: 100%;"></div>
+                                </div>
+                                <ul>
+                                    <li><TMPL_VAR NAME="TypeTitle" /> <TMPL_VAR NAME="LNG_Finished" /></li>
+                                    <li class="dark"><TMPL_VAR NAME="FinishedDate" /></li>
+                                </ul>
+                            </div>
+
+                            <TMPL_IF NAME="IsLoggedIn">
+                                <a class="white-btn" href="<TMPL_VAR NAME='PROJECT_PATH' />events?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_ShowRecord" /></a>
+                            <TMPL_ELSE>
+                                <a class="main-btn" data-toggle="modal" data-target="#modal-checkin" data-type="<TMPL_VAR NAME='RegistrationType'>" href="#" data-redirect="<TMPL_VAR NAME='PROJECT_PATH' />events?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_ShowRecord" /></a>
+                            </TMPL_IF>
+                        <TMPL_ELSEIF NAME="inProgress">
+                            <div class="block__progressbar clearfix">
+                                <div class="progressbar">
+                                    <div class="progressbar__load" style="width: <TMPL_VAR NAME='Progress' />%;"></div>
+                                </div>
+                                <ul>
+                                    <li><TMPL_VAR NAME="LNG_AlreadyGoing" /></li>
+                                    <li class="dark"><TMPL_VAR NAME="FinishedDate" /></li>
+                                </ul>
+                            </div>
+                            <a class="white-btn" href="<TMPL_VAR NAME='OnlineEventURL' />"><TMPL_VAR NAME="LNG_Details" /></a>
+                            <TMPL_IF NAME="IsLoggedIn">
+                                <a class="main-btn" href="<TMPL_VAR NAME='PROJECT_PATH' />events?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_Connect" /></a>
+                            <TMPL_ELSE>
+                                <a class="main-btn" data-toggle="modal" data-target="#modal-checkin" data-type="<TMPL_VAR NAME='RegistrationType'>" href="#" data-redirect="<TMPL_VAR NAME='PROJECT_PATH' />events?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_Connect" /></a>
+                            </TMPL_IF>
+                        <TMPL_ELSE>
+                            <div class="block__progressbar clearfix">
+                                <div class="dark"><TMPL_VAR NAME="OnlineEventDateTitle" /></div>
+                            </div>
+
+                            <a class="white-btn" href="<TMPL_VAR NAME='OnlineEventURL' />"><TMPL_VAR NAME="LNG_Details" /></a>
+                            <TMPL_IF NAME="IsLoggedIn">
+                                <TMPL_IF NAME="Status" OP="<>" VALUE="signed">
+                                    <a class="main-btn" href="<TMPL_VAR NAME='PROJECT_PATH' />events?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');$('.loading').show();"><TMPL_VAR NAME="LNG_SignedEvent" /></a>
+                                <TMPL_ELSE>
+                                	<span class="disabled-btn"><span class="checkicon"></span>Вы зарегистрированы</span>
+                                </TMPL_IF>
+                            <TMPL_ELSE>
+                                <a class="main-btn" data-toggle="modal" data-target="#modal-checkin" data-type="<TMPL_VAR NAME='RegistrationType'>" href="#" data-redirect="<TMPL_VAR NAME='PROJECT_PATH' />events?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');"><TMPL_VAR NAME="LNG_SignedEvent" /></a>
+                            </TMPL_IF>
+                        </TMPL_IF>
+                    </div>
+                </section>
+            </div>
+            
+        </TMPL_LOOP>
+    </div>
+</TMPL_LOOP>

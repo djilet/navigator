@@ -1,0 +1,511 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='UniversityID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditUniversity'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddUniversity'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			<TMPL_IF NAME="PreviewMode">
+				<div data-preview-btn class="col-md-12 no-padding form-group">
+					<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>" class="btn btn-success btn-icon">
+						<i class="fa fa-edit"></i>
+						Редактировать информацию
+					</a>
+				</div>
+			</TMPL_IF>
+
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab-1" data-toggle='tab'>Информация</a></li>
+				<li><a href="#tab-2" data-toggle='tab'>Галерея</a></li>
+				<li><a href="#tab-3" data-toggle='tab'>Направления</a></li>
+			</ul>
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="tab-content">
+					<TMPL_IF NAME="PreviewMode">
+						<div data-preview-overlay class="overlay"></div>
+					</TMPL_IF>
+
+					<TMPL_IF NAME='ErrorList'>
+						<div class="col-md-12">
+							<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+						</div>
+					</TMPL_IF>
+					<div id="tab-1" class="tab-pane active">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="ShortTitle" class="form-label required"><TMPL_VAR NAME='LNG_ShortTitle'></label><br />
+									<input class="form-control" type="text" name="ShortTitle" id="ShortTitle" value="<TMPL_VAR NAME='ShortTitle'>" />
+								</div>
+								<div class="form-group">
+									<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+									<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+								</div>
+								<div class="form-group">
+									<label for="TitleInPrepositionalCase" class="form-label"><TMPL_VAR NAME='LNG_TitleInPrepositionalCase'></label><br />
+									<input class="form-control" type="text" name="TitleInPrepositionalCase" id="TitleInPrepositionalCase" value="<TMPL_VAR NAME='TitleInPrepositionalCase'>" />
+								</div>
+								<TMPL_UNLESS NAME="EditorMode">
+									<div class="form-group">
+										<label for="StaticPath" class="form-label"><TMPL_VAR NAME='LNG_StaticPath'></label><br />
+										<input class="form-control" type="text" name="StaticPath" id="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" />
+									</div>
+								</TMPL_IF>
+								<div class="form-group">
+									<label for="RegionID" class="form-label required"><TMPL_VAR NAME='LNG_Region'></label><br />
+									<select class="form-control" name="RegionID" id="RegionID">
+										<TMPL_LOOP NAME='RegionList'>
+											<option value="<TMPL_VAR NAME='RegionID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="CityID" class="form-label"><TMPL_VAR NAME='LNG_City'></label><br />
+									<select class="form-control" name="CityID" id="CityID">
+										<option value="">Пусто</option>
+										<TMPL_LOOP NAME='CityList'>
+											<option value="<TMPL_VAR NAME='Id'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Name'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="form-label required"><TMPL_VAR NAME='LNG_UniverType'></label><br />
+									<select class="form-control" name="UniverType">
+										<option value="Государственный" <TMPL_IF NAME="UniverType" OP="==" VALUE="Государственный">selected</TMPL_IF>>Государственный</option>
+										<option value="Негосударственный" <TMPL_IF NAME="UniverType" OP="==" VALUE="Негосударственный">selected</TMPL_IF>>Негосударственный</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="TypeID" class="form-label required"><TMPL_VAR NAME='LNG_Type'></label><br />
+									<select class="form-control" name="TypeID" id="TypeID">
+										<TMPL_LOOP NAME='TypeList'>
+										<option value="<TMPL_VAR NAME='TypeID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label class="form-label"><TMPL_VAR NAME='LNG_Tags'></label><br />
+									<select class="selectpicker" name="CategoryIds[]" multiple>
+										<TMPL_LOOP NAME='UniversityCategoryList'>
+											<option value="<TMPL_VAR NAME='Id'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Name'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label for="Address" class="form-label"><TMPL_VAR NAME='LNG_Address'></label><br />
+									<input class="form-control" type="text" name="Address" id="Address" value="<TMPL_VAR NAME='Address'>" />
+								</div>
+								
+								<div class="form-group">
+									<label for="Description" class="form-label"><TMPL_VAR NAME='LNG_Description'></label><br />
+									<textarea name="Description" id="Description" rows="10" class="form-control"><TMPL_VAR NAME="Description" /></textarea>
+								</div>
+								<div class="form-group">
+									<label for="FormTraining" class="form-label"><TMPL_VAR NAME='LNG_FormTraining'></label><br />
+									<textarea name="FormTraining" id="FormTraining" rows="10" class="form-control"><TMPL_VAR NAME="FormTraining" /></textarea>
+								</div>
+								<div class="form-group">
+									<label class="form-label"><TMPL_VAR NAME='LNG_InternationalPrograms'></label><br />
+									<select class="form-control" name="InternationalPrograms">
+										<option value="<TMPL_VAR NAME='LNG_CommonHas'/>" <TMPL_IF NAME="InternationalPrograms" OP="==" VALUE="Есть">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonHas'/></option>
+										<option value="<TMPL_VAR NAME='LNG_CommonNoHas'/>" <TMPL_IF NAME="InternationalPrograms" OP="==" VALUE="Нет">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonNoHas'/></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="form-label"><TMPL_VAR NAME='LNG_DoubleDiploma'></label><br />
+									<select class="form-control" name="DoubleDiploma">
+										<option value="<TMPL_VAR NAME='LNG_CommonHas'/>" <TMPL_IF NAME="DoubleDiploma" OP="==" VALUE="Есть">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonHas'/></option>
+										<option value="<TMPL_VAR NAME='LNG_CommonNoHas'/>" <TMPL_IF NAME="DoubleDiploma" OP="==" VALUE="Нет">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonNoHas'/></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="form-label"><TMPL_VAR NAME='LNG_MilitaryDepartment'></label><br />
+									<select class="form-control" name="MilitaryDepartment">
+										<option value="<TMPL_VAR NAME='LNG_CommonHas'/>" <TMPL_IF NAME="MilitaryDepartment" OP="==" VALUE="Есть">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonHas'/></option>
+										<option value="<TMPL_VAR NAME='LNG_CommonNoHas'/>" <TMPL_IF NAME="MilitaryDepartment" OP="==" VALUE="Нет">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonNoHas'/></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="form-label"><TMPL_VAR NAME='LNG_DelayArmy'></label><br />
+									<select class="form-control" name="DelayArmy">
+										<option value="<TMPL_VAR NAME='LNG_CommonHas'/>" <TMPL_IF NAME="DelayArmy" OP="==" VALUE="Есть">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonHas'/></option>
+										<option value="<TMPL_VAR NAME='LNG_CommonNoHas'/>" <TMPL_IF NAME="DelayArmy" OP="==" VALUE="Нет">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonNoHas'/></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="ExtracurricularActivities" class="form-label"><TMPL_VAR NAME='LNG_ExtracurricularActivities'></label><br />
+									<textarea name="ExtracurricularActivities" id="ExtracurricularActivities" rows="10" class="form-control"><TMPL_VAR NAME="ExtracurricularActivities" /></textarea>
+								</div>
+								<div class="form-group">
+									<label for="VideoURL" class="form-label"><TMPL_VAR NAME='LNG_VideoURL'></label><br />
+									<input class="form-control" type="text" name="VideoURL" id="VideoURL" value="<TMPL_VAR NAME='VideoURL'>" />
+								</div>
+								
+								<div class="form-group">
+									<label for="QuestionUserID" class="form-label"><TMPL_VAR NAME='LNG_QuestionUser'></label><br />
+									<select class="form-control" name="QuestionUserID" id="QuestionUserID">
+										<option value="">&nbsp;</option>
+										<TMPL_LOOP NAME='UserList'>
+										<option value="<TMPL_VAR NAME='UserID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='UserName'> (<TMPL_VAR NAME='UserEmail'>)</option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="QuestionUserTitle" class="form-label"><TMPL_VAR NAME='LNG_QuestionUserTitle'></label><br />
+									<input class="form-control" type="text" name="QuestionUserTitle" id="QuestionUserTitle" value="<TMPL_VAR NAME='QuestionUserTitle'>" />
+								</div>
+							</div>
+							
+							<div class="col-md-6">
+								<div class="form-group form-inline">
+									<label for="Opened"><TMPL_VAR NAME='LNG_Opened'></label><br />
+									<input type="checkbox" name="Opened" id="Opened" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Opened' VALUE='Y'>checked<TMPL_ELSEIF NAME='Opened' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+
+								<div class="form-group" id="UniversityLogo-box">
+									<label for="UniversityLogo"><TMPL_VAR NAME='LNG_UniversityLogo'></label><br />
+								</div>
+								<script type="text/javascript">
+		                            $(document).ready(function(){
+		                                params = new Array();
+										<TMPL_LOOP NAME='UniversityLogoParamList'>
+											params.push({
+												"Name" : "<TMPL_VAR NAME='SourceName'>",
+												"Width" : "<TMPL_VAR NAME='Width'>",
+												"Height" : "<TMPL_VAR NAME='Height'>",
+												"Resize" : "<TMPL_VAR NAME='Resize'>",
+												"X1" : "<TMPL_VAR NAME='X1'>",
+												"X2" : "<TMPL_VAR NAME='X2'>",
+												"Y1" : "<TMPL_VAR NAME='Y1'>",
+												"Y2" : "<TMPL_VAR NAME='Y2'>"
+											});
+										</TMPL_LOOP>
+		                                CreateImageInput('UniversityLogo', '<TMPL_VAR NAME='UniversityLogoAdminPath'>', '<TMPL_VAR NAME='UniversityLogoFullPath'>', '<TMPL_VAR NAME='UniversityLogo'>', '<TMPL_VAR NAME='UniversityID'>', 'RemoveItemImage', '<TMPL_VAR NAME='MODULE_PATH'>ajax.php', 0, params);
+		                            });
+								</script>
+
+								<div class="form-group">
+									<label for="PhoneSelectionCommittee" class="form-label"><TMPL_VAR NAME='LNG_PhoneSelectionCommittee'></label><br />
+									<input class="form-control" type="text" name="PhoneSelectionCommittee" id="PhoneSelectionCommittee" value="<TMPL_VAR NAME='PhoneSelectionCommittee'>" />
+								</div>
+								<div class="form-group">
+									<label for="License" class="form-label"><TMPL_VAR NAME='LNG_License'></label><br />
+									<input class="form-control" type="text" name="License" id="License" value="<TMPL_VAR NAME='License'>" />
+								</div>
+
+								<div class="form-group">
+									<label for="ScoreExamBudgetAvg" class="form-label"><TMPL_VAR NAME='LNG_ScoreExamBudgetAvg'></label><br />
+									<input class="form-control" type="text" name="ScoreExamBudgetAvg" id="ScoreExamBudgetAvg" value="<TMPL_VAR NAME='ScoreExamBudgetAvg'>" />
+								</div>
+
+								<div class="form-group">
+									<label for="ScoreExamContractAvg" class="form-label"><TMPL_VAR NAME='LNG_ScoreExamContractAvg'></label><br />
+									<input class="form-control" type="text" name="ScoreExamContractAvg" id="ScoreExamContractAvg" value="<TMPL_VAR NAME='ScoreExamContractAvg'>" />
+								</div>
+
+								<div class="form-group">
+									<label class="form-label"><TMPL_VAR NAME='LNG_Hostel'></label><br />
+									<select class="form-control" name="Hostel">
+										<option value="<TMPL_VAR NAME='LNG_CommonHas'/>" <TMPL_IF NAME="Hostel" OP="==" VALUE="Есть">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonHas'/></option>
+										<option value="<TMPL_VAR NAME='LNG_CommonNoHas'/>" <TMPL_IF NAME="Hostel" OP="==" VALUE="Нет">selected</TMPL_IF>><TMPL_VAR NAME='LNG_CommonNoHas'/></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="HostelPriceBudget" class="form-label"><TMPL_VAR NAME='LNG_HostelPriceBudget'></label><br />
+									<input class="form-control" type="text" name="HostelPriceBudget" id="HostelPriceBudget" value="<TMPL_VAR NAME='HostelPriceBudget'>" />
+								</div>
+								<div class="form-group">
+									<label for="HostelPriceContract" class="form-label"><TMPL_VAR NAME='LNG_HostelPriceContract'></label><br />
+									<input class="form-control" type="text" name="HostelPriceContract" id="HostelPriceContract" value="<TMPL_VAR NAME='HostelPriceContract'>" />
+								</div>
+								<div class="form-group">
+									<label for="Scholarship" class="form-label"><TMPL_VAR NAME='LNG_Scholarship'></label><br />
+									<input class="form-control" type="text" name="Scholarship" id="Scholarship" value="<TMPL_VAR NAME='Scholarship'>" />
+								</div>
+								<div class="form-group">
+									<label for="ScholarshipSpecialAcademic" class="form-label"><TMPL_VAR NAME='LNG_ScholarshipSpecialAcademic'></label><br />
+									<input class="form-control" type="text" name="ScholarshipSpecialAcademic" id="ScholarshipSpecialAcademic" value="<TMPL_VAR NAME='ScholarshipSpecialAcademic'>" />
+								</div>
+								<div class="form-group">
+									<label for="ScholarshipSocial" class="form-label"><TMPL_VAR NAME='LNG_ScholarshipSocial'></label><br />
+									<input class="form-control" type="text" name="ScholarshipSocial" id="ScholarshipSocial" value="<TMPL_VAR NAME='ScholarshipSocial'>" />
+								</div>
+								<div class="form-group">
+									<label for="Website" class="form-label"><TMPL_VAR NAME='LNG_Website'></label><br />
+									<input class="form-control" type="text" name="Website" id="Website" value="<TMPL_VAR NAME='Website'>" />
+								</div>
+
+								<div class="form-group">
+									<label for="VkUrl" class="form-label"><TMPL_VAR NAME='LNG_VkUrl'></label><br />
+									<input class="form-control" type="text" name="VkUrl" id="VkUrl" value="<TMPL_VAR NAME='VkUrl'>" />
+								</div>
+
+								<div class="form-group">
+									<label for="InstagramUrl" class="form-label"><TMPL_VAR NAME='LNG_InstagramUrl'></label><br />
+									<input class="form-control" type="text" name="InstagramUrl" id="InstagramUrl" value="<TMPL_VAR NAME='InstagramUrl'>" />
+								</div>
+
+								<div class="form-group">
+									<label for="YoutubeUrl" class="form-label"><TMPL_VAR NAME='LNG_YoutubeUrl'></label><br />
+									<input class="form-control" type="text" name="YoutubeUrl" id="YoutubeUrl" value="<TMPL_VAR NAME='YoutubeUrl'>" />
+								</div>
+
+								<TMPL_UNLESS NAME="EditorMode">
+									<div class="form-group">
+										<label for="Latitude" class="form-label"><TMPL_VAR NAME='LNG_Latitude'></label><br />
+										<input class="form-control" type="text" name="Latitude" id="Latitude" value="<TMPL_VAR NAME='Latitude'>" />
+									</div>
+									<div class="form-group">
+										<label for="Longitude" class="form-label"><TMPL_VAR NAME='LNG_Longitude'></label><br />
+										<input class="form-control" type="text" name="Longitude" id="Longitude" value="<TMPL_VAR NAME='Longitude'>" />
+									</div>
+								</TMPL_UNLESS>
+								<div class="form-group">
+									<label for="Content" class="form-label"><TMPL_VAR NAME='LNG_Content'></label><br />
+									<textarea name="Content" id="Content" rows="10" class="form-control"><TMPL_VAR NAME="Content" /></textarea>
+								</div>
+								<div class="form-group">
+									<label for="WhyChoose" class="form-label"><TMPL_VAR NAME='LNG_WhyChoose'></label><br />
+									<textarea name="WhyChoose" id="WhyChoose" rows="10" class="form-control"><TMPL_VAR NAME="WhyChoose" /></textarea>
+								</div>
+
+								<div>
+									<label class="form-label"><TMPL_VAR NAME='LNG_FamousGraduates'/></label><br />
+									<button data-fg-add class="btn btn-success btn-icon bottom10" type="button"><i class="fa fa-plus"></i>Добавить</button>
+
+									<div data-fg>
+										<TMPL_IF NAME="FamousGraduatesList">
+											<TMPL_LOOP NAME="FamousGraduatesList">
+												<div class="form-group" data-fg-item data-index="<TMPL_VAR NAME='__ROWNUM__'>">
+													<div class="row">
+														<div class="col-xs-11">
+															<label class="form-label">ФИО</label>
+															<input class="form-control" name="FamousGraduates[<TMPL_VAR NAME='__ROWNUM__'>][Name]" value="<TMPL_VAR NAME='Name'>">
+															<label class="form-label">Должность и заслуги</label>
+															<input class="form-control" name="FamousGraduates[<TMPL_VAR NAME='__ROWNUM__'>][Description]" value="<TMPL_VAR NAME='Description'>">
+														</div>
+														<div class="col-xs-1 no-padding">
+															<br>
+															<i data-fg-item-remove class="fa fa-close icon-sm"></i>
+														</div>
+														<br>
+													</div>
+												</div>
+											</TMPL_LOOP>
+										</TMPL_IF>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="row">
+							<div class="col-md-12">
+								<div id="upload-box">
+									<table class="table" id="upload-table">
+										<tr>
+											<td width="30%">Файл</td>
+											<td width="5%">&nbsp;</td>
+										</tr>
+										<tr>
+											<td class="form-inline"><input type="file" name="MediaFile[]" class="form-control input-sm" /></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td colspan="4"><a href="#" class="btn btn-icon btn-xs" onclick="AddRow(); return false;"><i class="fa fa-plus"></i>Добавить строку</a></td>
+										</tr>
+									</table>
+								</div>
+							
+								<div id='portfolio' class="">
+									<div class="portfolio-items">
+										<TMPL_LOOP NAME='ImageList'>
+											<div class="portfolio-item col-md-3 col-sm-4 col-xs-6" ImageID="<TMPL_VAR NAME='ImageID'>">
+												<div class="portfolio-item-inner">
+													<img class="img-responsive" src="<TMPL_VAR NAME='ItemImageAdminPath'>" alt="">
+													<div class="portfolio-info animated fadeInUp animated-duration-600ms">
+														<h3><TMPL_VAR NAME='ImageList.Title'></h3>
+														<span class='desc'><TMPL_VAR NAME='ImageList.Description'></span>
+														<!--<a class="preview" href="<TMPL_VAR NAME='ItemImageAdminPath'>" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+														<a class="media-edit" ImageID="<TMPL_VAR NAME='ImageID'>" href="#"><i class="fa fa-edit"></i></a>-->
+														<a class="media-delete" ImageID="<TMPL_VAR NAME='ImageID'>" href="#"><i class="fa fa-close"></i></a>
+													</div>
+												</div>
+											</div>
+										</TMPL_LOOP>
+									</div>
+								</div>
+
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-3" class="tab-pane" style="position:relative; z-index: 3;">
+						<TMPL_INCLUDE NAME="particles/speciality_list.html"/>
+					</div>
+				</div>
+
+				
+				
+				<div class="clearfix"></div>
+				<div class="row">
+					<div class="col-md-12 top15">
+						<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+						<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+					</div>
+				</div>
+				<input type="hidden" name="Save" value="1" />
+				<input type="hidden" name="UniversityID" value="<TMPL_VAR NAME='UniversityID'>" />
+				<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+			</form>
+		</div>
+	</section>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	<TMPL_IF NAME='TemplateUmaxEditorToolset'>
+		const toolBarSet = 'umax';
+	<TMPL_ELSE/>
+		const toolBarSet = 'standart';
+	</TMPL_IF>
+	createCKEditor('Description', toolBarSet);
+	createCKEditor('FormTraining', toolBarSet);
+	createCKEditor('ExtracurricularActivities', toolBarSet);
+	createCKEditor('Content', toolBarSet);
+	createCKEditor('WhyChoose', toolBarSet);
+
+	$('[data-fg-item]').each(function () {
+		$(this).find('[data-fg-item-remove]').click(() => {
+			$(this).remove();
+		});
+	})
+
+	$('[data-fg-add]').click(function (e) {
+		const newIndex = $('[data-fg-item]').last().data('index') + 1 || 0;
+		const newItem = $(`<div class="form-group" data-fg-item data-index="${newIndex}">
+							<div class="row">
+								<div class="col-xs-11">
+									<label class="form-label">ФИО</label>
+									<input class="form-control" name="FamousGraduates[${newIndex}][Name]">
+									<label class="form-label">Должность и заслуги</label>
+									<input class="form-control" name="FamousGraduates[${newIndex}][Description]">
+								</div>
+								<div class="col-xs-1 no-padding">
+									<br>
+									<i data-fg-item-remove class="fa fa-close icon-sm"></i>
+								</div>
+								<br>
+							</div>
+						</div>`);
+		$('[data-fg]').append(newItem);
+		newItem.find('[data-fg-item-remove]').click(function(e){
+			newItem.remove();
+		});
+	})
+
+	$('.media-delete').click(function(e){
+		DeleteMedia($(this).attr('ImageID'));
+		e.preventDefault();
+	});
+
+	$('.portfolio-items').sortable({
+		start: function(e, ui) {
+			$(this).attr('data-previndex', ui.item.index());
+		},
+		update: function(event, ui) {
+			var newIndex = ui.item.index();
+			var oldIndex = $(this).attr('data-previndex');
+			var diff = newIndex - oldIndex;
+			$(this).removeAttr('data-previndex');
+			message = CreateMessage(GetTranslation('saving-sort'), 'info');
+			$.ajax({
+				url:"<TMPL_VAR NAME='MODULE_PATH'>ajax.php",
+				dataType:"JSON",
+				data:{
+					'Action': 'SetUniversityImageSortOrder',
+					'ItemID': '<TMPL_VAR NAME='UniversityID'>',
+					'ImageID': ui.item.attr('ImageID'),
+					'PageID': '<TMPL_VAR NAME='PageID'>',
+					'Diff': diff
+				},
+				success: function(data){
+					if(typeof data.SessionExpired != 'undefined')
+					{
+						window.location.href = ADMIN_PATH+"index.php";
+						return;
+					}
+					if(data)
+					{
+						UpdateMessage(message, GetTranslation('sort-saved'), 'success');
+					}
+					else
+					{
+						UpdateMessage(message, GetTranslation('error-saving-sort'), 'error');
+					}
+				},
+				error:function(response){
+					console.log(response.responseText);
+					UpdateMessage(message, GetTranslation('error-removing-media'), 'error');
+				}
+			});
+		}
+	});
+
+	//preview
+	$('[data-preview-btn]').click(function (e) {
+		e.preventDefault();
+		$(this).remove();
+		$('[data-preview-overlay]').remove();
+	})
+});
+
+function AddRow()
+{
+	var html = "<tr>";
+	html += "<td class=\"form-inline\"><input type=\"file\" name=\"MediaFile[]\" class=\"form-control input-sm\" /></td>";
+	html += "<td><input type=\"text\" name=\"MediaSortOrder[]\" class=\"form-control input-sm\" /></td>";
+	html += "<td><a href=\"#\" onclick=\"$(this).closest('tr').remove();return false;\"><i class=\"fa fa-close delete high\"></i></a></td>";
+	html += "</tr>";
+	$('#upload-table tr:last').before(html);
+}
+
+function DeleteMedia(id)
+{
+	msg = 'Удалить изображение ?';
+	msg = msg.replace(/%Title%/g, $('.portfolio-item[ImageID='+id+'] h3').html());
+	ModalConfirm(msg, function(){
+		message = CreateMessage(GetTranslation('removing-media'), 'info');
+		$.ajax({
+			url:"<TMPL_VAR NAME='MODULE_PATH'>ajax.php",
+			dataType:"JSON",
+			method: 'POST',
+			data:{
+				'Action': 'RemoveUniversityImage',
+				'PageID': '<TMPL_VAR NAME='PageID' ESCAPE='js'>',
+				'ImageID': id
+			},
+			success: function(data){
+				if(typeof data.SessionExpired != 'undefined')
+				{
+					window.location.href = ADMIN_PATH+"index.php";
+					return;
+				}
+				$('.portfolio-item[ImageID='+id+']').remove();
+				UpdateMessage(message, GetTranslation('media-removed'), 'success');
+			},
+			error:function(response){
+				console.log(response.responseText);
+				UpdateMessage(message, GetTranslation('error-removing-media'), 'error');
+			}
+		});
+	});
+}
+</script>

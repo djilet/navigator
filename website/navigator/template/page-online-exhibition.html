@@ -1,0 +1,247 @@
+<TMPL_IF NAME="ParticipantView">
+    <div class="content-aside">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ol class="breadcrumb">
+                        <TMPL_LOOP NAME='CustomNavigation'>
+                            <TMPL_UNLESS NAME='__LAST__'>
+                                <li><a href="<TMPL_VAR NAME='PageURL' />">
+                                    <TMPL_VAR NAME='Title' />
+                                </a></li>
+                            <TMPL_ELSE>
+                                <li class="active"><TMPL_VAR NAME='Title' /></li>
+                            </TMPL_UNLESS>
+                        </TMPL_LOOP>
+                    </ol>
+
+                    <h1 class="header-section"><TMPL_VAR NAME="Title" /></h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="block-info typography-body2" itemprop="description">
+                        <TMPL_IF NAME='VideoID'>
+                            <div class="content-wrap" style="position: relative;height: 0;padding-bottom: 56.25%;margin-bottom:20px;">
+                                <iframe style="position: absolute;top: 0;left: 0;width: 100%;height:100%;" data-defer-src="https://www.youtube.com/embed/<TMPL_VAR NAME='VideoID'>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                            <br>
+                        </TMPL_IF>
+
+                        <TMPL_IF NAME="Description">
+                            <h2 class="header-level2">
+                                <TMPL_IF NAME="AboutTitle">
+                                    <TMPL_VAR NAME="AboutTitle" />
+                                <TMPL_ELSE/>
+                                    О <TMPL_VAR NAME="UniversityShortTitle" />
+                                </TMPL_IF>
+                            </h2>
+                            <div class="content-wrap">
+                                <TMPL_VAR NAME="Description" ESCAPE="none" />
+                            </div>
+                            <br>
+                        </TMPL_IF>
+
+                        <div class="questions">
+                            <h2 class="header-level2">
+                                <TMPL_IF NAME="QuestionTitle">
+                                    <TMPL_VAR NAME="QuestionTitle" />
+                                <TMPL_ELSE/>
+                                    Прямая линия с <TMPL_VAR NAME="UniversityShortTitle" />
+                                </TMPL_IF>
+                            </h2>
+                            <form id="questionMessageForm" method="post" action="<TMPL_VAR NAME='PROJECT_PATH' />module/question/ajax_public.php">
+                                <input type="hidden" name="Action" value="loadQuestionMessages">
+                                <input type="hidden" class="page" name="Page" value="1">
+                                <input type="hidden" name="Type" value="university">
+                                <input type="hidden" name="AttachID" value="<TMPL_VAr NAME='UniversityID'>">
+                                <input type="hidden" name="Status" value="public">
+                                <input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID' />">
+                            </form>
+                            <TMPL_IF NAME='QuestionUserName'>
+                                <div class="user clearfix">
+                                    <div class="img">
+                                        <TMPL_IF NAME='QuestionUserImage'>
+                                            <img class="round56" src="<TMPL_VAR NAME='QuestionUserImage'>" />
+                                        </TMPL_IF>
+                                    </div>
+                                    <div class="info">
+                                        <div class="name"><TMPL_VAR NAME='QuestionUserName'></div>
+                                        <div class="title"><TMPL_VAR NAME='QuestionUserTitle'></div>
+                                    </div>
+                                </div>
+                            </TMPL_IF>
+                            <div class="question">
+                                <TMPL_IF NAME="TemplateQuestionAnonUser">
+                                    <TMPL_INCLUDE NAME="quest-tmpl/anon_user_name.html"/>
+                                </TMPL_IF>
+                                <div class="form-group">
+                                    <textarea required="" class="form-control" id="questionText" rows="1"></textarea>
+                                    <label for="questionText">Задайте вопрос о поступлении в вуз</label>
+                                    <a href="#" class="send">Отправить</a>
+                                </div>
+                            </div>
+                            <div class="question answer">
+                                <TMPL_IF NAME="TemplateQuestionAnonUser">
+                                    <TMPL_INCLUDE NAME="quest-tmpl/anon_user_name.html"/>
+                                </TMPL_IF>
+                                <div class="form-group">
+                                    <textarea required="" class="form-control" id="questionText" rows="1"></textarea>
+                                    <label for="questionText">Ваш ответ</label>
+                                    <a href="#" class="send">Ответить</a>
+                                </div>
+                            </div>
+                            <div class="ajax-content">
+                                <TMPL_INCLUDE NAME="_data/question_messages.html"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <a class="main-btn m-0" target="_blank" href="<TMPL_VAR NAME='UniversityWebsiteUrl' />">Подать документы</a>
+                    <TMPL_IF NAME="AttachmentUrl">
+                        <a class="white-btn" target="_blank" href="<TMPL_VAR NAME='AttachmentUrl'/>">Скачать буклет вуза</a>
+                    </TMPL_IF>
+                    <br>
+
+                    <TMPL_IF NAME="OnlineEventList">
+                        <div class="date-tablist">
+                            <section>
+                                <h3 class="date-tablist__header">Ближайшие события</h3>
+
+                                <TMPL_INCLUDE NAME="_data/online_exhibition_event_list.html"/>
+                                <a class="main-link" href="<TMPL_VAR NAME='BaseURL'>events?archive">Прошедшие вебинары</a>
+                            </section>
+                        </div>
+                    <TMPL_ELSE/>
+                        <a class="main-link" href="<TMPL_VAR NAME='BaseURL'>events?archive">Прошедшие вебинары</a>
+                    </TMPL_IF>
+                </div>
+            </div>
+        </div>
+    </div>
+<TMPL_ELSEIF NAME="EventsView"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <TMPL_LOOP NAME='CustomNavigation'>
+                        <TMPL_UNLESS NAME='__LAST__'>
+                            <li><a href="<TMPL_VAR NAME='PageURL' />">
+                                <TMPL_VAR NAME='Title' />
+                            </a></li>
+                            <TMPL_ELSE>
+                                <li class="active"><TMPL_VAR NAME='Title' /></li>
+                        </TMPL_UNLESS>
+                    </TMPL_LOOP>
+                </ol>
+                <TMPL_IF NAME='Archive'>
+                    <h1 class="header-section">Архив</h1>
+                    <a class="header-link" href="?">Трансляции вузов</a>
+                    <TMPL_ELSE>
+                        <h1 class="header-section">Трансляции вузов</h1>
+                        <a class="header-link" href="?archive">Архив</a>
+                </TMPL_IF>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-8 center-block">
+                <TMPL_INCLUDE NAME="_data/onlineevent_list.html"/>
+            </div>
+        </div>
+    </div>
+<TMPL_ELSE />
+    <div class="forum" itemscope itemtype="http://schema.org/Organization">
+        <div class="forum__header">
+            <div class="container">
+
+                <ol class="breadcrumb white">
+                </ol>
+
+                <ul class="list-towns white">
+                    <TMPL_LOOP NAME="CityList">
+                        <TMPL_IF NAME='Active' VALUE='Y'>
+                            <li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>>
+                            <a href="<TMPL_VAR NAME='BaseURL' /><TMPL_VAR NAME='StaticPath' />/">
+                                <TMPL_VAR NAME="CityTitle" />
+                            </a>
+                            </li>
+                        </TMPL_IF>
+                    </TMPL_LOOP>
+                </ul>
+
+                <div class="forum__header-content">
+                    <div class="forum__header-content_text">
+                        <div>
+                            <h1 class="header-section" itemprop="name"><TMPL_VAR NAME="Title" /></h1>
+                            <p><TMPL_VAR NAME="Description" ESCAPE='notags' /></p>
+                        </div>
+                    </div>
+                    <div class="forum__header-content_info">
+                        <span class="first">выставка продлится</span>
+
+                        <span class="date">
+                        с <TMPL_VAR NAME="DateFromText" /> по <TMPL_VAR NAME="DateToText"/>
+                    </span>
+                        <span class="town" itemprop="addressLocality">
+                        Онлайн
+                    </span>
+                        <span class="text">
+                        выходить из дома не нужно
+                    </span>
+                        <a href="#participants" class="main-btn">
+                            Узнать о вузах
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="forum__header-color gradient-overlay"></div>
+        </div>
+
+        <TMPL_IF NAME="ParticipantList">
+            <div id="participants" style="background-color: #eee; background-color: rgba(10,22,32,0.04);">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="header-section">Участники выставки</h3>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="forum-partners big" style="background: none; padding: 0;">
+                                <ul style="float: left; width: 100%;">
+                                    <TMPL_LOOP NAME="ParticipantList">
+                                        <a href="<TMPL_VAR NAME='BaseURL'/><TMPL_VAR NAME='ID'/>">
+                                            <li class="text-center">
+                                                <img src="<TMPL_VAR NAME='ImageListPath' />">
+                                                <div class="text">
+                                                    <TMPL_VAR NAME="Title" />
+                                                </div>
+                                            </li>
+                                        </a>
+                                    </TMPL_LOOP>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <TMPL_IF NAME="OnlineEventList">
+                                <div class="date-tablist">
+                                    <section>
+                                        <h3 class="date-tablist__header">Ближайшие события</h3>
+
+                                        <TMPL_INCLUDE NAME="_data/online_exhibition_event_list.html"/>
+                                        <a class="main-link" href="<TMPL_VAR NAME='BaseURL'>events">Все события</a>
+                                    </section>
+                                </div>
+                            </TMPL_IF>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </TMPL_IF>
+    </div>
+</TMPL_IF>

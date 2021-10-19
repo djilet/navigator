@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/Star</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Guideline" transform="translate(-1012.000000, -1760.000000)" fill="#920193">
+            <g id="Icons" transform="translate(0.000000, 1648.000000)">
+                <g id="Content" transform="translate(652.000000, 112.000000)">
+                    <g id="Icon/Star" transform="translate(360.000000, 0.000000)">
+                        <path d="M12,15.421875 L15.75,17.671875 L14.765625,13.40625 L18.09375,10.5 L13.6875,10.125 L12,6.09375 L10.3125,10.125 L5.90625,10.5 L9.234375,13.40625 L8.25,17.671875 L12,15.421875 Z M21.984375,9.234375 L16.546875,13.96875 L18.1875,21 L12,17.25 L5.8125,21 L7.453125,13.96875 L2.015625,9.234375 L9.1875,8.625 L12,2.015625 L14.8125,8.625 L21.984375,9.234375 Z" id="Star-Border---MaterialIcons-Regular"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

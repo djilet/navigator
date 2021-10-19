@@ -1,0 +1,69 @@
+<div class="content-aside">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<script type="application/ld+json">
+	[{
+		"@context" : "http://schema.org",
+  		"@type" : "EventSeries",
+  		"name": "<TMPL_IF NAME='Archive'><TMPL_VAR NAME="LNG_ArchiveTitle" /><TMPL_ELSE><TMPL_VAR NAME="LNG_NearestTitle" /></TMPL_IF>"
+  	}
+	<TMPL_LOOP NAME='OnlineEventList'>
+	<TMPL_LOOP NAME="Children">
+	,{
+		"@context" : "http://schema.org",
+  		"@type" : "Event",
+		"name" : "<TMPL_VAR NAME="Title" />",
+		"url" : "https://propostuplenie.ru<TMPL_VAR NAME='OnlineEventURL' />" 
+	}
+	</TMPL_LOOP>
+	</TMPL_LOOP>
+	]
+	</script>
+	<div class="container">
+		<div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="<TMPL_VAR NAME='PROJECT_PATH'>">Главная</a></li>
+                    <li class="active"><TMPL_IF NAME='Archive'>Архив додов<TMPL_ELSE>Доды</TMPL_IF></li>
+                </ol>
+                <TMPL_IF NAME='Archive'>
+                <h1 class="header-section"><TMPL_VAR NAME="LNG_ArchiveTitle" /></h1>
+                <a class="header-link" href="?"><TMPL_VAR NAME="LNG_NearestTitle" /></a>
+                <TMPL_ELSE>
+                <h1 class="header-section"><TMPL_VAR NAME="LNG_NearestTitle" /></h1>
+                <a class="header-link" href="?archive"><TMPL_VAR NAME="LNG_ArchiveTitle" /></a>
+                </TMPL_IF>
+            
+            </div>
+        </div>
+        
+	    <div class="row">
+
+			<div class="col-xs-4 aside">
+				<TMPL_INCLUDE NAME="_data/onlineevent_sidebar.html"/>
+			</div>
+
+
+			<div class="col-xs-8 center-block">
+				<TMPL_INCLUDE NAME="_data/open_day_event_list.html"/>
+	        </div>
+
+	        <div class="col-xs-4 aside">
+
+	            <img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" >
+	            <section>
+	                <div class="aside__header"></div>
+	        
+	                <TMPL_LOOP NAME="FirstOnlineEventList">
+	                    <div class="block-event">
+	                        <span class="block-event__time"><TMPL_VAR NAME="EventDate" /></span>
+	                        <a class="block-event__header" href="<TMPL_VAR NAME='OnlineEventURL' />"><TMPL_VAR NAME="Title" /></a>
+	                        <span class="block-event__type"><TMPL_VAR NAME="TypeTitle" /></span>
+	                    </div>
+	                </TMPL_LOOP>
+	        
+	                <a class="main-link" href="<TMPL_VAR NAME='PROJECT_PATH' />opendays"><TMPL_VAR NAME="LNG_AllEvents" /></a>
+	            </section>
+	        </div>
+	    </div>
+	</div>
+</div>

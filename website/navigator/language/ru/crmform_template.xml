@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<public>
+		<crmform-online_form.html>
+			<Name>Имя</Name>
+			<Phone>Телефон</Phone>
+			<Class>Класс</Class>
+			<Email>E-mail</Email>
+			<Comment>Комментарий</Comment>
+			<Submit>Отправить</Submit>
+		</crmform-online_form.html>
+		<crmform-offline_form.html>
+			<Name>Имя</Name>
+			<Phone>Телефон</Phone>
+			<City>Город</City>
+			<CityMsk>Москва</CityMsk>
+			<CitySpb>Санкт-Петербург</CitySpb>
+			<CityEkb>Екатеринбург</CityEkb>
+			<CityNn>Нижний Новгород</CityNn>
+			<CityNsk>Новосибирск</CityNsk>
+			<Class>Класс</Class>
+			<Email>E-mail</Email>
+			<Comment>Комментарий</Comment>
+			<Submit>Отправить</Submit>
+		</crmform-offline_form.html>
+	</public>
+</Root>

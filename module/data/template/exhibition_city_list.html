@@ -1,0 +1,134 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'/>
+    <section class="box">
+        <header class="panel_header">
+            <h2 class="title"><TMPL_VAR NAME='LNG_ExhibitionList'></h2>
+        </header>
+        <div class="content-body">
+
+            <form action="<TMPL_VAR NAME='MODULE_URL'>" id="item-list" method="post">
+                <div class="col-md-6 no-padding form-group form-inline">
+                    <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForLinkURL'>&CityID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i><TMPL_VAR NAME='LNG_Add'></a>
+                </div>
+                <div class="col-md-6 no-padding form-group">
+                    <ul class="pagination pagination pull-right">
+                        <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+
+                <TMPL_IF NAME='ErrorList'>
+                    <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                </TMPL_IF>
+                <TMPL_IF NAME='MessageList'>
+                    <div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                </TMPL_IF>
+                <TMPL_IF NAME='ExhibitionCityList'>
+                    <p><TMPL_VAR NAME='ListInfo'></p>
+                    <table class="table" id="listing">
+                        <thead>
+                        <tr>
+                            <th><TMPL_VAR NAME='LNG_Date' /></th>
+                            <th><TMPL_VAR NAME='LNG_Title' /></th>
+                            <th><TMPL_VAR NAME='LNG_Address' /></th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody class="sortable">
+                        <TMPL_LOOP NAME='ExhibitionCityList'>
+                            <tr CityID="<TMPL_VAR NAME='CityID'>">
+                                <td>
+                                    <TMPL_VAR NAME="Date" FORMAT="datetime" />
+                                </td>
+                                <td>
+                                    <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForLinkURL'>&CityID=<TMPL_VAR NAME='CityID' />">
+                                        <TMPL_VAR NAME='CityTitle' />
+                                    </a>
+                                </td>
+                                <td>
+                                    <TMPL_VAR NAME="Address" />
+                                </td>
+                                <td width="20px">
+                                    <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=Remove&ListIDs[]=<TMPL_VAR NAME='CityID'>" title="<TMPL_VAR NAME='LNG_Remove'>" onclick="ConfirmRemove('<TMPL_VAR NAME='Title' ESCAPE='js'>', this); return false;"><i class="fa fa-close delete"></i></a>
+                                </td>
+                            </tr>
+                        </TMPL_LOOP>
+                        </tbody>
+                    </table>
+                </TMPL_IF>
+            </form>
+
+        </div>
+    </section>
+</div>
+<script>
+
+    var fixHelper = function(e, ui) {
+        ui.children().each(function() {
+            $(this).width($(this).width());
+        });
+        return ui;
+    };
+    $('tbody.sortable').sortable({
+        helper: fixHelper,
+        start: function(e, ui) {
+            $(this).attr('data-previndex', ui.item.index());
+        },
+        stop:function(event, ui){
+            if($(ui.item).attr('prevent-sortable')){
+                $(this).sortable('cancel');
+                $(ui.item).removeAttr('prevent-sortable')
+            }
+        },
+        update: function(event, ui) {
+            if($(ui.item).attr('prevent-sortable')){
+                //
+            }else{
+                var newIndex = ui.item.index();
+                var oldIndex = $(this).attr('data-previndex');
+                var diff = newIndex - oldIndex;
+                $(this).removeAttr('data-previndex');
+                message = CreateMessage(GetTranslation('saving-sort-item', 'info'));
+                $.ajax({
+                    url:"<TMPL_VAR NAME='MODULE_PATH'>ajax.php",
+                    dataType:"JSON",
+                    data:{
+                        'Module': '<TMPL_VAR NAME='MODULE_NAME' ESCAPE='js'>',
+                        'Action': 'SetExhibitionCitySortOrder',
+                        'ExhibitionID': '<TMPL_VAR NAME='ExhibitionID'>',
+                        'CityID': ui.item.attr('CityID'),
+                        'Diff': diff
+                    },
+                    success: function(data){
+                        if(typeof data.SessionExpired != 'undefined')
+                        {
+                            window.location.href = ADMIN_PATH+"index.php";
+                            return;
+                        }
+                        if(data)
+                        {
+                            UpdateMessage(message, GetTranslation('sort-item-saved'), 'success');
+                        }
+                        else
+                        {
+                            UpdateMessage(message, GetTranslation('error-saving-sort-item'), 'error');
+                        }
+                    },
+                    error:function(){
+                        UpdateMessage(message, GetTranslation('error-saving-sort-item'), 'error');
+                    }
+                });
+            }
+        }
+    });
+
+
+    function ConfirmRemove(title, a) {
+        var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove' ESCAPE='js'>';
+        msg = msg.replace(/%Title%/g, title);
+        ModalConfirm(msg, function(){
+            window.location.href = $(a).attr('href');
+        })
+    }
+</script>

@@ -1,0 +1,21 @@
+<div class="col-md-6 no-padding form-group form-inline">
+    <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&CategoryID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i>Добавить</a>
+</div>
+<table class="table">
+<thead>
+    <tr>
+        <th>Название</th>
+        <th width="40">&nbsp;</th>
+    </tr>
+</thead>
+<tbody>
+	<TMPL_LOOP NAME='CategoryList'>
+    	<tr>
+    		<td><a class="" href="<TMPL_VAR NAME='BaseURL'>&<TMPL_VAR NAME='ParamsForURL'>&CategoryID=<TMPL_VAR NAME='CategoryID'>"><TMPL_VAR NAME='Title'></a></td>
+    		<td>
+				<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=Remove&CategoryID=<TMPL_VAR NAME='CategoryID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='Title' ESCAPE='js'>', this); return false;"><i class="fa fa-close delete"></i></a>
+			</td>
+        </tr>
+	</TMPL_LOOP>
+</tbody>
+</table>

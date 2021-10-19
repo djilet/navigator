@@ -1,0 +1,141 @@
+<div class="row form-group">
+    <form action="<TMPL_VAR NAME='MODULE_URL'>" method="GET">
+            <!-- <div class="col-md-12 no-padding form-group"">
+                <div class="col-md-4">
+                    <div class="col-md-12">
+                        Дата регистрации
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-3">от</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control datepicker" name="DateFrom" value="<TMPL_VAR NAME='DateFrom'>" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-3">до</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control datepicker" name="DateTo"  value="<TMPL_VAR NAME='DateTo'>" />
+                    </div>
+                </div>
+            </div> -->
+
+        <div class="row">
+            <div class="col-md-4 no-padding">
+                <div class="col-md-6">
+                    <div class="form-group form-inline">
+                        <label for="Completed">Завершенные</label><br />
+                        <input type="checkbox" name="Completed" id="Completed" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Completed' VALUE='Y'>checked<TMPL_ELSEIF NAME='Completed' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group form-inline">
+                        <label for="Feedback">С оценкой</label><br />
+                        <input type="checkbox" name="Feedback" id="Feedback" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Feedback' VALUE='Y'>checked<TMPL_ELSEIF NAME='Feedback' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 text-right">
+                <ul class="pagination pagination">
+                    <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label class="form-label">Оценка</label><br>
+                    <select name="FeedbackRatingOrder" class="form-control">
+                        <option value=""></option>
+                        <option value="ASC" <TMPL_IF NAME='FeedbackRatingOrder' OP='==' VALUE='ASC'>selected</TMPL_IF>>по возрастанию</option>
+                        <option value="DESC" <TMPL_IF NAME='FeedbackRatingOrder' OP='==' VALUE='DESC'>selected</TMPL_IF>>по убыванию</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label class="form-label">Дата прохождения</label><br>
+                    <div class="col-md-4 no-padding">
+                        <div class="col-md-3">от</div>
+                        <div class="col-md-9 no-padding">
+                            <input class="form-control datepicker" name="DateFrom" value="<TMPL_VAR NAME='DateFrom'>" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 no-padding">
+                        <div class="col-md-3">до</div>
+                        <div class="col-md-9 no-padding">
+                            <input class="form-control datepicker" name="DateTo"  value="<TMPL_VAR NAME='DateTo'>" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <input type="submit" class="btn btn-success" value="Фильтровать" />
+                <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>" class="btn btn-success">Очистить</a>
+            </div>
+
+            <div class="col-sm-6 text-right">
+                <a href="#" data-do="ExportSCV" class="btn btn-success filter-action">CSV</a>
+            </div>
+        </div>
+
+        <TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ФИО</th>
+            <th>Email</th>
+            <th>Оценка</th>
+            <th>Сообщение</th>
+            <th>Дата прохождения</th>
+            <th>Статус</th>
+            <th>Результат</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<TMPL_LOOP NAME='UserList'>
+        	<tr>
+        		<td>
+        			<a class="" target="_blank" href="<TMPL_VAR NAME='UserModuleURL'>&UserID=<TMPL_VAR NAME='UserID'>">
+                        <TMPL_VAR NAME='UserID'>
+                    </a>
+        		</td>
+        		<td>
+                    <TMPL_IF NAME='UserName'>
+                        <TMPL_VAR NAME='UserName'>
+                    <TMPL_ELSE>
+                        Имя не указано
+                    </TMPL_IF>
+                </td>
+                <td><TMPL_VAR NAME='UserEmail'></td>
+                <td><TMPL_VAR NAME='FeedbackRating'></td>
+                <td>
+                    <TMPL_VAR NAME='FeedbackMessage'>
+                </td>
+                <td><TMPL_VAR NAME='CompleteDate'></td>
+                <td>
+                	<TMPL_IF NAME='Status' VALUE='reset'>
+                        Сброшен
+                    <TMPL_ELSEIF NAME='Status' VALUE='active'>
+                        Активный
+                    </TMPL_IF>
+                </td>
+                <td>
+                    <TMPL_IF NAME='CompleteDate'>
+                        <a href="<TMPL_VAR NAME='ModuleURL'>?<TMPL_VAR NAME='ParamsForURL'>&Do=ShowTest&TestUserID=<TMPL_VAR NAME='BaseTestUserID'>" target="_blank">Ссылка</a>
+                    </TMPL_IF>
+                </td>
+            </tr>
+		</TMPL_LOOP>
+    </tbody>
+</table>

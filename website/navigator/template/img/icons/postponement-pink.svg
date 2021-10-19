@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/Postponement</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Guideline" transform="translate(-972.000000, -1760.000000)" fill="#920193">
+            <g id="Icons" transform="translate(0.000000, 1648.000000)">
+                <g id="Content" transform="translate(652.000000, 112.000000)">
+                    <g id="Icon/Postponement" transform="translate(320.000000, 0.000000)">
+                        <path d="M9.984375,15.984375 L18.984375,6.984375 L17.578125,5.578125 L9.984375,13.171875 L6.421875,9.609375 L5.015625,11.015625 L9.984375,15.984375 Z M18.984375,0.984375 C19.5156277,0.984375 19.984373,1.18749797 20.390625,1.59375 C20.796877,2.00000203 21,2.46874734 21,3 L21,15.9375 C21,16.5937533 20.703128,17.1406228 20.109375,17.578125 L12,23.015625 L3.890625,17.578125 C3.29687203,17.1406228 3,16.5937533 3,15.9375 L3,3 C3,2.46874734 3.20312297,2.00000203 3.609375,1.59375 C4.01562703,1.18749797 4.48437234,0.984375 5.015625,0.984375 L18.984375,0.984375 Z" id="Beenhere---MaterialIcons-Regular"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,285 @@
+<TMPL_IF NAME='Template' VALUE='page-exhibition-landing.html'>
+		<div role="contentinfo" class="footer">
+			<div class="container">
+				<div class="row d-flex align-items-center footer-row">
+					<div class="col-12 col-md-4 footer-first">
+						<ul>
+							<li><span class="bold"><TMPL_VAR NAME="LNG_Organizer" /></span></li>
+							<TMPL_IF NAME='IndexPage'>
+							<li><TMPL_VAR NAME="LNG_OrganizerValue" /></li>
+							<TMPL_ELSE>
+							<li><a class="footer-org-link"href="<TMPL_VAR NAME='LNG_OrganizerValueHref' />"><TMPL_VAR NAME="LNG_OrganizerValue" /></a></li>
+							</TMPL_IF>
+						</ul>
+						<p class="blue"><TMPL_VAR NAME='LNG_Copyright'></p>
+					</div>
+					<div class="col-12 col-md-4 footer-middle d-flex justify-content-center">
+						<div class="blue-line"></div>
+						<ul>
+							<li><TMPL_VAR NAME="LNG_Phone" ESCAPE="none" /></li>
+							<li><a href="mailto:<TMPL_VAR NAME='LNG_Email' />"><TMPL_VAR NAME="LNG_Email" /></a></li>
+							<li>
+								<a target="_blank" href="<TMPL_VAR NAME='LNG_VKUrl' />"  onclick="yaCounter47132955.reachGoal('Click_podpisat');">
+									<img class="vkicon" src="<TMPL_VAR NAME='PATH2MAIN'>img/vk.jpg">
+									<TMPL_VAR NAME="LNG_OrganizerValue">
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-12 col-md-4 footer-last">
+						<TMPL_LOOP NAME="MENU_bottom">
+						<a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME="Title" /></a>
+						</TMPL_LOOP>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<link rel="stylesheet" href="<TMPL_VAR NAME='PATH2MAIN'/>css/libs/bootstrap-select.css">
+		<link rel="stylesheet" href="<TMPL_VAR NAME='PATH2MAIN'/>css/libs/owl.carousel.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script src="<TMPL_VAR NAME='PATH2MAIN'/>js/jquery.countdown.min.js"></script>
+		<script src="<TMPL_VAR NAME='PATH2MAIN' />js/moment.js"></script>
+		<script src="<TMPL_VAR NAME='PATH2MAIN' />js/moment-timezone-with-data.js"></script>
+		<script>
+			var path2main = "<TMPL_VAR NAME='PATH2MAIN'/>";
+			var project_path = "<TMPL_VAR NAME='PROJECT_PATH'/>";
+			var user_id = "<TMPL_VAR NAME='UserItemID'/>";
+			var alertMessage = "<TMPL_VAR NAME='AlertMessage'>";
+			var selectedCity = "<TMPL_VAR NAME='SelectedCity'>";
+			var detectedCity = "<TMPL_VAR NAME='DetectedCity'>";
+			var device_id = "<TMPL_VAR NAME='SessionID'>";
+
+			//Analytic systems
+			var amplitudeKey = "<TMPL_VAR NAME='amplitudeKey'>";
+		</script>
+		<script src="<TMPL_VAR NAME='PATH2MAIN'/>js/owl.carousel.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="<TMPL_VAR NAME='PATH2MAIN' />js/jquery.mask.js"></script>
+		<script src="<TMPL_VAR NAME='PATH2MAIN'/>js/exhibition-landing.js"></script>
+<TMPL_ELSE>
+	<TMPL_UNLESS NAME="ShortHeader">
+			</div>
+		</div>
+	</TMPL_UNLESS>
+		<!--<div class="container block-social" data-after-load="<TMPL_VAR NAME='PATH2MAIN' />widgets/social.html" data-time-out="2"></div>-->
+		<div role="contentinfo" class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-3">
+						<ul>
+							<li><span class="bold"><TMPL_VAR NAME="LNG_Organizer" /></span></li>
+							<TMPL_IF NAME='IndexPage'>
+							<li><TMPL_VAR NAME="LNG_OrganizerValue" /></li>
+							<TMPL_ELSE>
+							<li><a href="<TMPL_VAR NAME='LNG_OrganizerValueHref' />"><TMPL_VAR NAME="LNG_OrganizerValue" /></a></li>
+							</TMPL_IF>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-md-3">
+						<ul>
+							<li><TMPL_VAR NAME="LNG_Phone" ESCAPE="none" /></li>
+							<li><a href="mailto:<TMPL_VAR NAME='LNG_Email' />"><TMPL_VAR NAME="LNG_Email" /></a></li>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-md-3">
+						<ul>
+							<TMPL_LOOP NAME="MENU_bottom">
+								<li>
+									<a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME="Title" /></a>
+								</li>
+							</TMPL_LOOP>
+						</ul>
+					</div>
+					<div class="col-xs-12 col-md-3">
+						<ul>
+							<li>
+								<a class="footer__social" href="<TMPL_VAR NAME='LNG_VKUrl' />" onclick="yaCounter47132955.reachGoal('Click_podpisat');">
+									<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/vk.svg">
+									<TMPL_VAR NAME="LNG_VKUrlTitle" />
+								</a>
+							</li>
+							<li>
+								<a class="footer__social" target="_blank" href="<TMPL_VAR NAME='LNG_ZenUrl' />">
+									<TMPL_VAR NAME="LNG_ZenUrlTitle" />
+								</a>
+							</li>
+							<li></li>
+							<li><span><TMPL_VAR NAME="LNG_Copyright" ESCAPE="none" /></span></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<TMPL_UNLESS NAME="UserItemID">
+			<TMPL_IF NAME="UnfinishedRegistration">
+				<TMPL_INCLUDE NAME="forms-tmpl/modal-supplement.html"/>
+			</TMPL_IF>
+
+			<TMPL_INCLUDE NAME="forms-tmpl/modal-signin.html"/>
+			<TMPL_INCLUDE NAME="forms-tmpl/modal-checkin.html"/>
+			<TMPL_INCLUDE NAME="forms-tmpl/modal-restore.html"/>
+
+
+			<div class="modal fade" id="modal-message" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-body">
+							<div class="message"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</TMPL_UNLESS>
+
+		<script type="text/javascript">
+			var path2main = "<TMPL_VAR NAME='PATH2MAIN' />";
+			var project_path = "<TMPL_VAR NAME='PROJECT_PATH' />";
+			var user_id = "<TMPL_VAR NAME='UserItemID' />";
+			var alertMessage = "<TMPL_VAR NAME='AlertMessage'>";
+			var device_id = "<TMPL_VAR NAME='SessionID'>";
+
+			<TMPL_IF NAME='DEV_MODE'>var DEV_MODE = <TMPL_VAR NAME='DEV_MODE'>;</TMPL_IF>
+			<TMPL_IF NAME='DOMAIN'>var DOMAIN = '<TMPL_VAR NAME='DOMAIN'>';</TMPL_IF>
+
+			var ANON_USER_CAN_QUESTION = <TMPL_IF NAME='TemplateQuestionAnonUser'/>true<TMPL_ELSE>false</TMPL_IF>;
+
+			//Analytic systems
+			var amplitudeKey = "<TMPL_VAR NAME='amplitudeKey'>";
+		</script>
+
+		<TMPL_LOOP NAME="IncludeJS">
+			<script src="<TMPL_VAR NAME='Path' />"></script>
+		</TMPL_LOOP>
+
+		<TMPL_IF NAME="UnfinishedRegistration"><script>$('#modal-supplement').modal('show');</script></TMPL_IF>
+		<TMPL_LOOP NAME="JavaScriptList">
+			<script src="<TMPL_VAR NAME='Path' />"></script>
+		</TMPL_LOOP>
+</TMPL_IF>
+
+
+	<div class="loading">
+		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/loader.png"/>
+	</div>
+
+	<a href="#" id="scroll-top-btn">
+		<div class="icon"></div>
+	</a>
+
+	<TMPL_INCLUDE NAME='banners/popup-banner.html'/>
+
+	<!-- Vk widgets -->
+	<script defer type="text/javascript">
+		VK.init({
+		    apiId: <TMPL_VAR NAME='VkApiID'>,
+		    onlyWidgets: true
+	  	});
+	</script>
+	<!-- Vk widgets end -->
+
+	<!-- Facebook Pixel Code -->
+	<script>
+		!function(f,b,e,v,n,t,s)
+		{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+				n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+			if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+			n.queue=[];t=b.createElement(e);t.async=!0;
+			t.src=v;s=b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t,s)}(window, document,'script',
+				'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '391609315137130');
+		fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+				   src="https://www.facebook.com/tr?id=391609315137130&ev=PageView&noscript=1"
+	/></noscript>
+	<!-- End Facebook Pixel Code -->
+
+	<!-- VK Pixel Code -->
+	<script type="text/javascript">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?168",t.onload=function(){VK.Retargeting.Init("VK-RTRG-518460-1YRUY"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img src="https://vk.com/rtrg?p=VK-RTRG-518460-1YRUY" style="position:fixed; left:-999px;" alt=""/></noscript>
+	<!-- End VK Pixel Code -->
+
+	<!-- Yandex.Metrika counter -->
+	<script defer type="text/javascript" >
+	(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+	m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+	(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+	
+	ym(47132955, "init", {
+	clickmap:true,
+	trackLinks:true,
+	accurateTrackBounce:true,
+	webvisor:true
+	});
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/47132955" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111538395-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-111538395-1');
+	</script>
+	<!-- Facebook Pixel Code -->
+	<script defer>
+	  !function(f,b,e,v,n,t,s)
+	  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+	  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+	  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+	  n.queue=[];t=b.createElement(e);t.async=!0;
+	  t.src=v;s=b.getElementsByTagName(e)[0];
+	  s.parentNode.insertBefore(t,s)}(window, document,'script',
+	  'https://connect.facebook.net/en_US/fbevents.js');
+	  fbq('init', '1709085222505482');
+	  fbq('track', 'PageView');
+	</script>
+	<noscript><img height="1" width="1" style="display:none"
+	  src="https://www.facebook.com/tr?id=1709085222505482&ev=PageView&noscript=1"
+	/></noscript>
+	<!-- End Facebook Pixel Code -->
+	<!-- VK pixel -->
+	<script defer type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=VK-RTRG-374578-6POPB';</script>
+	<!-- End VK pixel -->
+
+	<!-- Amplitude -->
+	<script defer type="text/javascript">
+	  (function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script")
+	  ;r.type="text/javascript";r.async=true
+	  ;r.src="https://cdn.amplitude.com/libs/amplitude-4.4.0-min.gz.js"
+	  ;r.onload=function(){if(e.amplitude.runQueuedFunctions){
+	  e.amplitude.runQueuedFunctions()}else{
+	  console.log("[Amplitude] Error: could not load SDK")}}
+	  ;var i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)
+	  ;function s(e,t){e.prototype[t]=function(){
+	  this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
+	  var o=function(){this._q=[];return this}
+	  ;var a=["add","append","clearAll","prepend","set","setOnce","unset"]
+	  ;for(var u=0;u<a.length;u++){s(o,a[u])}n.Identify=o;var c=function(){this._q=[]
+	  ;return this}
+	  ;var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"]
+	  ;for(var p=0;p<l.length;p++){s(c,l[p])}n.Revenue=c
+	  ;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
+	  ;function v(e){function t(t){e[t]=function(){
+	  e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
+	  for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
+	  e=(!e||e.length===0?"$default_instance":e).toLowerCase()
+	  ;if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]}
+	  ;e.amplitude=n})(window,document);
+
+	  amplitude.getInstance().init("fa9dadc3feb5b525ca6b16ef0415208e");
+	</script>
+	<!-- Amplitude end -->
+
+	<!-- BEGIN JIVOSITE CODE {literal} -->
+	<!-- script type='text/javascript'>
+	(function(){ var widget_id = 'ccv9Gvyimd';var d=document;var w=window;function l(){
+	var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script-->
+	<!-- {/literal} END JIVOSITE CODE -->
+</body>
+</html>

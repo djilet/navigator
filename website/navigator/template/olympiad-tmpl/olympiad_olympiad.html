@@ -1,0 +1,134 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="header-section">
+			<TMPL_IF NAME="Name"><TMPL_VAR NAME="Name" /><TMPL_ELSE><TMPL_VAR NAME="TitleH1" /></TMPL_IF>
+			<TMPL_IF NAME="Level"><small>Уровень <TMPL_VAR NAME='Level'></small></TMPL_IF>
+		</h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="content-main">
+			<!-- Nav tabs -->
+			<TMPL_IF NAME="SpecialityList">
+			<ul class="nav nav-tabs nav-tabs--<TMPL_VAR NAME='TabsCount'>" role="tablist">
+				<li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab"><span>Информация</span></a></li>
+				<li role="presentation"><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab"><span>Вузы</span></a></li>
+			</ul>
+			</TMPL_IF>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- Tab #1 -->
+				<div role="tabpanel" class="tab-pane fade in active" id="tab-1">
+					<div class="block-info">
+						<TMPL_IF NAME="Description">
+							<h2 class="header-level2">Информация</h2>
+						</TMPL_IF>
+
+						<div class="block-info__borderlist">
+							<ul>
+								<li>
+									<small>
+										Регистрация
+									</small>
+								</li>
+
+								<li>
+									<small><span>с <TMPL_VAR NAME='RegistrationFromDay'> <TMPL_VAR NAME='RegistrationFromMount'> по <TMPL_VAR NAME='RegistrationToDay'> <TMPL_VAR NAME='RegistrationToMount'></span></small>
+								</li>
+							</ul>
+
+							<ul>
+								<li>
+									<small>
+										Отборочный этап - <TMPL_VAR NAME='QualifyingForm'> форма
+									</small>
+								</li>
+
+								<li>
+									<small><span>с <TMPL_VAR NAME='QualifyingFromDay'> <TMPL_VAR NAME='QualifyingFromMount'> по <TMPL_VAR NAME='QualifyingToDay'> <TMPL_VAR NAME='QualifyingToMount'></span></small>
+								</li>
+							</ul>
+
+							<ul>
+								<li>
+									<small>
+										Отборочный этап - <TMPL_VAR NAME='QualifyingForm'> форма
+									</small>
+								</li>
+
+								<li>
+									<small><span>с <TMPL_VAR NAME='FinalFromDay'> <TMPL_VAR NAME='FinalFromMount'> по <TMPL_VAR NAME='FinalToDay'> <TMPL_VAR NAME='FinalToMount'></span></small>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="block-info">
+						<h2 class="header-level2">Классы и примеры заданий</h2>
+						<div class="block-info__borderlist">
+							<ul>
+								<li>
+									<small>
+										Класс
+									</small>
+								</li>
+
+								<li>
+									<small>
+										Пример заданий <br> отборочного тура
+									</small>
+								</li>
+							</ul>
+
+							<TMPL_LOOP NAME='ClassNameList'>
+								<ul>
+									<li>
+										<span>
+											<TMPL_VAR NAME='Name'>
+										</span>
+									</li>
+
+									<li>
+										<TMPL_IF NAME='ExampleFileLink'>
+											<span>
+												<a href="<TMPL_VAR NAME='ExampleFileLink'>" target="_blank">скачать</a>
+											</span>
+										</TMPL_IF>
+									</li>
+								</ul>
+							</TMPL_LOOP>
+						</div>
+					</div>
+				</div>
+				<!-- Tab #2 -->
+				<div role="tabpanel" class="tab-pane fade" id="tab-2">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-4 aside">
+		<TMPL_IF NAME="OtherOlympiad">
+			<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" alt="">
+			<section>
+				<div class="aside__header">Похожие олипиады</div>
+
+				<div class="block-info__borderlist">
+					<TMPL_LOOP NAME="OtherOlympiad">
+						<ul>
+							<li>
+								<a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='MainStaticPath'>/<TMPL_VAR NAME='StaticPath' />">
+									<span><TMPL_VAR NAME="Name" /></span>
+									<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/next.svg" alt="">
+								</a>
+							</li>
+						</ul>
+					</TMPL_LOOP>
+				</div>
+			</section>
+		</TMPL_IF>
+	</div>
+</div>

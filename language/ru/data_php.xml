@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Управление данными</module-title>
+	<module-admin-title>Управление данными</module-admin-title>
+	<config-details><![CDATA[
+
+	]]></config-details>
+
+	<section-device>Пользователи</section-device>
+	<device-edit>Редактировать пользователя</device-edit>
+
+	<section-area>Федеральные округа</section-area>
+	<title-area-edit>Редактировать округ</title-area-edit>
+	<title-area-add>Добавить округ</title-area-add>
+	<area-removed>Удалено округов: %Count%</area-removed>
+	<area-title-empty>Заполните поле "Название"</area-title-empty>
+
+	<section-region>Регионы</section-region>
+	<title-region-edit>Редактировать регион</title-region-edit>
+	<title-region-add>Добавить регион</title-region-add>
+	<region-removed>Удалено регионов: %Count%</region-removed>
+	<region-title-empty>Заполните поле "Название"</region-title-empty>
+
+	<section-city>Города</section-city>
+	<city-save-title-empty>Не введено название</city-save-title-empty>
+	<city-save-region-empty>Не выбран регион</city-save-region-empty>
+	<city-save-static-path-empty>Не указан код</city-save-static-path-empty>
+
+	<section-type>Направления вузов</section-type>
+	<title-type-edit>Редактировать направление</title-type-edit>
+	<title-type-add>Добавить направление</title-type-add>
+	<type-removed>Удалено направлений: %Count%</type-removed>
+	<type-title-empty>Заполните поле "Название"</type-title-empty>
+
+	<section-direction>Направления подготовки</section-direction>
+	<title-direction-edit>Редактировать направление</title-direction-edit>
+	<title-direction-add>Добавить направление</title-direction-add>
+	<direction-removed>Удалено направлений: %Count%</direction-removed>
+	<direction-title-empty>Заполните поле "Название"</direction-title-empty>
+	<direction-static-path-empty>Заполните поле "URL"</direction-static-path-empty>
+
+	<section-university>Вузы</section-university>
+	<title-university-edit>Редактировать ВУЗ</title-university-edit>
+	<title-university-add>Добавить ВУЗ</title-university-add>
+	<university-remove-specexists>Нельзя удалять ВУЗЫ, для которых имеются специальности</university-remove-specexists>
+	<university-removed>Удалено вузов: %Count%</university-removed>
+	<university-shorttitle-empty>Заполните аббревиатуру</university-shorttitle-empty>
+	<university-title-empty>Заполните название</university-title-empty>
+	<static-path-already-taken>URL занят</static-path-already-taken>
+	<speciality-removed>Удалено специальностей: %Count%</speciality-removed>
+	<speciality-title-empty>Заполните название</speciality-title-empty>
+
+	<section-push>Push-уведомления</section-push>
+	<push-text-empty>Введите текст уведомления</push-text-empty>
+	<push-receiver-list-empty>Не найдено получателей для Вашего уведомления</push-receiver-list-empty>
+	<push-done>Отправка push-уведомления завершена</push-done>
+	<push-sent-count>[%Client%] Отправлено уведомлений: %Count%</push-sent-count>
+	<push-fail-count>[%Client%] Не удалось отправить уведомлений\устаревших токенов: %Count%</push-fail-count>
+	<push-error>[%Client%] Не удалось отправить push-уведомление: %Error%</push-error>
+
+	<section-profession>Профессии</section-profession>
+	<title-profession-edit>Редактировать профессию</title-profession-edit>
+	<title-profession-add>Добавить профессию</title-profession-add>
+	<profession-save-title-empty>Не указано наименование</profession-save-title-empty>
+	<profession-save-industry-empty>Не указана отрасль</profession-save-industry-empty>
+	<profession-save-wage-level-empty>Не указан уровень ЗП</profession-save-wage-level-empty>
+	<profession-save-description-empty>Не введено описание</profession-save-description-empty>
+	<profession-save-employee-empty>Не указаны характеристики работника</profession-save-employee-empty>
+
+	<!-- Industry -->
+	<section-industry>Сферы деятельности</section-industry>
+ 	<title-industry-edit>Редактировать</title-industry-edit>
+ 	<title-industry-add>Добавить</title-industry-add>
+ 	<industry-removed>Сфера деятельности удалена</industry-removed>
+ 	<industry-title-empty>Заполните поле "Наименование"</industry-title-empty>
+
+	<!-- WhoWork -->
+	<section-who_work>С чем хочу работать</section-who_work>
+	<title-who-work-edit>Редактировать</title-who-work-edit>
+	<title-who-work-add>Добавить</title-who-work-add>
+	<who-work-title-empty>Заполните поле "Наименование"</who-work-title-empty>
+	<who-work-removed>Элемент удален</who-work-removed>
+
+	<!-- WantWork -->
+	<section-want_work>Что хочу делать</section-want_work>
+	<title-want-work-edit>Редактировать</title-want-work-edit>
+	<title-want-work-add>Добавить</title-want-work-add>
+	<want-work-title-empty>Заполните поле "Наименование"</want-work-title-empty>
+	<want-work-removed>Элемент удален</want-work-removed>
+
+	<!-- Operation -->
+	<section-operation>График работы</section-operation>
+	<title-operation-edit>Редактировать</title-operation-edit>
+	<title-operation-add>Добавить</title-operation-add>
+	<operation-title-empty>Заполните поле "Наименование"</operation-title-empty>
+	<operation-removed>Элемент удален</operation-removed>
+
+	<section-online_event>Онлайн-события</section-online_event>
+	<title-online-event-edit>Редактировать онлайн-событие</title-online-event-edit>
+	<title-online-event-add>Добавить онлайн-событие</title-online-event-add>
+	<online-event-removed>Удалено событий: %Count%</online-event-removed>
+	<online-event-title-empty>Заполните поле "Название"</online-event-title-empty>
+	<online-event-eventdatetime-incorrect>Некорректное значение поля "Дата"</online-event-eventdatetime-incorrect>
+
+	<api-internal-server-error>Внутренняя ошибка сервера</api-internal-server-error>
+	<api-incorrect-request-method>Некорректный метод вызова (разрешены: %Allowed%)</api-incorrect-request-method>
+	<api-device-id-empty>Не указан параметр AuthDeviceID</api-device-id-empty>
+	<api-client-empty>Не указан параметр Client</api-client-empty>
+	<api-device-is-not-registered>Указанный AuthDeviceID не зарегистрирован</api-device-is-not-registered>
+	<api-resource-not-found>Ресурс не найден</api-resource-not-found>
+	<api-user-login-error>Не верно указан логин или пароль</api-user-login-error>
+
+	<api-registration-username-empty>Не указано имя</api-registration-username-empty>
+	<api-registration-email-empty>Не указан e-mail адрес</api-registration-email-empty>
+	<api-registration-email-incorrect>Указан некорректный e-mail адрес</api-registration-email-incorrect>
+	<api-registration-email-already-exists>Этот e-mail уже был зарегистрирован ранее</api-registration-email-already-exists>
+	<api-registration-whoami-empty>Не указано кто вы(Ученик, Родитель, Студент)</api-registration-whoami-empty>
+	<api-registration-whoami-incorrect>Не указано кто вы(Ученик, Родитель, Студент)</api-registration-whoami-incorrect>
+	<api-registration-classnumber-empty>Укажите номер класса</api-registration-classnumber-empty>
+	<api-registration-classnumber-incorrect>Не верно указан номер класса</api-registration-classnumber-incorrect>
+	<api-registration-pass-empty>Не введен пароль</api-registration-pass-empty>
+	<api-registration-pass-repeat-empty>Введите подтверждение пароля</api-registration-pass-repeat-empty>
+	<api-registration-pass-do-not-match>Пароли не совпадают</api-registration-pass-do-not-match>
+
+	<auth-social-id-empty>Не указан id аккаунта соцсети</auth-social-id-empty>
+	<auth-social-unknown>Соцсеть %socialType% неизвестна (доступны: %KnowSocial%).</auth-social-unknown>
+
+	<section-exhibition>Выставка</section-exhibition>
+	<exhibition-save-title-empty>Не введено наименование выставки</exhibition-save-title-empty>
+	<exhibition-save-type-empty>Не указан тип выставки</exhibition-save-type-empty>
+	<exhibition-save-date-from-empty>Не указано время начала</exhibition-save-date-from-empty>
+	<exhibition-save-date-to-empty>Не указано время окончания</exhibition-save-date-to-empty>
+	<exhibition-city-save-title-empty>Не указан город</exhibition-city-save-title-empty>
+	<exhibition-city-save-date-empty>Не указана дата и время</exhibition-city-save-date-empty>
+	<exhibition-city-save-static-path-empty>Не указан URL для города</exhibition-city-save-static-path-empty>
+	<exhibition-city-save-schedule-file-incorrect>Не удается прочитать файл для импорта расписания</exhibition-city-save-schedule-file-incorrect>
+	<exhibition-city-save-schedule-file-notcsv>Файл расписания имеет неверный формат</exhibition-city-save-schedule-file-notcsv>
+
+	<section-open_day>Дод</section-open_day>
+	<open-day-save-title-empty>Не введено название</open-day-save-title-empty>
+	<open-day-save-type-empty>Не указан тип</open-day-save-type-empty>
+	<open-day-save-date-from-empty>Не указано время начала</open-day-save-date-from-empty>
+	<open-day-save-date-to-empty>Не указано время окончания</open-day-save-date-to-empty>
+	<open-day-save-date-empty>Не указана дата и время</open-day-save-date-empty>
+	<open-day-save-static-path-empty>Не указан URL</open-day-save-static-path-empty>
+	<open-day-save-static-already-exist>Url занят</open-day-save-static-already-exist>
+	<open-day-save-schedule-file-incorrect>Не удается прочитать файл для импорта расписания</open-day-save-schedule-file-incorrect>
+	<open-day-save-schedule-file-notcsv>Файл расписания имеет неверный формат</open-day-save-schedule-file-notcsv>
+
+	<section-article>Статьи</section-article>
+	<title-article-edit>Редактировать статью</title-article-edit>
+	<title-article-add>Добавить статью</title-article-add>
+	<article-removed>Удалено статей: %Count%</article-removed>
+	<article-title-empty>Заполните поле "Название"</article-title-empty>
+	<article-datetime-incorrect>Некорректное значение поля "Дата"</article-datetime-incorrect>
+	<similar-too-much>Максимум 4 похожих статей</similar-too-much>
+	<similar-empty>Нужно указать хотя бы одну похожую стаью</similar-empty>
+
+	<section-article_tag>Тэги статей</section-article_tag>
+	<article-tag-save-title-empty>Заполните поле "Название"</article-tag-save-title-empty>
+	<article-tag-save-static-path-empty>Заполните поле "URL"</article-tag-save-static-path-empty>
+	
+	<section-list>Списки</section-list>
+	<title-list-edit>Редактировать список</title-list-edit>
+	<title-list-add>Добавить список</title-list-add>
+	<list-removed>Удалено списков: %Count%</list-removed>
+	<list-title-empty>Заполните поле "Название"</list-title-empty>
+
+	<section-achievement>Индивидуальные достижения</section-achievement>
+	<title-achievement-edit>Редактировать</title-achievement-edit>
+	<title-achievement-add>Добавить</title-achievement-add>
+	<achievement-removed>Удалено индивидуальные достижений: %Count%</achievement-removed>
+	<achievement-title-empty>Заполните поле "Название"</achievement-title-empty>
+
+	<section-read_later>Прочитать позже</section-read_later>
+	
+	<section-author>Авторы</section-author>
+	<title-author-edit>Редактировать автора</title-author-edit>
+	<title-author-add>Добавить автора</title-author-add>
+	<author-removed>Удалено авторов: %Count%</author-removed>
+	<author-title-empty>Заполните поле "Имя"</author-title-empty>
+
+	<section-university_agent>Предствители университетов</section-university_agent>
+	<title-university_agent-edit>Редактировать представителя</title-university_agent-edit>
+	<title-university_agent-add>Привязать представителя</title-university_agent-add>
+	<author-university_agent>Удалено авторов: %Count%</author-university_agent>
+
+	<section-online_exhibition>Онлайн выставки</section-online_exhibition>
+	<title-online_exhibition-edit>Редактировать выставку</title-online_exhibition-edit>
+	<title-online_exhibition-add>Добавить выставку</title-online_exhibition-add>
+	<title-online_exhibition-participant-list>Список участников</title-online_exhibition-participant-list>
+	<author-online_exhibition>Удалено: %Count%</author-online_exhibition>
+	<title-online_exhibition_participant-add>Добавить участника</title-online_exhibition_participant-add>
+
+	<section-user_university>Заявки</section-user_university>
+</Root>

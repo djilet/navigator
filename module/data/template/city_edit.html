@@ -1,0 +1,54 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='ID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_Edit'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_Add'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="row">
+					<TMPL_IF NAME='ErrorList'>
+						<div class="col-md-12">
+							<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+						</div>
+					</TMPL_IF>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+							<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+						</div>
+						<div class="form-group">
+							<label for="StaticPath" class="form-label required"><TMPL_VAR NAME='LNG_StaticPath'></label><br />
+							<input class="form-control" type="text" name="StaticPath" id="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" />
+						</div>
+						<div class="form-group">
+							<label for="RegionID" class="form-label required"><TMPL_VAR NAME='LNG_Region'></label><br />
+							<select class="form-control" name="RegionID" id="RegionID">
+								<TMPL_LOOP NAME='RegionMap'>
+								<option value="<TMPL_VAR NAME='Id'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Name'></option>
+								</TMPL_LOOP>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-12">
+					</div>
+					<div class="col-md-12 top15">
+						<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+						<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+					</div>
+					<input type="hidden" name="Save" value="1" />
+					<input type="hidden" name="ID" value="<TMPL_VAR NAME='ID'>" />
+					<input type="hidden" name="Section" value="city">
+				</div>
+			</form>
+		</div>
+	</section>
+</div>

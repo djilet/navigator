@@ -1,0 +1,38 @@
+{
+    "autoload": {
+        "psr-4": {
+            "SocialAuth\\":"include/social_auth",
+            "Import\\":"import/Import",
+            "Swagger\\Client\\" : "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { "Swagger\\Client\\" : "test/" }
+    },
+    "require": {
+        "php": ">=7.0",
+        "facebook/graph-sdk": "^5.6",
+        "facebook/php-business-sdk": "5.0.5",
+        "milon/barcode": "^5.3",
+        "yandex-money/yandex-checkout-sdk-php": "^1.0",
+        "unisender/api-wrapper": "^1.4",
+        "mikehaertl/phpwkhtmltopdf": "^2.3",
+        "robmorgan/phinx": "^0.10.6",
+        "ext-curl": "*",
+        "ext-redis": "*",
+        "ext-json": "*",
+        "ext-intl": "*",
+        "tinify/tinify": "^1.5",
+        "ext-gd": "*",
+        "wapmorgan/morphos": "^3.2",
+        "ext-dom": "*",
+        "ext-libxml": "*",
+        "ext-mysqli": "*",
+        "google/recaptcha": "^1.2",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.0",
+        "larapack/dd": "^1.1"
+    }
+}

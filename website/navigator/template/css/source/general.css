@@ -1,0 +1,555 @@
+/*Vars*/
+    :root {
+      --color-selective-yellow: 249, 182, 8;
+      --color-blue-gem: 69, 51, 151;
+    }
+
+/*Main tags*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        color: #0a1620;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+    }
+
+    body.modal-open {
+        overflow: inherit;
+        padding-right: 0 !important;
+    }
+
+    .container-fluid {
+        padding: 0;
+        min-width: 320px;
+    }
+
+    .container {
+        min-width: 320px;
+        max-width: 966px;
+    }
+
+    a,
+    a:hover,
+    a:focus {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    blockquote{
+        border-left: 0px;
+        position: relative;
+        font-size: 16px;
+    }
+        blockquote:before{
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            background: #0e12a6;
+            background: -moz-linear-gradient(top, #0e12a6 0%, #fe51d9 100%);
+            background: -webkit-linear-gradient(top, #0e12a6 0%,#fe51d9 100%);
+            background: linear-gradient(to bottom, #0e12a6 0%,#fe51d9 100%);
+        }
+        
+    .blockquote2{
+    	position: relative;
+        width: 100%;
+        padding: 46px 12px 12px 12px;
+        background: linear-gradient(90deg, #1915a8 0%, #d345d0 100%);
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 16px;
+        font-style: italic;
+    }
+        .blockquote2:before{
+            content: '❛❛';
+            position: absolute;
+            top: 0px;
+            left: 48%;
+            font-family: "Adobe Blank";
+            font-size: 46px;
+        }
+
+    .mark, mark {
+        background-color: #f2e0f2;
+        white-space: pre-wrap;
+    }
+
+    /* inputs */
+    input[type=checkbox] {
+        position: absolute;
+        left: -9000px;
+        opacity: 0;
+        display: none;
+    }
+
+    input[type=checkbox] + label {
+        position: relative;
+        display: block;
+        padding-left: 31px;
+        margin-top: 13px;
+    }
+
+    input[type=checkbox] + label span {
+        border: 2px solid #ccc;
+        background-color: #fff;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -2px;
+        margin: 0;
+    }
+
+    input[type=checkbox]:checked + label span {
+        border-color: #c95bc9;
+        background-color: #c95bc9;
+    }
+
+    input[type=checkbox] + label span::after {
+        content: " ";
+        position: absolute;
+        display: inline-block;
+        top: -1px;
+        left: -1px;
+        width: 20px;
+        height: 20px;
+        background: url('../../img/icons/check.svg') center no-repeat;
+        background-size: 19px 19px;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    input[type=checkbox]:checked + label span::after {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @-webkit-keyframes autofill {
+        to {
+            color: rgba(0,0,0,0.54);
+            background: transparent;
+        }
+    }
+
+    input:-webkit-autofill {
+        -webkit-animation-name: autofill;
+        -webkit-animation-fill-mode: both;
+    }
+
+    /* select */
+    .custom-select::after {
+        content: ' ';
+        position: absolute;
+        bottom: calc(50% - 12px);
+        right: 7px;
+        width: 24px;
+        height: 24px;
+        background: url("../../img/icons/down-grey.svg") center no-repeat;
+    }
+
+    /* Custom arrow sits on top of the select - could be an image, SVG, icon font,
+     * etc. or the arrow could just baked into the bg image on the select. */
+    .custom-select::after {
+        content: " ";
+        position: absolute;
+        z-index: 2;
+        /* These hacks make the select behind the arrow clickable in some browsers */
+        pointer-events: none;
+        display: none;
+    }
+
+    @supports ( -webkit-appearance: none ) or ( appearance: none )
+        /* Firefox <= 34 has a false positive on @supports( -moz-appearance: none )
+         * @supports ( mask-type: alpha ) is Firefox 35+
+         */
+        or ( ( -moz-appearance: none ) and ( mask-type: alpha ) ) {
+
+        /* Show custom arrow */
+        .custom-select::after {
+            display: block;
+        }
+
+        /* Remove select styling */
+        .custom-select select {
+            padding-right: 2em; /* Match-01 */
+            /* inside @supports so that iOS <= 8 display the native arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+    }
+
+    /* Adds Firefox < 35 support */
+    /* FIREFOX won't let us hide the native select arrow, so we have to make it wider than needed and clip it via overflow on the parent container. The percentage width is a fallback since FF 4+ supports calc() so we can just add a fixed amount of extra width to push the native arrow out of view. We're applying this hack across all FF versions because all the previous hacks were too fragile and complex. You might want to consider not using this hack and using the native select arrow in FF. Note this makes the menus wider than the select button because they display at the specified width and aren't clipped. Targeting hack via http://browserhacks.com/#hack-758bff81c5c32351b02e10480b5ed48e */
+    /* Show only the native arrow */
+    @-moz-document url-prefix() {
+        /* Warning: this kills the focus outline style */
+        .custom-select {
+            overflow: hidden;
+        }
+        .custom-select::after {
+            display: block;
+        }
+        /* Make the native select extra wide so the arrow is clipped. 1.5em seems to be enough to safely clip it */
+        .custom-select select {
+            overflow: -moz-hidden-unscrollable;
+            padding-right: .4em;
+            /* Firefox < 4 */
+            min-width: 6em;
+            width: 130%;
+            /* Firefox 4-15 */
+            min-width: -moz-calc(0em);
+            width: -moz-calc(100% + 2.4em);
+            /* Firefox 16+ */
+            min-width: calc(0em);
+            width: calc(100% + 2.4em);
+        }
+
+        /* Firefox 35+ that supports hiding the native select can have a proper 100% width, no need for the overflow clip trick */
+        @supports ( mask-type: alpha ) {
+            .custom-select {
+                overflow: visible;
+            }
+            .custom-select select {
+                -moz-appearance: none;
+                width: 100%;
+                padding-right: 2em; /* Match-01 padding-right */
+            }
+        }
+    }
+
+    /* Firefox focus has odd artifacts around the text, this kills that. See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring */
+    .custom-select select:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+    }
+
+    /* IE 10/11+ - This hides native dropdown button arrow so it will have the custom appearance. Targeting media query hack via http://browserhacks.com/#hack-28f493d247a12ab654f6c3637f6978d5 - looking for better ways to achieve this targeting */
+    /* The second rule removes the odd blue bg color behind the text in the select button in IE 10/11 and sets the text color to match the focus style's - fix via http://stackoverflow.com/questions/17553300/change-ie-background-color-on-unopened-focused-select-box */
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        .custom-select select::-ms-expand {
+            display: none;
+        }
+    }
+
+/*Buttons*/
+    .main-btn,
+    .white-btn,
+    .disabled-btn {
+        display: block;
+        color: #fff;
+        padding: 0 5px;
+        width: 100%;
+        background-color: #920193;
+        height: 44px;
+        line-height: 44px;
+        text-align: center;
+        border: none;
+        border-radius: 8px;
+        outline: none !important;
+        margin: 16px auto;
+    }
+
+    .main-btn,
+    .white-btn {
+        font-size: 13px;
+        font-weight: 500;
+        text-transform: uppercase;
+        -webkit-box-shadow: 0 16px 16px 0 rgba(146,1,147,0.2);
+        box-shadow: 0 16px 16px 0 rgba(146,1,147,0.2);
+    }
+
+    .white-btn:focus,
+    .white-btn:hover {
+        color: #920193;
+        background-color: #fff;
+        -webkit-box-shadow: inset 0 0 10px rgba(146,1,147,0.2);
+        box-shadow: inset 0 0 10px rgba(146,1,147,0.2);
+    }
+
+    /*main btn*/
+    .main-btn:hover,
+    .main-btn:focus {
+        color: #fff;
+        background-color: #920193;
+        -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,.4);
+        box-shadow: inset 0 0 10px rgba(0,0,0,.4);
+    }
+
+    /*white btn*/
+    .white-btn {
+        color: #920193;
+        background-color: #fff;
+    }
+
+    /*disabled btn*/
+    .disabled-btn {
+        color: #7E0081;
+        background-color: rgba(10,22,32,0.08);
+        font-size: 14px;
+    }
+
+    /*filter btn*/
+    .filter-btn{
+        display: inline-flex;
+    }
+        .filter-btn .info{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            .filter-btn .info .title{
+                
+            }
+
+        .filter-btn .icon{
+            margin: 0px 0px 0px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+/*Links*/
+    /*main link*/
+    .main-link {
+        color: #920193;
+        display: inline-block;
+    }
+
+    .main-link:hover,
+    .main-link:focus {
+        color: #920193;
+        text-decoration: underline;
+    }
+
+    /*gray link*/
+    .grey-link {
+        display: inline-block;
+        line-height: 18px;
+        background-color: #ccc;
+        background-color: rgba(10,22,32,0.08);
+        border-radius: 23px;
+        color: #920193;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 5px 24px;
+        font-weight: 500;
+        font-size: 13px;
+    }
+
+    .grey-link:hover,
+    .grey-link:focus {
+        color: #fff;
+        background-color: #920193;
+    }
+
+/*Helpers*/
+    .typography-body2{
+        font-size: 16px;
+    }
+    /* display */
+    /* copy form bootstrap 4 */
+    .d-flex{
+        display: flex;
+    }
+    .align-items-center{
+        align-items: center;
+    }
+    .flex-wrap{
+        flex-wrap: wrap;
+    }
+
+    /*Font weight*/
+    .light{
+        font-weight: 300;
+    }
+
+    .normal{
+        font-weight: 400;
+    }
+
+    .medium{
+        font-weight: 500;
+    }
+
+    .semi-bold{
+        font-weight: 600;
+    }
+
+    b, strong, .bold {
+        font-weight: 700;
+    }
+
+    .extra-bold{
+        font-weight: 800;
+    }
+
+    .heavy{
+        font-weight: 900;
+    }
+
+    /*text color*/
+    .purple, .pink {
+        color: #920193;
+    }
+
+    .color-gray{
+        color: rgba(10,22,32,0.54);
+    }
+    
+    /* background */
+    .bg-sel-yellow-to-blue-gem{
+        background-image: linear-gradient(244.85deg, rgb(var(--color-selective-yellow)) 2.81%, #851E8E 40.34%, rgb(var(--color-blue-gem)) 76.85%);
+    }
+
+    /* img */
+    img.round40 {
+        border: 2px #bbb solid; /* стили рамки */
+        -moz-border-radius: 20px; /* закругление для старых Mozilla Firefox */
+        -webkit-border-radius: 20px; /* закругление для старых Chrome и Safari */
+        -khtml-border-radius:20px; /* закругл. для браузера Konquerer системы Linux */
+        border-radius: 20px; /* закругление углов для всех, кто понимает */
+    }
+    img.round56 {
+        border: 1px #bbb solid; /* стили рамки */
+        -moz-border-radius: 28px; /* закругление для старых Mozilla Firefox */
+        -webkit-border-radius: 28px; /* закругление для старых Chrome и Safari */
+        -khtml-border-radius:28px; /* закругл. для браузера Konquerer системы Linux */
+        border-radius: 28px; /* закругление углов для всех, кто понимает */
+    }
+    img.round80 {
+        border: 3px #bbb solid; /* стили рамки */
+        -moz-border-radius: 40px; /* закругление для старых Mozilla Firefox */
+        -webkit-border-radius: 40px; /* закругление для старых Chrome и Safari */
+        -khtml-border-radius:40px; /* закругл. для браузера Konquerer системы Linux */
+        border-radius: 40px; /* закругление углов для всех, кто понимает */
+    }
+    img.round136 {
+        border: 6px #bbb solid; /* стили рамки */
+        -moz-border-radius: 68px; /* закругление для старых Mozilla Firefox */
+        -webkit-border-radius: 68px; /* закругление для старых Chrome и Safari */
+        -khtml-border-radius:68px; /* закругл. для браузера Konquerer системы Linux */
+        border-radius: 68px; /* закругление углов для всех, кто понимает */
+    }
+
+    /* spacing */
+    .mr-2{
+        margin-right: .5rem!important;
+    }
+    .mr-3{
+        margin-right: 1rem!important;
+    }
+    .mr-4{
+        margin-right: 1.5rem!important;
+    }
+
+    .mt-0 {
+        margin-top: 0 !important;
+    }
+    .mt-1 {
+        margin-top: 0.25rem !important;
+    }
+    .mt-2 {
+        margin-top: 0.5rem !important;
+    }
+    .mt-3 {
+        margin-top: 1rem !important;
+    }
+    .mt-4 {
+        margin-top: 1.5rem !important;
+    }
+    .mt-5 {
+        margin-top: 3rem !important;
+    }
+
+    .mb-1 {
+        margin-bottom: 0.25rem !important;
+    }
+    .mb-2 {
+        margin-bottom: 0.5rem !important;
+    }
+    .mb-3 {
+        margin-bottom: 1rem !important;
+    }
+    .mb-4 {
+        margin-bottom: 1.5rem !important;
+    }
+    .mb-5 {
+        margin-bottom: 3rem !important;
+    }
+
+    .m-0{
+        margin: 0!important;
+    }
+
+/*Block styles*/
+    .no-padding{
+        padding: 0px!important;
+    }
+
+    .cursor-pointer{
+        cursor: pointer;
+    }
+
+    /*borders*/
+    .rounded-circle{
+        border-radius: 50%;
+    }
+    .rounded{
+        border-radius: 8px;
+    }
+
+    .full-bg{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: -1;
+    }
+
+    .max-width{
+
+    }
+    @media screen and (max-width: 767px){
+        .max-width{
+            width: calc(100% + 30px)!important;
+            left: -15px;
+            position: relative;
+        }
+    }
+
+    .md-reverse{
+
+    }
+        @media screen and (max-width: 991px) {
+            .md-reverse{
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        }
+
+
+/*Animations*/
+@keyframes fade-blink-animation {
+    0% {opacity: 0}
+    50% {opacity: 1}
+    100% {opacity: 0}
+}
+@-webkit-keyframes fade-blink-animation {
+    0% {opacity: 0}
+    50% {opacity: 1}
+    100% {opacity: 0}
+}

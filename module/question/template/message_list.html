@@ -1,0 +1,354 @@
+<div class="col-md-12">
+    <section class="box">
+        <div class="content-body">
+
+            <div class="clearfix"></div>
+            <form method="get" id="item-list" action="<TMPL_VAR NAME='MODULE_URL'>">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            Дата с
+                            <input class="form-control datepicker" name="DateFrom" value="<TMPL_VAR NAME='DateFrom'>" />
+                        </div>
+
+                        <div class="form-group">
+                            Дата по
+                            <input class="form-control datepicker" name="DateTo"  value="<TMPL_VAR NAME='DateTo'>" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            Без ответа <br>
+                            <input type="checkbox" name="NoneAnswer" id="NoneAnswer" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='NoneAnswer' VALUE='Y'>checked<TMPL_ELSEIF NAME='NoneAnswer' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group" style="display: none">
+                            Без ответа от модератора <br>
+                            <input type="checkbox" name="Colored" id="Colored" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Colored' VALUE='Y'>checked<TMPL_ELSEIF NAME='Colored' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <input id="linked-university" name="AttachTitle" type="text" placeholder="Начните вводить название ВУЗа(минимум 3 символа)" class="form-control" value="<TMPL_VAR NAME='AttachTitle'>">
+                            <TMPL_IF NAME='AttachID'>
+                                <input type="hidden" name="AttachID" value="<TMPL_VAR NAME='AttachID'>">
+                            </TMPL_IF>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <ul class="pagination pagination pull-right">
+                            <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success" value="Фильтровать">
+                            <a href="<TMPL_VAR NAME='MODULE_URL'>" class="btn btn-success">Очистить</a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        Вопросов по запросу - <b><TMPL_VAR NAME='TotalItemsCount'></b> <br>
+                    </div>
+                </div>
+                <input type="hidden" name="load" value="question" />
+                <input type="hidden" name="Type" value="university" />
+                <TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+            </form>
+
+            <TMPL_IF NAME='QuestionMessageList'>
+                <table class="table" id="listing">
+                    <thead>
+                    <tr>
+                        <th class="text-nowrap"><TMPL_VAR NAME="LNG_Created" /></th>
+                        <th><TMPL_VAR NAME="LNG_AttachType" /></th>
+                        <th>&nbsp;</th>
+                        <th><TMPL_VAR NAME="LNG_User" /></th>
+                        <TMPL_UNLESS NAME="WithoutCommentStatus">
+                            <th>&nbsp;</th>
+                        </TMPL_UNLESS>
+                        <th><TMPL_VAR NAME="LNG_Text" /></th>
+                        <th><TMPL_VAR NAME="LNG_ChildCount" /></th>
+                        <th>Удалить</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <TMPL_LOOP NAME='QuestionMessageList'>
+                        <tr>
+                            <td><TMPL_VAR NAME='Created' FORMAT='datetime'></td>
+                            <td class="text-nowrap">
+                                <TMPL_IF NAME='Type' VALUE='university' />
+                                <TMPL_VAR NAME='LNG_AttachTypeUniversity'>
+                                    <TMPL_ELSEIF NAME='Type' VALUE='college' />
+                                    <TMPL_VAR NAME='LNG_AttachTypeCollege'>
+                                        <TMPL_ELSEIF NAME='Type' VALUE='article'>
+                                            <TMPL_VAR NAME='LNG_AttachTypeArticle'>
+                                                <TMPL_ELSEIF NAME='Type' VALUE='speciality'>
+                                                    <TMPL_VAR NAME='LNG_AttachTypeSpeciality'>
+                                                        <TMPL_ELSEIF NAME='Type' VALUE='collegeSpeciality'>
+                                                            <TMPL_VAR NAME='LNG_AttachTypeCollegeSpeciality'>
+            </TMPL_IF>
+            </td>
+            <td>
+                <a href="<TMPL_VAR NAME='AttachUrl'>#tab-4" target="_blank">
+                    <TMPL_VAR NAME='AttachTitle' />
+                </a>
+            </td>
+            <td class="text-nowrap">
+                <TMPL_IF NAME="UserID">
+                    <a href="<TMPL_VAR NAME='UserModuleURL'>&UserID=<TMPL_VAR NAME='UserID'>" target="_blank">
+                        <TMPL_VAR NAME='UserName' />
+                    </a>
+                <TMPL_ELSE/>
+                    <TMPL_VAR NAME="AnonUserName">
+                </TMPL_IF>
+            </td>
+            <TMPL_UNLESS NAME="WithoutCommentStatus">
+                <td class="text-nowrap">
+                    <a title="Переключить возможность оставлять комментарии"
+                       href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=SwitchCommentStatus&UserID=<TMPL_VAR NAME='UserID'>"
+                       class="<TMPL_IF NAME='CommentsStatus' OP='==' VALUE='N'>text-muted</TMPL_VAR>"
+                    >
+                        <i class="fa fa-comments" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </TMPL_UNLESS>
+            <td class="">
+                <a href="#" class="answer-btn" title="Ответить">
+                    <TMPL_VAR NAME='Text' />
+                </a>
+            </td>
+            <td class="text-nowrap"><TMPL_IF NAME='ChildCount'><a href="#" class="showchild" data-messageid="<TMPL_VAR NAME='MessageID'>"><TMPL_VAR NAME='ChildCount' /></a></TMPL_IF>&nbsp;</td>
+            <td class="">
+                <a class="text-nowrap" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=Remove&MessageIDs[]=<TMPL_VAR NAME='MessageID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='Text' ESCAPE='js'>', this); return false;"><TMPL_VAR NAME='LNG_Remove'></a>
+                <br>
+                <a class="text-nowrap" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=RemoveOnWeek&UserID[]=<TMPL_VAR NAME='UserID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='UserName' ESCAPE='js'>', this, '10Days'); return false;"><TMPL_VAR NAME='LNG_RemoveWeek'></a>
+            </td>
+            </tr>
+            <tr class="answer-block" style="display: none">
+                <td colspan="10">
+                    <form class="answer-form left15" action="<TMPL_VAR NAME='MODULE_PATH' />ajax.php">
+                        <textarea name="Text" rows="10" style="width: 100%;"><TMPL_IF NAME="UserID"><TMPL_VAR NAME='UserName' /><TMPL_ELSE/><TMPL_VAR NAME="AnonUserName"></TMPL_IF>, </textarea>
+                        <br>
+                            <div class="col-md-6 no-padding">
+                                <TMPL_UNLESS NAME="WithoutAuthor">
+                                    <TMPL_IF NAME="Type" OP="==" VALUE="article">
+                                        <div class="form-group">
+                                            <label><TMPL_VAR NAME="LNG_Author">: </label>
+                                            <select class="form-control" name="AuthorID">
+                                                <TMPL_LOOP NAME='AuthorList'>
+                                                    <option value="<TMPL_VAR NAME='AuthorID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+                                                </TMPL_LOOP>
+                                            </select>
+                                        </div>
+                                    </TMPL_IF>
+                                </TMPL_UNLESS>
+                                <input type="submit" class="btn btn-success" placeholder="Отправить ответ" value="Отправить ответ">
+                            </div>
+                        <input type="hidden" name="ParentID" value="<TMPL_VAR NAME='MessageID'>">
+                        <input type="hidden" name="Type" value="<TMPL_VAR NAME='Type'>">
+                        <input type="hidden" name="AttachID" value="<TMPL_VAR NAME='AttachID'>">
+                        <input type="hidden" name="Action" value="addQuestionMessage">
+                    </form>
+                </td>
+            </tr>
+            <TMPL_LOOP NAME='ChildList'>
+                <tr style="background-color: #eee;display: none;" data-parentid="<TMPL_VAR NAME='ParentID'>">
+                    <td><TMPL_VAR NAME='Created' FORMAT='datetime'></td>
+                    <td class="text-nowrap">&nbsp;</td>
+                    <td class="text-nowrap">&nbsp;</td>
+                    <td class="text-nowrap">
+                        <a href="<TMPL_VAR NAME='UserModuleURL'>&UserID=<TMPL_VAR NAME='UserID'>" class="<TMPL_IF NAME='CommentsStatus' OP='==' VALUE='N'>text-muted</TMPL_VAR>" target="_blank">
+                            <TMPL_VAR NAME='UserName' />
+                        </a>
+
+                        <br>
+
+                        <TMPL_IF NAME="AuthorID">
+                            Автор - <TMPL_VAR NAME="AuthorTitle">
+                        </TMPL_IF>
+                    </td>
+                    <TMPL_UNLESS NAME="WithoutCommentStatus">
+                        <td class="text-nowrap">
+                            <a
+                                    href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=SwitchCommentStatus&UserID=<TMPL_VAR NAME='UserID'>"
+                                    class="<TMPL_IF NAME='CommentsStatus' OP='==' VALUE='N'>text-muted</TMPL_VAR>"
+                            >
+                                <i class="fa fa-comments" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                    </TMPL_UNLESS>
+                    <td class="">
+                        <a href="#" class="answer-btn" title="Ответить">
+                            <TMPL_VAR NAME='Text' />
+                        </a>
+                    </td>
+                    <td class="text-nowrap">&nbsp;</td>
+                    <td class="">
+                        <a class="text-nowrap" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=Remove&MessageIDs[]=<TMPL_VAR NAME='MessageID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='Text' ESCAPE='js'>', this); return false;"><TMPL_VAR NAME='LNG_Remove'></a>
+                        <br>
+                        <a class="text-nowrap" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=RemoveOnWeek&UserID[]=<TMPL_VAR NAME='UserID'>" onclick="ConfirmRemove('<TMPL_VAR NAME='UserName' ESCAPE='js'>', this, '10Days'); return false;"><TMPL_VAR NAME='LNG_RemoveWeek'></a>
+                    </td>
+                </tr>
+                <tr class="answer-block" style="display: none">
+                    <td colspan="10">
+                        <form class="answer-form left15" action="<TMPL_VAR NAME='MODULE_PATH' />ajax.php">
+                            <textarea name="Text" rows="10" style="width: 100%;"><TMPL_IF NAME="UserID"><TMPL_VAR NAME='UserName' /><TMPL_ELSE/><TMPL_VAR NAME="AnonUserName"></TMPL_IF>, </textarea>
+                            <br>
+                                <div class="col-md-6 no-padding">
+                                    <TMPL_UNLESS NAME="WithoutAuthor">
+                                        <TMPL_IF NAME="QuestionMessageList.Type" OP="==" VALUE="article">
+                                            <div class="form-group">
+                                                <label><TMPL_VAR NAME="LNG_Author">: </label>
+                                                <select class="form-control" name="AuthorID">
+                                                    <TMPL_LOOP NAME='AuthorList'>
+                                                        <option value="<TMPL_VAR NAME='AuthorID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+                                                    </TMPL_LOOP>
+                                                </select>
+                                            </div>
+                                        </TMPL_IF>
+                                    </TMPL_UNLESS>
+
+                                <input type="submit" class="btn btn-success" placeholder="Отправить ответ" value="Отправить ответ">
+                            </div>
+
+                            <input type="hidden" name="ParentID" value="<TMPL_VAR NAME='ParentID'>">
+                            <input type="hidden" name="Type" value="<TMPL_VAR NAME='QuestionMessageList.Type'>">
+                            <input type="hidden" name="AttachID" value="<TMPL_VAR NAME='QuestionMessageList.AttachID'>">
+                            <input type="hidden" name="Action" value="addQuestionMessage">
+                        </form>
+                    </td>
+                </tr>
+            </TMPL_LOOP>
+            </TMPL_LOOP>
+            </tbody>
+            </table>
+
+            <div class="clearfix"></div>
+            <TMPL_ELSE>
+                <TMPL_VAR NAME='LNG_EmptyList' />
+                </TMPL_IF>
+
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.answer-btn').click(function(event){
+            event.preventDefault();
+            let row = $(this).closest('tr');
+            row.next('.answer-block').fadeToggle();
+        });
+
+        //send answer form
+        $('.answer-form').submit(function(event){
+            event.preventDefault();
+            let form = $(this);
+            let btn = form.find('[type=submit]');
+            btn.prop('disabled', true);
+            AjaxRequester.send(
+                form.attr('action'),
+                form.serialize(),
+                function (response) {
+                    if (response && response.status && response.status === 'success') {
+                        location.reload();
+                    }
+                    else if(response && response.status && response.status === 'error'){
+                        alert(response.error_list);
+                        btn.prop('disabled', false);
+                    }
+                },
+                function (response) {
+                    CreateMessage(GetTranslation('send-question-answer'), 'error')
+                },
+            )
+        });
+
+        $('.showchild').click(function(){
+            var childRows = $('tr[data-parentid=' + $(this).attr('data-messageid') + ']');
+            if(childRows.is(":visible")){
+                childRows.hide();
+            }
+            else {
+                childRows.show();
+            }
+            return false;
+        });
+
+        let noneAnswerInput = $('[name="NoneAnswer"]');
+        let coloredInput = $('[name="Colored"]').closest('.form-group');
+
+        if (noneAnswerInput.prop('checked')){
+            coloredInput.show();
+        }
+        noneAnswerInput.click(function (event) {
+            if (this.checked) {
+                coloredInput.slideDown();
+            }
+            else{
+                coloredInput.slideUp();
+            }
+        })
+
+    });
+    function ConfirmRemove(text, a, type = null)
+    {
+        if (type == '10Days') {
+            var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove10Days' ESCAPE='js'>';
+        }
+        else{
+            var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove' ESCAPE='js'>';
+        }
+
+        msg = msg.replace(/%Text%/g, text);
+        ModalConfirm(msg, function(){
+            window.location.href = $(a).attr('href');
+        });
+    }
+    function InitLinkedObjects(controlID)
+    {
+        $( "#" + controlID ).autocomplete({
+            classes: {
+                "ui-autocomplete": "highlight"
+            },
+            minLength: 3,
+            source: function(request, response) {
+                $.ajax({
+                    url: "<TMPL_VAR NAME='PROJECT_PATH' />module/data/ajax.php",
+                    type: "post",
+                    data: {"Action":controlID, "term":request.term},
+                    dataType: 'json',
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            },
+            select: function( event, ui ) {
+                if (ui.item) {
+                    event.preventDefault();
+                    let block = $("#" + controlID).parent();
+                    let input = block.find('[name="AttachID"]');
+                    if (input.length) {
+                        input.val(ui.item.value);
+                    }
+                    else{
+                        block.append('<input type="hidden" name="AttachID" value="' + ui.item.value + '">');
+                    }
+                    //$("#" + controlID).attr('data-value', ui.item.value);
+                }
+            },
+            focus: function( event, ui ) {
+                event.preventDefault();
+                $(this).val(ui.item.label);
+            }
+        });
+    }
+    InitLinkedObjects('linked-university');
+</script>

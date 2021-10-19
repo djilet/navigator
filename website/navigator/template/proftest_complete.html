@@ -1,0 +1,49 @@
+<div class="content-aside marathon">
+	<div class="container">
+		<ol class="marathon breadcrumb">
+			<li>
+				<a href="<TMPL_VAR NAME='PROJECT_PATH'>">Главная</a>
+			</li>
+			<li class="active">
+				<TMPL_VAR NAME='PageTitle'>			
+			</li>
+		</ol>
+		<div class="row">
+			<div class="marathon-block max-width quiz-block">
+				<div class="quiz">
+					<h2 class="text-center">Спасибо!</h2>
+
+					<div class="content">
+						<TMPL_VAR NAME='LNG_TestComplete' ESCAPE='none'>
+					</div>
+
+					<div class="navigation">
+						<div class="left-col for-list">
+							<a href="#" class="btn black proftest-reset-btn">Пройти заново</a>
+						</div>
+						<div class="right-col for-list">
+							<a href="https://vk.com/share.php?url=https://propostuplenie.ru<TMPL_VAR NAME='BaseURL'>&title=<TMPL_VAR NAME='Title'>" id="next-answer-btn" class="btn black" target="_blank">Поделиться с друзьями</a>
+						</div>
+					</div>
+					<br>
+					<a href="<TMPL_VAR NAME='PROJECT_PATH'>" class="sub-title blue-text prev icon">Вернуться на главную</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal-proftest-reset" tabindex="-1" role="dialog">
+	<div class="modal-dialog role="document" style="max-width:470px;margin:0 auto;padding-top:15%;">
+    	<div class="modal-content">
+        	<div class="modal-body">
+        		<div class="message">Вы уверены? Тест придётся пройти заново, а все данные будут стёрты</div>
+        		<div>
+        			<a href="<TMPL_VAR NAME='BaseURL'>?Start=1&Action=reset" class="main-btn proftest-reset-dialog-reset">Продолжить</a>
+        			<a href="#" class="main-btn proftest-reset-dialog-close">Отмена</a>
+        		</div>
+            </div>
+        </div>
+    </div>
+</div>
+

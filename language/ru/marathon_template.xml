@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<user_list.html>
+			<UserFIO>ФИО</UserFIO>
+			<Email>E-mail</Email>
+			<Phone>Телефон</Phone>
+			<UserWho>Кто я?</UserWho>
+				<UserWhoParent>Родитель</UserWhoParent>
+				<UserWhoChild>Ученик</UserWhoChild>
+   				<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<City>Город</City>
+			<Created>Дата регистрации</Created>
+			<UTM>UTM</UTM>
+			<Onboarding>Онбординг</Onboarding>
+			<Stage>Этап обучения</Stage>
+			<MAP>Карта</MAP>
+		</user_list.html>
+		<user_info.html>
+			<FieldsetPersonal>Персональная информация</FieldsetPersonal>
+			<UserFIO>ФИО</UserFIO>
+			<Email>E-mail</Email>
+			<Phone>Телефон</Phone>
+			<UserWho>Кто я?</UserWho>
+				<UserWhoParent>Родитель</UserWhoParent>
+				<UserWhoChild>Ученик</UserWhoChild>
+   				<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+		</user_info.html>
+	</admin>
+</Root>

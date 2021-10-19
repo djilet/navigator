@@ -1,0 +1,22 @@
+<div class="col-md-12">
+    <section class="box">
+        <div class="content-body">
+        	<TMPL_IF NAME='PageList'>
+                <table class="table" id="listing">
+                    <thead>
+                    <tr>
+                        <th class="text-nowrap">Варианты тестов</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <TMPL_LOOP NAME='PageList'>
+                        <tr>
+                            <td class="text-nowrap"><a href="<TMPL_VAR NAME='BaseURL' />&PageID=<TMPL_VAR NAME='PageID' />"><TMPL_VAr NAME='PageTitle'></a></td>
+                        </tr>
+                    </TMPL_LOOP>
+                    </tbody>
+                </table>            
+            </TMPL_IF>
+        </div>
+    </section>
+</div>

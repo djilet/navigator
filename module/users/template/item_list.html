@@ -1,0 +1,147 @@
+<div class="col-md-12">
+    <section class="box">
+        <div class="content-body">
+            <div class="col-md-6">
+                <form action="<TMPL_VAR NAME='BaseURL' />" id="user-filter-form">
+                    <div class="col-md-8 no-padding">
+                        <input type="text" name="Filter[email]" placeholder="Введите Email" value="<TMPL_IF NAME='FilterEmail'><TMPL_VAR NAME='FilterEmail'></TMPL_IF>" class="form-control">
+                    </div>              
+                    <div class="col-md-4 no-padding">
+                        <a href="<TMPL_VAR NAME='BaseURL' />" id="user-filter-submit" class="btn btn-success">Найти</a>
+                        <TMPL_IF NAME='Filter'>
+                            <a href="<TMPL_VAR NAME='BaseURL' />" class="btn btn-success">Очистить</a>
+                        </TMPL_IF>
+                    </div> 
+                </form>             
+            </div>
+			<div class="col-md-2 no-padding">
+				<form action="" id="item-list" method="post">
+					<input type="hidden" name="Do" value="ReportCSV" />
+					<input type="submit" class="btn btn-success btn-icon right15" value="<TMPL_VAR NAME='LNG_ReportSubmit'>" />
+					<div class="clearfix"></div>
+				</form>
+			</div>
+            <div class="col-md-4 no-padding form-group">
+                <TMPL_IF NAME='ItemList'>
+                    <div class="pull-left">
+                        <TMPL_VAR NAME='ListInfo'>
+                    </div>
+                </TMPL_IF>
+                <ul class="pagination pagination pull-right">
+                    <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+
+            <TMPL_IF NAME='ItemList'>
+                <form method="post" id="item-list">
+                    <table class="table" id="listing">
+                        <thead>
+                        <tr>
+                            <th width="25"></th>
+                            <th class="text-nowrap"><TMPL_VAR NAME="LNG_Created" /></th>
+                            <th><TMPL_VAR NAME="LNG_UserFIO" /></th>
+                            <th><TMPL_VAR NAME="LNG_Phone" /></th>
+                            <th><TMPL_VAR NAME="LNG_Email" /></th>
+                            <th><TMPL_VAR NAME='LNG_UserWho'></th>
+							<th><TMPL_VAR NAME='LNG_ClassNumber'></th>
+                            <th><TMPL_VAR NAME='LNG_City'></th>
+                            <th width="25">&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <TMPL_LOOP NAME='ItemList'>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="UserIDs[]" value="<TMPL_VAR NAME='UserID' />" class="icheck-minimal-green">
+                                </td>
+                                <td><TMPL_VAR NAME='Created' FORMAT='datetime'></td>
+                                <td>
+                                    <a href="<TMPL_VAR NAME='BaseURL' />&UserID=<TMPL_VAR NAME='UserID' />">
+                                        <TMPL_VAR NAME='UserName' />
+                                    </a>
+                                </td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='UserPhone' /></td>
+                                <td><TMPL_VAR NAME='UserEmail' /></td>
+                                <td>
+									<TMPL_IF NAME='UserWho' VALUE='parent'>
+										<TMPL_VAR NAME='LNG_UserWhoParent'>
+									<TMPL_ELSEIF NAME='UserWho' VALUE='child'>
+										<TMPL_VAR NAME='LNG_UserWhoChild'>
+									<TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+										<TMPL_VAR NAME='LNG_UserWhoStudent'>
+									</TMPL_IF>
+								</td>
+								<td><TMPL_VAR NAME='ClassNumber'></td>
+								<td><TMPL_VAR NAME='City'></td>
+                                <td>
+                                    <a href="<TMPL_VAR NAME='BaseURL' />&UserIDs[]=<TMPL_VAR NAME='UserID' />&Do=Remove" class="fa fa-remove" onclick="return ConfirmRemove('<TMPL_VAR NAME='UserName' />', $(this))"></a>
+                                </td>
+                            </tr>
+                        </TMPL_LOOP>
+                        </tbody>
+                    </table>
+
+                    <TMPL_IF NAME='ItemList'>
+                        <div class="col-md-6 no-padding form-inline">
+                            <a href="<TMPL_VAR NAME='BaseUrl' />&Do=Remove" onclick="return MultipleRemove($('#item-list')[0], 'UserIDs[]');" class="btn btn-danger btn-icon right15">
+                                <i class="fa fa-remove"></i><TMPL_VAR NAME='LNG_RemoveMultiple'>
+                            </a>
+                        </div>
+                    </TMPL_IF>
+                    <div class="clearfix"></div>
+                    <input type="hidden" name="Page" value="<TMPL_VAR NAME='Page'>" />
+                    <input type="hidden" name="Do" value="" />
+                </form>
+
+                <TMPL_ELSE>
+                    <TMPL_VAR NAME='LNG_EmptyList' />
+            </TMPL_IF>
+
+
+        </div>
+    </section>
+</div>
+<script>
+    $('#user-filter-submit').click(function(event) {
+        event.preventDefault();
+        var form = $('#user-filter-form');
+
+        window.location.href = form.attr('action') + '&' + form.find('input').attr('name') + '=' + form.find('input').val();
+    });
+    function MultipleRemove(form, elmName)
+    {
+        var checked = 0;
+        for (var i = 0; i < form.elements.length; i++)
+        {
+            if (form.elements[i].name == elmName && form.elements[i].type == "checkbox" && form.elements[i].checked)
+            {
+                checked++;
+            }
+        }
+
+        if (checked == 0)
+        {
+            alert('<TMPL_VAR NAME='LNG_NoSelection' ESCAPE='js'>');
+        }
+        else
+        {
+            ModalConfirm('<TMPL_VAR NAME='LNG_ConfirmRemoveMultiple' ESCAPE='js'>', function(){
+            form.elements['Do'].value = 'Remove';
+            form.submit();
+        });
+        }
+        return false;
+    }
+    function ConfirmRemove(title, a)
+    {
+        var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove' ESCAPE='js'>';
+        msg = msg.replace(/%Title%/g, title);
+        ModalConfirm(msg, function(){
+            window.location.href = $(a).attr('href');
+        });
+        
+        return false;
+    }
+</script>

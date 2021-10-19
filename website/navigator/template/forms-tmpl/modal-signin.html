@@ -1,0 +1,102 @@
+<div class="modal fade sing-in-form" id="modal-signin" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <a href="#" class="modal-close-btn"></a>
+        <div class="modal-dialog-wrap">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <TMPL_IF NAME='InsideModule' VALUE='basetest'>
+                            <div class="col-md-7">
+                                <div class="modal-information">
+                                    <TMPL_INCLUDE NAME="forms-tmpl/interactive-logo.html"/>
+                                    <TMPL_INCLUDE NAME="forms-tmpl/sing-in-text.html"/>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                        <TMPL_ELSE>
+                            <div class="col-md-5 col-center">
+                        </TMPL_IF>
+                            <!-- <div id="carousel-modal3" class="carousel slide carousel-modal" data-ride="carousel">
+
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-modal3" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-modal3" data-slide-to="1"></li>
+                                    <li data-target="#carousel-modal3" data-slide-to="2"></li>
+                                    <li data-target="#carousel-modal3" data-slide-to="3"></li>
+                                </ol>
+
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide1" ESCAPE="none" /></div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide2" ESCAPE="none" /></div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide3" ESCAPE="none" /></div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide4" ESCAPE="none" /></div>
+                                    </div>
+                                </div>
+
+                                <a class="left carousel-control" href="#carousel-modal3" role="button" data-slide="prev">
+                                    <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/prev.svg" alt=" ">
+                                    <span class="sr-only">Предыдущий</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-modal3" role="button" data-slide="next">
+                                    <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/next.svg" alt=" ">
+                                    <span class="sr-only">Следующий</span>
+                                </a>
+                            </div> --><!-- End carousel -->
+                            <div class="form sign-in">
+                                <div class="title color-gray extra-bold text-uppercase">
+                                    вход на сайт
+                                </div>
+
+                                <div class="modal__social">
+                                    <p class="semi-bold">Войти через соцсети</p>
+                                    <ul>
+                                        <li>
+                                            <a class="modal__social-vk" href="<TMPL_VAR NAME='PROJECT_PATH' />profile/auth/vk/?redirect_url=<TMPL_VAR NAME='FullPageURL'>">
+                                                <img class="image" src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/vk.svg" alt="">
+                                                <span class="title">вконтакте</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="modal__social-fb" href="<TMPL_VAR NAME='PROJECT_PATH' />profile/auth/fb/?redirect_url=<TMPL_VAR NAME='FullPageURL'>">
+                                                <img class="image" src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/fb.svg" alt="">
+                                                <span class="title">facebook</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <p class="semi-bold">...или перейдите по ссылке в письме</p>
+                                <form action="<TMPL_VAR NAME='PROJECT_PATH' />module/users/ajax_public.php" method="post" id="signin-form">
+                                    <div class="form-group">
+                                        <input type="text" name="Email" required class="form-control" id="formEmail3">
+                                        <label for="formEmail3">Электропочта</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="Pass" required class="form-control" id="formPassword3" autocomplete="off">
+                                        <label for="formPassword3">Пароль</label>
+                                    </div>
+                                    <span class="btn main extra-bold submit-btn">Войти</span>
+                                    <input type="hidden" name="Action" value="Auth">
+                                    <!-- <input type="hidden" name="Action" value="AuthByEmail"> -->
+                                    <input type="hidden" name="RedirectUrl" value="<TMPL_VAR NAME='CanonicalURL'>">
+                                </form>
+
+                                <div class="navigate">
+                                    <a href="" class="semi-bold link-btn icon arrow-right" data-dismiss="modal" data-toggle="modal" data-target="#modal-restore">Забыли пароль?</a>
+                                    <a class="semi-bold link-btn icon arrow-right" data-dismiss="modal" data-toggle="modal" data-target="#modal-checkin" href="#" data-redirect-default="<TMPL_VAR NAME='FullPageURL'>">Зарегистрироваться</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

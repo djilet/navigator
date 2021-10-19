@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>А/Б Тест</module-title>
+	<module-admin-title>А/Б Тест</module-admin-title>
+
+	<!-- sections -->
+	<module-statistic-title>Статистика</module-statistic-title>
+	<test-list>Тесты</test-list>
+</Root>

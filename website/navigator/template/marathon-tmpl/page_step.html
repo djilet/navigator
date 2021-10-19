@@ -1,0 +1,112 @@
+<TMPL_UNLESS NAME='Ajax'>
+<div class="content-aside marathon">
+	<div class="container">
+		<div class="row">
+</TMPL_UNLESS>
+			<div class="marathon-block max-width quiz step-block">
+				<a href="#" class="close-step-btn close-icon-bg modal-top" <TMPL_IF NAME='MoreType' OP='==' VALUE='NoSave'>id="save-answer-btn"</TMPL_IF>></a>
+
+			<TMPL_IF NAME='Content'>
+				<div class="title">
+					<h2>
+						<TMPL_IF NAME='Title'>
+							<TMPL_VAR NAME='Title'>
+						<TMPL_ELSE>
+							<TMPL_VAR NAME='Name'>
+						</TMPL_IF>
+					</h2>
+					<span class="icon">
+						<img src="<TMPL_VAR NAME='ImagePath'>" alt="">
+					</span>
+				</div>
+
+				<TMPL_IF NAME='SubTitle'>
+					<h3><TMPL_VAR NAME='SubTitle'></h3>
+				</TMPL_IF>
+
+				<div class="description">
+					<TMPL_VAR NAME='Description'>
+				</div>
+
+				<?php //print_r($this) ?>
+				<div class="content">
+					<form action="" method="POST" class="answer-form ajax">
+						<TMPL_IF  NAME='Type' OP='==' VALUE='Checkbox'>
+							<TMPL_INCLUDE NAME='/marathon-tmpl/checkbox_list.html'>
+						</TMPL_IF>
+						<TMPL_IF  NAME='Type' OP='==' VALUE='SearchList'>
+							<TMPL_INCLUDE NAME='/marathon-tmpl/search_list.html'>
+						</TMPL_IF>
+						<TMPL_IF  NAME='Type' OP='==' VALUE='MultipleSearch'>
+							<TMPL_INCLUDE NAME='/marathon-tmpl/multiple_list_search.html'>
+						</TMPL_IF>
+						<TMPL_IF  NAME='Type' OP='==' VALUE='UniversityList'>
+							<TMPL_IF NAME='MaxCountLoop'>
+								<TMPL_LOOP NAME='MaxCountLoop'>
+									<div class="awsner-block counter university">
+										<div class="marathon-droplist select" data-id="<TMPL_VAR NAME='UniversityID'>">
+											<div class="search-wrap">
+												<input type="text" class="droplist-search" placeholder="Показать">
+											</div>
+											<TMPL_INCLUDE NAME='/marathon-tmpl/university_list.html'>
+										</div>
+									</div>
+								</TMPL_LOOP>
+							<TMPL_ELSE>
+								<TMPL_INCLUDE NAME='/marathon-tmpl/university_list.html'>
+								<TMPL_INCLUDE NAME='/marathon-tmpl/university_list.html'>
+								<TMPL_INCLUDE NAME='/marathon-tmpl/university_list.html'>
+								<TMPL_INCLUDE NAME='/marathon-tmpl/university_list.html'>
+								<TMPL_INCLUDE NAME='/marathon-tmpl/university_list.html'>
+							</TMPL_IF>
+						</TMPL_IF>
+						<input type="hidden" name="Map" value="<TMPL_VAR NAME='StepID'>">
+
+						<TMPL_IF NAME='Redirect'>
+							<input type="hidden" name="RedirectPath" value="<TMPL_VAR NAME='Redirect'>">
+						</TMPL_IF>
+					<form>
+				</div>
+
+				<div class="navigation">
+					<TMPL_IF NAME='MoreType' OP='!=' VALUE='NoSave'>
+						<div class="left-col for-list">
+							<a href="#" id="save-answer-btn" class="btn black">СОХРАНИТЬ ИНФОРМАЦИЮ</a>
+						</div>
+						<div class="right-col">
+							<a href="?" class="close-step-btn sub-title blue-text prev">Закрыть без сохранения</a>
+						</div>
+					</TMPL_ELSE>
+						<div class="left-col for-list">
+
+						</div>
+						<div class="right-col">
+							<a href="?" id="save-answer-btn" class="sub-title blue-text prev">Закрыть без сохранения</a>
+						</div>
+					</TMPL_IF>
+				</div>
+			<TMPL_ELSE>
+				<div class="title text-center">
+					<h3>
+						<TMPL_IF NAME='StepID' OP='==' VALUE='4'>
+							<TMPL_VAR NAME='LNG_ProfessionEmpty'>
+						</TMPL_IF>
+						<br>
+
+						<TMPL_VAR NAME='LNG_EmptyData'>
+					</h3>
+				</div>
+				<div class="navigation">
+					<a href="#" data-redirect="<TMPL_VAR NAME='Redirect'>" data-step-id="1" id="map-link-btn" class="btn black half">
+						Заполнить карту
+					</a>
+				</div>
+			</TMPL_IF>
+
+			</div>
+
+<TMPL_UNLESS NAME='Ajax'>
+		</div>
+	</div>
+</div>
+</TMPL_UNLESS>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<page_list.html>
+			<AllOrders>Полный список</AllOrders>
+			<Page>Страница заявки</Page>
+		</page_list.html>
+		<index.html>
+			<ConfirmRemove>Удалить "%Title%"?</ConfirmRemove>
+
+			<!-- User status -->
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+
+			<!-- Test status -->
+			<TestReset>Сброшен</TestReset>
+			<TestActive>Текущий</TestActive>
+		</index.html>
+	</admin>
+</Root>

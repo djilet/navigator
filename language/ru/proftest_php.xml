@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Профтест</module-title>
+	<module-admin-title>Профтесты</module-admin-title>
+	<task-empty-answer-error>Необходимо выбрать варианты ответа</task-empty-answer-error>
+
+	<!-- sections -->
+	<module-item-title>Тест</module-item-title>
+	<module-task-title>Вопросы</module-task-title>
+	<module-category-title>Категории</module-category-title>
+	<module-users-title>Результаты</module-users-title>
+	
+	<!-- box title -->
+	<add-answer>Добавить ответ</add-answer>
+	<edit-answer>Редактировать ответ</edit-answer>
+
+	<add-task>Добавить вопрос</add-task>
+	<edit-task>Редактировать вопрос</edit-task>
+
+	<add-category>Добавить категорию</add-category>
+	<edit-category>Редактировать категорию</edit-category>
+
+	<answer-list>Список ответов</answer-list>
+	<task-list>Список вопросов</task-list>
+	<category-list>Список категорий</category-list>
+	<user-list>Список пользователей</user-list>
+	<user-result-list>Пройденные тесты пользователя</user-result-list>
+
+	<!-- errors -->
+	<empty-text>Заполните описание</empty-text>
+	<empty-prefix>Заполните префикс</empty-prefix>
+	<sort-order-not-numeric>Позиция должна быть числом</sort-order-not-numeric>
+	<empty-category>Выберите категорию</empty-category>
+	<empty-points>Заполните баллы</empty-points>
+	<empty-title>Заполните заголовок</empty-title>
+</Root>

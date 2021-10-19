@@ -1,0 +1,25 @@
+<div class="content-aside--2">
+	<div class="container cabinet">
+    	<div class="row">
+        	<div class="col-xs-12">
+	            <h1 class="header-section">Сброс пароля</h1>
+			</div>
+
+          	<div class="col-xs-12">
+            	<div class="content-main">
+           		    <div class="cabinet__form">
+	                   	<form method="post" action="">
+	                     		<div class="form-group">
+	                       		<input type="password" required class="form-control" name="NewPassword" id="formPasswordRepeat">
+	                       		<label for="formPasswordRepeat">Новый пароль</label>
+	                     		</div>
+	                     		<input type="hidden" name="Action" value="restorepassword">
+	                     		<input type="hidden" name="Code" value="<TMPL_VAR NAME='Code'>">
+	                     		<input type="submit" class="main-btn" value="Изменить">
+	                   	</form>
+                 	</div>
+		        </div><!-- End content-main -->
+        	</div><!-- End col-xs-12 -->
+        </div>
+	</div>
+</div>

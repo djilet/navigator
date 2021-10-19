@@ -1,0 +1,175 @@
+<div class="content-aside marathon">
+	<div class="container">
+		<span class="swipe-itmes">
+			<div class="row">
+				<div class="border-wrap blue-style nopadding stages-block">
+					<div class="col-sm-4 col-xs-12">
+						<div class="marathon-block material left">
+							<div class="title">
+								<h3>Этап №<TMPL_VAR NAME='StageNumber'></h3>
+								<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?ShowProgram=1" class="sub-title">Вся программа</a>
+							</div>
+							<ul class="stages-list vertical">
+								<TMPL_LOOP NAME='PartList'>
+									<TMPL_IF NAME='Status' VALUE='available'>
+									<li class="available <TMPL_IF NAME='Current'>current</TMPL_IF>"><a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?CustomPartID=<TMPL_VAR NAME='PartID'>"><span></span><p><TMPL_VAR NAME='Title'></p></a></li>
+									<TMPL_ELSEIF NAME='Status' VALUE='complete'>
+									<li class="<TMPL_IF NAME='Current'>current</TMPL_IF>"><a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?CustomPartID=<TMPL_VAR NAME='PartID'>"><span></span><p><TMPL_VAR NAME='Title'></p></a></li>
+									<TMPL_ELSE>
+									<li class="disabled sub-title gray-text"><div class="stages-list-div"><span></span><p><TMPL_VAR NAME='Title'></p></div></li>
+									</TMPL_IF>
+								</TMPL_LOOP>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-8 col-xs-12">
+						<div class="info">
+							<div class="title">
+								<h3><TMPL_VAR NAME='PartTitle'></h3>
+								<TMPL_IF NAME='PartXP'>
+								<!-- div class="xp">
+									<span class="<TMPL_IF NAME='PartComplete'>blue<TMPL_ELSE>blue-border</TMPL_IF>">+<TMPL_VAR NAME='PartXP'>XP</span>
+								</div-->
+								</TMPL_IF>
+							</div>
+
+							<TMPL_IF NAME='PartType' VALUE='webinar'>
+							<p><TMPL_VAR NAME='PartDescription' ESCAPE='none'></p>
+							<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?PartID=<TMPL_VAR NAME='PartID'>" class="btn">Посмотреть вебинар</a>
+							<TMPL_ELSEIF NAME='PartType' VALUE='video'>
+							<p><TMPL_VAR NAME='PartDescription' ESCAPE='none'></p>
+							<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?PartID=<TMPL_VAR NAME='PartID'>" class="btn">Посмотреть видео</a>
+							<TMPL_ELSEIF NAME='PartType' VALUE='tasks'>
+							<p class="sub-title"><TMPL_VAR NAME='TaskCountText'></p>
+							<p><TMPL_VAR NAME='PartDescription' ESCAPE='none'></p>
+							<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?PartID=<TMPL_VAR NAME='PartID'>" class="btn">Выполнить задания</a>
+							<TMPL_ELSEIF NAME='PartType' VALUE='map'>
+							<p><TMPL_VAR NAME='PartDescription' ESCAPE='none'></p>
+							<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?Map=<TMPL_VAR NAME='StepID'>" data-step-id="<TMPL_VAR NAME='StepID'>" id="map-link-btn" class="btn">Заполнить карту</a>
+							</TMPL_IF>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- div class="row">
+				<div class="marathon-block material bar-block">
+					<div class="col-sm-3 col-xs-12">
+					<h3>Ваш результат <span><TMPL_VAR NAME='UserXP'>XP</span></h3>
+					</div>
+
+					<div class="col-sm-6 col-xs-12">
+						<div class="bar">
+							<span class="status" style="width: <TMPL_VAR NAME='BarStatus'>%"></span>
+						</div>
+					</div>
+
+					<div class="col-sm-3 col-xs-12">
+						<p class="sub-title gray-text">До открытия блока “<TMPL_VAR NAME='NextStepName'>” еще <TMPL_VAR NAME='NextStepNeedXP'>XP</p>
+					</div>
+				</div>
+			</div-->
+		</span>
+
+		<div class="row">
+			<div class="marathon-block float graduate-map-block max-width">
+				<div class="col-xs-12">
+					<div class="title">
+						<h2>Карта выпускника</h2>
+						<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>?DownloadMap=1" target="_blank" id="download-map-btn" class="btn blue">Скачать карту</a>
+					</div>
+
+					<div class="graduate-map not-decor" data-ajax-action="<TMPL_VAR NAME='PROJECT_PATH' />module/marathon/ajax_public.php">
+						<ul id="row-num-1" class="stages-list horizontal-big ajax">
+							<TMPL_LOOP NAME='Map'>
+                                <li id="<TMPL_VAR NAME='StepID'>" class="<TMPL_IF NAME='Status' VALUE='available'>active<TMPL_ELSEIF NAME='Status' VALUE='completed'>completed<TMPL_ELSE>disabled</TMPL_IF>">
+                                	<TMPL_IF NAME='Status'>
+                                    	<a href="?Map=<TMPL_VAR NAME='StepID'>" data-step-id="<TMPL_VAR NAME='StepID'>">
+	                                    	<span>
+	                                    		<img src="<TMPL_VAR NAME='ImagePath'>" alt="">
+	                                    	</span>
+	                                	</a>
+	                                    <div class="text">
+	                                    	<a href="?Map=<TMPL_VAR NAME='StepID'>" data-step-id="<TMPL_VAR NAME='StepID'>"><TMPL_VAR NAME='Name'></a>
+	                                    	<p class="xp">Этап №<TMPL_VAR NAME='StageNumber'></p>
+	                                    	<!-- p class="xp"><TMPL_VAR NAME='XP'> XP</p-->
+	                                    </div>
+                                	<TMPL_ELSE>
+                                		<span>
+                                    		<img src="<TMPL_VAR NAME='ImagePath'>" alt="">
+                                    	</span>
+	                                    <div class="text">
+	                                    	<TMPL_VAR NAME='Name'>
+	                                    	<p class="xp">Этап №<TMPL_VAR NAME='StageNumber'></p>
+	                                    	<!-- p class="xp"><TMPL_VAR NAME='XP'> XP</p-->
+	                                    </div>
+	                               </TMPL_IF>
+                                </li>
+							</TMPL_LOOP>
+						</ul>
+					</div>
+
+					<!-- <div class="graduate-map">
+						<div class="stages-row">
+							<ul class="stages-list horizontal-big">
+								<li><span></span><p>Пройти тест на лидерские качества и понять</p></li>
+								<li><span></span><p>Выбрать свою профессию для себя и своих друзей</p></li>
+								<li class="active"><span></span><p>Напишите эссе на тему «Как я выбирал проффесиию»</p></li>
+								<li class="disabled sub-title gray-text"><span></span><p>Заполните блок «Профессии» в карте сайта</p></li>
+							</ul>
+						</div>
+						
+						<div class="stages-row">
+							<ul class="stages-list horizontal-big">
+								<li><span></span><p>Пройти тест на лидерские качества и понять</p></li>
+								<li><span></span><p>Выбрать свою профессию для себя и своих друзей</p></li>
+								<li class="active"><span></span><p>Напишите эссе на тему «Как я выбирал проффесиию»</p></li>
+								<li class="disabled sub-title gray-text"><span></span><p>Заполните блок «Профессии» в карте сайта</p></li>
+							</ul>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade <TMPL_IF NAME = 'CompleteMarathon'>complete-marathon-modal</TMPL_IF>" id="modal-data" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<div class="row">
+							<span class="col-xs-12">
+								<span class="content">
+									
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="modal fade" id="npbanner" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="npbanner-popup">
+						<i class="material-icons" onclick="$('#npbanner').modal('hide')">close</i>
+						<h2>Образовательная выставка</h2>
+						<h1>НАВИГАТОР ПОСТУПЛЕНИЯ</h1>
+						<div class="npbanner-rect-gradient">
+							<div class="npbanner-popup-baseText">
+								<p>Сильнейшие вузы России и мира</p>
+								<p>Профориентация и эксперты ЕГЭ</p>
+								<p>Семинары и мастер-классы</p>
+							</div>
+							<h3>15-30 сентября в 11 городах</h3>
+						</div>
+						<a href="https://propostuplenie.ru/exhibition/?utm_source=propostuplenie&utm_medium=banner&utm_campaign=popup">
+							ЗАПИШИСЬ
+						</a>
+					</div>
+				</div>
+			</div>
+		</div> -->
+
+	</div>
+</div>

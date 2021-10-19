@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-9">
+	<TMPL_LOOP NAME='ProfessionPointsList'>
+		<section class="box">
+		<header class="panel_header">
+	    	<h2 class="title pull-left">
+	    		<TMPL_VAR NAME='__ROWNUM__'> Место
+	    	</h2>
+	    </header>
+	    	<div class="content-body">
+		    	<div class="row">
+					<table class="table">
+					    <thead>
+					        <tr>
+					            <th>Названние</th>
+					            <th>Количество раз</th>
+					        </tr>
+					    </thead>
+					    <tbody>
+					    	<TMPL_LOOP NAME='Items'>
+					        	<tr>
+					        		<td>
+					        			<TMPL_VAR NAME='Title'>
+					        		</td>
+					        		<td>
+					        			<TMPL_VAR NAME='Count'>
+					                </td>
+					           </tr>
+							</TMPL_LOOP>
+					    </tbody>
+					</table>
+		    	</div>
+			</div>
+		</section>
+	</TMPL_LOOP>	
+	</div>
+</div>

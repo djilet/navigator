@@ -1,0 +1,106 @@
+	<div class="content-aside">
+        <div class="container page-registration">
+            <div class="row">
+            	<div class="col-xs-12">
+
+					<ol class="breadcrumb grey">
+						<TMPL_LOOP NAME='Navigation'>
+		          		<TMPL_UNLESS NAME='__LAST__'>
+		      			<li><a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME='Title' /></a></li>
+		          		</TMPL_UNLESS>
+		          		</TMPL_LOOP>
+		          		<li>Услуги</li>
+		          		<li class="active"><TMPL_VAR NAME="TitleH1" /></li>
+                    </ol>
+                    
+                    <h1 class="header-section"><TMPL_VAR NAME="TitleH1" /></h1>
+                </div>
+                <div class="col-xs-4 aside">
+                	<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN'>img/dotted.png">
+		            <section class=" aside__first">
+		                <div class="aside__header">Рекомендации по подаче документов</div>
+		                <p>Документы можно подать в 5 вузов, на 3 направления в каждом из них.</p>
+		                <p>Выбравь 15 направлений - вы увеличите свои шансы по поступлению.</p>
+		                <p>С нашей помощью вы можете подать документы только в вузы МОСКВЫ и САНКТ-ПЕТЕРБУРГА. Документы в вузы других регионов не будут доставлены!</p>
+		            </section>
+		        </div>
+                
+                <div class="col-xs-8">
+                    <div class="content-main inline">
+                        <form action="<TMPL_VAR NAME='PROJECT_PATH' />module/document/ajax_public.php" method="post" class="document-form" data-error="modal-order-error">
+                            <div class="wrap-block-registration">
+                                <div class="block-registration">
+                                    <div class="form-group">
+                                        <input type="text" name="Name" required class="form-control" id="formName" value="<TMPL_VAR NAME='Name' />">
+                                        <label for="formName">Фамилия Имя Отчество</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="Address" required class="form-control" value="<TMPL_VAR NAME='Address' />">
+                                        <label for="formName">Ваш адрес (регион, город, адрес)</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="Email" required class="form-control" id="formEmail" value="<TMPL_VAR NAME='Email' />">
+                                        <label for="formEmail">E-mail</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="Phone" required class="form-control form--phone" id="formPhone" value="<TMPL_VAR NAME='Phone' />">
+                                        <label for="formPhone">Телефон</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="Date" required class="form-control" value="<TMPL_VAR NAME='Date' />">
+                                        <label for="formName">Дата отправления</label>
+                                    </div>
+                                    <div class="form-group custom-select">
+                                        <select class="form-control time" name="Time">
+                                            <option value="10:00-16:00">10:00-16:00</option>
+                                            <option value="16:00-21:00">16:00-21:00</option>
+                                        </select>
+                                        <label>Время отправления</label>
+                                    </div>
+                                    <div class="form-group">
+                                    	<h4>Вузы, в которые везем документы</h4>
+                                    	<div id="university-list"></div>
+                                    	<p class="document-control">
+                                    		<a href="#" class="document-control-del">удалить</a>&nbsp;
+                                    		<a href="#" class="document-control-add">добавить</a>
+                                    	</p>	
+                                    </div>
+                                    <p class="service document-info">
+              							<span class="prefix">Стоимость услуги</span> <span class="pricediscount bottom document-price"></span>
+            						</p>
+                                </div>
+                            </div>
+                            <input type="hidden" name="Action" value="NewOrder"/>
+                            <input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID'>"/>
+                            <input type="hidden" name="RegionID" value="<TMPL_VAR NAME='RegionID'>"/>
+                            <input type="hidden" name="UniversityCount" value="<TMPL_VAR NAME='UniversityCount'>"/>
+                            <input class="main-btn" name="RegistrationSubmit" value="Перейти к оплате" type="submit">
+                        </form>
+                        <div class="registration__textbottom">Нажимая "Перейти к оплате", вы подтверждаете, что согласны с правилами работы сервиса</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-order-error" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	        	<div class="modal-body">
+	        		<div class="message"></div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+<script>
+    var documentPriceList = {};
+    <TMPL_LOOP NAME='PriceList'>
+    documentPriceList["<TMPL_VAR NAME='RegionID'>"] = {
+    	Price1: <TMPL_VAR NAME='Price1'>,
+    	Price2: <TMPL_VAR NAME='Price2'>,
+    	Price3: <TMPL_VAR NAME='Price3'>,
+    	Price4: <TMPL_VAR NAME='Price4'>,
+    	Price5: <TMPL_VAR NAME='Price5'>
+    }
+    </TMPL_LOOP>
+</script>
+    

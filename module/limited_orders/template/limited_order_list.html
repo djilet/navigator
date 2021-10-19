@@ -1,0 +1,80 @@
+<div class="col-md-12">
+    <section class="box">
+        <div class="content-body">
+
+            <div class="col-md-12 no-padding form-group">
+                <ul class="pagination pagination pull-right">
+                    <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+
+            <TMPL_IF NAME='OrderList'>
+
+                <form method="post" id="item-list">
+                    <table class="table" id="listing">
+                        <thead>
+                        <tr>
+                            <th class="text-nowrap"><TMPL_VAR NAME="LNG_Created" /></th>
+                            <th><TMPL_VAR NAME="LNG_FirstName" /></th>
+                            <th><TMPL_VAR NAME="LNG_LastName" /></th>
+                            <th><TMPL_VAR NAME="LNG_Phone" /></th>
+                            <TMPL_IF NAME='TemplateUserWho'>
+                                <th><TMPL_VAR NAME='LNG_UserWho'></th>
+                            </TMPL_IF>
+                            <TMPL_IF NAME='TemplateUserClassNumber'>
+                                <th><TMPL_VAR NAME='LNG_ClassNumber'></th>
+                            </TMPL_IF>
+                            <th><TMPL_VAR NAME='LNG_Country'></th>
+                            <th><TMPL_VAR NAME='LNG_City'></th>
+                            <th><TMPL_VAR NAME="LNG_ContactType" /></th>
+                            <th><TMPL_VAR NAME="LNG_ContactAdditional" /></th>
+                            <th><TMPL_VAR NAME="LNG_UTM" /></th>
+                            <th><TMPL_VAR NAME="LNG_DateTime" /></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <TMPL_LOOP NAME='OrderList'>
+                            <tr>
+                                <td><TMPL_VAR NAME='Created' FORMAT='datetime'></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='FirstName' /></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='LastName' /></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='Phone' /></td>
+                                <TMPL_IF NAME='TemplateUserWho'>
+                                    <td class="text-nowrap">
+                                        <TMPL_IF NAME='UserWho' VALUE='parent'>
+                                            <TMPL_VAR NAME='LNG_UserWhoParent'>
+                                        <TMPL_ELSEIF NAME='UserWho' VALUE='child'>
+                                            <TMPL_VAR NAME='LNG_UserWhoChild'>
+                                        <TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+                                            <TMPL_VAR NAME='LNG_UserWhoStudent'>
+                                        </TMPL_IF>
+								    </td>
+                                </TMPL_IF>
+                                <TMPL_IF NAME='TemplateUserClassNumber'>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='ClassNumber'></td>
+                                </TMPL_IF>
+                                <td class="text-nowrap"><TMPL_VAR NAME='Country'></td>
+								<td class="text-nowrap"><TMPL_VAR NAME='City'></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='ContactType' /></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='ContactAdditional' /></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='UTM' /></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='DateTime' /></td>
+                            </tr>
+                        </TMPL_LOOP>
+                        </tbody>
+                    </table>
+
+                    <div class="clearfix"></div>
+                    <input type="hidden" name="Page" value="<TMPL_VAR NAME='Page'>" />
+                </form>
+
+            <TMPL_ELSE>
+                <TMPL_VAR NAME='LNG_EmptyList' />
+            </TMPL_IF>
+
+
+        </div>
+    </section>
+</div>

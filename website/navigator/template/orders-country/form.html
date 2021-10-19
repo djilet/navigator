@@ -1,0 +1,109 @@
+<div class="page-products">
+	<div class="forum__header"<TMPL_IF NAME='MenuImage1Path'> style="background-image: url('<TMPL_VAR NAME='MenuImage1Path'>')"</TMPL_IF>>
+    	<div class="container">
+            <ol class="breadcrumb white">
+       			<TMPL_LOOP NAME='Navigation'>
+          		<TMPL_UNLESS NAME='__LAST__'>
+      			<li><a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME='Title' /></a></li>
+          		</TMPL_UNLESS>
+          		</TMPL_LOOP>
+      		</ol>
+            <div class="forum__header-content">
+            	<div class="forum__header-content_text">
+                	<div>
+                  		<h1 class="header-section"><TMPL_VAR NAME="TitleH1" /></h1>
+                  		<p><TMPL_VAR NAME="Description" /></p>
+                	</div>
+              	</div>
+              	<div class="forum__header-content_info inline">
+               		<div class="forum__header-content_info-header"><TMPL_VAR NAME='LNG_FormTitle'></div>
+               		<form action="<TMPL_VAR NAME='PROJECT_PATH' />module/orders/ajax_public.php"
+						  onsubmit="fbq('track', 'Lead', {content_name:'ik_<TMPL_VAR NAME='StaticPath'>'}); yaCounter47132955.reachGoal('cunsultation_button');"
+						  method="post" autocomplete="off" data-success="modal-order-success" data-error="modal-order-error">
+				  		<div class="form-group">
+				        	<input type="text" name="FirstName" required class="form-control" id="formName" value="">
+				           	<label for="formName"><TMPL_VAR NAME='LNG_FormFirstName'></label>
+				    	</div>
+				       	<div class="form-group">
+				        	<input type="text" name="LastName" required class="form-control" id="formLastName" value="">
+				           	<label for="formLastName"><TMPL_VAR NAME='LNG_FormLastName'></label>
+				    	</div>
+				       	<div class="form-group">
+				           <input type="text" name="Phone" required class="form-control form--phone" id="formPhone">
+				           <label for="formPhone"><TMPL_VAR NAME='LNG_FormPhone'></label>
+				       	</div>
+						<div class="form-group custom-select">
+							<select class="form-control form-multiselect" name="Country[]" multiple="multiple" data-placeholder="<TMPL_VAR NAME="LNG_FormCountry" />">
+								<TMPL_LOOP NAME='CountryList'>
+								<option value="<TMPL_VAR NAME='Title'>"><TMPL_VAR NAME='Title'></option>
+								</TMPL_LOOP>
+							</select>
+						</div>
+						<input type="submit" class="main-btn" value="<TMPL_VAR NAME='LNG_FormSubmit'>">
+				       	<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID'>">
+				       	<input type="hidden" name="Action" value="NewOrder">
+					</form>
+              	</div>
+			</div>
+
+
+		</div>
+        <div class="forum__header-color gradient-overlay"></div>
+	</div>
+
+    <TMPL_VAR NAME='Content' ESCAPE='none'>
+
+    <div class="page-products__bottom">
+    	<div class="container">
+        	<div class="page-products__bottom-form inline">
+        		<div class="page-products__bottom-header"><TMPL_VAR NAME='LNG_FormTitle'></div>
+                <form action="<TMPL_VAR NAME='PROJECT_PATH' />module/orders/ajax_public.php" method="post" autocomplete="off" data-success="modal-order-success" data-error="modal-order-error"
+					  onsubmit="fbq('track', 'Lead', {content_name:'ik_<TMPL_VAR NAME='StaticPath'>'}); yaCounter47132955.reachGoal('cunsultation_button');">
+			  		<div class="form-group">
+			        	<input type="text" name="FirstName" required class="form-control" id="formName" value="">
+			           	<label for="formName"><TMPL_VAR NAME='LNG_FormFirstName'></label>
+			    	</div>
+			       	<div class="form-group">
+			        	<input type="text" name="LastName" required class="form-control" id="formLastName" value="">
+			           	<label for="formLastName"><TMPL_VAR NAME='LNG_FormLastName'></label>
+			    	</div>
+			       	<div class="form-group">
+			           <input type="text" name="Phone" required class="form-control form--phone" id="formPhone">
+			           <label for="formPhone"><TMPL_VAR NAME='LNG_FormPhone'></label>
+			       	</div>
+					<div class="form-group custom-select">
+							<select class="form-control form-multiselect" name="Country[]" multiple="multiple" data-placeholder="<TMPL_VAR NAME="LNG_FormCountry" />">
+								<TMPL_LOOP NAME='CountryList'>
+								<option value="<TMPL_VAR NAME='Title'>"><TMPL_VAR NAME='Title'></option>
+								</TMPL_LOOP>
+							</select>
+						</div>
+			       	<input type="submit" class="main-btn" value="<TMPL_VAR NAME='LNG_FormSubmit'>">
+			       	<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID'>">
+			       	<input type="hidden" name="Action" value="NewOrder">
+				</form>
+          		<div class="page-products__bottom-color"><span><TMPL_VAR NAME='LNG_Free'></span></div>      
+        	</div>
+		</div>
+    </div>
+    <div class="modal fade" id="modal-order-success" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	        	<div class="modal-body">
+	        		<div class="message">
+	        			<TMPL_VAR NAME='LNG_MessageSuccess'>
+	        		</div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+	<div class="modal fade" id="modal-order-error" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	        	<div class="modal-body">
+	        		<div class="message"></div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

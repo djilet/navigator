@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<common>
+		<BaseTestFeedbackFormTitle>
+			Ну как тебе ?
+		</BaseTestFeedbackFormTitle>
+		<BaseTestFeedbackRatingBad>
+			Эхх, зря потратил время и калории
+		</BaseTestFeedbackRatingBad>
+		<BaseTestFeedbackRatingGood>
+			Вау, просто пушка, вы открыли мне глаза!
+		</BaseTestFeedbackRatingGood>
+		<BaseTestFeedbackTextArea>
+			А чего не хватает? Что хочется добавить?
+		</BaseTestFeedbackTextArea>
+		<BaseTestFeedbackBtn>
+			Порадовать нас этим отзывом!
+		</BaseTestFeedbackBtn>
+		<BaseTestFeedbackFormSuccess type="html">
+			<![CDATA[<h2 class="title">
+				Спасибо за отзыв!
+			</h2>
+			<div>
+				Мы разрабатываем продукты на основе ваших предложений.
+			</div>
+
+			<div class="social-link">
+				<span>Напишите нам ВК, если у вас есть потрясающая идея и мы с удовольствием её воплотим.</span>
+				<a href="https://vk.com/navigator.postuplenia" target="_blank" class="square black vk"></a>
+			</div>]]>
+		</BaseTestFeedbackFormSuccess>
+	</common>
+	<public>
+		<basetest-tmpl_index.html>
+			<!-- Test -->
+			<TestDescription>
+				Он поможет тебе расставить приоритеты в выборе будущего ВУЗа и профессии.
+				А ещё ты сможешь подробнее узнать про каждую профессию, которую мы тебе подобрали. 
+			</TestDescription>
+			<NextQuestionDescription>
+				На следующем шаге расставь приоритеты в вопросе
+			</NextQuestionDescription>
+			<OptionDefault>
+				Выстраивай эти категории в соответствии с личными вкусами и приоритетами
+			</OptionDefault>
+			<MobileOptionDefault>
+			<![CDATA[
+				<h1 class="title heavy">
+					ПРИВЕТ!
+				</h1>
+
+				<h4 class="heavy">
+					Сейчас ты проходишь профориентационный тест
+				</h4>
+
+				Он поможет тебе расставить приоритеты в выборе будущего ВУЗа и профессии.
+				А ещё ты сможешь подробнее узнать про каждую профессию, которую мы тебе подобрали. 
+			]]>
+			</MobileOptionDefault>
+			<CompleteTestBtn>
+				Завершить тест
+			</CompleteTestBtn>
+
+			<!-- Result -->
+			<ResultTitle>
+				Результаты теста
+			</ResultTitle>
+			<ResultSubTitle>
+				Отлично, мы подобрали профессии, которые подходят тебе больше всего
+			</ResultSubTitle>
+			<ResetTestBtn>
+				Пройти тест ещё раз?
+			</ResetTestBtn>
+			<ProfessionsTitle>
+				Оптимальные для тебя профессии
+			</ProfessionsTitle>
+			<ProfessionsSubTitle>
+				Зацени персональную подборку Золотых, Серебряных и Бронзовых профессий!
+			</ProfessionsSubTitle>
+			<ResetTest>
+				Вы уверены? Тест придётся пройти заново, а все данные будут стёрты
+			</ResetTest>
+			<ResetTestConfirmBtn>
+				Подтвердить
+			</ResetTestConfirmBtn>
+
+			<ProfessionEmpty>
+				К сожалению, нет профессий, которые бы включали в себя выбранные интересы и сферы деятельности.
+			</ProfessionEmpty>
+
+			<!-- Profession list -->
+			<WageLevel>
+				Зарплата от
+			</WageLevel>
+			<AreaWork>
+				Специализации
+			</AreaWork>
+			<Employee>
+				Качества
+			</Employee>
+			<FilterBtn>
+				Фильтры
+			</FilterBtn>
+			<ProfessionDescription>
+				Подходящие тебе в первую очередь профессии отмечены золотым, серебрянным и бронзовым цветом.
+			</ProfessionDescription>
+		</basetest-tmpl_index.html>
+		<basetest-tmpl_profession_list.html>
+			<WageLevel>
+				Зарплата от
+			</WageLevel>
+			<AreaWork>
+				Специализации
+			</AreaWork>
+			<Employee>
+				Качества
+			</Employee>
+			<FilterBtn>
+				Фильтры
+			</FilterBtn>
+			<ProfessionEmpty>
+				К сожалению, нет профессий, которые бы включали в себя выбранные интересы и сферы деятельности.
+			</ProfessionEmpty>
+		</basetest-tmpl_profession_list.html>
+	</public>
+</Root>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<!-- Admin page -->
+	<module-title>Трекинг</module-title>
+	<module-admin-title>Трекинг</module-admin-title>
+	<empty-data>По заданному диапазону нету записей</empty-data>
+	<empty-date>Выберите дату</empty-date>
+
+	<!-- CSV -->
+	<Military>Военная кафедра</Military>
+	<Delay>Отсрочка от армии</Delay>
+	<Hostel>Общежитие</Hostel>
+</Root>

@@ -1,0 +1,25 @@
+<div class="content-aside marathon">
+	<div class="container">
+		<ol class="marathon breadcrumb">
+			<li>
+				<a href="<TMPL_VAR NAME='StaticPath'>">Главная</a>
+			</li>
+			<li>
+				<a href="<TMPL_VAR NAME='StaticPath'>?ShowProgram=1">Вся программа</a>
+			</li>
+			<li class="active">
+				<TMPL_VAR NAME='Title'>
+			</li>
+		</ol>
+		<div class="webinar-header-wrapper">
+     		<div class="webinar-header marathon-video-area">
+     			<iframe id="ifr" src="https://www.youtube.com/embed/<TMPL_VAR NAME='YoutubeID'>" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+				<form action="<TMPL_VAR NAME='POJECT_PATH'>module/marathon/ajax_public.php">
+     				<input type="hidden" name="Action" value="completePart" />
+     				<input type="hidden" name="PartID" value="<TMPL_VAR NAME='PartID'>" />
+     			</form>
+			</div>
+			<a href="<TMPL_IF NAME='RedirectPath'><TMPL_VAR NAME='RedirectPath'><TMPL_ELSE><TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'></TMPL_IF>" id="prev-answer-btn" class="sub-title blue-text prev icon">Вернуться назад</a>
+		</div>
+	</div>
+</div>

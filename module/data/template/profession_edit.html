@@ -1,0 +1,346 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'>
+        <section class="box">
+            <header class="panel_header">
+                <TMPL_IF NAME='ProfessionID'>
+                    <h2 class="title"><TMPL_VAR NAME='LNG_EditProfession'></h2>
+                <TMPL_ELSE>
+                    <h2 class="title"><TMPL_VAR NAME='LNG_AddProfession'></h2>
+                </TMPL_IF>
+            </header>
+            <div class="content-body">
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-1" data-toggle='tab'><TMPL_VAR NAME='LNG_TabMain'></a></li>
+                    <li><a href="#tab-2" data-toggle='tab'><TMPL_VAR NAME='LNG_TabOtherProfession'></a></li>
+                    <li><a href="#tab-3" data-toggle='tab'><TMPL_VAR NAME='LNG_WhoWork'></a></li>
+                    <li><a href="#tab-4" data-toggle='tab'><TMPL_VAR NAME='LNG_WantWork'></a></li>
+                    <li><a href="#tab-5" data-toggle='tab'><TMPL_VAR NAME='LNG_Operation'></a></li>
+                </ul>
+                
+                <form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+                    <div class="tab-content">
+
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="row">
+                                <TMPL_IF NAME='ErrorList'>
+                                    <div class="col-md-12">
+                                        <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                                    </div>
+                                </TMPL_IF>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+                                        <input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="TitleInParentCase" class="form-label"><TMPL_VAR NAME='LNG_TitleInParentCase'></label><br />
+                                        <input class="form-control" type="text" name="TitleInParentCase" id="TitleInParentCase" value="<TMPL_VAR NAME='TitleInParentCase'>" />
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label for="Industry" class="form-label required"><TMPL_VAR NAME='LNG_Industry'></label><br />
+                                        <input class="form-control" type="text" name="Industry" id="Industry" value="<TMPL_VAR NAME='Industry'>" />
+                                    </div> -->
+
+                                    <div class="form-group">
+                                        <label for="Industry" class="form-label required"><TMPL_VAR NAME='LNG_Industry'></label><br />
+                                        <select class="form-control" name="Industry" id="Industry">
+                                            <TMPL_LOOP NAME='IndustryList'>
+                                            <option value="<TMPL_VAR NAME='IndustryID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>>
+                                                <TMPL_VAR NAME='IndustryTitle'>
+                                            </option>
+                                            </TMPL_LOOP>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="WageLevel" class="form-label required"><TMPL_VAR NAME='LNG_WageLevel'></label><br />
+                                        <input class="form-control" type="text" name="WageLevel" id="WageLevel" value="<TMPL_VAR NAME='WageLevel'>" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ProWageLevel" class="form-label required"><TMPL_VAR NAME='LNG_ProWageLevel'></label><br />
+                                        <input class="form-control" type="text" name="ProWageLevel" id="ProWageLevel" value="<TMPL_VAR NAME='ProWageLevel'>" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="WageLevel" class="form-label required"><TMPL_VAR NAME='LNG_Description'></label><br />
+                                        <textarea name="Description" id="Description" class="form-control" rows="10"><TMPL_VAR NAME='Description' /></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Employee" class="form-label required"><TMPL_VAR NAME='LNG_Employee'></label><br />
+                                        <textarea name="Employee" id="Employee" class="form-control" rows="10"><TMPL_VAR NAME='Employee' /></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="AreaWork" class="form-label required"><TMPL_VAR NAME='LNG_AreaWork'></label><br />
+                                        <textarea name="AreaWork" id="AreaWork" class="form-control" rows="10"><TMPL_VAR NAME='AreaWork' /></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Schedule" class="form-label required"><TMPL_VAR NAME='LNG_Schedule'></label><br />
+                                        <input class="form-control" type="text" name="Schedule" id="Schedule" value="<TMPL_VAR NAME='Schedule'>" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="Books" class="form-label required"><TMPL_VAR NAME='LNG_Books'></label><br />
+                                        <textarea name="Books" id="Books" class="form-control" rows="10"><TMPL_VAR NAME='Books' /></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Films" class="form-label required"><TMPL_VAR NAME='LNG_Films'></label><br />
+                                        <textarea name="Films" id="Films" class="form-control" rows="10"><TMPL_VAR NAME='Films' /></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="SortOrder" class="form-label"><TMPL_VAR NAME='LNG_SortOrder'></label><br />
+                                        <input class="form-control" type="text" name="SortOrder" id="SortOrder" value="<TMPL_VAR NAME='SortOrder'>" />
+                                    </div>
+                                </div>
+        
+                                <div class="col-md-6">
+                                    <h3>Направления подготовки</h3>
+                                    <div class="form-group">
+                                        <TMPL_LOOP NAME='DirectionList'>
+                                            <label>
+                                                <input class="icheck-minimal-green" type="checkbox" name="directions[]" value="<TMPL_VAR NAME='DirectionID'>" <TMPL_IF NAME='Selected'> checked</TMPL_IF> />
+                                                <TMPL_VAR NAME='Title'>
+                                            </label> <br>
+                                        </TMPL_LOOP>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-2" class="tab-pane">
+                                
+                            <div class="form-group">
+                                <table id="OtherProfession" class="table table-borderless full-width-ui-table">
+                                    <tbody>
+                                        <TMPL_LOOP NAME='OtherProfessionList'>
+                                            <tr>
+                                                <td class="sort"><i class="fa fa-bars"></i></td>
+                                                <td>
+                                                    <input type="hidden" name="OtherProfession[]" value="<TMPL_VAR NAME='ProfessionID' />" >
+                                                    <TMPL_VAR NAME='Title' />
+                                                </td>
+                                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+                                            </tr>
+                                        </TMPL_LOOP>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                <input id="linked-profession" type="text" placeholder="Начните вводить название профессии(минимум 3 символа)" class="form-control">
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                                
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <!-- WhoWork -->
+                        <div id="tab-3" class="tab-pane">
+                                
+                            <div class="form-group">
+                                <table id="WhoWork" class="table table-borderless full-width-ui-table">
+                                    <tbody>
+                                        <TMPL_LOOP NAME='WhoWork'>
+                                            <tr>
+                                                <td class="sort"><i class="fa fa-bars"></i></td>
+                                                <td>
+                                                    <input type="hidden" name="WhoWork[]" value="<TMPL_VAR NAME='WhoWorkID' />" >
+                                                    <TMPL_VAR NAME='WhoWorkTitle' />
+                                                </td>
+                                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+                                            </tr>
+                                        </TMPL_LOOP>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                <input id="linked-who-work" type="text" placeholder="Начните вводить название профессии(минимум 3 символа)" class="form-control">
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                                
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <!-- WantWork -->
+                        <div id="tab-4" class="tab-pane">
+                                
+                            <div class="form-group">
+                                <table id="WantWork" class="table table-borderless full-width-ui-table">
+                                    <tbody>
+                                        <TMPL_LOOP NAME='WantWork'>
+                                            <tr>
+                                                <td class="sort"><i class="fa fa-bars"></i></td>
+                                                <td>
+                                                    <input type="hidden" name="WantWork[]" value="<TMPL_VAR NAME='WantWorkID' />" >
+                                                    <TMPL_VAR NAME='WantWorkTitle' />
+                                                </td>
+                                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+                                            </tr>
+                                        </TMPL_LOOP>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                <input id="linked-want-work" type="text" placeholder="Начните вводить название профессии(минимум 3 символа)" class="form-control">
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                                
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <!-- Operation -->
+                        <div id="tab-5" class="tab-pane">
+                                
+                            <div class="form-group">
+                                <table id="Operation" class="table table-borderless full-width-ui-table">
+                                    <tbody>
+                                        <TMPL_LOOP NAME='Operation'>
+                                            <tr>
+                                                <td class="sort"><i class="fa fa-bars"></i></td>
+                                                <td>
+                                                    <input type="hidden" name="Operation[]" value="<TMPL_VAR NAME='OperationID' />" >
+                                                    <TMPL_VAR NAME='OperationTitle' />
+                                                </td>
+                                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+                                            </tr>
+                                        </TMPL_LOOP>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                <input id="linked-operation" type="text" placeholder="Начните вводить название профессии(минимум 3 символа)" class="form-control">
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                                
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 top15">
+                        <button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+                        <a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+                    </div>
+                    <input type="hidden" name="Save" value="1" />
+                    <input type="hidden" name="ProfessionID" value="<TMPL_VAR NAME='ProfessionID'>" />
+                    <TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </section>
+</div>
+
+<script>
+	createCKEditor("Description");
+    createCKEditor("Employee");
+    createCKEditor("AreaWork");
+    createCKEditor("Books");
+    createCKEditor("Films");
+    
+	$('#Params tbody, #OtherProfession tbody, #WhoWork tbody, #WantWork tbody, #Operation tbody').sortable({
+		axis: "y"
+	});
+
+
+     //Other profession
+    /*$( "#suggest-profession" ).autocomplete({
+        classes: {
+            "ui-autocomplete": "highlight"
+        },
+        minLength: 3,
+        source: function(request, response) {
+            var ids = $('input[name="OtherProfession[]"]').map(function(){return this.value}).get();
+            ids.push(<TMPL_VAR NAME='ProfessionID' />);
+            $.ajax({
+                url: "<TMPL_VAR NAME='MODULE_PATH' />ajax.php",
+                type: "post",
+                data: {"Action":"linked-profession", "term":request.term, "ItemIDs":ids},
+                dataType: 'json',
+                success: function (data) {
+                    response(data);
+                }
+            });
+        },
+        select: function( event, ui ) {
+            if (ui.item) {
+                event.preventDefault();
+                var row = '<tr>\
+                    <td class="sort"><i class="fa fa-bars"></i></td> \
+                    <td>\
+                        <input type="hidden" name="OtherProfession[]" value="'+ui.item.value+'" >\
+                        '+ui.item.label+'\
+                    </td> \
+                    <td onclick="$(this).closest(\'tr\').remove()" class="delete">X</td> \
+                </tr>';
+                $('#OtherProfession tbody').append(row);
+                $(this).val("");
+            }
+        },
+        focus: function( event, ui ) {
+            event.preventDefault();
+            $(this).val(ui.item.label);
+        }
+    });*/
+
+
+    function initLinkedObjects(controlID, tableID, minLength)
+    {
+        $( "#" + controlID ).autocomplete({
+            classes: {
+                "ui-autocomplete": "highlight"
+            },
+            minLength: minLength,
+            source: function(request, response) {
+                var ids = $('input[name="' + tableID + '[]"]').map(function(){return this.value}).get();
+                ids.push(<TMPL_VAR NAME='UniversityID' />);
+                $.ajax({
+                    url: "<TMPL_VAR NAME='MODULE_PATH' />ajax.php",
+                    type: "post",
+                    data: {"Action":controlID, "term":request.term, "ItemIDs":ids},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        response(data);
+                    }
+                });
+            },
+            select: function( event, ui ) {
+                if (ui.item) {
+                    event.preventDefault();
+                    var row = '<tr>\
+                        <td class="sort"><i class="fa fa-bars"></i></td> \
+                        <td>\
+                            <input type="hidden" name="' + tableID + '[]" value="'+ui.item.value+'" >\
+                            '+ui.item.label+'\
+                        </td> \
+                        <td onclick="$(this).closest(\'tr\').remove()" class="delete">X</td> \
+                    </tr>';
+                    $('#' + tableID + ' tbody').append(row);
+                    $(this).val("");
+                }
+            },
+            focus: function( event, ui ) {
+                event.preventDefault();
+                $(this).val(ui.item.label);
+            }
+        });
+    }
+
+    initLinkedObjects('linked-profession', 'OtherProfession', 3);
+    initLinkedObjects('linked-who-work', 'WhoWork', 0);
+    initLinkedObjects('linked-want-work', 'WantWork', 0);
+    initLinkedObjects('linked-operation', 'Operation', 0);
+</script>

@@ -1,0 +1,229 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='CollegeSpecialityID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditSpeciality'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddSpeciality'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="row">
+					<TMPL_IF NAME='ErrorList'>
+						<div class="col-md-12">
+							<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+						</div>
+					</TMPL_IF>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+							<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+						</div>
+						<div class="form-group">
+							<label for="CollegeID" class="form-label required"><TMPL_VAR NAME='LNG_College'></label><br />
+							<select class="form-control" name="CollegeID" id="CollegeID">
+								<TMPL_LOOP NAME='CollegeList'>
+								<option value="<TMPL_VAR NAME='CollegeID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+								</TMPL_LOOP>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="CollegeBigDirectionID" class="form-label required"><TMPL_VAR NAME='LNG_CollegeBigDirection'></label><br />
+							<select class="form-control" name="CollegeBigDirectionID" id="CollegeBigDirectionID">
+								<TMPL_LOOP NAME='CollegeBigDirectionList'>
+								<option value="<TMPL_VAR NAME='CollegeBigDirectionID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+								</TMPL_LOOP>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="AdmissionBase" class="form-label"><TMPL_VAR NAME='LNG_AdmissionBase'></label><br />
+							<input class="form-control" type="text" name="AdmissionBase" id="AdmissionBase" value="<TMPL_VAR NAME='AdmissionBase'>" />
+						</div>
+						<div class="form-group">
+							<label for="GPA" class="form-label"><TMPL_VAR NAME='LNG_GPA'></label><br />
+							<input class="form-control" type="text" name="GPA" id="GPA" value="<TMPL_VAR NAME='GPA'>" />
+						</div>
+						<div class="form-group">
+							<label for="Address1" class="form-label"><TMPL_VAR NAME='LNG_Address1'></label><br />
+							<input class="form-control" type="text" name="Address1" id="Address1" value="<TMPL_VAR NAME='Address1'>" />
+						</div>
+							<div class="form-group">
+								<label for="Latitude1" class="form-label"><TMPL_VAR NAME='LNG_Latitude1'></label><br />
+								<input class="form-control" type="text" name="Latitude1" id="Latitude1" value="<TMPL_VAR NAME='Latitude1'>" />
+							</div>
+							<div class="form-group">
+								<label for="Longitude1" class="form-label"><TMPL_VAR NAME='LNG_Longitude1'></label><br />
+								<input class="form-control" type="text" name="Longitude1" id="Longitude1" value="<TMPL_VAR NAME='Longitude1'>" />
+							</div>
+						<div class="form-group">
+							<label for="Address2" class="form-label"><TMPL_VAR NAME='LNG_Address2'></label><br />
+							<input class="form-control" type="text" name="Address2" id="Address2" value="<TMPL_VAR NAME='Address2'>" />
+						</div>
+								<div class="form-group">
+									<label for="Latitude2" class="form-label"><TMPL_VAR NAME='LNG_Latitude2'></label><br />
+									<input class="form-control" type="text" name="Latitude2" id="Latitude2" value="<TMPL_VAR NAME='Latitude2'>" />
+								</div>
+								<div class="form-group">
+									<label for="Longitude2" class="form-label"><TMPL_VAR NAME='LNG_Longitude2'></label><br />
+									<input class="form-control" type="text" name="Longitude2" id="Longitude2" value="<TMPL_VAR NAME='Longitude2'>" />
+								</div>
+						<div class="form-group">
+							<label for="Address3" class="form-label"><TMPL_VAR NAME='LNG_Address3'></label><br />
+							<input class="form-control" type="text" name="Address3" id="Address3" value="<TMPL_VAR NAME='Address3'>" />
+						</div>
+							<div class="form-group">
+								<label for="Latitude3" class="form-label"><TMPL_VAR NAME='LNG_Latitude3'></label><br />
+								<input class="form-control" type="text" name="Latitude3" id="Latitude3" value="<TMPL_VAR NAME='Latitude3'>" />
+							</div>
+							<div class="form-group">
+								<label for="Longitude3" class="form-label"><TMPL_VAR NAME='LNG_Longitude3'></label><br />
+								<input class="form-control" type="text" name="Longitude3" id="Longitude3" value="<TMPL_VAR NAME='Longitude3'>" />
+							</div>
+						<div class="form-group">
+							<label for="Address4" class="form-label"><TMPL_VAR NAME='LNG_Address4'></label><br />
+							<input class="form-control" type="text" name="Address4" id="Address4" value="<TMPL_VAR NAME='Address4'>" />
+						</div>
+							<div class="form-group">
+								<label for="Latitude4" class="form-label"><TMPL_VAR NAME='LNG_Latitude4'></label><br />
+								<input class="form-control" type="text" name="Latitude4" id="Latitude4" value="<TMPL_VAR NAME='Latitude4'>" />
+							</div>
+							<div class="form-group">
+								<label for="Longitude4" class="form-label"><TMPL_VAR NAME='LNG_Longitude4'></label><br />
+								<input class="form-control" type="text" name="Longitude4" id="Longitude4" value="<TMPL_VAR NAME='Longitude4'>" />
+							</div>
+						<div class="form-group">
+							<label for="Qualification" class="form-label"><TMPL_VAR NAME='LNG_Qualification'></label><br />
+							<textarea name="Qualification" id="Qualification" rows="10" class="form-control"><TMPL_VAR NAME="Qualification" /></textarea>
+						</div>
+						<div class="form-group">
+							<label for="SortOrder" class="form-label"><TMPL_VAR NAME='LNG_SortOrder'></label><br />
+							<input class="form-control" type="text" name="SortOrder" id="SortOrder" value="<TMPL_IF NAME='SortOrder'><TMPL_VAR NAME='SortOrder'><TMPL_ELSE>0</TMPL_IF>" />
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<!-- FullStud -->
+						<section class="box">
+							<header class="panel_header">
+								<h2 class="title"><TMPL_VAR NAME='LNG_FullStud'></h2>
+							</header>
+
+							<div class="content-body">
+								<div class="form-group">
+									<label for="FullStudBudgetCount" class="form-label"><TMPL_VAR NAME='LNG_BudgetCount'></label><br />
+									<input class="form-control" type="text" name="FullStudBudgetCount" id="FullStudBudgetCount" value="<TMPL_VAR NAME='FullStudBudgetCount'>" />
+								</div>
+								<div class="form-group">
+									<label for="FullStudPaidCount" class="form-label"><TMPL_VAR NAME='LNG_PaidCount'></label><br />
+									<input class="form-control" type="text" name="FullStudPaidCount" id="FullStudPaidCount" value="<TMPL_VAR NAME='FullStudPaidCount'>" />
+								</div>
+								<div class="form-group">
+									<label for="FullStudPeriod" class="form-label"><TMPL_VAR NAME='LNG_Period'></label><br />
+									<input class="form-control" type="text" name="FullStudPeriod" id="FullStudPeriod" value="<TMPL_VAR NAME='FullStudPeriod'>" />
+								</div>
+								<div class="form-group">
+									<label for="FullStudPaidPrice" class="form-label"><TMPL_VAR NAME='LNG_PaidPrice'></label><br />
+									<input class="form-control" type="text" name="FullStudPaidPrice" id="FullStudPaidPrice" value="<TMPL_VAR NAME='FullStudPaidPrice'>" />
+								</div>
+							</div>
+							</header>
+						</section>
+
+						<!-- PartStud -->
+						<section class="box">
+							<header class="panel_header">
+								<h2 class="title"><TMPL_VAR NAME='LNG_PartStud'></h2>
+							</header>
+
+							<div class="content-body">
+								<div class="form-group">
+									<label for="PartStudBudgetCount" class="form-label"><TMPL_VAR NAME='LNG_BudgetCount'></label><br />
+									<input class="form-control" type="text" name="PartStudBudgetCount" id="PartStudBudgetCount" value="<TMPL_VAR NAME='PartStudBudgetCount'>" />
+								</div>
+								<div class="form-group">
+									<label for="PartStudPaidCount" class="form-label"><TMPL_VAR NAME='LNG_PaidCount'></label><br />
+									<input class="form-control" type="text" name="PartStudPaidCount" id="PartStudPaidCount" value="<TMPL_VAR NAME='PartStudPaidCount'>" />
+								</div>
+								<div class="form-group">
+									<label for="PartStudPeriod" class="form-label"><TMPL_VAR NAME='LNG_Period'></label><br />
+									<input class="form-control" type="text" name="PartStudPeriod" id="PartStudPeriod" value="<TMPL_VAR NAME='PartStudPeriod'>" />
+								</div>
+								<div class="form-group">
+									<label for="PartStudPaidPrice" class="form-label"><TMPL_VAR NAME='LNG_PaidPrice'></label><br />
+									<input class="form-control" type="text" name="PartStudPaidPrice" id="PartStudPaidPrice" value="<TMPL_VAR NAME='PartStudPaidPrice'>" />
+								</div>
+							</div>
+							</header>
+						</section>
+
+						<!-- ExtramuralStud -->
+						<section class="box">
+							<header class="panel_header">
+								<h2 class="title"><TMPL_VAR NAME='LNG_ExtramuralStud'></h2>
+							</header>
+
+							<div class="content-body">
+								<div class="form-group">
+									<label for="ExtramuralStudBudgetCount" class="form-label"><TMPL_VAR NAME='LNG_BudgetCount'></label><br />
+									<input class="form-control" type="text" name="ExtramuralStudBudgetCount" id="ExtramuralStudBudgetCount" value="<TMPL_VAR NAME='ExtramuralStudBudgetCount'>" />
+								</div>
+								<div class="form-group">
+									<label for="ExtramuralStudPaidCount" class="form-label"><TMPL_VAR NAME='LNG_PaidCount'></label><br />
+									<input class="form-control" type="text" name="ExtramuralStudPaidCount" id="ExtramuralStudPaidCount" value="<TMPL_VAR NAME='ExtramuralStudPaidCount'>" />
+								</div>
+								<div class="form-group">
+									<label for="ExtramuralStudPeriod" class="form-label"><TMPL_VAR NAME='LNG_Period'></label><br />
+									<input class="form-control" type="text" name="ExtramuralStudPeriod" id="ExtramuralStudPeriod" value="<TMPL_VAR NAME='ExtramuralStudPeriod'>" />
+								</div>
+								<div class="form-group">
+									<label for="ExtramuralStudPaidPrice" class="form-label"><TMPL_VAR NAME='LNG_PaidPrice'></label><br />
+									<input class="form-control" type="text" name="ExtramuralStudPaidPrice" id="ExtramuralStudPaidPrice" value="<TMPL_VAR NAME='ExtramuralStudPaidPrice'>" />
+								</div>
+							</div>
+							</header>
+						</section>
+
+						<!-- RemoteStud -->
+						<section class="box">
+							<header class="panel_header">
+								<h2 class="title"><TMPL_VAR NAME='LNG_RemoteStud'></h2>
+							</header>
+
+							<div class="content-body">
+								<div class="form-group">
+									<label for="RemoteStudBudgetCount" class="form-label"><TMPL_VAR NAME='LNG_BudgetCount'></label><br />
+									<input class="form-control" type="text" name="RemoteStudBudgetCount" id="RemoteStudBudgetCount" value="<TMPL_VAR NAME='RemoteStudBudgetCount'>" />
+								</div>
+								<div class="form-group">
+									<label for="RemoteStudPaidCount" class="form-label"><TMPL_VAR NAME='LNG_PaidCount'></label><br />
+									<input class="form-control" type="text" name="RemoteStudPaidCount" id="RemoteStudPaidCount" value="<TMPL_VAR NAME='RemoteStudPaidCount'>" />
+								</div>
+								<div class="form-group">
+									<label for="RemoteStudPeriod" class="form-label"><TMPL_VAR NAME='LNG_Period'></label><br />
+									<input class="form-control" type="text" name="RemoteStudPeriod" id="RemoteStudPeriod" value="<TMPL_VAR NAME='RemoteStudPeriod'>" />
+								</div>
+								<div class="form-group">
+									<label for="RemoteStudPaidPrice" class="form-label"><TMPL_VAR NAME='LNG_PaidPrice'></label><br />
+									<input class="form-control" type="text" name="RemoteStudPaidPrice" id="RemoteStudPaidPrice" value="<TMPL_VAR NAME='RemoteStudPaidPrice'>" />
+								</div>
+							</div>
+							</header>
+						</section>
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-md-12">
+					</div>
+					<div class="col-md-12 top15">
+						<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+						<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+					</div>
+					<input type="hidden" name="Save" value="1" />
+					<input type="hidden" name="CollegeSpecialityID" value="<TMPL_VAR NAME='CollegeSpecialityID'>" />
+					<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>

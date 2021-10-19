@@ -1,0 +1,21 @@
+					<TMPL_LOOP NAME='ProfessionList'>
+					<div class="block-prof">
+		            	<div class="block-prof__left">
+		                	<a class="block-prof__header" href="<TMPL_VAR NAME='ProfessionURL' />" target="_blank"><TMPL_VAR NAME='Title'></a>
+		                	<span class="block-prof__direction"><TMPL_VAR NAME='IndustryTitle'></span>
+		                </div>
+		                <div class="block-prof__price">
+		                	от <TMPL_VAR NAME='WageLevel' FORMAT='price'>
+		                	<TMPL_IF NAME="ProWageLevel">
+		                	<br>
+								до <TMPL_VAR NAME='ProWageLevel' FORMAT='price'>
+							</TMPL_IF>
+		                </div>
+		            </div>
+		            </TMPL_LOOP>
+	
+		            <nav aria-label="Навигация по страницам">
+		                <ul class="pagination">
+		                	<TMPL_VAR NAME='ProfessionPager' ESCAPE='none'>
+		                </ul>
+		            </nav>

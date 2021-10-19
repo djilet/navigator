@@ -1,0 +1,43 @@
+<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="category-form" enctype="multipart/form-data" autocomplete="off">
+	<div class="row">
+		<TMPL_IF NAME='ErrorList'>
+			<div class="col-md-12">
+				<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+			</div>
+		</TMPL_IF>
+
+		<div class="col-md-12">
+			<div class="form-group">
+                <label for="Title" class="form-label required">Заголовок</label><br />
+                <input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+            </div>
+			<div class="form-group">
+				<label for="Profession" class="form-label">Профессии</label><br />
+				<textarea name="Profession" id="Profession" class="form-control" rows="10"><TMPL_VAR NAME='Profession' /></textarea>
+			</div>
+			<div class="form-group">
+				<label for="Subjects" class="form-label">Предметы</label><br />
+				<textarea name="Subjects" id="Subjects" class="form-control" rows="10"><TMPL_VAR NAME='Subjects' /></textarea>
+			</div>
+			<div class="form-group">
+				<label for="SortOrder" class="form-label required">Позиция</label><br />
+				<input class="form-control" type="text" name="SortOrder" id="SortOrder" value="<TMPL_IF NAME='SortOrder'><TMPL_VAR NAME='SortOrder'><TMPL_ELSE>0</TMPL_IF>" />
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="col-md-12 top15">
+			<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+		</div>
+	</div>
+
+
+    <input type="hidden" name="Save" value="1" />
+	<input type="hidden" name="CategoryID" value="<TMPL_VAR NAME='CategoryID'>" />
+	<input type="hidden" name="ProftestID" value="<TMPL_VAR NAME='ProftestID'>" />
+    <TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+</form>
+
+<script type="text/javascript">
+	createCKEditor("Profession");
+	createCKEditor("Subjects");
+</script>

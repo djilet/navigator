@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-6">
+		<table class="table">
+			<thead>
+			<tr>
+				<th>Название</th>
+				<th>Вариант А</th>
+				<th>Вариант B</th>
+			</tr>
+			</thead>
+			<tbody>
+			<TMPL_LOOP NAME='TestsList'>
+				<tr>
+					<td>
+						<TMPL_VAR NAME='Name'>
+					</td>
+					<td>
+						<TMPL_VAR NAME='ACount'>
+					</td>
+					<td>
+						<TMPL_VAR NAME='BCount'>
+					</td>
+				</tr>
+			</TMPL_LOOP>
+			</tbody>
+		</table>
+	</div>
+</div>

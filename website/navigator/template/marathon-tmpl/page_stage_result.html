@@ -1,0 +1,41 @@
+<div class="content-aside marathon">
+	<div class="container">
+		<ol class="marathon breadcrumb">
+			<li>
+				<a href="<TMPL_VAR NAME='StaticPath'>">Главная</a>
+			</li>
+			<li>
+				<a href="<TMPL_VAR NAME='StaticPath'>?ShowProgram=1">Вся программа</a>
+			</li>
+			<li class="active">
+				Ты выполнил <TMPL_VAR NAME='CompletePercent'>% заданий
+			</li>
+		</ol>
+		<div class="row">
+			<div class="marathon-block max-width quiz-block">
+				<div class="quiz">
+					<div class="result-wrap">
+						<div class="smile"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/marathon/smile.svg" alt=""></div>
+						<p class="result-title">Поздравляем! Ты перешел на Этап <TMPL_VAR NAME='NextStage'>!</p>
+						<div class="result">
+							<div class="item col-sm-6">
+								<h2><TMPL_VAR NAME='CompletePercent'>% заданий</h2>
+								<p class="sub-title gray-text">Ты выполнил</p>
+							</div>
+							<div class="item col-sm-6">
+								<h2><TMPL_VAR NAME='StatPeopleCount'> человек</h2>
+								<p class="sub-title gray-text">Ты опеределил</p>
+							</div>
+						</div>
+						<!-- a href="?" id="next-answer-btn" class="btn black">Поделиться с друзьями <span class="btn-after-left">+10XP</span></a-->
+						<TMPL_IF NAME='RedirectPath'>
+							<a href="<TMPL_VAR NAME='RedirectPath'>" id="prev-answer-btn" class="sub-title blue-text next icon">Перейти</a>
+						</TMPL_ELSE>
+							<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>" id="prev-answer-btn" class="sub-title blue-text next icon">Перейти</a>
+						</TMPL_IF>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

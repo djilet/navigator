@@ -1,0 +1,1 @@
+ALTER TABLE `users_item` ADD `AuthKey` VARCHAR(32) NULL DEFAULT NULL AFTER `City`;

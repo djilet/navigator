@@ -1,0 +1,45 @@
+<section class="box">
+    <header class="panel_header">
+        <h2 class="title pull-left">
+            <TMPL_IF NAME='BoxTitle'>
+                <TMPL_VAR NAME='BoxTitle'>
+            <TMPL_ELSE>
+                <TMPL_VAR NAME='PageTitle'>
+            </TMPL_IF>
+        </h2>
+    </header>
+    <div class="content-body">
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Названние</th>
+                    <!-- <th>Интервал (сек.)</th> -->
+                    <th>Ссылки</th>
+                    <th width="40">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <TMPL_LOOP NAME='BannerList'>
+                    <tr>
+                        <td>
+                            <a href="<TMPL_VAR NAME='MODULE_URL'>&BannerID=<TMPL_VAR NAME='BannerID'>" class="<TMPL_IF NAME='Active' OP='==' VALUE='N'>text-muted</TMPL_IF>">
+                                <TMPL_VAR NAME='Name'>
+                            </a>
+                        </td>
+                        <!-- <td>
+                            <TMPL_VAR NAME='RotateInterval'>
+                        </td> -->
+                        <td>
+                            <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ItemListByBannerID=<TMPL_VAR NAME='BannerID'>">Ссылки</a>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                </TMPL_LOOP>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

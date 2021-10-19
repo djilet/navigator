@@ -1,0 +1,345 @@
+<!--<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'>
+        <section class="box">
+            <header class="panel_header">
+                <TMPL_IF NAME='SpecialityID'>
+                    <h2 class="title"><TMPL_VAR NAME='LNG_EditSpeciality'></h2>
+                    <TMPL_ELSE>
+                        <h2 class="title"><TMPL_VAR NAME='LNG_AddSpeciality'></h2>
+                </TMPL_IF>
+            </header>
+            <div class="content-body">-->
+
+<div class="row">
+    <div class="col-md-12">
+        <span class="btn btn-icon btn-purple" id="add-study-item"><i class="fa fa-plus"></i>Добавить</span>
+    </div>
+</div>
+
+    <div class="row study-list">
+        <TMPL_LOOP NAME='StudyList'>
+            <div class="col-md-4 item" data-index="<TMPL_VAR NAME='__INDEX__'>">
+                <section class="box">
+                    <header class="panel_header">
+                        <h2 class="title">
+                            (<TMPL_VAR NAME='Year'>)
+                            <TMPL_IF NAME='Type' OP='==' VALUE='Extramural'>
+                                Заочная
+                            <TMPL_ELSEIF NAME='Type' OP='==' VALUE='Part'>
+                                Очно-заочная
+                            <TMPL_ELSEIF NAME='Type' OP='==' VALUE='Full'>
+                                Очная
+                            </TMPL_IF>
+                        </h2>
+
+                        <span>
+                            <i class="fa fa-close delete"></i>
+                        </span>
+                    </header>
+                <div class="content-body">
+                    <div class="form-group">
+                        <label for="Year" class="form-label">Год поступления</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][Year]" id="Year" value="<TMPL_VAR NAME='Year'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Type" class="form-label">Форма обучения</label><br />
+                        <select class="form-control" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][Type]" id="Type">
+                            <TMPL_LOOP NAME='TypeList'>
+                                <option value="<TMPL_VAR NAME='Title'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>>
+                                    <TMPL_IF NAME='Title' OP='==' VALUE='Extramural'>
+                                        Заочная
+                                    <TMPL_ELSEIF NAME='Title' OP='==' VALUE='Part'>
+                                        Очно-заочная
+                                    <TMPL_ELSEIF NAME='Title' OP='==' VALUE='Full'>
+                                        Очная
+                                    </TMPL_IF>
+                                </option>
+                            </TMPL_LOOP>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Платное/бесплатное обучение</label><br />
+                        <select class="form-control" name="StudyList[Financing]" id="Financing">
+                            <option value="Any">Бесплатно и платно</option>
+                            <option value="Budget">Только бесплатно</option>
+                            <option value="Paid">Только платно</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BudgetScopeWave1" class="form-label">Проходной балл на бюджет, 1 волна</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][BudgetScopeWave1]" id="BudgetScopeWave1" value="<TMPL_VAR NAME='BudgetScopeWave1'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BudgetScopeWave2" class="form-label">Проходной балл на бюджет, 2 волна</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][BudgetScopeWave2]" id="BudgetScopeWave2" value="<TMPL_VAR NAME='BudgetScopeWave2'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BudgetCount" class="form-label">Количество бюджетных мест</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][BudgetCount]" id="BudgetCount" value="<TMPL_VAR NAME='BudgetCount'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BudgetCompetition" class="form-label">Конкурс на бюджет</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][BudgetCompetition]" id="BudgetCompetition" value="<TMPL_VAR NAME='BudgetCompetition'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaidScope" class="form-label">Проходной балл на платное</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][PaidScope]" id="PaidScope" value="<TMPL_VAR NAME='PaidScope'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaidCount" class="form-label">Количество платных мест</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][PaidCount]" id="PaidCount" value="<TMPL_VAR NAME='PaidCount'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaidCompetition" class="form-label">Конкурс на платное</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][PaidCompetition]" id="PaidCompetition" value="<TMPL_VAR NAME='PaidCompetition'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Period" class="form-label">Срок обучения</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][Period]" id="Period" value="<TMPL_VAR NAME='Period'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaidPrice" class="form-label">Цена</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][PaidPrice]" id="PaidPrice" value="<TMPL_VAR NAME='PaidPrice'>" />
+                    </div>
+
+                </div>
+            </div>
+        </TMPL_LOOP>
+
+        <div class="col-md-4 prototype" data-index="">
+            <section class="box">
+                <header class="panel_header">
+                    <h2 class="title">&nbsp</h2>
+                    <span>
+                        <i class="fa fa-close delete"></i>
+                    </span>
+                </header>
+                <div class="content-body">
+                    <div class="form-group">
+                        <label for="Year" class="form-label">Год поступления</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][Year]" id="Year" value="<TMPL_VAR NAME='Year'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Type" class="form-label">Форма обучения</label><br />
+                        <select class="form-control" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][Type]" id="Type">
+                            <TMPL_LOOP NAME='TypeList'>
+                                <option value="<TMPL_VAR NAME='Title'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>>
+                                <TMPL_IF NAME='Title' OP='==' VALUE='Extramural'>
+                                    Заочная
+                                    <TMPL_ELSEIF NAME='Title' OP='==' VALUE='Part'>
+                                        Очно-заочная
+                                        <TMPL_ELSEIF NAME='Title' OP='==' VALUE='Full'>
+                                            Очная
+                                </TMPL_IF>
+                                </option>
+                            </TMPL_LOOP>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Платное/бесплатное обучение</label><br />
+                        <select class="form-control" name="StudyList[Financing]" id="Financing">
+                            <option value="Any">Бесплатно и платно</option>
+                            <option value="Budget">Только бесплатно</option>
+                            <option value="Paid">Только платно</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BudgetScopeWave1" class="form-label">Проходной балл на бюджет, 1 волна</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][BudgetScopeWave1]" id="BudgetScopeWave1" value="<TMPL_VAR NAME='BudgetScopeWave1'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BudgetScopeWave2" class="form-label">Проходной балл на бюджет, 2 волна</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][BudgetScopeWave2]" id="BudgetScopeWave2" value="<TMPL_VAR NAME='BudgetScopeWave2'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BudgetCount" class="form-label">Количество бюджетных мест</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][BudgetCount]" id="BudgetCount" value="<TMPL_VAR NAME='BudgetCount'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BudgetCompetition" class="form-label">Конкурс на бюджет</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][BudgetCompetition]" id="BudgetCompetition" value="<TMPL_VAR NAME='BudgetCompetition'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaidScope" class="form-label">Проходной балл на платное</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][PaidScope]" id="PaidScope" value="<TMPL_VAR NAME='PaidScope'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaidCount" class="form-label">Количество платных мест</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][PaidCount]" id="PaidCount" value="<TMPL_VAR NAME='PaidCount'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaidCompetition" class="form-label">Конкурс на платное</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][PaidCompetition]" id="PaidCompetition" value="<TMPL_VAR NAME='PaidCompetition'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Period" class="form-label">Срок обучения</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][Period]" id="Period" value="<TMPL_VAR NAME='Period'>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PaidPrice" class="form-label">Цена</label><br />
+                        <input class="form-control" type="text" name="StudyList[<TMPL_VAR NAME='__INDEX__'>][PaidPrice]" id="PaidPrice" value="<TMPL_VAR NAME='PaidPrice'>" />
+                    </div>
+
+                </div>
+        </div>
+
+    </div>
+           <!-- </div>
+        </section>
+</div>-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        class Financing{
+            static selectors = {
+                Budget: [
+                    '#BudgetScopeWave1',
+                    '#BudgetScopeWave2',
+                    '#BudgetCount',
+                    '#BudgetCompetition',
+                ],
+                Paid: [
+                    '#PaidScope',
+                    '#PaidCount',
+                    '#PaidCompetition',
+                    '#PaidPrice'
+                ]
+            }
+
+            static updateControls = (type, controls) => {
+                switch (type) {
+                    case 'Any':
+                        controls.attr('disabled', false);
+                        break;
+                    case 'Paid':
+                        controls.filter(Financing.selectors.Paid.toString())
+                            .attr('disabled', false);
+                        controls.filter(Financing.selectors.Budget.toString())
+                            .attr('disabled', true);
+                        break;
+                    case 'Budget':
+                        controls.filter(Financing.selectors.Budget.toString())
+                            .attr('disabled', false);
+                        controls.filter(Financing.selectors.Paid.toString())
+                            .attr('disabled', true);
+                }
+            }
+
+            static getTypeByControls = (controls) => {
+                let paid = false;
+                let budget = false;
+
+                controls.filter(Financing.selectors.Paid.toString()).each(function () {
+                    if ($(this).val().length){
+                        paid = true;
+                        return true;
+                    }
+                });
+
+                controls.filter(Financing.selectors.Budget.toString()).each(function () {
+                    if ($(this).val().length){
+                        budget = true;
+                        return true;
+                    }
+                });
+
+                if (budget && paid){
+                    return 'Any';
+                }
+                else if (budget){
+                    return 'Budget'
+                }
+
+                return 'Paid';
+            }
+        }
+
+        $('.study-list .item').each(function () {
+            const controls = $(this).find('.form-control');
+            const type = Financing.getTypeByControls(controls);
+            controls.filter('#Financing').val(type);
+            Financing.updateControls(type, controls)
+        })
+
+        $('#add-study-item').click(function(event) {
+            additem();
+            $('.study-list').trigger('edit');
+        });
+
+        $('.study-list').on('click', '.item .delete', function(event) {
+            $(this).closest('.item').remove();
+            $('.study-list').trigger('edit');
+        });
+
+        $('.study-list').on('change', '.item #Year, .item #Type', function(event) {
+            changeItemTitle($(this).closest('.item'));
+        });
+
+        $('.study-list').on('change', '.item #Financing', function(event) {
+            const item = $(this).closest('.item');
+            const controls = item.find('.form-control');
+            Financing.updateControls($(this).val(), controls)
+        });
+
+        $('.study-list').on('edit', function(event) {
+            updateItemsIndex();
+        });
+    });
+
+    function additem() {
+        let list = $('.study-list');
+        let prot = list.find('.prototype');
+        let index = list.find('.item').length;
+
+        prot.clone()
+        .removeClass('prototype')
+        .addClass('item')
+        .attr('data-index', index)
+        .appendTo(list)
+        .find('.form-control:first').focus();
+    }
+
+    function changeItemTitle(item){
+        let title = item.find('.panel_header h2');
+        title.html((item.find('#Year').val()) + item.find('#Type').children('option:selected').text());
+    }
+
+    function updateItemsIndex() {
+        let list = $('.study-list');
+        list.children('.item').each(function(index, el) {
+            var index = $(this).data('index');
+            $(this).find('.form-control').each(function(formIndex, formEl) {
+                $(this).attr('name', 'StudyList[' + index + '][' + $(this).prop('id') + ']');
+            });
+        });
+    }
+
+
+</script>
+
+<style>
+    .prototype{
+        display: none;
+    }
+</style>

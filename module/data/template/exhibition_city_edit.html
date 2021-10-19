@@ -1,0 +1,647 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'/>
+    <section class="box exhibition">
+        <header class="panel_header">
+            <TMPL_IF NAME='ExhibitionID'>
+                <h2 class="title"><TMPL_VAR NAME='LNG_EditExhibition'></h2>
+                <TMPL_ELSE>
+                    <h2 class="title"><TMPL_VAR NAME='LNG_AddExhibition'></h2>
+            </TMPL_IF>
+        </header>
+        <div class="content-body">
+            
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-1" data-toggle='tab'><TMPL_VAR NAME='LNG_TabMain'></a></li>
+                <li><a href="#tab-2" data-toggle='tab'><TMPL_VAR NAME='LNG_TabInfoList'></a></li>
+                <li><a href="#tab-3" data-toggle='tab'><TMPL_VAR NAME='LNG_TabSchedule'></a></li>
+                <li><a href="#tab-4" data-toggle='tab'><TMPL_VAR NAME='LNG_TabUnivers'></a></li>
+                <li><a href="#tab-5" data-toggle='tab'><TMPL_VAR NAME='LNG_TabMainPartners'></a></li>
+                <li><a href="#tab-6" data-toggle='tab'><TMPL_VAR NAME='LNG_TabPartners'></a></li>
+                <li><a href="#tab-7" data-toggle='tab'><TMPL_VAR NAME='LNG_TabEmail'></a></li>
+            </ul>
+
+            <form method="post" enctype="multipart/form-data">
+                <TMPL_IF NAME='ErrorList'>
+                    <div class="col-md-12">
+                        <br>
+                        <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                    </div>
+                </TMPL_IF>
+
+                <div class="tab-content">
+
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="CityTitle" class="form-label required"><TMPL_VAR NAME='LNG_CityTitle'></label><br />
+                                    <input class="form-control" type="text" name="CityTitle" id="CityTitle" value="<TMPL_VAR NAME='CityTitle'>" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+                                    <input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="StaticPath" class="form-label required"><TMPL_VAR NAME='LNG_StaticPath'></label><br />
+                                    <input class="form-control" type="text" name="StaticPath" id="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Date" class="form-label required"><TMPL_VAR NAME='LNG_Date'></label><br />
+                                    <input class="form-control datetimepicker" type="text" name="Date" id="Date" value="<TMPL_VAR NAME='Date' FORMAT='datetimepicker'>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ManualDate" class="form-label"><TMPL_VAR NAME='LNG_ManualDate'></label><br />
+                                    <input class="form-control" type="text" name="ManualDate" id="ManualDate" value="<TMPL_VAR NAME='ManualDate'>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Address" class="form-label"><TMPL_VAR NAME='LNG_Address'></label><br />
+                                    <input class="form-control" type="text" name="Address" id="Address" value="<TMPL_VAR NAME='Address'>" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="Phone" class="form-label"><TMPL_VAR NAME='LNG_Phone'></label><br />
+                                    <input class="form-control" type="text" name="Phone" id="Phone" value="<TMPL_VAR NAME='Phone'>" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="Email" class="form-label"><TMPL_VAR NAME='LNG_Email'></label><br />
+                                    <input class="form-control" type="text" name="Email" id="Email" value="<TMPL_VAR NAME='Email'>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Latitude" class="form-label"><TMPL_VAR NAME='LNG_Latitude'></label><br />
+                                    <input class="form-control" type="text" name="Latitude" id="Latitude" value="<TMPL_VAR NAME='Latitude'>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Longitude" class="form-label"><TMPL_VAR NAME='LNG_Longitude'></label><br />
+                                    <input class="form-control" type="text" name="Longitude" id="Longitude" value="<TMPL_VAR NAME='Longitude'>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Description" class="form-label"><TMPL_VAR NAME='LNG_Description'></label><br />
+                                    <textarea name="Description" class="form-control" id="Description" rows="5"><TMPL_VAR NAME="Description" /></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="TitleSchedule" class="form-label"><TMPL_VAR NAME='LNG_TitleSchedule'></label><br />
+                                    <input class="form-control" type="text" name="TitleSchedule" id="TitleSchedule" value="<TMPL_VAR NAME='TitleSchedule'>" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="TitleRegister" class="form-label"><TMPL_VAR NAME='LNG_TitleRegister'></label><br />
+                                    <input class="form-control" type="text" name="TitleRegister" id="TitleRegister" value="<TMPL_VAR NAME='TitleRegister'>" />
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="GUID" class="form-label"><TMPL_VAR NAME='LNG_GUID'></label><br />
+                                    <input class="form-control" type="text" name="GUID" id="GUID" value="<TMPL_VAR NAME='GUID'>" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="OnlineEventID" class="form-label"><TMPL_VAR NAME='LNG_RegisterOnlineEventID'></label><br />
+                                    <input class="form-control" type="text" name="OnlineEventID" id="OnlineEventID" value="<TMPL_VAR NAME='OnlineEventID'>" />
+                                </div>
+                            </div>
+							<div class="col-md-6">
+								<div class="form-group form-inline">
+									<label for="Active"><TMPL_VAR NAME='LNG_Active'></label><br />
+									<input type="checkbox" name="Active" id="Active" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Active' VALUE='Y'>checked<TMPL_ELSEIF NAME='Active' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+                                <div id="HeadImage-box">
+                                    <label for="Image"><TMPL_VAR NAME='LNG_HeadImage'></label><br />
+                                    <p>
+                                        <TMPL_VAR NAME="LNG_HeadImageDescription"/>
+                                    </p>
+                                </div>
+                                <script type="text/javascript">
+                                    $(document).ready(function(){
+                                        params = new Array();
+                                    <TMPL_LOOP NAME='HeadImageParamList'>
+                                            params.push({
+                                                "Name" : "<TMPL_VAR NAME='SourceName'>",
+                                                "Width" : "<TMPL_VAR NAME='Width'>",
+                                                "Height" : "<TMPL_VAR NAME='Height'>",
+                                                "Resize" : "<TMPL_VAR NAME='Resize'>",
+                                                "X1" : "<TMPL_VAR NAME='X1'>",
+                                                "X2" : "<TMPL_VAR NAME='X2'>",
+                                                "Y1" : "<TMPL_VAR NAME='Y1'>",
+                                                "Y2" : "<TMPL_VAR NAME='Y2'>"
+                                            });
+                                    </TMPL_LOOP>
+                                        CreateImageInput('HeadImage', '<TMPL_VAR NAME='HeadImageAdminPath'>', '<TMPL_VAR NAME='HeadImageFullPath'>', '<TMPL_VAR NAME='HeadImage'>', '<TMPL_VAR NAME='CityID'>', 'RemoveExhibitionCityHeadImage', '<TMPL_VAR NAME='MODULE_PATH'>ajax.php', 0, params);
+                                    });
+                                </script>
+								<div class="clearfix"></div>
+							</div>
+							
+                        </div>
+                    </div>
+
+                    <div id="tab-2" class="tab-pane">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="info-list">
+                                    <TMPL_LOOP NAME="InfoList">
+                                        <div class="info-item form-group" style="margin-bottom: 30px;">
+                                            <input type="text" name="info[title][]" placeholder="<TMPL_VAR NAME='LNG_Title' />" class="form-control" style="margin-bottom: 10px;" value="<TMPL_VAR NAME='Title' />">
+                                            <TMPL_IF NAME="ItemImageAdminPath">
+                                                <img src="<TMPL_VAR NAME='ItemImageAdminPath' />" alt="<TMPL_VAR NAME='Title' />" style="margin-bottom: 5px;">
+                                            </TMPL_IF>
+                                            <input type="hidden" name="info[img][]" value="<TMPL_VAR NAME='Image' />">
+                                            <input type="file" name="infoFiles[]" class="form-control" style="margin-bottom: 10px;">
+                                            <textarea name="info[text][]" rows="12" class="form-control" placeholder="<TMPL_VAR NAME='LNG_Description' />"><TMPL_VAR NAME="Description" /></textarea>
+                                        </div>
+                                    </TMPL_LOOP>
+                                </div>
+                                <input type="button" class="btn btn-primary" value="<TMPL_VAR NAME='LNG_AddInfo' />" onclick="addInfo()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-3" class="tab-pane">
+                        <div class="row">
+                        	<div class="col-md-12">
+                        		<label><TMPL_VAR NAME="LNG_UpdateScheduleFile" /></label>
+                        		<input type="file" name="ScheduleFile" class="form-control"  style="min-height:60px;border:0;">
+                            </div>
+                            <div class="col-md-12">
+                                <div class="room-list">
+                                    
+                                    <TMPL_LOOP NAME="Schedule">
+                                        <table width="100%" data-id="<TMPL_VAR NAME='__INDEX__' />">
+                                            <input type="hidden" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][RoomID]" value="<TMPL_VAR NAME='RoomID' />" />
+                                            <thead>
+                                            <tr>
+                                                <th colspan="2">
+                                                    <input type="text" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][Title]" value="<TMPL_VAR NAME='Title' />" placeholder="<TMPL_VAR NAME='LNG_RoomTitlePlaceholder' />" class="form-control">
+                                                    <input type="text" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][Date]" value="<TMPL_VAR NAME='Schedule.Date' FORMAT='datepicker'>" placeholder="<TMPL_VAR NAME='LNG_ScheduleDatePlaceholder' />" class="form-control datepicker">
+                                                </th>
+                                                <th width="100px">
+                                                    <a href="#" class="remove-table"><TMPL_VAR NAME="LNG_Remove" /></a>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="sortable">
+                                            
+                                                <TMPL_LOOP NAME="ActionList">
+                                                    <tr data-id="<TMPL_VAR NAME='ActionList.__INDEX__' />">
+                                                        <input type="hidden" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][ActionList][<TMPL_VAR NAME='__INDEX__' />][ActionID]" value="<TMPL_VAR NAME='ActionID' />" />
+                                                        <td width="250px">
+                                                            <label><TMPL_VAR NAME="LNG_TimesItem" /></label>
+                                                            <div class="row">
+                                                                <div class="col-md-5">
+                                                                    <input type="text" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][ActionList][<TMPL_VAR NAME='__INDEX__' />][TimeFrom]" class="form-control timepicker" placeholder="с" value="<TMPL_VAR NAME='TimeFrom' FORMAT='timepicker' />">
+                                                                </div>
+                                                                <div class="col-md-1"> - </div>
+                                                                <div class="col-md-5">
+                                                                    <input type="text" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][ActionList][<TMPL_VAR NAME='__INDEX__' />][TimeTo]" class="form-control timepicker" placeholder="по" value="<TMPL_VAR NAME='TimeTo' FORMAT='timepicker' />">
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <select name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][ActionList][<TMPL_VAR NAME='__INDEX__' />][Type]" class="form-control">
+                                                                <TMPL_LOOP NAME="TypeList">
+                                                                    <option value="<TMPL_VAR NAME='Key' />" <TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME="Title" /></option>
+                                                                </TMPL_LOOP>
+                                                            </select>
+                                                            <input type="text" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][ActionList][<TMPL_VAR NAME='__INDEX__' />][Title]" value="<TMPL_VAR NAME='Title' />" class="form-control" placeholder="<TMPL_VAR NAME='LNG_ItemTitlePlaceholder' />">
+                                                            <input type="text" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][ActionList][<TMPL_VAR NAME='__INDEX__' />][Name]" value="<TMPL_VAR NAME='Name' />" class="form-control" placeholder="<TMPL_VAR NAME='LNG_ItemAuthorPlaceholder' />">
+                                                            <input type="text" name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][ActionList][<TMPL_VAR NAME='__INDEX__' />][Post]" value="<TMPL_VAR NAME='Post' />" class="form-control" placeholder="<TMPL_VAR NAME='LNG_ItemPostPlaceholder' />">
+                                                            <textarea name="Schedule[<TMPL_VAR NAME='Schedule.__INDEX__' />][ActionList][<TMPL_VAR NAME='__INDEX__' />][Description]" rows="3" class="form-control" placeholder="<TMPL_VAR NAME='LNG_ItemDescriptionPlaceholder' />"><TMPL_VAR NAME="Description" /></textarea>
+                                                        </td>
+                                                        <td>
+                                                            <a href="#" class="remove-tr"><TMPL_VAR NAME="LNG_Remove" /></a>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                </TMPL_LOOP>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <input type="button" value="<TMPL_VAR NAME='LNG_AddItem' />" class="btn" onclick="addItem(this)">
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        
+                                    </TMPL_LOOP>
+                                    
+                                </div>
+                                <input type="button" value="+ <TMPL_VAR NAME='LNG_AddRoom' />" class="btn" onclick="addRoom()">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tab-4" class="tab-pane">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <select name="univer" class="form-control">
+                                    <TMPL_LOOP NAME="UniversitiesList">
+                                        <option value="<TMPL_VAR NAME='UniversityID' />"><TMPL_VAR NAME="Title" /></option>
+                                    </TMPL_LOOP>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="button" value="Добавить" class="btn" onclick="addUniver(this)">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 35px;">
+                            <div class="col-md-12">
+                                <table class="table">
+                                    <tbody class="sortable">
+                                        <TMPL_LOOP NAME="SelectedUniversitiesList">
+                                            <tr>
+                                                <td>
+                                                    <input type="hidden" name="univers[]" value="<TMPL_VAR NAME='UniversityID' />">
+                                                    <TMPL_VAR NAME="SelectedUniversitiesList.Title" />
+                                                </td>
+                                                <td width="30px">
+                                                    <a href="#" class="remove-tr"><i class="fa fa-close delete"></i></a>
+                                                </td>
+                                            </tr>
+                                        </TMPL_LOOP>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="tab-5" class="tab-pane">
+                        
+                        <table class="table">
+                            <tbody>
+                                <TMPL_LOOP NAME="MainPartnerList">
+                                    <tr>
+                                        <td width="150">
+                                            <TMPL_IF NAME="PartnerImageAdminPath">
+                                                <img src="<TMPL_VAR NAME='PartnerImageAdminPath' />" >
+                                            </TMPL_IF>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="mainpartners[]" class="form-control" placeholder="Наименование" value="<TMPL_VAR NAME='PartnerTitle' />" autocomplete="off"> <br>
+                                            <input type="file" name="mainpartnersImages[]">
+                                            <input type="hidden" name="mainpartnersImagesOld[]" value="<TMPL_VAR NAME='PartnerImage' />">
+                                            <input type="hidden" name="mainpartnersIDs[]" value="<TMPL_VAR NAME='PartnerID' />">
+                                        </td>
+                                        <td width="30px">
+                                            <a href="#" onclick="removeMainPartner(this, <TMPL_VAR NAME='PartnerID' />, '<TMPL_VAR NAME='PartnerTitle' />'); return false;"><i class="fa fa-close delete"></i></a>
+                                        </td>
+                                    </tr>
+                                </TMPL_LOOP>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="button" value="Добавить партнера" onclick="addMainPartner()" class="btn">
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        
+                    </div>
+                    
+                    <div id="tab-6" class="tab-pane">
+                        
+                        <table class="table">
+                            <tbody>
+                                <TMPL_LOOP NAME="PartnerList">
+                                    <tr>
+                                        <td width="150">
+                                            <TMPL_IF NAME="PartnerImageAdminPath">
+                                                <img src="<TMPL_VAR NAME='PartnerImageAdminPath' />" >
+                                            </TMPL_IF>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="partners[]" class="form-control" placeholder="Наименование" value="<TMPL_VAR NAME='PartnerTitle' />" autocomplete="off"> <br>
+                                            <input type="file" name="partnersImages[]">
+                                            <input type="hidden" name="partnersImagesOld[]" value="<TMPL_VAR NAME='PartnerImage' />">
+                                            <input type="hidden" name="partnersIDs[]" value="<TMPL_VAR NAME='PartnerID' />">
+                                        </td>
+                                        <td width="30px">
+                                            <a href="#" onclick="removePartner(this, <TMPL_VAR NAME='PartnerID' />, '<TMPL_VAR NAME='PartnerTitle' />'); return false;"><i class="fa fa-close delete"></i></a>
+                                        </td>
+                                    </tr>
+                                </TMPL_LOOP>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">
+                                        <input type="button" value="Добавить партнера" onclick="addPartner()" class="btn">
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        
+                    </div>
+                    
+                    <div id="tab-7" class="tab-pane">
+                        <div class="row">
+                        	<div class="col-md-12">
+								<div class="form-group">
+                                    <label for="EmailTheme" class="form-label"><TMPL_VAR NAME='LNG_EmailTheme'></label><br />
+                                    <input class="form-control" type="text" name="EmailTheme" id="EmailTheme" value="<TMPL_VAR NAME='EmailTheme'>" />
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+								<div class="form-group">
+									<label for="EmailTemplate" class="form-label"><TMPL_VAR NAME='LNG_EmailTemplate'></label><br />
+									<textarea name="EmailTemplate" id="EmailTemplate"><TMPL_VAR NAME="EmailTemplate" /></textarea>
+								</div>
+							</div>
+						</div>
+                    </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="buttons top15">
+                    <input type="hidden" name="ExhibitionID" value="<TMPL_VAR NAME='ExhibitionID' />">
+                    <input type="submit" class="btn btn-primary" name="Save" value="<TMPL_VAR NAME='LNG_Save' />">
+                </div>
+            </form>
+
+        </div>
+    </section>
+</div>
+
+<script>
+	createCKEditor('EmailTemplate');
+
+    var roomID = $('.room-list table').length;
+    function addRoom() {
+        roomID += 1;
+        var room = '<table width="100%" data-id="$roomID">' +
+            '    <thead>' +
+            '        <tr>' +
+            '            <th colspan="2">' +
+            '                <input type="text" name="Schedule[$roomID][Title]" value="" placeholder="<TMPL_VAR NAME="LNG_RoomTitlePlaceholder" />" class="form-control">' +
+            '                <input type="text" name="Schedule[$roomID][Date]" value="" placeholder="<TMPL_VAR NAME="LNG_ScheduleDatePlaceholder"/>" class="form-control datepicker">' +
+            '            </th>' +
+            '            <th width="100px">' +
+            '                <a href="#" class="remove-table"><TMPL_VAR NAME="LNG_Remove" /></a>' +
+            '            </th>' +
+            '        </tr>' +
+            '    </thead>' +
+            '    <tbody class="sortable">' +
+            '        <tr data-id="1">' +
+            '            <td width="250">' +
+            '                <label><TMPL_VAR NAME="LNG_TimesItem" /></label>' +
+            '                <div class="row">' +
+            '                    <div class="col-md-5">' +
+            '                        <input type="text" name="Schedule[$roomID][ActionList][1][TimeFrom]" class="form-control timepicker" placeholder="с">' +
+            '                    </div>' +
+            '                    <div class="col-md-1"> - </div>' +
+            '                    <div class="col-md-5">' +
+            '                        <input type="text" name="Schedule[$roomID][ActionList][1][TimeTo]" class="form-control timepicker" placeholder="по">' +
+            '                    </div>' +
+            '                </div>' +
+            '            </td>' +
+            '            <td>' +
+            '                <select name="Schedule[$roomID][ActionList][1][Type]" class="form-control">' +
+            '                    <TMPL_LOOP NAME="TypeList">' +
+            '                        <option value="<TMPL_VAR NAME="Key" />"><TMPL_VAR NAME="Title" /></option>' +
+            '                    </TMPL_LOOP>' +
+            '                </select>' +
+            '                <input type="text" name="Schedule[$roomID][ActionList][1][Title]" value="" class="form-control" placeholder="<TMPL_VAR NAME="LNG_ItemTitlePlaceholder" />">' +
+            '                <input type="text" name="Schedule[$roomID][ActionList][1][Name]" value="" class="form-control" placeholder="<TMPL_VAR NAME="LNG_ItemAuthorPlaceholder" />">' +
+            '                <input type="text" name="Schedule[$roomID][ActionList][1][Post]" value="" class="form-control" placeholder="<TMPL_VAR NAME="LNG_ItemPostPlaceholder" />">' +
+            '                <textarea name="Schedule[$roomID][ActionList][1][Description]" rows="3" class="form-control" placeholder="<TMPL_VAR NAME="LNG_ItemDescriptionPlaceholder" />"></textarea>' +
+            '            </td>' +
+            '            <td>' +
+            '                <a href="#" class="remove-tr"><TMPL_VAR NAME="LNG_Remove" /></a>' +
+            '            </td>' +
+            '        </tr>' +
+            '    </tbody>' +
+            '    <tfoot>' +
+            '        <tr>' +
+            '            <td colspan="3">' +
+            '                <input type="button" value="<TMPL_VAR NAME="LNG_AddItem" />" class="btn" onclick="addItem(this)">' +
+            '            </td>' +
+            '        </tr>' +
+            '    </tfoot>' +
+            '</table>';
+        $('.room-list').append( room.replace(/\$roomID/g, roomID) );
+        timepickerApply();
+        datepickerApply();
+    }
+    function addItem(e) {
+        var table = $(e).closest('table');
+        var roomID = table.data('id');
+        var itemID = parseInt(Math.max.apply([], table.find('tbody tr').map(function() {
+            return $(this).data('id');
+        }).get()));
+        if (!itemID) {
+            itemID = 1;
+        } else {
+            ++itemID;
+        }
+        
+        var item = '<tr data-id="$itemID">' +
+            '    <td width="250">' +
+            '        <label><TMPL_VAR NAME="LNG_TimesItem" /></label>' +
+            '        <div class="row">' +
+            '            <div class="col-md-5">' +
+            '                <input type="text" name="Schedule[$roomID][ActionList][$itemID][TimeFrom]" class="form-control timepicker" placeholder="с">' +
+            '            </div>' +
+            '            <div class="col-md-1"> - </div>' +
+            '            <div class="col-md-5">' +
+            '                <input type="text" name="Schedule[$roomID][ActionList][$itemID][TimeTo]" class="form-control timepicker" placeholder="по">' +
+            '            </div>' +
+            '        </div>' +
+            '    </td>' +
+            '    <td>' +
+            '        <select name="Schedule[$roomID][ActionList][$itemID][Type]" class="form-control">' +
+            '            <TMPL_LOOP NAME="TypeList">' +
+            '                <option value="<TMPL_VAR NAME="Key" />"><TMPL_VAR NAME="Title" /></option>' +
+            '            </TMPL_LOOP>' +
+            '        </select>' +
+            '        <input type="text" name="Schedule[$roomID][ActionList][$itemID][Title]" value="" class="form-control" placeholder="<TMPL_VAR NAME="LNG_ItemTitlePlaceholder" />">' +
+            '        <input type="text" name="Schedule[$roomID][ActionList][$itemID][Name]" value="" class="form-control" placeholder="<TMPL_VAR NAME="LNG_ItemAuthorPlaceholder" />">' +
+            '        <input type="text" name="Schedule[$roomID][ActionList][$itemID][Post]" value="" class="form-control" placeholder="<TMPL_VAR NAME="LNG_ItemPostPlaceholder" />">' +
+            '        <textarea name="Schedule[$roomID][ActionList][$itemID][Description]" rows="3" class="form-control" placeholder="<TMPL_VAR NAME="LNG_ItemDescriptionPlaceholder" />"></textarea>' +
+            '    </td>' +
+            '    <td>' +
+            '        <a href="#" class="remove-tr"><TMPL_VAR NAME="LNG_Remove" /></a>' +
+            '    </td>' +
+            '</tr>';
+        table.find('tbody').append( item.replace(/\$roomID/g, roomID).replace(/\$itemID/g, itemID) );
+        timepickerApply();
+    }
+    
+    function timepickerApply() {
+        var options = {
+            template: 'dropdown',
+            showSeconds: false,
+            defaultTime: false,
+            showMeridian: false,
+            minuteStep: 5
+        };
+
+        $('.timepicker').timepicker(options);
+    }
+
+    function datepickerApply() {
+        $('.datepicker').datetimepicker({
+            language:  'ru',
+            format: "dd.mm.yyyy",
+            weekStart: 1,
+            todayBtn: 1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 0,
+            timepicker: false,
+            minView: 2
+        });
+    }
+    
+    $('#tab-3, #tab-5').on('click', '.remove-table', function(e) {
+        e.preventDefault();
+        var self = $(this);
+        ModalConfirm("<TMPL_VAR NAME='LNG_ConfirmRemoveTable' FORMAT='nl2br' />", function(){
+            self.closest('table').remove();
+        });
+    })
+        .on('click', '.remove-tr', function(e) {
+            e.preventDefault();
+            var self = $(this);
+            ModalConfirm("<TMPL_VAR NAME='LNG_ConfirmRemoveTr' FORMAT='nl2br' />", function(){
+                self.closest('tr').remove();
+            });
+        });
+    $('#tab-4').on('click', '.remove-tr', function(e) {
+        e.preventDefault();
+        var self = $(this);
+        var id = self.closest('tr').find('input').val();
+        ModalConfirm("<TMPL_VAR NAME='LNG_ConfirmRemoveTr' FORMAT='nl2br' />", function(){
+            self.closest('tr').remove();
+            $('#tab-4 select option[value=' + id + ']').attr('disabled', false);
+        });
+    });
+
+    var fixHelper = function(e, ui) {
+        ui.children().each(function() {
+            $(this).width($(this).width());
+        });
+        return ui;
+    };
+    $('tbody.sortable').sortable({
+        helper: fixHelper
+    });
+
+    function addInfo() {
+        var block = '<div class="info-item form-group" style="margin-bottom: 30px;">' +
+            '    <input type="text" name="info[title][]" placeholder="<TMPL_VAR NAME='LNG_InfoTitle' />" class="form-control" style="margin-bottom: 10px;">' +
+        '    <input type="hidden" name="info[img][]" value="">' +
+        '    <input type="file" name="infoFiles[]" class="form-control" style="margin-bottom: 10px;">' +
+        '    <textarea name="info[text][]" rows="12" class="form-control" placeholder="<TMPL_VAR NAME='LNG_InfoDescription' />"></textarea>' +
+        '</div>';
+        $('#tab-2 .info-list').append(block);
+    }
+    
+    function addUniver(element) {
+        var opt = $(element).closest('.row').find('select option:selected');
+        if (opt.attr('disabled')) {
+            return;
+        }
+        
+        $(element).closest('.tab-pane').find('table tbody').append('<tr>' +
+            '    <td>' +
+            '       <input type="hidden" name="univers[]" value="' + opt.val() + '" >' + opt.text() +
+            '    </td>' +
+            '    <td width="30px">' +
+            '       <a href="#" class="remove-tr"><i class="fa fa-close delete"></i></a>' +
+            '    </td>' +
+            '</tr>');
+        opt.attr('disabled', true);
+    }
+    
+    function addMainPartner() {
+        var row = '<tr>' +
+            '    <td width="150"></td>' +
+            '    <td>' +
+            '        <input type="text" name="mainpartners[]" class="form-control" placeholder="Наименование" value="" autocomplete="off"> <br>' +
+            '        <input type="file" name="mainpartnersImages[]">' +
+            '        <input type="hidden" name="mainpartnersImagesOld[]" value="">' +
+            '        <input type="hidden" name="mainpartnersIDs[]" value="">' +
+            '    </td>' +
+            '    <td width="30px">' +
+            '       <a href="#" class="remove-tr"><i class="fa fa-close delete"></i></a>' +
+            '    </td>' +
+            '</tr>';
+        $('#tab-5 table.table tbody').append(row);
+    }
+
+    function removeMainPartner(el, id, title) {
+        var confirm = "<TMPL_VAR NAME='LNG_ConfirmRemovePartner' FORMAT='nl2br' />";
+        confirm = confirm.replace('%Title%', title);
+        
+        ModalConfirm(confirm, function(){
+            $.ajax({
+                url:"<TMPL_VAR NAME='MODULE_PATH'>ajax.php",
+                dataType:"JSON",
+                data:{
+                    'Action': 'RemoveMainPartnerCity',
+                    'PartnerID': id
+                },
+                success: function(data){
+                    if(typeof data.SessionExpired !== 'undefined') {
+                        window.location.href = ADMIN_PATH+"index.php";
+                        return;
+                    }
+                    
+                    $(el).closest('tr').remove();
+                }
+            });
+        });
+    }
+    
+    function addPartner() {
+        var row = '<tr>' +
+            '    <td width="150"></td>' +
+            '    <td>' +
+            '        <input type="text" name="partners[]" class="form-control" placeholder="Наименование" value="" autocomplete="off"> <br>' +
+            '        <input type="file" name="partnersImages[]">' +
+            '        <input type="hidden" name="partnersImagesOld[]" value="">' +
+            '        <input type="hidden" name="partnersIDs[]" value="">' +
+            '    </td>' +
+            '    <td width="30px">' +
+            '       <a href="#" class="remove-tr"><i class="fa fa-close delete"></i></a>' +
+            '    </td>' +
+            '</tr>';
+        $('#tab-6 table.table tbody').append(row);
+    }
+
+    function removePartner(el, id, title) {
+        var confirm = "<TMPL_VAR NAME='LNG_ConfirmRemovePartner' FORMAT='nl2br' />";
+        confirm = confirm.replace('%Title%', title);
+        
+        ModalConfirm(confirm, function(){
+            $.ajax({
+                url:"<TMPL_VAR NAME='MODULE_PATH'>ajax.php",
+                dataType:"JSON",
+                data:{
+                    'Action': 'RemovePartnerCity',
+                    'PartnerID': id
+                },
+                success: function(data){
+                    if(typeof data.SessionExpired !== 'undefined') {
+                        window.location.href = ADMIN_PATH+"index.php";
+                        return;
+                    }
+                    
+                    $(el).closest('tr').remove();
+                }
+            });
+        });
+    }
+    
+</script>

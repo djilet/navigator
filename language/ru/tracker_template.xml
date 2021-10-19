@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<user_event_list.html>
+			<Title>События</Title>
+			<FilterDateFrom>Дата от</FilterDateFrom>
+			<FilterDateTo>до</FilterDateTo>
+			<FilterApply>Применить</FilterApply>
+			<Date>Дата</Date>
+			<FirstName>Имя</FirstName>
+			<LastName>Фамилия</LastName>
+			<Phone>Телефон</Phone>
+			<Email>Email</Email>
+			<ContactType>Тип контакта</ContactType>
+			<LeadTo>Лид на</LeadTo>
+			<LeadToExhibition>Выставка</LeadToExhibition>
+			<LeadToOrder>Консультация</LeadToOrder>
+			<Event>Событие</Event>
+			<EventBlogPrevPage>Последняя открытая страница блог</EventBlogPrevPage>
+			<EventBlogFirstPage>Первая страница блог</EventBlogFirstPage>
+			<Empty>Не найдено</Empty>
+			<Export>Экспорт .csv</Export>
+		</user_event_list.html>
+	</admin>
+</Root>

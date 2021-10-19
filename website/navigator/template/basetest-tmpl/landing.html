@@ -1,0 +1,67 @@
+<div class="landing">
+	<div class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="title">
+						ПОДБЕРЁМ ПРОФЕССИИ ДЛЯ ТЕБЯ
+					</h1>
+				</div>
+
+				<div class="full-bg">
+					<!-- <img src="<TMPL_VAR NAME='PATH2MAIN' />img/basetest/landing-bg.svg"> -->
+					<div class="ellipse"></div>
+					<div class="statue"></div>
+				</div>
+
+				<div class="col-md-12">
+					<TMPL_IF NAME='BeginTest'>
+						<h3 class="description begin">
+							<p class="first">
+								Закончен поиск,
+								Решение есть!
+							</p>
+
+							Проф
+							<span class="paragraph">
+								Тест
+							</span>
+							Пройди и жми
+						 	кнопку
+						 	здесь:
+						 </h3>
+						<TMPL_ELSE>
+							<h3 class="description">
+								<p class="first">
+									Профориентация
+									сложна и важна!
+									Лень и прострация 
+									здесь не нужна!
+								</p>
+
+								Не медли, стань частью нас!
+								Прямо здесь и прямо сейчас!
+							</h3>
+						</TMPL_IF>
+					</h3>
+
+					<div class="navigation max-width">
+						<a href="<TMPL_VAR NAME='BaseURL'>?Action=Start" class="btn black" id="base-test-register-btn">
+							<TMPL_IF NAME='BeginTest'>
+								НАЧАТЬ ТЕСТ
+							<TMPL_ELSE>
+								ЗАРЕГИСТРИРОВАТЬСЯ
+							</TMPL_IF>
+						</a>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>
+
+<TMPL_IF NAME='ShowModalSingIn'>
+	<div class="show-modal-dialog" data-modal="#modal-signin"></div>
+<TMPL_ELSEIF NAME='ShowModalCheckIn'>
+	<div class="show-modal-dialog" data-modal="#modal-checkin"></div>
+</TMPL_IF>

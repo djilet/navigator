@@ -1,0 +1,25 @@
+<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+	<div class="row">
+		<TMPL_IF NAME='ErrorList'>
+			<div class="col-md-12">
+				<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+			</div>
+		</TMPL_IF>
+		<div class="col-md-12">
+			<div class="form-group">
+				<label for="Text" class="form-label required">Описание</label><br />
+				<textarea name="Text" id="Text" rows="10" class="form-control"><TMPL_VAR NAME="ProftestText" /></textarea>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="col-md-12 top15">
+			<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+		</div>
+		<input type="hidden" name="Save" value="1" />
+		<input type="hidden" name="ProftestID" value="<TMPL_VAR NAME='ProftestID'>" />
+		<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+	</div>
+</form>
+<script type="text/javascript">
+	createCKEditor("Text");
+</script>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Подача документов</module-title>
+	<module-admin-title>Подача документов</module-admin-title>
+	
+	<config-PartnerID>Идентификатор (UserID) партнера</config-PartnerID>
+	
+	<document-pageid-empty>Не указана привязка к странице услуги</document-pageid-empty>
+	<document-regionid-empty>Не выбран регион</document-regionid-empty>
+	<document-universitycount-empty>Не выбрано количетво вузов</document-universitycount-empty>
+	<document-name-empty>Не указано ФИО</document-name-empty>
+	<document-address-empty>Не указан адрес</document-address-empty>
+	<document-email-empty>Не указан адрес электронной почты</document-email-empty>
+	<document-email-incorrect>Некорректный адрес электронной почты</document-email-incorrect>
+	<document-phone-empty>Не указан номер телефона</document-phone-empty>
+	<document-date-empty>Не указана дата</document-date-empty>
+	<document-time-empty>Не указано время</document-time-empty>
+	<document-addbill-fail>Ошибка создания счета на оплату</document-addbill-fail>
+</Root>

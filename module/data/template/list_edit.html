@@ -1,0 +1,274 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='ListID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditList'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddList'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			<ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-1" data-toggle='tab'><TMPL_VAR NAME='LNG_TabInfo'></a></li>
+                <TMPL_IF NAME='Type' VALUE='manual'>
+                <li><a href="#tab-2" data-toggle='tab'><TMPL_VAR NAME='LNG_TabManual'></a></li>
+                <TMPL_ELSEIF NAME='Type' VALUE='filter'>
+                <li><a href="#tab-3" data-toggle='tab'><TMPL_VAR NAME='LNG_TabFilter'></a></li>
+                </TMPL_IF>
+            </ul>
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="row">
+							<TMPL_IF NAME='ErrorList'>
+								<div class="col-md-12">
+									<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+								</div>
+							</TMPL_IF>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+									<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+								</div>
+								<div class="form-group">
+									<label for="Type" class="form-label required"><TMPL_VAR NAME='LNG_Type'></label><br />
+									<select class="form-control" name="Type" id="Type"<TMPL_IF NAME='Type'> disabled</TMPL_IF>>
+										<option value="manual"<TMPL_IF NAME='Type' VALUE='manual'> selected</TMPL_IF>><TMPL_VAR NAME='LNG_TypeManual'></option>
+										<option value="filter"<TMPL_IF NAME='Type' VALUE='filter'> selected</TMPL_IF>><TMPL_VAR NAME='LNG_TypeFilter'></option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="Description" class="form-label"><TMPL_VAR NAME='LNG_Description'></label><br />
+									<textarea class="form-control" rows="5" name="Description" id="Description"><TMPL_VAR NAME='Description'></textarea>
+								</div>
+								<div class="form-group">
+									<label for="MetaTitle" class="form-label"><TMPL_VAR NAME='LNG_MetaTitle'></label><br />
+									<input class="form-control" type="text" name="MetaTitle" id="MetaTitle" value="<TMPL_VAR NAME='MetaTitle'>" />
+								</div>
+								<div class="form-group">
+									<label for="MetaDescription" class="form-label"><TMPL_VAR NAME='LNG_MetaDescription'></label><br />
+									<input class="form-control" type="text" name="MetaDescription" id="MetaDescription" value="<TMPL_VAR NAME='MetaDescription'>" />
+								</div>
+								<div class="form-group">
+									<label for="StaticPath" class="form-label"><TMPL_VAR NAME='LNG_StaticPath'></label><br />
+									<input class="form-control" type="text" name="StaticPath" id="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" />
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group form-inline">
+									<label for="Public"><TMPL_VAR NAME='LNG_Public'></label><br />
+									<input type="checkbox" name="Public" id="Public" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Public' VALUE='Y'>checked<TMPL_ELSEIF NAME='Public' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+	                    <h3><TMPL_VAR NAME='LNG_ManualUniversity'></h3>
+	                    <div class="form-group">
+	                    	<input id="linked-university" type="text" placeholder="Начните вводить название ВУЗа(минимум 3 символа)" class="form-control">
+						</div>
+						<div class="form-group">
+	                    	<table id="LinkedUniversity" class="table table-borderless">
+			                    <tbody>
+			                        <TMPL_LOOP NAME='LinkedUniversityList'>
+			                            <tr>
+			                                <td class="sort"><i class="fa fa-bars"></i></td>
+			                                <td>
+			                                    <input type="hidden" name="LinkedUniversity[]" value="<TMPL_VAR NAME='UniversityID' />" >
+			                                    <TMPL_VAR NAME='Title' />
+			                                </td>
+			                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+			                            </tr>
+			                        </TMPL_LOOP>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <div class="clearfix"></div>
+			            <h3><TMPL_VAR NAME='LNG_ManualSpeciality'></h3>
+	                    <div class="form-group">
+							<input id="linked-speciality" type="text" placeholder="Начните вводить название специальности(минимум 3 символа)" class="form-control">
+						</div>
+	                    <div class="form-group">
+			                <table id="LinkedSpeciality" class="table table-borderless">
+			                    <tbody>
+			                        <TMPL_LOOP NAME='LinkedSpecialityList'>
+			                            <tr>
+			                                <td class="sort"><i class="fa fa-bars"></i></td>
+			                                <td>
+			                                    <input type="hidden" name="LinkedSpeciality[]" value="<TMPL_VAR NAME='SpecialityID' />" >
+			                                    <TMPL_VAR NAME='Title' />
+			                                </td>
+			                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+			                            </tr>
+			                        </TMPL_LOOP>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <div class="clearfix"></div>
+			            <h3><TMPL_VAR NAME='LNG_ManualProfession'></h3>
+	                    <div class="form-group">
+							<input id="linked-profession" type="text" placeholder="Начните вводить название профессии(минимум 3 символа)" class="form-control">
+						</div>
+	                    <div class="form-group">
+	                    	<table id="LinkedProfession" class="table table-borderless">
+			                    <tbody>
+			                        <TMPL_LOOP NAME='LinkedProfessionList'>
+			                            <tr>
+			                                <td class="sort"><i class="fa fa-bars"></i></td>
+			                                <td>
+			                                    <input type="hidden" name="LinkedProfession[]" value="<TMPL_VAR NAME='ProfessionID' />" >
+			                                    <TMPL_VAR NAME='Title' />
+			                                </td>
+			                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+			                            </tr>
+			                        </TMPL_LOOP>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <div class="clearfix"></div>
+	        		</div>
+	        		<div id="tab-3" class="tab-pane">
+	        			<h3><TMPL_VAR NAME='LNG_FilterRegion'></h3>
+	                    <div class="form-group">
+							<input id="linked-region" type="text" placeholder="Начните вводить название региона(минимум 3 символа)" class="form-control">
+						</div>
+	                    <div class="form-group">
+	                    	<table id="FilterRegion" class="table table-borderless">
+			                    <tbody>
+			                        <TMPL_LOOP NAME='FilterRegionList'>
+			                            <tr>
+			                                <td class="sort"><i class="fa fa-bars"></i></td>
+			                                <td>
+			                                    <input type="hidden" name="FilterRegion[]" value="<TMPL_VAR NAME='RegionID' />" >
+			                                    <TMPL_VAR NAME='Title' />
+			                                </td>
+			                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+			                            </tr>
+			                        </TMPL_LOOP>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <div class="clearfix"></div>
+			            <h3><TMPL_VAR NAME='LNG_FilterBigDirection'></h3>
+	                    <div class="form-group">
+							<input id="linked-bigdirection" type="text" placeholder="Начните вводить название направления(минимум 3 символа)" class="form-control">
+						</div>
+	                    <div class="form-group">
+	                    	<table id="FilterBigDirection" class="table table-borderless">
+			                    <tbody>
+			                        <TMPL_LOOP NAME='FilterBigDirectionList'>
+			                            <tr>
+			                                <td class="sort"><i class="fa fa-bars"></i></td>
+			                                <td>
+			                                    <input type="hidden" name="FilterBigDirection[]" value="<TMPL_VAR NAME='BigDirectionID' />" >
+			                                    <TMPL_VAR NAME='Title' />
+			                                </td>
+			                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+			                            </tr>
+			                        </TMPL_LOOP>
+			                    </tbody>
+			                </table>
+			            </div>
+			            <div class="clearfix"></div>
+	        		</div>
+	        		<div class="row">
+	        			<div class="col-md-12 top15">
+							<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+							<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+						</div>
+						<input type="hidden" name="Save" value="1" />
+						<input type="hidden" name="ListID" value="<TMPL_VAR NAME='ListID'>" />
+						<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+	        		</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>
+
+<script type="text/javascript">
+	function initLinkedObjects(controlID, tableID)
+	{
+		$( "#" + controlID ).autocomplete({
+			classes: {
+				"ui-autocomplete": "highlight"
+			},
+			minLength: 3,
+			source: function(request, response) {
+				var ids = $('input[name="' + tableID + '[]"]').map(function(){return this.value}).get();
+				ids.push(<TMPL_VAR NAME='UniversityID' />);
+				$.ajax({
+					url: "<TMPL_VAR NAME='MODULE_PATH' />ajax.php",
+					type: "post",
+					data: {"Action":controlID, "term":request.term, "ItemIDs":ids},
+					dataType: 'json',
+					success: function (data) {
+						response(data);
+					}
+				});
+			},
+			select: function( event, ui ) {
+				if (ui.item) {
+					event.preventDefault();
+					addRow(tableID, ui.item);
+					$(this).val("");
+				}
+			},
+			focus: function( event, ui ) {
+				event.preventDefault();
+				$(this).val(ui.item.label);
+			}
+		});
+	}
+	initLinkedObjects('linked-university', 'LinkedUniversity');
+	initLinkedObjects('linked-speciality', 'LinkedSpeciality');
+	initLinkedObjects('linked-profession', 'LinkedProfession');
+	initLinkedObjects('linked-region', 'FilterRegion');
+	initLinkedObjects('linked-bigdirection', 'FilterBigDirection');
+	
+	function addByFilter(control, tableID, action){
+		var ids = $('input[name="' + tableID + '[]"]').map(function(){return this.value}).get();
+		var data = {
+			"Action": action,
+			"ItemIDs":ids
+		};
+		$(control).closest('.filter').find('input,select').each(function(){
+			if($(this).attr('type') == 'checkbox'){
+				data[$(this).attr('name')] = $(this).is(":checked")?1:0;
+			}
+			else {
+				data[$(this).attr('name')] = $(this).val();
+			}
+		});
+		$.ajax({
+			url: "<TMPL_VAR NAME='MODULE_PATH' />ajax.php",
+			type: "post",
+			data: data,
+			dataType: 'json',
+			success: function (data) {
+				if(data.length == 0){
+					alert("по выбранным фильтрам добавить нечего");
+				}
+				else if(confirm("найдено объектов:" + data.length + ", добавить?")) {
+					for(var i=0; i<data.length; i++){
+						addRow(tableID, data[i]);
+					}
+				}
+			}
+		});
+		return false;
+	}
+	
+	function addRow(tableID, row){
+		var row = '<tr>\
+			<td class="sort"><i class="fa fa-bars"></i></td> \
+			<td>\
+				<input type="hidden" name="' + tableID + '[]" value="'+row.value+'" >\
+				'+row.label+'\
+			</td> \
+			<td onclick="$(this).closest(\'tr\').remove()" class="delete">X</td> \
+		</tr>';
+		$('#' + tableID + ' tbody').append(row);
+	}
+</script>

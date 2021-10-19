@@ -1,0 +1,236 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='SpecialityID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditSpeciality'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddSpeciality'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#tab-1" data-toggle='tab'><TMPL_VAR NAME='LNG_TabMain'></a></li>
+				<li><a href="#tab-2" data-toggle='tab'><TMPL_VAR NAME='LNG_TabStudy'></a></li>
+			</ul>
+
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off" onsubmit="prepareEgeInput();">
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="row">
+							<TMPL_IF NAME='ErrorList'>
+								<div class="col-md-12">
+									<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+								</div>
+							</TMPL_IF>
+							<div class="col-md-6">
+								<TMPL_IF NAME="EditorMode">
+									<input type="hidden" name="UniversityID" value="<TMPL_VAR NAME='UniversityID'>">
+									<TMPL_ELSE/>
+									<div class="form-group">
+										<label for="UniversityID" class="form-label required"><TMPL_VAR NAME='LNG_University'></label><br />
+										<select class="form-control" name="UniversityID" id="UniversityID">
+											<TMPL_LOOP NAME='UniversityList'>
+												<option value="<TMPL_VAR NAME='UniversityID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+											</TMPL_LOOP>
+										</select>
+									</div>
+								</TMPL_IF>
+								<div class="form-group">
+									<label for="DirectionID" class="form-label required"><TMPL_VAR NAME='LNG_Direction'></label><br />
+									<select class="form-control" name="DirectionID" id="DirectionID">
+										<TMPL_LOOP NAME='DirectionList'>
+											<option value="<TMPL_VAR NAME='DirectionID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+									<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" required/>
+								</div>
+								<TMPL_IF NAME="EditorMode">
+									<input class="form-control" type="hidden" name="StaticPath" id="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" required/>
+								<TMPL_ELSE/>
+									<div class="form-group">
+										<label for="StaticPath" class="form-label required"><TMPL_VAR NAME='LNG_StaticPath'></label><br />
+										<input class="form-control" type="text" name="StaticPath" id="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" required/>
+									</div>
+								</TMPL_IF>
+								<TMPL_IF NAME="EditorMode">
+									<input class="form-control" type="hidden" name="Score" id="Score" value="<TMPL_IF NAME='Score'><TMPL_VAR NAME='Score'><TMPL_ELSE>0</TMPL_IF>" />
+								<TMPL_ELSE/>
+									<div class="form-group">
+										<label for="Score" class="form-label"><TMPL_VAR NAME='LNG_Score'></label><br />
+										<input class="form-control" type="text" name="Score" id="Score" value="<TMPL_VAR NAME='Score'>" />
+									</div>
+								</TMPL_IF>
+								<div class="ege">
+									<label class="form-label"><TMPL_VAR NAME='LNG_Ege'></label><br />
+									<div class="row template" style="display:none;">
+										<div class="col-md-6">
+											<select class="form-control">
+												<TMPL_LOOP NAME='SubjectList'>
+													<option value="<TMPL_VAR NAME='SubjectID'>"><TMPL_VAR NAME='Title'></option>
+												</TMPL_LOOP>
+											</select>
+										</div>
+										<div class="col-md-4">
+											<input class="form-control" type="text"/>
+										</div>
+										<div class="col-md-2">
+											<a href="#" onclick="removeEgeRow(this);return false"><TMPL_VAR NAME='LNG_EgeRemove'></a>
+										</div>
+									</div>
+									<div class="subjects"></div>
+									<p>
+										<a href="#" onclick="addEgeRow();return false;"><TMPL_VAR NAME='LNG_EgeAdd'></a>
+									</p>
+								</div>
+								<div class="additional" data-addition>
+									<label class="form-label"><TMPL_VAR NAME='LNG_Additional'></label><br />
+
+									<TMPL_IF NAME="AdditionalList">
+										<TMPL_LOOP NAME="AdditionalList">
+											<div class="row" data-addition-item data-index="<TMPL_VAR NAME='__INDEX__'/>">
+												<div class="col-md-10">
+													<input class="form-control" type="text" name="AdditionalList[<TMPL_VAR NAME='__INDEX__'/>][Value]" value="<TMPL_VAR NAME='Value'/>">
+												</div>
+												<div class="col-md-2">
+													<a href="#" data-addition-item-remove><TMPL_VAR NAME='LNG_EgeRemove'></a>
+												</div>
+											</div>
+										</TMPL_LOOP>
+									</TMPL_IF>
+								</div>
+								<p>
+									<a href="#" data-addition-add><TMPL_VAR NAME='LNG_AdditionAdd'></a>
+								</p>
+
+								<div class="form-group">
+									<label for="Students" class="form-label"><TMPL_VAR NAME='LNG_Students'></label><br />
+									<input class="form-control" type="text" name="Students" id="Students" value="<TMPL_VAR NAME='Students'>" />
+								</div>
+								<div class="form-group">
+									<label for="Employment" class="form-label"><TMPL_VAR NAME='LNG_Employment'></label><br />
+									<input class="form-control" type="text" name="Employment" id="Employment" value="<TMPL_VAR NAME='Employment'>" />
+								</div>
+								<div class="form-group">
+									<label for="Salary" class="form-label"><TMPL_VAR NAME='LNG_Salary'></label><br />
+									<input class="form-control" type="text" name="Salary" id="Salary" value="<TMPL_VAR NAME='Salary'>" />
+								</div>
+								<input type="hidden" name="Link" id="Link" value="<TMPL_VAR NAME='Link'>" />
+								<div class="form-group">
+									<label for="Content" class="form-label">Содержание программы</label><br />
+									<textarea name="Content" id="Content" rows="10" class="form-control"><TMPL_VAR NAME="Content" /></textarea>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group form-inline">
+									<label for="Recruitment"><TMPL_VAR NAME="LNG_Recruitment"></label><br />
+									<input type="checkbox" name="Recruitment" id="Recruitment" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Recruitment' VALUE='Y'>checked<TMPL_ELSEIF NAME='Recruitment' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<TMPL_INCLUDE FILE='speciality_study_edit.html'>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="clearfix"></div>
+							<div class="col-md-12">
+							</div>
+							<div class="col-md-12 top15">
+								<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+								<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+							</div>
+							<input type="hidden" name="Save" value="1" />
+							<input type="hidden" name="SpecialityID" value="<TMPL_VAR NAME='SpecialityID'>" />
+							<input type="hidden" name="Ege" value="<TMPL_VAR NAME='Ege'>" />
+							<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	<TMPL_IF NAME='TemplateUmaxEditorToolset'>
+		const toolBarSet = 'umax';
+	<TMPL_ELSE/>
+		const toolBarSet = 'standart';
+	</TMPL_IF>
+	createCKEditor('Content', toolBarSet);
+
+	$('.content-body').liTranslit({
+		elName: '#Title',
+		elAlias: '#StaticPath',
+		table: 'catalog_item'
+	});
+
+	var ege = $("input[name=Ege]").val();
+	if(ege){
+		var subjects = JSON.parse(ege);
+		for(var i=0; i<subjects.length; i++){
+			addEgeRow(subjects[i].SubjectID, subjects[i].Score);
+		}
+	}	
+});
+function addEgeRow(subjectID, score){
+	var row = $(".ege .template").clone();
+	row.removeClass("template");
+	if(subjectID){
+		row.find("select").val(subjectID);	
+	}
+	if(score){
+		row.find("input").val(score);			
+	}
+	$(".ege .subjects").append(row);
+	row.show();
+}
+function removeEgeRow(obj){
+	$(obj).closest(".row").remove();
+}
+function prepareEgeInput(){
+	var ege = [];
+	$(".ege .subjects .row").each(function(){
+		ege[ege.length] = {
+			SubjectID: $(this).find("select").val(),
+			Score: $(this).find("input").val()
+		}
+	});
+	$("input[name=Ege]").val(JSON.stringify(ege));
+}
+
+// data-addition
+$('[data-addition-add]').click(function (e) {
+	e.preventDefault();
+	const newIndex = $('[data-addition-item]').last().data('index') + 1 || 1;
+	if ($('[data-addition-item]').length > 9){
+		alert('Вы достигли максимальное число ДВИ');
+		return false;
+	}
+	const item = $(`<div class="row" data-addition-item data-index="${newIndex}">
+						<div class="col-md-10">
+							<input class="form-control" type="text" name="AdditionalList[${newIndex}][Value]">
+						</div>
+						<div class="col-md-2">
+							<a href="#" data-addition-item-remove><TMPL_VAR NAME='LNG_EgeRemove'></a>
+						</div>
+					</div>`);
+	$('[data-addition]').append(item);
+	item.find('[data-addition-item-remove]').click(e => {
+		e.preventDefault();
+		item.remove();
+	});
+})
+
+$('[data-addition-item-remove]').click(function (e) {
+	e.preventDefault();
+	$(this).closest('[data-addition-item]').remove();
+})
+</script>

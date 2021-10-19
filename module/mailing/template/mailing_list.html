@@ -1,0 +1,73 @@
+<div class="col-md-12">
+    <section class="box">
+        <div class="content-body">
+        	<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" autocomplete="off">
+				<div class="row">
+					<div class="col-md-2 col-sm-3">
+						<div class="form-group">
+							<label class="form-label"><TMPL_VAR NAME='LNG_Status'></label><br />
+							<select name="FilterStatus" class="form-control">
+								<option value=""></option>
+								<option value="new" <TMPL_IF NAME='FilterStatus' VALUE='new'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_StatusNew'></option>
+								<option value="confirmed" <TMPL_IF NAME='FilterStatus' VALUE='confirmed'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_StatusConfirmed'></option>
+								<option value="inprogress" <TMPL_IF NAME='FilterStatus' VALUE='inprogress'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_StatusInprogress'></option>
+								<option value="complete" <TMPL_IF NAME='FilterStatus' VALUE='complete'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_StatusComplete'></option>
+								<!-- option value="cancelled" <TMPL_IF NAME='FilterStatus' VALUE='cancelled'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_StatusCancelled'></option-->
+							</select>
+						</div>
+					</div>
+					<div class="col-md-2 col-sm-3">
+						<label class="form-label">&nbsp;</label><br />
+						<button type="submit" class="btn btn-primary"><TMPL_VAR NAME='LNG_Filter'></button>
+					</div>
+				</div>
+			</form>
+        	<div class="col-md-6 no-padding form-group form-inline">
+				<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&MailingID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i><TMPL_VAR NAME='LNG_Add'></a>
+			</div>
+			<div class="col-md-6 no-padding form-group">
+				<ul class="pagination pagination pull-right">
+					<TMPL_VAR NAME='Paging' ESCAPE='none'>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+            <TMPL_IF NAME='MailingList'>
+                <table class="table" id="listing">
+                    <thead>
+                    <tr>
+                        <th class="text-nowrap"><TMPL_VAR NAME='LNG_Created' /></th>
+                        <th class="text-nowrap"><TMPL_VAR NAME='LNG_From' /></th>
+                        <th class="text-nowrap"><TMPL_VAR NAME='LNG_Theme' /></th>
+                        <th class="text-nowrap"><TMPL_VAR NAME='LNG_Time' /></th>
+                        <th class="text-nowrap"><TMPL_VAR NAME='LNG_Status' /></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <TMPL_LOOP NAME='MailingList'>
+                        <tr>
+                            <td class="text-nowrap"><a href="<TMPL_VAR NAME='BaseURL' />&MailingID=<TMPL_VAR NAME='MailingID' />"><TMPL_VAR NAME='Created' FORMAT='datetime'></a></td>
+                            <td class="text-nowrap"><TMPL_VAR NAME='From'></td>
+                            <td class="text-nowrap"><a href="<TMPL_VAR NAME='BaseURL' />&MailingID=<TMPL_VAR NAME='MailingID' />"><TMPL_VAr NAME='Theme'></a></td>
+                            <td class="text-nowrap"><TMPL_VAR NAME='Time'></td>
+                            <td class="text-nowrap">
+                            	<TMPL_IF NAME='Status' VALUE='new'>
+                            	<TMPL_VAR NAME='LNG_StatusNew'>
+                            	<TMPL_ELSEIF NAME='Status' VALUE='confirmed'>
+                            	<TMPL_VAR NAME='LNG_StatusConfirmed'>
+                            	<TMPL_ELSEIF NAME='Status' VALUE='inprogress'>
+                            	<TMPL_VAR NAME='LNG_StatusInprogress'>
+                            	<TMPL_ELSEIF NAME='Status' VALUE='complete'>
+                            	<TMPL_VAR NAME='LNG_StatusComplete'>
+                            	<TMPL_ELSEIF NAME='Status' VALUE='cancelled'>
+                            	<TMPL_VAR NAME='LNG_StatusCancelled'>
+                            	</TMPL_IF>
+                            </td>
+                        </tr>
+                    </TMPL_LOOP>
+                    </tbody>
+                </table>            
+            </TMPL_IF>
+        </div>
+    </section>
+</div>

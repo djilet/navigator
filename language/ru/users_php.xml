@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Пользователи</module-title>
+	<module-admin-title>Пользователи</module-admin-title>
+	<users-auth-input-empty>Не указан Email</users-auth-input-empty>
+	<users-auth-email-uncorrect>Неверный Email</users-auth-email-uncorrect>
+	<users-auth-pass-uncorrect>Неверный Email или пароль</users-auth-pass-uncorrect>
+	<registration-username-empty>Не указано имя</registration-username-empty>
+	<registration-email-empty>Не указан Email</registration-email-empty>
+	<registration-email-incorrect>Неверный Email</registration-email-incorrect>
+	<registration-whoami-empty>Не указано кто Вы</registration-whoami-empty>
+	<registration-whoami-incorrect>Некорректное значение поля Кто Вы</registration-whoami-incorrect>
+	<registration-classnumber-empty>Не указан класс</registration-classnumber-empty>
+	<registration-classnumber-incorrect>Неверное значение класса</registration-classnumber-incorrect>
+	<users-registration-email-exists>Пользователь с таким Email уже зарегистрирован</users-registration-email-exists>
+	<users-oldpassword-empty>Не указан старый пароль</users-oldpassword-empty>
+	<users-newpassword-empty>Не указан новый пароль</users-newpassword-empty>
+	<users-oldpassword-incorrect>Неверно указан старый пароль</users-oldpassword-incorrect>
+	<rules-not-checked>Вы не приняли правила</rules-not-checked>
+	<registration-pass-empty>Не введен пароль</registration-pass-empty>
+	<registration-pass-repeat-empty>Введите подтверждение пароля</registration-pass-repeat-empty>
+	<registration-pass-do-not-match>Пароли не совпадают</registration-pass-do-not-match>
+</Root>

@@ -1,0 +1,242 @@
+<div class="test-page">
+	<div class="head-block visible-md visible-lg">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="wrap">
+						<div class="content">
+							<h1 class="title heavy">
+								ПРИВЕТ!
+							</h1>
+
+							<h3 class="heavy">
+								Сейчас ты проходишь профориентационный тест
+							</h3>
+
+							<div class="">
+								<TMPL_VAR NAME='LNG_TestDescription'>
+							</div>
+						</div>
+
+						<div class="image">
+							<img src="<TMPL_VAR NAME='PATH2MAIN' />img/basetest/kosmonavt.png" alt="">
+						</div>
+					</div>
+
+					<div class="question-navigation max-width">
+						<ul class="count-list">
+							<TMPL_LOOP NAME='QuestionList'>
+								<li class="item
+									<TMPL_IF NAME='Selected'>
+										active
+									<TMPL_ELSEIF NAME='Status'>
+										complete
+									</TMPL_IF>">
+
+									<TMPL_IF NAME='Status'>
+										<a href="<TMPL_VAR NAME='BaseURL'>?ChangeQuestionID=<TMPL_VAR NAME='QuestionID'>">
+											<TMPL_VAR NAME='__ROWNUM__'> ступень
+										</a>
+									<TMPL_ELSE>
+										<TMPL_VAR NAME='__ROWNUM__'> ступень
+									</TMPL_IF>
+								</li>
+							</TMPL_LOOP>
+
+							<li>
+							Приземление
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="head-block max-md hidden-md hidden-lg">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="description-list top">
+						<a href="#" class="navigate-btn prev">
+							
+						</a>
+
+						<div class="item default active">
+							<TMPL_VAR NAME='LNG_MobileOptionDefault' ESCAPE='none'>
+						</div>
+
+						<TMPL_LOOP NAME='OptionList'>
+							<div class="item" data-id="<TMPL_VAR NAME='Id'>">
+								<h4 class="title bold">
+									<TMPL_VAR NAME='Name'>
+								</h4>
+								<div>
+									<TMPL_VAR NAME='Description' ESCAPE='NONE'>
+								</div>
+							</div>
+						</TMPL_LOOP>
+
+						<a href="#" class="navigate-btn next">
+							
+						</a>
+					</div>
+				</div>
+
+				<div class="col-xs-12">
+					<div class="question-navigation max-width">
+						<ul class="count-list">
+							<TMPL_LOOP NAME='QuestionList'>
+								<li class="item
+									<TMPL_IF NAME='Selected'>
+										active
+									<TMPL_ELSEIF NAME='Status'>
+										complete
+									</TMPL_IF>">
+
+									<TMPL_IF NAME='Status'>
+										<a href="<TMPL_VAR NAME='BaseURL'>?ChangeQuestionID=<TMPL_VAR NAME='QuestionID'>">
+											<TMPL_VAR NAME='__ROWNUM__'> ступень
+										</a>
+									<TMPL_ELSE>
+										<TMPL_VAR NAME='__ROWNUM__'> ступень
+									</TMPL_IF>
+								</li>
+							</TMPL_LOOP>
+
+							<li>
+							Приземление
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="questions">
+		<div class="container">
+			<div class="title">
+				<h4 class="color-gray heavy">
+					<TMPL_VAR NAME='Title'>
+				</h4>
+			</div>
+
+			<!-- <div class="question-line-list max-width">
+				<ul class="line-list">
+					<TMPL_LOOP NAME='QuestionList'>
+						<li class="item <TMPL_IF NAME='Status' OP='==' VALUE='complete'>
+						completed
+					<TMPL_ELSEIF NAME='Selected'>
+						completed
+					</TMPL_IF>"></li>
+					</TMPL_LOOP>
+				</ul>
+			</div> -->
+
+			<div class="option-list">
+				<div class="col-sm-12 col-md-8 no-padding option-list-wrap">
+					<form id="question" action="">
+						<TMPL_IF NAME='OptionList'>
+							<div class="drag-list-wrap">
+								<div class="numeric">
+									<TMPL_LOOP NAME='OptionList'>
+										<span class="item" data-index="<TMPL_VAR NAME='__ROWNUM__'>">
+											<TMPL_VAR NAME='__ROWNUM__'>.
+										</span>
+									</TMPL_LOOP>
+								</div>
+								<div class="items">
+									<ul class="drag-list">
+										<TMPL_LOOP NAME='OptionList'>
+											<li class="item">
+												<div class="wrap">
+													<div class="icon">
+														<span class="line"></span>
+														<span class="line"></span>
+													</div>
+													<div class="content">
+														<div class="title">
+															<TMPL_VAR NAME='Name'>
+														</div>
+													</div>
+												</div>
+												<input type="hidden" class="item-id" name="Answers[<TMPL_VAR NAME='Id'>][Id]" value="<TMPL_VAR NAME='Id'>">
+												<input type="hidden" class="item-position" name="Answers[<TMPL_VAR NAME='Id'>][Position]" value="<TMPL_VAR NAME='Position'>">
+											</li>
+										</TMPL_LOOP>
+									</ul>
+
+									<TMPL_IF NAME='CompleteQuestionCount' OP='<' VALUE='1'>
+										<div class="hint">
+											<div class="example">
+												<div class="item">
+													<div class="icon">
+														<div class="line"></div>
+														<div class="line"></div>
+													</div>
+													<h4 class="title">
+														Drag&Drop
+													</h4>
+												</div>
+
+												<div class="helper"></div>
+											</div>
+											<h4 class="text">
+												Перетаскивай то что нравится - наверх, то что меньше - вниз. Если не уверен - можно не трогать.
+											</h4>
+											<a href="#" id="close-hint-btn" class="btn black">Понятно!</a>
+										</div>
+									</TMPL_IF>
+
+									<div class="navigation column">
+										<a id="drag-list-submit" class="btn purple">
+											<TMPL_IF NAME='NextQuestionTitle'>
+												Перейти к <TMPL_VAR NAME='NextQuestionNumber'> шагу
+											<TMPL_ELSE>
+												<TMPL_VAR NAME='LNG_CompleteTestBtn'>
+											</TMPL_IF>
+										</a>
+
+										<TMPL_IF NAME='NextQuestionTitle'>
+											<span class="next-info color-light-gray">
+												<TMPL_VAR NAME='LNG_NextQuestionDescription'> “<TMPL_VAR NAME='NextQuestionTitle'>”
+											</span>
+										</TMPL_IF>
+									</div>
+								</div>
+							</div>
+						</TMPL_IF>
+
+						<input type="hidden" name="Action" value="SaveAnswers">
+						<input type="hidden" name="QuestionResultID" value="<TMPL_VAR NAME='QuestionResultID'>">
+					</form>
+				</div>
+
+				<div class="col-md-4 hidden-sm hidden-xs no-padding description-wrap">
+					<div class="description-list pointer">
+						<TMPL_LOOP NAME='OptionList'>
+							<div class="item" data-id="<TMPL_VAR NAME='Id'>">
+								<h4 class="title bold">
+									<TMPL_VAR NAME='Name'>
+								</h4 class="title">
+								<TMPL_VAR NAME='Description' ESCAPE='NONE'>
+							</div>
+						</TMPL_LOOP>
+
+						<div class="item default">
+							<h4 class="title bold">
+								<TMPL_VAR NAME='LNG_OptionDefault'>
+							</h4 class="title">
+
+							<div class="decor-block">
+								<div class="item"></div>
+								<div class="item"></div>
+								<div class="item"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

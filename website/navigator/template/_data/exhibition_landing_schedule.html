@@ -1,0 +1,53 @@
+					<TMPL_LOOP NAME='Schedule'>
+					<div class="row">
+						<div class="col-12 col-sm-2 col-md-1 time-programs"><TMPL_VAr NAME='Title'></div>
+						<div class="col-12 col-sm-10 col-md-11 cardscont">
+							<div class="d-flex flex-wrap">
+								<TMPL_LOOP NAME='ItemList'>
+								<div class="col-12 col-lg-4 programcard">
+									<img alt="" src="<TMPL_VAR NAME='PATH2MAIN' />img/bage-<TMPL_VAR NAME='Type'>.png" class="cardbageimg">
+									<div class="cardheader-block">
+										<h2 class="cardheader">
+											<TMPL_IF NAME='Type' VALUE='experts'>
+											ЕГЭ и ОГЭ
+											<TMPL_ELSEIF NAME='Type' VALUE='parent'>
+											Для родителей
+											<TMPL_ELSEIF NAME='Type' VALUE='abroad'>
+											Обучение за рубежом
+											<TMPL_ELSEIF NAME='Type' VALUE='prof'>
+											Профориентация
+											<TMPL_ELSEIF NAME='Type' VALUE='univer'>
+											Лекция от вуза
+											<TMPL_ELSEIF NAME='Type' VALUE='toefl'>
+											IELTS&TOEFL
+											</TMPL_IF>
+										</h2>
+									</div>
+									<br><br>
+									<div class="d-flex justify-content-between card-time-and-location">
+										<span class="cardheader2"><TMPL_VAR NAME='RoomTitle'></span><span class="cardheader2"><TMPL_VAR NAME='TimeFrom'>-<TMPL_VAR NAME='TimeTo'></span>
+									</div>
+									<br>
+									<p class="card-theme-title"><TMPL_VAR NAME='Title'></p>
+									<br>
+									<h3><TMPL_VAR NAME='Name'></h3>
+									<h4><TMPL_VAR NAME='Post'></h4>
+									<br>
+								</div>
+								</TMPL_LOOP>
+							</div>
+						</div>
+					</div>
+					<br><br>
+					</TMPL_LOOP>
+					<TMPL_IF NAME='ScheduleShowMore'>
+					<div class="row">
+						<div class="col-12 col-sm-2 col-md-1 time-programs">&nbsp;</div>
+						<div class="col-12 col-sm-10 col-md-11 cardscont">
+							<p align="center">
+								<a href="#" class="program-more">Посмотреть еще</a>
+								<br>&nbsp;<br>
+							</p>
+						</div>
+					</div>
+					</TMPL_IF>

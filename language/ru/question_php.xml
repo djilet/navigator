@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Вопрос-ответ</module-title>
+	<module-admin-title>Вопрос-ответ</module-admin-title>
+	<user-comments-blocked>Вам запрещено оставлять комментарии</user-comments-blocked>
+	<message-name-empty>Введите имя или авторизируйтесь</message-name-empty>
+</Root>

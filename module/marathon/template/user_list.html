@@ -1,0 +1,196 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'>
+    <section class="box admin-marathon">
+        <header class="panel_header">
+            <h2 class="title">
+                Пользователи Марафона
+            </h2>
+        </header>
+        <div class="content-body">
+            <div class="row">
+            	<form action="<TMPL_VAR NAME='MODULE_URL'>" method="get">
+    	            <div>
+    	                <div class="col-md-2">Дата регистрации от </div>
+    	                <div class="col-md-2"><input class="form-control datepicker" name="DateFrom" value="<TMPL_VAR NAME='DateFrom'>" /></div>
+    	                <div class="col-md-1">до</div>
+    	                <div class="col-md-2"><input class="form-control datepicker" name="DateTo"  value="<TMPL_VAR NAME='DateTo'>" /></div>
+    	        		<div class="col-md-1"><input type="submit" class="btn btn-success" value="Фильтровать" /></div>
+    					<div class="col-md-1"><a href="<TMPL_VAR NAME='MODULE_URL'>" class="btn btn-success">Очистить</a></div>
+    					<div class="col-md-3">
+    						<a href="<TMPL_VAR NAME='MODULE_URL'>" data-do="ExportCSV2" class="btn btn-success filter-action pull-right">CSV 2</a>
+    						<div class="pull-right">&nbsp;</div>
+    						<a href="<TMPL_VAR NAME='MODULE_URL'>" data-do="ExportCSV" class="btn btn-success filter-action pull-right">CSV 1</a>
+    					</div>
+    				</div>
+    				<input type="hidden" name="load" value="marathon" />
+    			</form>
+            </div>
+			        	
+            <div class="row">
+                <form class="marathon-users-stat" action="<TMPL_VAR NAME='BaseURL' />">
+                    <div class="col-md-4">
+                        <section class="box">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Общая статистика</h2>
+                            </header>
+                            <div class="content-body">
+                                <div class="form-group">
+                                    <a class="<TMPL_IF NAME='Filter' OP='==' VALUE='All'>selected</TMPL_IF>" href="<TMPL_VAR NAME='BaseURL' />">Зарегистрировались на марафон</a> - <TMPL_VAR NAME='CountUsers'>
+                                </div>
+                                <div class="form-group">
+                                    <a class="<TMPL_IF NAME='Filter' OP='==' VALUE='Onboarding'>selected</TMPL_IF>" href="<TMPL_VAR NAME='BaseURL' />&Filter[Onboarding]=1">Прошли онбординг</a> - <TMPL_VAR NAME='CountOnboarding'>
+                                </div>
+                            </div>
+                        </section>
+
+                        <TMPL_IF NAME='Filter' OP='!=' VALUE="All">
+                            <a href="<TMPL_VAR NAME='BaseURL' />" class="btn btn-danger btn-icon right15">
+                                Сбросить фильтр
+                            </a>
+                        </TMPL_IF> 
+                    </div>
+
+                    <div class="col-md-4">
+                        <section class="box">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Статистика этапов</h2>
+                            </header>
+                            <div class="content-body">
+                                <TMPL_LOOP NAME='StagesStat'>
+                                    <TMPL_IF NAME='CountUsersComplete'>
+                                        <div class="form-group">
+                                            Прошли 
+                                            <a class="<TMPL_IF NAME='Selected'>selected</TMPL_IF>" href="<TMPL_VAR NAME='BaseURL' />&Filter[Stage]=<TMPL_VAR NAME='SortOrder'>"><TMPL_VAR NAME='Title'></a> - <TMPL_VAR NAME='CountUsersComplete'>
+                                        </div>
+                                        <TMPL_ELSE>
+                                        <div class="form-group">
+                                            <TMPL_VAR NAME='Title'> - 0
+                                        </div>
+                                    </TMPL_IF>
+                                </TMPL_LOOP>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="col-md-4">
+                        <section class="box">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Статистика карты</h2>
+                            </header>
+                            <div class="content-body">
+                                <TMPL_LOOP NAME='MapStat'>
+                                    <div class="form-group">
+                                        Заполнили 
+                                        <a class="<TMPL_IF NAME='Selected'>selected</TMPL_IF>" href="<TMPL_VAR NAME='BaseURL' />&Filter[Map]=<TMPL_VAR NAME='StepID'>"><TMPL_VAR NAME='Name'></a> - <TMPL_VAR NAME='CountUsers'>
+                                    </div>
+                                </TMPL_LOOP>
+                            </div>
+                        </section>
+                    </div>
+                </form>  
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <section class="box">
+                        <header class="panel_header">
+                            <h2 class="title pull-left">Список пользователей</h2>
+                        </header>                        
+                        <TMPL_IF NAME='MarathonUsersList'>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th><TMPL_VAR NAME="LNG_UserFIO" /></th>
+                                    <th><TMPL_VAR NAME="LNG_Phone" /></th>
+                                    <th><TMPL_VAR NAME="LNG_Email" /></th>
+                                    <th><TMPL_VAR NAME='LNG_UserWho'></th>
+                                    <th><TMPL_VAR NAME='LNG_ClassNumber'></th>
+                                    <th><TMPL_VAR NAME='LNG_City'></th>
+                                    <th><TMPL_VAR NAME='LNG_Created'></th>
+                                    <th><TMPL_VAR NAME='LNG_UTM'></th>
+                                    <th><TMPL_VAR NAME='LNG_Onboarding'></th>
+                                    <th><TMPL_VAR NAME='LNG_Stage'></th>
+                                    <th><TMPL_VAR NAME='LNG_MAP'></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <TMPL_LOOP NAME='MarathonUsersList'>
+                                    <tr>
+                                        <td>
+                                            <a href="<TMPL_VAR NAME='BaseURL' />&MarathonUserID=<TMPL_VAR NAME='MarathonUserID' />">
+                                            <TMPL_IF NAME='UserName'>
+                                                <TMPL_VAR NAME='UserName' />
+                                            <TMPL_ELSE>
+                                                Имя не указано
+                                            </TMPL_IF>
+                                            </a>
+                                        </td>
+                                        <td class="text-nowrap"><TMPL_VAR NAME='UserPhone' /></td>
+                                        <td><TMPL_VAR NAME='UserEmail' /></td>
+                                        <td>
+                                            <TMPL_IF NAME='UserWho' VALUE='parent'>
+                                                <TMPL_VAR NAME='LNG_UserWhoParent'>
+                                            <TMPL_ELSEIF NAME='UserWho' VALUE='child'>
+                                                <TMPL_VAR NAME='LNG_UserWhoChild'>
+                                            <TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+                                                <TMPL_VAR NAME='LNG_UserWhoStudent'>
+                                            </TMPL_IF>
+                                        </td>
+                                        <td><TMPL_VAR NAME='ClassNumber'></td>
+                                        <td><TMPL_VAR NAME='City'></td>
+                                        <td><TMPL_VAR NAME='Created'></td>
+                                        <td><TMPL_VAR NAME='UTM'></td>
+                                        <td>
+                                            <TMPL_IF NAME='OnboardingCount'>
+                                                <TMPL_VAR NAME='OnboardingCount'> / 5
+                                            <TMPL_ELSE>
+                                                -
+                                            </TMPL_IF>
+                                        </td>
+                                        <td>
+                                            <TMPL_IF NAME='StageTitle'>
+                                                <TMPL_VAR NAME='StageTitle'>
+                                            <TMPL_ELSEIF NAME='CompletedParts' OP='>' VALUE='1'>
+                                                Все этапы пройдены
+                                            <TMPL_ELSE>
+                                                -
+                                            </TMPL_IF>
+                                        </td>
+                                        <td>
+                                            <TMPL_IF NAME='MapCount'>
+                                                <TMPL_VAR NAME='MapCount'> / <TMPL_VAR NAME='CountMapSteps'>
+                                            <TMPL_ELSE>
+                                                -
+                                            </TMPL_IF>
+                                        </td>
+                                    </tr>
+                                </TMPL_LOOP>
+                                </tbody>
+                            </table>
+
+                            <TMPL_IF NAME='Paging'>
+                                <div class="col-md-12 no-padding form-group">
+                                    <ul class="pagination pagination pull-right">
+                                        <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </TMPL_IF>
+                        </TMPL_IF>
+                    </section>
+                </div>
+            </div>
+            <script type="text/javascript">
+            $(document).ready(function() {
+            	$('.filter-action').click(function(){
+            		var form = $(this).closest('form');
+            		form.append('<input type="hidden" name="Do" value="' + $(this).data('do') + '" />');
+            		form.submit();
+            		return false;
+            	});      
+            });
+            </script>
+        
+        </div>
+    </section>
+</div>

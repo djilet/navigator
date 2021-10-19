@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<module-title>Услуга</module-title>
+	<module-admin-title>Услуги</module-admin-title>
+	
+	<config-PriceBefore>Цена до скидки</config-PriceBefore>
+	<config-PriceDiscount>Цена со скидкой</config-PriceDiscount>
+	<config-PriceDiscountComment>Подпись к цене со скидкой</config-PriceDiscountComment>
+	<config-PricePromocode>Цена с промокодом</config-PricePromocode>
+	<config-YaTopGoal>Цель yandex-метрики для верхней кнопки</config-YaTopGoal>
+	<config-YaBottomGoal>Цель yandex-метрики для нижней кнопки</config-YaBottomGoal>
+	<config-GaTopGoal>Цель google-analytics для верхней кнопки</config-GaTopGoal>
+	<config-GaBottomGoal>Цель google-analytics для нижней кнопки</config-GaBottomGoal>
+	
+	<service-pageid-empty>Не указана привязка к странице услуги</service-pageid-empty>
+	<service-phone-empty>Не указан номер телефона</service-phone-empty>
+	<service-email-empty>Не указан адрес электронной почты</service-email-empty>
+	<service-email-incorrect>Некорректный адрес электронной почты</service-email-incorrect>
+	<service-exists>Заявка с таким номером телефона уже поступила ранее</service-exists>
+	<service-addbill-fail>Ошибка создания счета на оплату</service-addbill-fail>
+	
+</Root>

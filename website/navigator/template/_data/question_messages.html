@@ -1,0 +1,89 @@
+<TMPL_LOOP NAME='QuestionMessageList'>
+	<div class="message-block" data-messageid="<TMPL_VAR NAME='MessageID'>">
+		<div class="message<TMPL_IF NAME='Colored' VALUE='Y'> colored</TMPL_IF>">
+			<div class="header d-flex">
+				<TMPL_IF NAME="AuthorAuthorImageListPath">
+					<div class="image mr-2">
+						<img src="<TMPL_VAR NAME='AuthorAuthorImageListPath'>" class="rounded-circle">
+					</div>
+				</TMPL_IF>
+				<div class="info">
+						<span class="user">
+							<TMPL_IF NAME="AuthorTitle">
+								<TMPL_VAR NAME='AuthorTitle'>
+							<TMPL_ELSEIF NAME="UserName"/>
+								<TMPL_VAR NAME="UserName">
+							<TMPL_ELSE/>
+								<TMPL_VAR NAME="AnonUserName">
+							</TMPL_IF>
+						</span>
+					<span class="date">
+							<TMPL_VAR NAME='CreatedText'>
+						</span>
+					<TMPL_IF NAME="QuestionMessageList.AuthorDescription">
+						<div class="text-muted">
+							<TMPL_VAR NAME='QuestionMessageList.AuthorDescription'>
+						</div>
+					</TMPL_IF>
+				</div>
+			</div>
+
+			<br>
+
+			<p class="message-text"><TMPL_VAR NAME='Text' ESCAPE='nl2br'></p>
+			<p><a href="#" class="answer">Ответить</a></p>
+		</div>
+		<TMPL_LOOP NAME='ChildList'>
+			<div class="message answer<TMPL_IF NAME='Colored' VALUE='Y'> colored</TMPL_IF>">
+				<div class="header d-flex">
+					<TMPL_IF NAME="AuthorAuthorImageListPath">
+						<div class="image mr-2">
+							<img src="<TMPL_VAR NAME='AuthorAuthorImageListPath'>" class="rounded-circle">
+						</div>
+					</TMPL_IF>
+					<div class="info">
+						<span class="user">
+							<TMPL_IF NAME="AuthorTitle">
+								<TMPL_VAR NAME='AuthorTitle'>
+							<TMPL_ELSEIF NAME="UserName"/>
+								<TMPL_VAR NAME="UserName">
+							<TMPL_ELSE/>
+								<TMPL_VAR NAME="AnonUserName">
+							</TMPL_IF>
+						</span>
+							<span class="date">
+							<TMPL_VAR NAME='CreatedText'>
+						</span>
+						<TMPL_IF NAME="ChildList.AuthorDescription">
+							<div class="text-muted">
+								<TMPL_VAR NAME='ChildList.AuthorDescription'>
+							</div>
+						</TMPL_IF>
+					</div>
+				</div>
+
+				<br>
+
+				<p class="message-text">
+					<TMPL_VAR NAME='Text' ESCAPE='nl2br'>
+				</p>
+
+				<p><a href="#" class="answer">Ответить</a></p>
+			</div>
+		</TMPL_LOOP>
+	</div>
+</TMPL_LOOP>
+
+<TMPL_IF NAME='QuestionPager'>
+	<nav aria-label="<TMPL_VAR NAME='LNG_Paging' />">
+		<ul class="pagination ajax-paging" data-form="questionMessageForm">
+			<TMPL_LOOP NAME='QuestionPager'>
+				<TMPL_IF NAME='First'>
+					<TMPL_ELSEIF NAME='Last'>
+						<TMPL_ELSE>
+							<li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>><a href="<TMPL_VAR NAME='URL'>" data-page="<TMPL_VAR NAME='Page'>"><TMPL_VAR NAME='Title'></a></li>
+				</TMPL_IF>
+			</TMPL_LOOP>
+		</ul>
+	</nav>
+</TMPL_IF>

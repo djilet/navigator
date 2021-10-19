@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<message_list.html>
+			<Created>Дата вопроса</Created>
+			<AttachType>Привязка</AttachType>
+			<AttachTypeUniversity>вуз</AttachTypeUniversity>
+			<AttachTypeCollege>колледж</AttachTypeCollege>
+			<AttachTypeArticle>статья</AttachTypeArticle>
+			<AttachTypeSpeciality>специальность вуза</AttachTypeSpeciality>
+			<AttachTypeCollegeSpeciality>специальность колледжа</AttachTypeCollegeSpeciality>
+			<User>Пользователь</User>
+			<Text>Вопрос</Text>
+			<ChildCount>Кол-во ответов</ChildCount>
+			<EmptyList>Список пуст</EmptyList>
+			<Remove>Текущее</Remove>
+			<RemoveWeek>За неделю</RemoveWeek>
+			<ConfirmRemove>Удалить сообщение '%Text%'?</ConfirmRemove>
+			<ConfirmRemove10Days>Удалить сообщения пользователя '%Text%' за 10 дней ?</ConfirmRemove10Days>
+			<Author>Автор</Author>
+		</message_list.html>
+	</admin>
+</Root>

@@ -1,0 +1,67 @@
+<TMPL_LOOP NAME='Items'>
+		<item turbo="true">
+			<link><TMPL_VAR NAME='URL_PREFIX'>article/<TMPL_VAR NAME='StaticPath'>/</link>
+			<author><TMPL_VAR NAME='Author'></author>
+			<category><TMPL_VAR NAME='Tags'></category>
+			<pubDate><TMPL_VAR NAME='DateTime'></pubDate>
+			<turbo:content>
+			    <![CDATA[
+		             <header>
+		                 <h1><TMPL_VAR NAME='Title'></h1>
+		                 <figure>
+		                     <img src="<TMPL_VAR NAME='HostURL'><TMPL_VAR NAME='ArticleMainImageBestPath'>" />
+		                 </figure>
+		             </header>
+
+		             <p>
+						 <TMPL_IF NAME='BannerTopSm'>
+								<TMPL_LOOP NAME='BannerTopSm'>
+									<a href="<TMPL_VAR NAME='Link'>" data-name="<TMPL_VAR NAME='Name'>">
+										<img src="<TMPL_VAR NAME='ItemImageFullPath' />" alt="">
+									</a>
+								</TMPL_LOOP>
+						 </TMPL_IF>
+		             </p>
+
+		             <TMPL_VAR NAME='Content' ESCAPE='none'>
+
+		             	<TMPL_IF NAME='QuestionMessageList'>
+							<div data-block="comments" data-url="<TMPL_VAR NAME='URL_PREFIX'>article/<TMPL_VAR NAME='StaticPath'>#questionMessageForm">
+								<TMPL_LOOP NAME='QuestionMessageList'>
+									<div data-block="comment" data-author="<TMPL_VAR NAME='UserName'>" data-subtitle="<TMPL_VAR NAME='CreatedText'>">
+								       <div data-block="content">
+								           <p><TMPL_VAR NAME='Text'></p>
+								       </div>
+								       <TMPL_IF NAME='ChildList'>
+									       	<div data-block="comments">
+									       		<TMPL_LOOP NAME='ChildList'>
+									       			<div data-block="comment" data-author="<TMPL_VAR NAME='UserName'>" data-subtitle="<TMPL_VAR NAME='CreatedText'>">
+													   <div data-block="content">
+												           <p><TMPL_VAR NAME='Text'></p>
+												       </div>
+													</div>
+									       		</TMPL_LOOP>
+									       </div>  
+								       </TMPL_IF>
+								   </div>
+								</TMPL_LOOP> 
+							</div>
+						</TMPL_IF>
+
+						<TMPL_IF NAME='SimilarArticles'>
+							<div data-block="feed" data-layout="horizontal" data-title="Похожие статьи">
+								<TMPL_LOOP NAME='SimilarArticles'>
+									<div data-block="feed-item"
+								        data-thumb="<TMPL_IF NAME='ArticleMainImageBestPath'><TMPL_VAR NAME='HostURL'><TMPL_VAR NAME='ArticleMainImageBestPath'><TMPL_ELSE><TMPL_VAR NAME='HostURL'><TMPL_VAR NAME='ArticleMainImageBestPath'></TMPL_IF>"
+								        data-thumb-position="left"
+								        data-thumb-ratio="16x10"
+								        data-href="<TMPL_VAR NAME='URL_PREFIX'>article/<TMPL_VAR NAME='StaticPath'>"
+								        data-title="<TMPL_VAR NAME='Title'>">
+								    </div>
+								</TMPL_LOOP>
+							</div>
+						</TMPL_IF>
+		          ]]>
+			</turbo:content>
+		</item>
+</TMPL_LOOP>

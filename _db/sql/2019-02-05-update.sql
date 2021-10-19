@@ -1,0 +1,1 @@
+UPDATE `page` SET `TitleH1` = 'Профессии для тебя' WHERE `page`.`Link` = 'basetest';

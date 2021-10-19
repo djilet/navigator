@@ -1,0 +1,139 @@
+<div class="other-articles best">
+	<TMPL_LOOP NAME='BestArticle'>
+    	<div class="col-xs-12 no-padding">
+    		<h2 class="section-title extra-bold text-center">
+    			<TMPL_VAR NAME='LNG_BlockBest'>
+    		</h2>
+    	</div>
+    
+        <div class="item">
+            <div class="wrap">
+                <div class="info">
+                    <a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='StaticPath'>/" class="title">
+                        <h2 class="bold">
+                            <TMPL_VAR NAME='Title'> 
+                        </h2>
+                    </a>
+
+                    <a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='StaticPath'>/">
+                        <div class="decription">
+                            <TMPL_VAR NAME='MetaDescription'>
+                        </div>
+                    </a>
+
+
+                    <div class="statistic">
+
+                        <div class="item">
+                            <span class="icon">
+                                <img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/look-white.svg" alt="">
+                            </span>
+                            <span class="count">
+                                <TMPL_IF NAME='ViewCount'>
+                                    <TMPL_VAR NAME='ViewCount'>
+                                <TMPL_ELSE>
+                                        0
+                                </TMPL_IF>
+                            </span>
+                        </div>
+
+                        <TMPL_IF NAME='ShareCountAll' OP=">" VALUE="0">
+                            <div class="item">
+                                <span class="icon">
+                                    <img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/repost-white.svg" alt="">
+                                </span>
+                                <span class="count">
+                                    <TMPL_VAR NAME='ShareCountAll'>
+                                </span>
+                            </div>
+                        </TMPL_IF>
+
+                        <TMPL_IF NAME='CommentCount' OP=">" VALUE="0">
+                            <div class="item">
+                                <span class="icon">
+                                    <img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/comment-white.svg" alt="">
+                                </span>
+                                <span class="count">
+                                    <TMPL_VAR NAME='CommentCount'>
+                                </span>
+                            </div>
+                        </TMPL_IF>
+                    </div>
+                </div>
+
+                <a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='StaticPath'>/" class="image" style="background-image: url('<TMPL_VAR NAME="ArticleMainImageBestPath">');">
+
+                </a>
+            </div>
+        </div>
+	</TMPL_LOOP>
+</div>
+
+<div class="other-articles similar">
+    <TMPL_IF NAME='SimilarList'>
+        <div class="col-xs-12 no-padding">
+            <h2 class="section-title extra-bold text-center">
+                <TMPL_VAR NAME='LNG_BlockSimilar'>
+            </h2>
+        </div>
+
+        <ul class="wrap">
+            <TMPL_LOOP NAME='SimilarList'>
+                <li class="item">
+                    <TMPL_IF NAME='SimilarList.ArticleMainImage'>
+                        <a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='StaticPath'>/" class="image" style="background-image: url('<TMPL_VAR NAME="ArticleMainImageBestPath">');">
+                    <TMPL_ELSE>
+                        <a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='StaticPath'>/" class="image empty">
+                    </TMPL_IF>
+
+                    </a>
+
+                    <div class="info">
+                         <div class="title">
+                        <a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='StaticPath'>/">
+                            <TMPL_VAR NAME='Title'> 
+                        </a>
+                    </div>
+
+                    <div class="statistic">
+
+                        <div class="item">
+                            <span class="icon">
+                                <img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/look-gray.svg" alt="">
+                            </span>
+                            <span class="count">
+                                <TMPL_IF NAME='ViewCount'>
+                                    <TMPL_VAR NAME='ViewCount'>
+                                <TMPL_ELSE>
+                                        0
+                                </TMPL_IF>
+                            </span>
+                        </div>
+
+                        <TMPL_IF NAME='ShareCountAll' OP=">" VALUE="0">
+                            <div class="item">
+                                <span class="icon">
+                                    <img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/repost-gray.svg" alt="">
+                                </span>
+                                <span class="count">
+                                    <TMPL_VAR NAME='ShareCountAll'>
+                                </span>
+                            </div>
+                        </TMPL_IF>
+
+                        <TMPL_IF NAME='CommentCount' OP=">" VALUE="0">
+                            <div class="item">
+                                <span class="icon">
+                                    <img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/comment-gray.svg" alt="">
+                                </span>
+                                <span class="count">
+                                    <TMPL_VAR NAME='CommentCount'>
+                                </span>
+                            </div>
+                        </TMPL_IF>
+                    </div>
+                </li>
+            </TMPL_LOOP>
+        </ul>
+    </TMPL_IF>
+</div>

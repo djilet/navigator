@@ -1,0 +1,172 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'>
+    <section class="box admin-marathon">
+        <header class="panel_header">
+            <h2 class="title">
+                Информация о пользователе
+            </h2>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <section class="box">
+                        <header class="panel_header">
+                            <h2 class="title pull-left"><TMPL_VAR NAME='LNG_FieldsetPersonal'></h2>
+                        </header>
+                        <div class="content-body">
+                            <TMPL_IF NAME='UserName'>
+                                <div class="form-group">
+                                    <b><TMPL_VAR NAME='LNG_UserFIO'>: </b> <TMPL_VAR NAME='UserName'>
+                                </div>
+                            </TMPL_IF>
+                            <TMPL_IF NAME='UserPhone'>
+                                <div class="form-group">
+                                    <b><TMPL_VAR NAME='LNG_Phone'>: </b> <TMPL_VAR NAME='UserPhone'>
+                                </div>
+                            </TMPL_IF>
+                            <TMPL_IF NAME='UserEmail'>
+                                <div class="form-group">
+                                    <b><TMPL_VAR NAME='LNG_Email'>: </b> <TMPL_VAR NAME='UserEmail'>
+                                </div>
+                            </TMPL_IF>
+                            <TMPL_IF NAME='UserWho'>
+                                <div class="form-group">
+                                    <b><TMPL_VAR NAME='LNG_UserWho'>: </b>
+                                    <TMPL_IF NAME='UserWho' VALUE='parent'>
+                                        <TMPL_VAR NAME='LNG_UserWhoParent'>
+                                    <TMPL_ELSEIF NAME='UserWho' VALUE='child'>
+                                        <TMPL_VAR NAME='LNG_UserWhoChild'>
+                                    <TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+                                        <TMPL_VAR NAME='LNG_UserWhoStudent'>
+                                    </TMPL_IF>
+                                </div>
+                            </TMPL_IF>
+                            <TMPL_IF NAME='ClassNumber'>
+                                <div class="form-group">
+                                    <b><TMPL_VAR NAME='LNG_ClassNumber'>: </b> <TMPL_VAR NAME='ClassNumber'>
+                                </div>
+                            </TMPL_IF>
+                            <TMPL_IF NAME='City'>
+                                <div class="form-group">
+                                    <b><TMPL_VAR NAME='LNG_City'>: </b> <TMPL_VAR NAME='City'>
+                                </div>
+                            </TMPL_IF>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-8">
+                    <section class="box">
+                        <header class="panel_header">
+                            <h2 class="title pull-left">Этапы</h2>
+                        </header>
+                        <div class="content-body">
+                            <div class="stages-list">
+                                <TMPL_LOOP NAME='MarathonUserStages'>
+                                    <TMPL_IF NAME='Opened'>
+                                        <div class="item <TMPL_IF NAME='Current'>current</TMPL_IF>">
+                                            <p class="title"><TMPL_VAR NAME='StageTitle'></p>
+
+                                            <TMPL_IF NAME='PartList'>
+                                                <TMPL_LOOP NAME='PartList'>
+                                                    <ul class="parts-list">
+                                                        <li id="<TMPL_VAR NAME='PartID'>" class="item
+                                                            <TMPL_IF NAME='Current'>current</TMPL_IF>
+
+                                                            <TMPL_IF NAME='Status' OP='==' VALUE='complete'>
+                                                                completed
+                                                            <TMPL_ELSEIF NAME='Status' OP='==' VALUE='available'>
+                                                                available
+                                                            <TMPL_ELSE>
+                                                                disabled
+                                                            </TMPL_IF>
+                                                        ">
+                                                            <TMPL_IF NAME='Status' OP='==' VALUE='complete'>
+                                                                <TMPL_IF NAME=Type' OP='==' VALUE='tasks'>
+                                                                    <a href="<TMPL_VAR NAME='BaseURL' />&MarathonUserID=<TMPL_VAR NAME='MarathonUserID'>&PartID=<TMPL_VAR NAME='PartID'>">
+                                                                        <TMPL_VAR NAME='Title'>
+                                                                    </a>
+                                                                <TMPL_ELSEIF NAME='Type' OP='==' VALUE='map'>
+                                                                    <a href="<TMPL_VAR NAME='BaseURL' />&MarathonUserID=<TMPL_VAR NAME='MarathonUserID'>&StepID=<TMPL_VAR NAME='StepID'>">
+                                                                        <TMPL_VAR NAME='Title'>
+                                                                    </a>
+                                                                <TMPL_ELSE>
+                                                                    <TMPL_VAR NAME='Title'>
+                                                                </TMPL_IF>
+                                                            <TMPL_ELSE>
+                                                                <TMPL_VAR NAME='Title'>
+                                                            </TMPL_IF>
+                                                        </li>
+                                                    </ul>
+                                                </TMPL_LOOP>
+                                            </TMPL_IF>
+                                        </div>
+                                    <TMPL_ELSE>
+                                        <p class="title">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                            <TMPL_VAR NAME='StageTitle'>
+                                        </p>
+                                    </TMPL_IF>
+                                </TMPL_LOOP>
+                            </div>
+                        </div>
+                    </section>
+                </div> 
+
+                <div class="col-md-4"></div>
+
+                <div class="col-md-8">
+                    <section class="box">
+                        <header class="panel_header">
+                            <h2 class="title pull-left">Онбординг</h2>
+                        </header>
+                        <div class="content-body">
+                            <div class="row">
+                                <TMPL_LOOP NAME='UserItems'>
+                                    <div class="col-md-12">
+                                        <section class="box admin-marathon">
+                                            <header class="panel_header">
+                                                <h2 class="title">
+                                                    <TMPL_VAR NAME='Title'>
+                                                </h2>
+                                            </header>
+                                            <div class="content-body">
+                                                <TMPL_IF NAME='Type' OP='==' VALUE='MultipleSearch'>
+                                                    <TMPL_LOOP NAME='Content'>
+                                                        <div class="form-group">
+                                                            <b><TMPL_VAR NAME='ListTitle'></b>
+                                                            <ul class="parts-list">
+                                                                <TMPL_LOOP NAME='List'>
+                                                                    <TMPL_IF NAME='Selected'>
+                                                                        <li class="item completed">
+                                                                            <TMPL_VAR NAME='Title'>
+                                                                        </li>
+                                                                    </TMPL_IF>
+                                                                </TMPL_LOOP>
+                                                            </ul>
+                                                        </div>
+                                                    </TMPL_LOOP>
+                                                <TMPL_ELSE>
+                                                    <TMPL_LOOP NAME='Content'>
+                                                        <TMPL_IF NAME='Selected'>
+                                                            <ul class="parts-list">
+                                                                <li class="item completed">
+                                                                    <TMPL_VAR NAME='Title'>
+                                                                </li>
+                                                            </ul>
+                                                        </TMPL_IF>
+                                                    </TMPL_LOOP>
+                                                </TMPL_IF>
+                                            </div>
+                                        </section>  
+                                    </div>
+                                </TMPL_LOOP>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>

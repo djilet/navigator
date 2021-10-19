@@ -1,0 +1,333 @@
+<div class="content-aside">
+<TMPL_IF NAME="OnlineEventID">
+	<div class="container">    	
+		<TMPL_LOOP NAME="OnlineEventID">
+		
+		<script type="application/ld+json">
+		{
+			"@context": "http://schema.org/",
+  			"@type": "EducationEvent",
+  			"name": "<TMPL_VAR NAME="Title" />",
+  			"description": "<TMPL_VAR NAME="Content" />",
+			"typicalAgeRange": "от 16 до 18 лет",
+			"startDate": "<TMPL_VAR NAME="StartDateUTC" />",
+			"endDate": "<TMPL_VAR NAME="EndDateUTC" />",
+			"duration": "<TMPL_VAR NAME="Duration" FORMAT="time" /> минут",
+			"inLanguage": "Русский",
+  			"organizer": {
+    			"@type": "Thing",
+    			"name": "Навигатор поступления"
+  			}
+		}
+		</script>
+		
+		<div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="<TMPL_VAR NAME='PROJECT_PATH'>">Главная</a></li>
+                    <li><a href="<TMPL_VAR NAME='PROJECT_PATH'>events">Вебинары</a></li>
+                    <li class="active"><TMPL_VAR NAME="Title" /></li>
+                </ol>
+            </div>
+        </div>
+    
+    	<div class="webinar-header col-md-12 showing-detail"<TMPL_IF NAME='HeadImageHeadPath'> style="background-image: url('<TMPL_VAR NAME='HeadImageHeadPath'>')"</TMPL_IF>>
+            <div class="webinar-header__content">
+                <div class="row">
+                    <div class="col-xs-12 col-md-7">
+                        <div class="webinar-header__wrap">
+                            <h1 class="webinar-header__text">
+                                <span class="small"><TMPL_VAR NAME="TypeTitle" /></span>
+                                <span><TMPL_VAR NAME="Title" /></span>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-5">
+                        <div class="webinar-header__wrap">
+                            <div class="webinar-header__progressbar">
+                                
+                                <TMPL_IF NAME="isFinished">
+                                    <div class="block__progressbar clearfix">
+                                    	<div class="dark"><TMPL_VAR NAME="FinishedDate" /></div>
+                                        <div class="progressbar">
+                                            <div class="progressbar__load" style="width: 100%;"></div>
+                                        </div>
+                                        <ul>
+                                            <li><TMPL_VAR NAME="TypeTitle" /> <TMPL_VAR NAME="LNG_Finished" /></li>
+                                        </ul>
+                                    </div>
+                    
+                                    <TMPL_IF NAME="IsLoggedIn">
+                                        <a class="white-btn" href="?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_ShowRecord" /></a>
+                                    <TMPL_ELSE>
+                                        <a class="main-btn" data-toggle="modal" data-target="#modal-checkin" href="#" data-type="<TMPL_VAR NAME='RegistrationType'>" data-redirect="<TMPL_VAR NAME='CurrentPageURL' />?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_ShowRecord" /></a>
+                                    </TMPL_IF>
+                                <TMPL_ELSEIF NAME="inProgress">
+                                    <div class="block__progressbar clearfix">
+                                    	<div class="progressbar">
+                                            <div class="progressbar__load" style="width: <TMPL_VAR NAME='Progress' />%;"></div>
+                                        </div>
+                                        <ul>
+                                            <li><TMPL_VAR NAME="LNG_AlreadyGoing" /></li>
+                                            <li class="dark"><TMPL_VAR NAME="ProgressTime" /></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <TMPL_IF NAME="IsLoggedIn">
+                                    	<TMPL_IF NAME="Status" OP="==" VALUE="signed">
+                                        	<a class="main-btn" href="<TMPL_VAR NAME='CurrentPageURL' />?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_Connect" /></a>
+                                    	<TMPL_ELSE>
+                                            <a class="main-btn" href="<TMPL_VAR NAME='CurrentPageURL' />?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');$('.loading').show();">Зарегистрироваться</a>
+                                        </TMPL_IF>
+                                    <TMPL_ELSE>
+                                        <a class="main-btn" data-toggle="modal" data-target="#modal-checkin" href="#" data-type="<TMPL_VAR NAME='RegistrationType'>" data-redirect="<TMPL_VAR NAME='CurrentPageURL' />?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />" onclick="yaCounter47132955.reachGoal('Click_registration1');"><TMPL_VAR NAME="LNG_Connect" /></a>
+                                    </TMPL_IF>
+                                <TMPL_ELSE>
+                                    <div class="block__progressbar clearfix">
+                                        <div class="dark"><TMPL_VAR NAME="OnlineEventDateTitle" /></div>
+                                        <div class="progressbar">
+                                            <div class="progressbar__load" style="width: 0%;"></div>
+                                        </div>
+                                        <ul>
+                                            <li><TMPL_VAR NAME="LNG_Duration" /></li>
+                                            <li class="dark"><TMPL_VAR NAME="Duration" FORMAT="time" /></li>
+                                        </ul>
+                                    </div>
+                    
+                                    <TMPL_IF NAME="IsLoggedIn">
+                                        <TMPL_IF NAME="Status" OP="==" VALUE="signed">
+                                        	<span class="disabled-btn"><span class="checkicon"></span>Вы зарегистрированы</span>
+                                        <TMPL_ELSE>
+                                    	    <a class="main-btn" href="<TMPL_VAR NAME='CurrentPageURL' />?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');$('.loading').show();">Зарегистрироваться</a>
+                                        </TMPL_IF>
+                                    <TMPL_ELSE>
+                                        <a class="main-btn" data-toggle="modal" data-target="#modal-checkin" href="#" data-type="<TMPL_VAR NAME='RegistrationType'>" data-redirect="<TMPL_VAR NAME='CurrentPageURL' />?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');"><TMPL_VAR NAME="LNG_SignedEvent" /></a>
+                                    </TMPL_IF>
+                                </TMPL_IF>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="webinar-header__color"></div>
+        </div>
+
+        <div class="promo content">
+        	<TMPL_VAR NAME="Content" ESCAPE="none" />
+        </div>
+
+        <div class="webinar-bottom__progressbar">
+            
+            <TMPL_IF NAME="isFinished">
+                <div class="block__progressbar clearfix">
+                	<div class="dark"><TMPL_VAR NAME="FinishedDate" /></div>
+                    <div class="progressbar">
+                        <div class="progressbar__load" style="width: 100%;"></div>
+                    </div>
+                    <ul>
+                        <li><TMPL_VAR NAME="TypeTitle" /> <TMPL_VAR NAME="LNG_Finished" /></li>
+                    </ul>
+                </div>
+
+                <TMPL_IF NAME="IsLoggedIn">
+                    <a class="white-btn" href="?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_ShowRecord" /></a>
+                <TMPL_ELSE>
+                    <a class="main-btn" data-toggle="modal" data-target="#modal-signin" href="#" data-type="<TMPL_VAR NAME='RegistrationType'>" data-redirect="<TMPL_VAR NAME='CurrentPageURL' />?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_ShowRecord" /></a>
+                </TMPL_IF>
+            <TMPL_ELSEIF NAME="inProgress">
+                <div class="block__progressbar clearfix">
+                    <div class="progressbar">
+                        <div class="progressbar__load" style="width: <TMPL_VAR NAME='Progress' />%;"></div>
+                    </div>
+                    <ul>
+                        <li><TMPL_VAR NAME="LNG_AlreadyGoing" /></li>
+                        <li class="dark"><TMPL_VAR NAME="ProgressTime" /></li>
+                    </ul>
+                </div>
+                
+                <TMPL_IF NAME="IsLoggedIn">
+                	<TMPL_IF NAME="Status" OP="==" VALUE="signed">
+                    	<a class="main-btn" href="<TMPL_VAR NAME='CurrentPageURL' />?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_Connect" /></a>
+                	<TMPL_ELSE>
+                        <a class="main-btn" href="<TMPL_VAR NAME='CurrentPageURL' />?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');$('.loading').show();">Зарегистрироваться</a>
+                    </TMPL_IF>
+                <TMPL_ELSE>
+                    <a class="main-btn" data-toggle="modal" data-target="#modal-checkin" href="#" data-type="<TMPL_VAR NAME='RegistrationType'>" data-redirect="<TMPL_VAR NAME='CurrentPageURL' />?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');"><TMPL_VAR NAME="LNG_Connect" /></a>
+                </TMPL_IF>
+            <TMPL_ELSE>
+                <div class="block__progressbar clearfix">
+                    <div class="dark"><TMPL_VAR NAME="OnlineEventDateTitle" /></div>
+                    <div class="progressbar">
+                        <div class="progressbar__load" style="width: 0;"></div>
+                    </div>
+                    <ul>
+                        <li><TMPL_VAR NAME="LNG_Duration" /></li>
+                        <li class="dark"><TMPL_VAR NAME="Duration" FORMAT="time"  /></li>
+                    </ul>
+                </div>
+
+                <TMPL_IF NAME="IsLoggedIn">
+                    <TMPL_IF NAME="Status" OP="==" VALUE="signed">
+                       	<span class="disabled-btn"><span class="checkicon"></span>Вы зарегистрированы</span>
+                    <TMPL_ELSE>
+                        <a class="main-btn" href="<TMPL_VAR NAME='CurrentPageURL' />?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');$('.loading').show();">Зарегистрироваться</a>
+                    </TMPL_IF>
+                <TMPL_ELSE>
+                    <a class="main-btn" data-toggle="modal" data-target="#modal-checkin" href="#" data-type="<TMPL_VAR NAME='RegistrationType'>" data-redirect="<TMPL_VAR NAME='CurrentPageURL' />?OnlineEventID=<TMPL_VAR NAME='OnlineEventID' />&SignOnlineEvent=1" onclick="yaCounter47132955.reachGoal('Click_registration1');"><TMPL_VAR NAME="LNG_SignedEvent" /></a>
+                </TMPL_IF>
+            </TMPL_IF>
+            
+        </div>
+
+    	</TMPL_LOOP>
+	</div>	
+<TMPL_ELSEIF NAME="ShowRecordInfo">
+	<div class="container">    	
+		<div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="<TMPL_VAR NAME='PROJECT_PATH'>">Главная</a></li>
+                    <li><a href="<TMPL_VAR NAME='PROJECT_PATH'>events">Вебинары</a></li>
+                    <li class="active"><TMPL_VAR NAME="TitleH1" /></li>
+                </ol>
+            </div>
+        </div>
+
+    	<TMPL_LOOP NAME="ShowRecordInfo">
+        
+        <div class="header-section hidden"></div>
+        <div class="webinar-header-wrapper">
+        	<div class="webinar-header">
+            	<iframe src="<TMPL_VAR NAME='URL' ESCAPE='none' />" frameborder="0" ></iframe>
+        	</div>
+            <TMPL_IF NAME='LinkList'>
+                <div class="webinar-links mobile">
+                    <ul>
+                        <TMPL_LOOP NAME="LinkList">
+                            <li<TMPL_IF NAME='Active' VALUE='Y'> class="active"</TMPL_IF>>
+                            <a href="<TMPL_VAR NAME='URL' />"
+                            <TMPL_IF NAME='Blank' VALUE='Y'> target="_blank"</TMPL_IF>
+                            <TMPL_IF NAME='Active' VALUE='N'> onclick="return false;"</TMPL_IF>>
+                            <span><TMPL_VAR NAME='Title' /></span>
+                            </a>
+                            </li>
+                        </TMPL_LOOP>
+                    </ul>
+                </div>
+            </TMPL_IF>
+        	<TMPL_IF NAME='ChatGroupID'>
+                <div class="chat-pane">
+                    <span class="chat-title">Чат
+                        <TMPL_IF NAME="ChatStatus" OP="==" VALUE="moderator">
+                            (<span id="chat-live-count"></span> смотрят сейчас)
+                        </TMPL_IF>
+                    </span>
+                    <div class="chat-messages"></div>
+                    <div class="chat-control <TMPL_UNLESS NAME='ChatUserID'>hidden</TMPL_IF>">
+                        <input type="text" class="chat-input chat-input-message" placeholder="Ваше сообщение" />
+                        <a href="#" class="chat-input-btn chat-input-rename" title="Сменить имя">R</a>
+                        <a class="chat-input-btn chat-input-send" href="#" title="Отправить сообщение"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/send.png" /></a>
+                    </div>
+
+                    <div class="chat-control login <TMPL_IF NAME='ChatUserID'>hidden</TMPL_IF>">
+                        <input type="text" class="chat-input chat-input-name" placeholder="Как вас зовут ?" value="<TMPL_VAR NAME='UserName'/>" />
+                        <span class="chat-input-btn chat-name-send" href="#"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/send.png" /></span>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    var chatURL = "<TMPL_VAR NAME='ChatURL'>";
+                    var chatGroupID = <TMPL_VAR NAME='ChatGroupID'>;
+                    var chatUserID = <TMPL_IF NAME="ChatUserID"><TMPL_VAR NAME='ChatUserID'><TMPL_ELSE>null</TMPL_IF>;
+                    var chatStatus = "<TMPL_VAR NAME='ChatStatus'>";
+                </script>
+            </TMPL_IF>
+        </div>
+        <TMPL_IF NAME='LinkList'>
+            <div class="webinar-links">
+                <ul>
+                    <TMPL_LOOP NAME="LinkList">
+                        <li<TMPL_IF NAME='Active' VALUE='Y'> class="active"</TMPL_IF>>
+                            <a href="<TMPL_VAR NAME='URL' />"
+                                <TMPL_IF NAME='Blank' VALUE='Y'> target="_blank"</TMPL_IF>
+                                <TMPL_IF NAME='Active' VALUE='N'> onclick="return false;"</TMPL_IF>>
+                                    <span><TMPL_VAR NAME='Title' /></span>
+                            </a>
+                        </li>
+                    </TMPL_LOOP>
+                </ul>
+            </div>
+        </TMPL_IF>
+        <div class="promo content">
+            <TMPL_VAR NAME="Content" ESCAPE="none" />
+        </div>
+
+    	</TMPL_LOOP>
+    </div>	
+<TMPL_ELSE>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<script type="application/ld+json">
+	[{
+		"@context" : "http://schema.org",
+  		"@type" : "EventSeries",
+  		"name": "<TMPL_IF NAME='Archive'><TMPL_VAR NAME="LNG_ArchiveTitle" /><TMPL_ELSE><TMPL_VAR NAME="LNG_NearestTitle" /></TMPL_IF>"
+  	}
+	<TMPL_LOOP NAME='OnlineEventList'>
+	<TMPL_LOOP NAME="Children">
+	,{
+		"@context" : "http://schema.org",
+  		"@type" : "Event",
+		"name" : "<TMPL_VAR NAME="Title" />",
+		"url" : "https://propostuplenie.ru<TMPL_VAR NAME='OnlineEventURL' />" 
+	}
+	</TMPL_LOOP>
+	</TMPL_LOOP>
+	]
+	</script>
+	<div class="container">
+		<div class="row">
+            <div class="col-xs-12">
+                <ol class="breadcrumb">
+                    <li><a href="<TMPL_VAR NAME='PROJECT_PATH'>">Главная</a></li>
+                    <li class="active"><TMPL_IF NAME='Archive'>Архив вебинаров<TMPL_ELSE>Вебинары</TMPL_IF></li>
+                </ol>
+                <TMPL_IF NAME='Archive'>
+                <h1 class="header-section"><TMPL_VAR NAME="LNG_ArchiveTitle" /></h1>
+                <a class="header-link" href="?"><TMPL_VAR NAME="LNG_NearestTitle" /></a>
+                <TMPL_ELSE>
+                <h1 class="header-section"><TMPL_VAR NAME="LNG_NearestTitle" /></h1>
+                <a class="header-link" href="?archive"><TMPL_VAR NAME="LNG_ArchiveTitle" /></a>
+                </TMPL_IF>
+            
+            </div>
+        </div>
+        
+	    <div class="row">
+
+	        <div class="col-xs-4 aside">
+	            <TMPL_INCLUDE NAME="_data/onlineevent_sidebar.html"/>
+	        </div>
+
+            <div class="col-xs-8 center-block">
+                <TMPL_INCLUDE NAME="_data/onlineevent_list.html"/>
+	        </div>
+
+	        <div class="col-xs-4 aside">
+
+	            <img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" >
+	            <section>
+	                <div class="aside__header"></div>
+	        
+	                <TMPL_LOOP NAME="FirstOnlineEventList">
+	                    <div class="block-event">
+	                        <span class="block-event__time"><TMPL_VAR NAME="EventDate" /></span>
+	                        <a class="block-event__header" href="<TMPL_VAR NAME='OnlineEventURL' />"><TMPL_VAR NAME="Title" /></a>
+	                        <span class="block-event__type"><TMPL_VAR NAME="TypeTitle" /></span>
+	                    </div>
+	                </TMPL_LOOP>
+	        
+	                <a class="main-link" href="<TMPL_VAR NAME='PROJECT_PATH' />events"><TMPL_VAR NAME="LNG_AllEvents" /></a>
+	            </section>
+	        </div>
+	    </div>
+	</div>
+</TMPL_IF>

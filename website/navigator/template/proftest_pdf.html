@@ -1,0 +1,100 @@
+<?php //print_r($this) ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&amp;subset=cyrillic" rel="stylesheet">
+	<link href="<TMPL_VAR NAME='TemplatePath' />css/libs/bootstrap.min.css" rel="stylesheet">
+	<link href="<TMPL_VAR NAME='TemplatePath' />css/source/main.css" rel="stylesheet">
+	<link href="<TMPL_VAR NAME='TemplatePath' />css/source/marathon.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container pdf-test-result marathon">
+		<TMPL_LOOP NAME='UserResult'>
+			<div class="user-item">
+				<h2 class="text-center">Результат вашего профориентационного теста "<TMPL_VAR NAME='PageTitle'>"</h2>
+				<h3 class="text-center">Покажите этот лист нашему специалисту на выставке и получите бесплатную консультацию</h3>
+				
+				<div class="row">
+					<div class="marathon-block max-width quiz-block">
+						<div class="quiz">
+							<div class="content">
+								<p>Респондент: <b><TMPL_VAR NAME='UserName'></b></p>
+								<p>Email: <b><TMPL_VAR NAME='UserEmail'></b></p>
+								<p>Телефон: <b><TMPL_VAR NAME='UserPhone'></b></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<TMPL_IF NAME='CategoryList'>
+					<div class="row">
+						<div class="marathon-block max-width quiz-block">
+							<div class="quiz">
+								<h2 class="text-center">Результаты тестирования</h2>
+
+								<div class="content">
+									<div class="test-result-pdf">
+										<TMPL_LOOP NAME='CategoryList'>
+											<div class="item">
+												<div class="category">
+													<TMPL_VAR NAME='Title'>
+												</div>
+												<div class="bar-wrap">
+													<div class="bar pdf">
+														<span class="status" style="width: <TMPL_VAR NAME='Percent'>%"></span>
+													</div>
+													<div class="percent"><TMPL_VAR NAME='Percent'>%</div>
+												</div>
+											</div>
+										</TMPL_LOOP>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="marathon-block max-width quiz-block profession">
+							<div class="quiz">
+								<h2 class="text-center">Профессии и экзамены для подготовки</h2>
+
+								<div class="content">
+									<div class="category-info pdf">
+										<TMPL_LOOP NAME='CategoryList'>
+											<TMPL_IF NAME='__ROWNUM__' OP='<=' VALUE='3'>
+												<div class="item">
+													<div class="info percent">
+														<h2><TMPL_VAR NAME='Percent'>%</h2>
+														<p><TMPL_VAR NAME='Title'></p>
+													</div>
+													<div class="info">
+														<img src="<TMPL_VAR NAME='TemplatePath'>img/target.png" alt="">
+														<h3>Профессия</h3>
+														<div class="category-text"><TMPL_VAR NAME='Profession' ESCAPE='none'></div>
+													</div>
+													<div class="info">
+														<img src="<TMPL_VAR NAME='TemplatePath'>img/diploma.png" alt="">
+														<h3>Экзамены</h3>
+														<div class="category-text"><TMPL_VAR NAME='Subjects' ESCAPE='none'></div>
+													</div>
+												</div>
+											</TMPL_IF>
+										</TMPL_LOOP>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<TMPL_ELSE>
+					<div class="row">
+						<h2 class="text-center"><TMPL_VAR NAME='LNG_EmptyProfessions' ESCAPE='none'></h2>
+					</div>
+				</TMPL_IF>
+			</div>
+		</TMPL_LOOP>	
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+<!-- <a href="#" id="download-map-btn">Скачать</a> -->
+</html>

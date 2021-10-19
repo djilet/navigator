@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="<TMPL_VAR NAME='CharSet'>"?>
+<rss
+    <TMPL_LOOP NAME='Xmlns'>
+    xmlns:<TMPL_VAR NAME='attribute'>="<TMPL_VAR NAME='value'>"
+
+    </TMPL_LOOP>
+    version="<TMPL_VAR NAME='XmlVersion'>"
+>
+    <channel>
+        <title><TMPL_VAR NAME='ChannelTitle'></title>
+        <link><TMPL_VAR NAME='ChannelLink'></link>
+        <description><TMPL_VAR NAME='ChannelDescription'></description>
+        <language><TMPL_VAR NAME='ChannelLang'></language>
+        <turbo:analytics type="Yandex" id="47132955"></turbo:analytics>
+        <TMPL_IF NAME='ListRSS' OP='==' Value='articles'>
+            <TMPL_INCLUDE NAME="rss-tmpl/articles.xml"/>
+        </TMPL_IF>
+
+    </channel>
+</rss>

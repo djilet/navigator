@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<ol class="breadcrumb">
+				<TMPL_LOOP NAME='Navigation'>
+					<li<TMPL_IF NAME='__LAST__'> class="active"</TMPL_IF>>
+						<TMPL_IF NAME='__LAST__'>
+							<TMPL_VAR NAME='Title' />
+						<TMPL_ELSE>
+							<a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME='Title' /></a>
+						</TMPL_IF>
+					</li>
+				</TMPL_LOOP>
+			</ol>
+		</div>
+	</div>
+
+	<TMPL_IF NAME='OlympiadID'>
+		<TMPL_INCLUDE NAME="olympiad-tmpl/olympiad_olympiad.html"/>
+	<TMPL_ELSEIF NAME='MainID'>
+		<TMPL_INCLUDE NAME="olympiad-tmpl/olympiad_main.html"/>
+	<TMPL_ELSE>
+		<TMPL_INCLUDE NAME="olympiad-tmpl/olympiad_filter.html"/>
+	</TMPL_IF>
+</div>
+		
+<div class="modal fade" id="modal-closed-alert" tabindex="-1" role="dialog">
+	<div class="modal-dialog role="document" style="max-width:470px;margin:0 auto;padding-top:15%;">
+    	<div class="modal-content">
+        	<div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>

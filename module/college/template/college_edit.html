@@ -1,0 +1,264 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='CollegeID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditCollege'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddCollege'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			<TMPL_IF NAME='ErrorList'>
+				<div class="col-md-12">
+					<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+				</div>
+			</TMPL_IF>
+			<ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-1" data-toggle='tab'>Информация</a></li>
+                <li><a href="#tab-2" data-toggle='tab'>Награды</a></li>
+            </ul>
+
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="ShortTitle" class="form-label"><TMPL_VAR NAME='LNG_ShortTitle'></label><br />
+									<input class="form-control" type="text" name="ShortTitle" id="ShortTitle" value="<TMPL_VAR NAME='ShortTitle'>" />
+								</div>
+								<div class="form-group">
+									<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+									<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+								</div>
+								<div class="form-group">
+									<label for="CollegeBigDirection" class="form-label required"><TMPL_VAR NAME='LNG_CollegeBigDirection'></label><br />
+		                            <select class="form-control" name="CollegeBigDirection" id="CollegeBigDirection">
+		                                <TMPL_LOOP NAME='CollegeBigDirectionList'>
+		                                    <option value="<TMPL_VAR NAME='CollegeBigDirectionID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+		                                </TMPL_LOOP>
+		                            </select>
+								</div>
+								<div class="form-group">
+									<label for="RegionID" class="form-label required"><TMPL_VAR NAME='LNG_Region'></label><br />
+									<select class="form-control" name="RegionID" id="RegionID">
+										<TMPL_LOOP NAME='RegionList'>
+										    <option value="<TMPL_VAR NAME='RegionID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="CityID" class="form-label"><TMPL_VAR NAME='LNG_City'></label><br />
+									<select class="form-control" name="CityID" id="CityID">
+										<option value="">Пусто</option>
+										<TMPL_LOOP NAME='CityList'>
+											<option value="<TMPL_VAR NAME='Id'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Name'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+		                        <div class="form-group">
+		                            <label for="Address" class="form-label"><TMPL_VAR NAME='LNG_Address'></label><br />
+		                            <input class="form-control" type="text" name="Address" id="Address" value="<TMPL_VAR NAME='Address'>" />
+		                        </div>
+								<div class="form-group"	PhoneSelectionCommittee>
+									<label for="Latitude" class="form-label"><TMPL_VAR NAME='LNG_Latitude'></label><br />
+									<input class="form-control" type="text" name="Latitude" id="Latitude" value="<TMPL_VAR NAME='Latitude'>" />
+								</div>
+								<div class="form-group">
+									<label for="Longitude" class="form-label"><TMPL_VAR NAME='LNG_Longitude'></label><br />
+									<input class="form-control" type="text" name="Longitude" id="Longitude" value="<TMPL_VAR NAME='Longitude'>" />
+								</div>
+
+								<div class="form-group">
+									<label for="Type" class="form-label required"><TMPL_VAR NAME='LNG_Type'></label><br />
+		                            <select class="form-control" name="Type" id="Type">
+		                                <TMPL_VAR NAME="Type">
+		                                <option value="State" <TMPL_IF NAME="Type" OP="==" VALUE="State"> selected</TMPL_IF>>Государственный</option>
+		                                <option value="NotState" <TMPL_IF NAME="Type" OP="==" VALUE="NotState"> selected</TMPL_IF>>Негосударственный</option>
+		                            </select>
+								</div>
+
+								<div class="form-group">
+									<label for="VideoURL" class="form-label"><TMPL_VAR NAME='LNG_VideoURL'></label><br />
+									<input class="form-control" type="text" name="VideoURL" id="VideoURL" value="<TMPL_VAR NAME='VideoURL'>" />
+								</div>
+
+								<div class="form-group">
+									<label for="QuestionUserID" class="form-label"><TMPL_VAR NAME='LNG_QuestionUser'></label><br />
+									<select class="form-control" name="QuestionUserID" id="QuestionUserID">
+										<option value="">&nbsp;</option>
+										<TMPL_LOOP NAME='UserList'>
+										<option value="<TMPL_VAR NAME='UserID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='UserName'> (<TMPL_VAR NAME='UserEmail'>)</option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="QuestionUserTitle" class="form-label"><TMPL_VAR NAME='LNG_QuestionUserTitle'></label><br />
+									<input class="form-control" type="text" name="QuestionUserTitle" id="QuestionUserTitle" value="<TMPL_VAR NAME='QuestionUserTitle'>" />
+								</div>
+							</div>
+
+							<div class="col-md-6">
+		                        <div class="form-group form-inline">
+									<label for="AtUniversity"><TMPL_VAR NAME='LNG_AtUniversity'></label><br />
+									<input type="checkbox" name="AtUniversity" id="AtUniversity" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='AtUniversity' VALUE='Y'>checked<TMPL_ELSEIF NAME='AtUniversity' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+								</div>
+
+								<div class="form-group" id="CollegeLogo-box">
+									<label for="CollegeLogo"><TMPL_VAR NAME='LNG_CollegeLogo'></label><br />
+								</div>
+								<script type="text/javascript">
+		                            $(document).ready(function(){
+		                                params = new Array();
+										<TMPL_LOOP NAME='CollegeLogoParamList'>
+											params.push({
+												"Name" : "<TMPL_VAR NAME='SourceName'>",
+												"Width" : "<TMPL_VAR NAME='Width'>",
+												"Height" : "<TMPL_VAR NAME='Height'>",
+												"Resize" : "<TMPL_VAR NAME='Resize'>",
+												"X1" : "<TMPL_VAR NAME='X1'>",
+												"X2" : "<TMPL_VAR NAME='X2'>",
+												"Y1" : "<TMPL_VAR NAME='Y1'>",
+												"Y2" : "<TMPL_VAR NAME='Y2'>"
+											});
+										</TMPL_LOOP>
+		                                CreateImageInput('CollegeLogo', '<TMPL_VAR NAME='CollegeLogoAdminPath'>', '<TMPL_VAR NAME='CollegeLogoFullPath'>', '<TMPL_VAR NAME='CollegeLogo'>', '<TMPL_VAR NAME='CollegeID'>', 'RemoveItemImage', '<TMPL_VAR NAME='MODULE_PATH'>ajax.php', 0, params);
+		                            });
+								</script>
+
+								<div class="form-group">
+									<label for="PhoneSelectionCommittee" class="form-label"><TMPL_VAR NAME='LNG_PhoneSelectionCommittee'></label><br />
+									<input class="form-control" type="text" name="PhoneSelectionCommittee" id="PhoneSelectionCommittee" value="<TMPL_VAR NAME='PhoneSelectionCommittee'>" />
+								</div>
+								<div class="form-group">
+									<label for="AccreditationValidity" class="form-label"><TMPL_VAR NAME='LNG_AccreditationValidity'></label><br />
+									<input class="form-control" type="text" name="AccreditationValidity" id="AccreditationValidity" value="<TMPL_VAR NAME='AccreditationValidity'>" />
+								</div>
+								<div class="form-group">
+									<label for="Hostel" class="form-label"><TMPL_VAR NAME='LNG_Hostel'></label><br />
+									<input class="form-control" type="text" name="Hostel" id="Hostel" value="<TMPL_VAR NAME='Hostel'>" />
+								</div>
+								<div class="form-group">
+									<label for="HostelPrice" class="form-label"><TMPL_VAR NAME='LNG_HostelPrice'></label><br />
+									<input class="form-control" type="text" name="HostelPrice" id="HostelPrice" value="<TMPL_VAR NAME='HostelPrice'>" />
+								</div>
+								<div class="form-group">
+									<label for="Scholarship" class="form-label"><TMPL_VAR NAME='LNG_Scholarship'></label><br />
+									<input class="form-control" type="text" name="Scholarship" id="Scholarship" value="<TMPL_VAR NAME='Scholarship'>" />
+								</div>
+								<div class="form-group">
+									<label for="ScholarshipSocial" class="form-label"><TMPL_VAR NAME='LNG_ScholarshipSocial'></label><br />
+									<input class="form-control" type="text" name="ScholarshipSocial" id="ScholarshipSocial" value="<TMPL_VAR NAME='ScholarshipSocial'>" />
+								</div>
+								<div class="form-group">
+									<label for="Website" class="form-label"><TMPL_VAR NAME='LNG_Website'></label><br />
+									<input class="form-control" type="text" name="Website" id="Website" value="<TMPL_VAR NAME='Website'>" />
+								</div>
+
+								<div class="form-group">
+									<label for="Achievements" class="form-label"><TMPL_VAR NAME='LNG_Achievements'></label><br />
+									<textarea name="Achievements" id="Achievements" rows="10" class="form-control"><TMPL_VAR NAME="Achievements" /></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="form-group">
+                                <table id="Awards" class="table table-borderless full-width-ui-table">
+                                    <tbody>
+                                        <TMPL_LOOP NAME='Awards'>
+                                            <tr>
+                                                <td class="sort"><i class="fa fa-bars"></i></td>
+                                                <td>
+                                                    <input type="hidden" name="Awards[]" value="<TMPL_VAR NAME='AwardsID' />" >
+                                                    <TMPL_VAR NAME='Title' />
+                                                </td>
+                                                <td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+                                            </tr>
+                                        </TMPL_LOOP>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                <input id="linked-awards" type="text" placeholder="Начните вводить название награды" class="form-control">
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                            <div class="clearfix"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="clearfix"></div>
+					<div class="col-md-12">
+					</div>
+					<div class="col-md-12 top15">
+						<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+						<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+					</div>
+					<input type="hidden" name="Save" value="1" />
+					<input type="hidden" name="CollegeID" value="<TMPL_VAR NAME='CollegeID'>" />
+					<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+				</div>
+			</form>
+		</div>
+	</section>
+</div>
+
+<script type="text/javascript">
+	createCKEditor("Achievements");
+	initLinkedObjects('linked-awards', 'Awards', 0);
+
+	function initLinkedObjects(controlID, tableID, minLength)
+    {
+        $( "#" + controlID ).autocomplete({
+            classes: {
+                "ui-autocomplete": "highlight"
+            },
+            minLength: minLength,
+            source: function(request, response) {
+                var ids = $('input[name="' + tableID + '[]"]').map(function(){return this.value}).get();
+                $.ajax({
+                    url: "<TMPL_VAR NAME='MODULE_PATH' />ajax.php",
+                    type: "post",
+                    data: {"Action":controlID, "term":request.term, "ItemIDs":ids},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        response(data);
+                    },
+                    error: function(request, error){
+	                    console.log(error);
+	   				}
+                });
+            },
+            select: function( event, ui ) {
+                if (ui.item) {
+                    event.preventDefault();
+                    var row = '<tr>\
+                        <td class="sort"><i class="fa fa-bars"></i></td> \
+                        <td>\
+                            <input type="hidden" name="' + tableID + '[]" value="'+ui.item.value+'" >\
+                            '+ui.item.label+'\
+                        </td> \
+                        <td onclick="$(this).closest(\'tr\').remove()" class="delete">X</td> \
+                    </tr>';
+                    $('#' + tableID + ' tbody').append(row);
+                    $(this).val("");
+                }
+            },
+            focus: function( event, ui ) {
+                event.preventDefault();
+                $(this).val(ui.item.label);
+            }
+        });
+    }
+
+    $('#Awards tbody').sortable({
+		axis: "y"
+	});
+</script>

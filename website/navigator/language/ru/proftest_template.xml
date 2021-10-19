@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<common>
+		<EmptyProfessions>Для вас нету подходящих профессий</EmptyProfessions>
+	</common>
+	<public>
+		<proftest_complete.html>
+			<TestComplete><![CDATA[<p>Вы прошли профтест.</p><p> Приходите на выставку с родителями и специалист по профориентации отдаст вам распечатку, плюс бесплатно расскажет как выбрать профессию и вуз по результатам теста.</p>]]></TestComplete>
+		</proftest_complete.html>
+	</public>
+</Root>

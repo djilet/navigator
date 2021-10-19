@@ -1,0 +1,121 @@
+<div class="page-service">
+	<div class="forum__header"<TMPL_IF NAME='MenuImage1Path'> style="background-image: url('<TMPL_VAR NAME='MenuImage1Path'>')"</TMPL_IF>>
+    	<div class="container">
+            <ol class="breadcrumb white">
+       			<TMPL_LOOP NAME='Navigation'>
+          		<TMPL_UNLESS NAME='__LAST__'>
+      			<li><a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME='Title' /></a></li>
+          		</TMPL_UNLESS>
+          		</TMPL_LOOP>
+          		<li>Услуги</li>
+          		<li class="active"><TMPL_VAR NAME="TitleH1" /></li>
+      		</ol>
+            <div class="forum__header-content">
+            	<div class="forum__header-content_text">
+                	<div>
+                  		<h1 class="header-section"><TMPL_VAR NAME="TitleH1" /></h1>
+                  		<p><TMPL_VAR NAME="Description" /></p>
+                  	</div>
+              	</div>
+              	<div class="forum__header-content_info">
+              		<h3>Расчитать стоимость</h3>
+	    			<form action="" class="document-form" method="post" autocomplete="off">
+	    				<div class="form-group custom-select">
+                            <select class="form-control" name="RegionID">
+                            	<TMPL_LOOP NAME='PriceList'>
+                            	<option value="<TMPL_VAR NAME='RegionID'>"><TMPL_VAR NAME='RegionTitle'></option>
+                            	</TMPL_LOOP>
+                            </select>
+                            <label>Ваш регион</label>
+                        </div>
+                        <div class="form-group custom-select">
+                            <select class="form-control" name="UniversityCount">
+                            	<option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <label>Количество вузов</label>
+                        </div>
+				  		<p class="service">
+	                 		<span class="pricediscount bottom document-price"></span>
+	               		</p>
+				       	<input type="submit" class="main-btn" value="Продолжить">
+				       	<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID'>">
+				       	<input type="hidden" name="Action" value="NewOrder">
+					</form>
+              	</div>
+            </div>
+
+		</div>
+        <div class="forum__header-color gradient-overlay"></div>
+	</div>
+	
+	<div class="container">
+		<div class="promo content">
+	    	<TMPL_VAR NAME='Content' ESCAPE='none'>
+	    </div>
+    </div>
+    
+    <div class="container">
+    	<div class="row">
+    		<div class="col-xs-12 col-md-7">
+    			<h2>После покупки</h2>
+    			<div class="bottom-left">
+	    			<ul>
+	    				<li> &mdash; Вам нужно собрать комплект документов для подачи в необходимые вузы</li>
+	    				<li> &mdash; В течение 2х дней с вами свяжется курьер и обсудит детали забора документов</li>
+	    				<li> &mdash; После забора документов - отслеживать статус подачи на сайте вузов</li>
+	    			</ul>	
+	    			<p class="info">
+    					По любым вопросам обращайтесь по 8 800 222 90 58, и мы бесплатно ответим на все вопросы
+    				</p>
+    			</div>
+    		</div>
+    		<div class="col-xs-12 col-md-5">
+    			<div class="service-bottom-block">
+	    			<h3>Расчитать стоимость</h3>
+	    			<form action="" class="document-form" method="post" autocomplete="off">
+				  		<div class="form-group custom-select">
+                            <select class="form-control" name="RegionID">
+                            	<TMPL_LOOP NAME='PriceList'>
+                            	<option value="<TMPL_VAR NAME='RegionID'>"><TMPL_VAR NAME='RegionTitle'></option>
+                            	</TMPL_LOOP>
+                            </select>
+                            <label>Ваш регион</label>
+                        </div>
+                        <div class="form-group custom-select">
+                            <select class="form-control" name="UniversityCount">
+                            	<option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <label>Количество вузов</label>
+                        </div>
+				       	<p class="service">
+	                 		<span class="pricediscount bottom document-price"></span>
+	               		</p>
+				       	<input type="submit" class="main-btn" value="Продолжить">
+				       	<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID'>">
+				       	<input type="hidden" name="Action" value="NewOrder">
+					</form>
+				</div>
+    		</div>
+    	</div>
+	</div>
+</div>
+<script>
+    var documentPriceList = {};
+    <TMPL_LOOP NAME='PriceList'>
+    documentPriceList["<TMPL_VAR NAME='RegionID'>"] = {
+    	Price1: <TMPL_VAR NAME='Price1'>,
+    	Price2: <TMPL_VAR NAME='Price2'>,
+    	Price3: <TMPL_VAR NAME='Price3'>,
+    	Price4: <TMPL_VAR NAME='Price4'>,
+    	Price5: <TMPL_VAR NAME='Price5'>
+    }
+    </TMPL_LOOP>
+</script>

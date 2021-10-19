@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Slab:700|Roboto:400,500&amp;subset=cyrillic");
+@import url(../template/css/libs/bootstrap.min.css);
+@import url(../template/css/source/general.css);
+@import url(../template/css/source/main.css);
+
+.article-inline {
+	border: 1px solid #aaa;
+	color: #888;
+	padding: 5px;
+}
+
+.carousel-widget {
+	border: 1px solid #aaa;
+	padding: 5px;
+}
+
+.carousel-widget .item{
+	padding: 20px;
+	border: 1px solid #aaa;
+}

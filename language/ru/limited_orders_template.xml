@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<page_list.html>
+			<AllOrders>Полный список</AllOrders>
+			<Page>Страница заявки</Page>
+			<Settings>Настройки</Settings>
+		</page_list.html>
+		<limited_order_list.html>
+			<Created>Дата заявки</Created>
+			<FirstName>Имя</FirstName>
+			<LastName>Фамилия</LastName>
+			<Phone>Телефон</Phone>
+			<UserWho>Статус</UserWho>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<Country>Страны</Country>
+			<City>Город</City>
+			<ContactType>Способ связи</ContactType>
+			<ContactAdditional>Дополнительно</ContactAdditional>
+			<UTM>UTM</UTM>
+			<DateTime>Дата регистрации</DateTime>
+			<EmptyList>Заявки отсутствуют</EmptyList>
+		</limited_order_list.html>
+		<limited_order_list_full.html>
+			<Back>Назад</Back>
+			<Created>Дата заявки</Created>
+			<FirstName>Имя</FirstName>
+			<LastName>Фамилия</LastName>
+			<Phone>Телефон</Phone>
+			<UserWho>Статус</UserWho>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<Country>Страны</Country>
+			<City>Город</City>
+			<ContactType>Способ связи</ContactType>
+			<ContactAdditional>Дополнительно</ContactAdditional>
+			<PageTitle>Лендинг</PageTitle>
+			<UTMSource>UTM source</UTMSource>
+			<UTMMedium>UTM medium</UTMMedium>
+			<UTMCampaign>UTM campaign</UTMCampaign>
+			<UTMTerm>UTM term</UTMTerm>
+			<UTMContent>UTM content</UTMContent>
+			<DateTime>Дата регистрации</DateTime>
+			<EmptyList>Заявки отсутствуют</EmptyList>
+		</limited_order_list_full.html>
+		<limit_list.html>
+			<Add>Добавить</Add>
+			<Date>Дата регистрации</Date>
+			<TimeFrom>Время начала</TimeFrom>
+			<TimeTo>Время конца</TimeTo>
+			<Step>Шаг (в минутах)</Step>
+			<LimitCount>Лимит заявок (на каждое время)</LimitCount>
+			<Back>Назад</Back>
+			<ConfirmRemove>Удалить настройку?</ConfirmRemove>
+		</limit_list.html>
+		<limit_edit.html>
+			<Edit>Редактировать</Edit>
+			<Date>Дата регистрации</Date>
+			<Add>Добавить</Add>
+			<TimeFrom>Время начала (чч:мм)</TimeFrom>
+			<TimeTo>Время конца (чч:мм)</TimeTo>
+			<Step>Шаг (в минутах)</Step>
+			<LimitCount>Лимит заявок (на каждое время)</LimitCount>
+		</limit_edit.html>
+	</admin>
+</Root>

@@ -1,0 +1,74 @@
+    <div class="content-aside">
+        <div class="container">
+            <div class="row">
+            	<div class="col-xs-12">
+					<ol class="breadcrumb grey">
+	                    <TMPL_LOOP NAME='Navigation'>
+	                    <TMPL_UNLESS NAME='__LAST__'>
+	                	<li><a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME='Title' /></a></li>
+	                    </TMPL_UNLESS>
+	                    </TMPL_LOOP>
+	                    <li class="active"><TMPL_VAR NAME="Title" /></li>
+                    </ol>
+                    
+                    <h1 class="header-section"><TMPL_VAR NAME="Title" /></h1>
+                </div>
+                <div class="col-xs-4 aside">
+                	&nbsp;
+	        	</div>
+                
+                <div class="col-xs-8">
+                    <div class="p-header"><TMPL_VAR NAME="PageContent" ESCAPE="none" /></div>
+                    
+                    <TMPL_IF NAME='MessageList'>
+					<p class="success" style="margin-left:0px;">
+						<TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message' ESCAPE='none'><TMPL_UNLESS NAME='__LAST__'><br/></TMPL_UNLESS></TMPL_LOOP>
+					</p>
+					</TMPL_IF>
+                    <TMPL_IF NAME='ErrorList'>
+					<p class="errors" style="margin-left:0px;">
+						<TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP>
+					</p>
+					</TMPL_IF>	
+
+                    <div class="content-main">
+
+                        <form action="<TMPL_VAR NAME='FormAction'>" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="FormSubmitted" value="Yes" />
+                            <input type="hidden" name="Text_City" value="online" />
+                            <div class="wrap-block-registration">
+	                            <div class="block-registration">
+	                                <div class="form-group">
+	                                    <input type="text" name="Text_Name_r" required class="form-control" id="formName" value="<TMPL_VAR NAME='Name' />">
+	                                    <label for="formName"><TMPL_VAR NAME="LNG_Name" /></label>
+	                                </div>
+	                                <div class="form-group">
+	                                    <input type="text" name="Text_Phone_r" required class="form-control form--phone" id="formPhone" value="<TMPL_VAR NAME='Phone' />">
+	                                    <label for="formPhone"><TMPL_VAR NAME="LNG_Phone" /></label>
+	                                </div>
+	                                <div class="form-group custom-select">
+	                                    <select class="form-control formClass" name="Select_Class">
+	                                        <option value="11"<TMPL_IF NAME='Class' VALUE='11'> selected="selected"</TMPL_IF>>11</option>
+	                                        <option value="10"<TMPL_IF NAME='Class' VALUE='10'> selected="selected"</TMPL_IF>>10</option>
+	                                        <option value="9"<TMPL_IF NAME='Class' VALUE='9'> selected="selected"</TMPL_IF>>9</option>
+	                                        <option value="8"<TMPL_IF NAME='Class' VALUE='8'> selected="selected"</TMPL_IF>>8</option>
+	                                    </select>
+	                                    <label><TMPL_VAR NAME="LNG_Class" /></label>
+	                                </div>
+	                                <div class="form-group">
+                                        <input type="email" name="Email_Email_r" required class="form-control checkempty" id="formEmail" value="<TMPL_VAR NAME='Email' />">
+                                        <label for="formEmail"><TMPL_VAR NAME="LNG_Email" /></label>
+                                    </div>
+                                    <div class="form-group">
+	                                    <input type="text" name="Text_Comment" class="form-control checkempty" id="formComment" value="<TMPL_VAR NAME='Comment' />">
+	                                    <label for="formComment"><TMPL_VAR NAME="LNG_Comment" /></label>
+	                                </div>
+	                            </div>
+                            </div>
+                            <input class="main-btn" name="Submit" value="<TMPL_VAR NAME='LNG_Submit' />" type="submit">
+                        </form>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

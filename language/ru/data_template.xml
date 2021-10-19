@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<device_list.html>
+			<DeviceList>Пользователи</DeviceList>
+			<All>Все</All>
+			<Show>Показать</Show>
+			<Output>Вывод</Output>
+			<OutputHTML>Веб-страница</OutputHTML>
+			<OutputCSV>CSV-файл</OutputCSV>
+			<DeviceID>ID устройства</DeviceID>
+			<Client>Устройство</Client>
+			<Created>Зарегистрирован</Created>
+			<Empty>Список пуст</Empty>
+		</device_list.html>
+		<device_edit.html>
+			<EditDevice>Редактировать пользователя</EditDevice>
+			<DeviceID>ID устройства</DeviceID>
+			<Created>Зарегистрирован</Created>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</device_edit.html>
+		<area_list.html>
+			<RegionList>Федеральные округа</RegionList>
+			<Add>Добавить округ</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить округ '%Title%'?</ConfirmRemove>
+		</area_list.html>
+		<area_edit.html>
+			<AddRegion>Добавить округ</AddRegion>
+			<EditRegion>Редактировать округ</EditRegion>
+			<Title>Название</Title>
+			<Image>Иконка округа</Image>
+			<SortOrder>Позиция</SortOrder>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</area_edit.html>
+		<region_list.html>
+			<RegionList>Регионы</RegionList>
+			<Add>Добавить регион</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить регион '%Title%'?</ConfirmRemove>
+		</region_list.html>
+		<region_edit.html>
+			<AddRegion>Добавить регион</AddRegion>
+			<EditRegion>Редактировать регион</EditRegion>
+			<Title>Название</Title>
+			<Area>Федеральный округ</Area>
+			<Image>Иконка региона</Image>
+			<SortOrder>Позиция</SortOrder>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</region_edit.html>
+		<city_list.html>
+			<RegionList>Список городов</RegionList>
+			<Add>Добавить город</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить город '%Title%'?</ConfirmRemove>
+		</city_list.html>
+		<city_edit.html>
+			<Add>Добавить город</Add>
+			<Edit>Редактировать город</Edit>
+			<Title>Название</Title>
+			<Region>Регион</Region>
+			<StaticPath>Код (поддомен)</StaticPath>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</city_edit.html>
+		<university_agent_edit.html>
+			<Add>Привязать представителя</Add>
+			<Edit>Редактировать представителя</Edit>
+			<University>Университет</University>
+			<User>Представитель</User>
+			<ExpireDate>Дата окончания доступа</ExpireDate>
+			<Author>Автор</Author>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</university_agent_edit.html>
+		<university_agent_list.html>
+			<List>Список представителей</List>
+			<Add>Привязать представителя</Add>
+			<User>Пользователь</User>
+			<University>Университет</University>
+			<ConfirmRemove>Удалить привязку с ID '%Title%'?</ConfirmRemove>
+		</university_agent_list.html>
+		<type_list.html>
+			<RegionList>Направления вузов</RegionList>
+			<Add>Добавить направление</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить направление '%Title%'?</ConfirmRemove>
+		</type_list.html>
+		<type_edit.html>
+			<AddRegion>Добавить направление</AddRegion>
+			<EditRegion>Редактировать направление</EditRegion>
+			<Title>Название</Title>
+			<Image>Иконка направления</Image>
+			<SortOrder>Позиция</SortOrder>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</type_edit.html>
+		<direction_list.html>
+			<DirectionList>Направления подготовки</DirectionList>
+			<Add>Добавить направление</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить направление '%Title%'?</ConfirmRemove>
+		</direction_list.html>
+		<direction_edit.html>
+			<AddDirection>Добавить направление</AddDirection>
+			<EditDirection>Редактировать направление</EditDirection>
+			<BigDirection>Крупное направление специальностей</BigDirection>
+			<Title>Название</Title>
+			<StaticPath>URL</StaticPath>
+			<Number>Номер направления</Number>
+			<VideoURL>Ссылка на видео youtube</VideoURL>
+			<SortOrder>Позиция</SortOrder>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</direction_edit.html>
+		<university_list.html>
+			<ReportFrom>Отчет от</ReportFrom>
+			<ReportTo>до</ReportTo>
+			<ReportSubmit>Скачать</ReportSubmit>
+			<ReportTypeUniversity>вуз</ReportTypeUniversity>
+			<ReportTypeSpeciality>специальность</ReportTypeSpeciality>
+			<UniversityList>ВУЗы</UniversityList>
+			<Add>Добавить ВУЗ</Add>
+			<ShortTitle>Аббревиатура</ShortTitle>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить ВУЗ '%Title%'?</ConfirmRemove>
+			<Specialities>список специальностей</Specialities>
+		</university_list.html>
+		<university_edit.html>
+			<AddUniversity>Добавить ВУЗ</AddUniversity>
+			<Add>Добавить</Add>
+			<Empty>Список пуст</Empty>
+			<EditUniversity>Редактировать ВУЗ</EditUniversity>
+			<ShortTitle>Аббревиатура</ShortTitle>
+			<Title>Название</Title>
+			<TitleInPrepositionalCase>Название в предожном падеже</TitleInPrepositionalCase>
+			<StaticPath>URL</StaticPath>
+			<Region>Регион</Region>
+			<City>Город</City>
+			<Type>Направление</Type>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+			<Address>Адрес</Address>
+			<Latitude>Широта</Latitude>
+			<Longitude>Долгота</Longitude>
+			<UniverType>Тип университета</UniverType>
+			<Opened>Открыт/Закрыт</Opened>
+			<UniversityLogo>Логотип</UniversityLogo>
+			<PhoneSelectionCommittee>Телефон приемной комиссии</PhoneSelectionCommittee>
+			<License>Сведения о лицензии</License>
+			<Content>О вузе в цифрах</Content>
+			<WhyChoose>Почему абитуриенты выбирают</WhyChoose>
+			<Description>Описание ВУЗа</Description>
+			<FormTraining>Формат обучения (опишите как проходит обучения, сколько сессий, есть ли предметы на выбор, про обучение иностранным языкам и т.д.)</FormTraining>
+			<InternationalPrograms>Международные программы</InternationalPrograms>
+			<DoubleDiploma>Возможность получения двойного диплома</DoubleDiploma>
+			<MilitaryDepartment>Наличие военной кафедры</MilitaryDepartment>
+			<DelayArmy>Отсрочка от армии</DelayArmy>
+			<Hostel>Общежитие</Hostel>
+			<ExtracurricularActivities>Внеучебная деятельность</ExtracurricularActivities>
+			<HostelPriceBudget>Стоимость общежития по бюджету (мес)</HostelPriceBudget>
+			<HostelPriceContract>Стоимость общежития по договору (мес)</HostelPriceContract>
+			<Scholarship>Государственная академическая стипендия (мес.)</Scholarship>
+			<ScholarshipSpecialAcademic>Стипендия за особые успехи в учебе</ScholarshipSpecialAcademic>
+			<ScholarshipSocial>Стипендия по социальным льготам</ScholarshipSocial>
+			<FamousGraduates>Известные выпускники</FamousGraduates>
+			<Website>Официальный сайт</Website>
+			<VideoURL>Ссылка на видео о вузе (youtube)</VideoURL>
+			<QuestionUser>Вопрос-ответ: ответственный пользователь</QuestionUser>
+			<QuestionUserTitle>Вопрос-ответ: должность</QuestionUserTitle>
+			<VkUrl>Vk</VkUrl>
+			<InstagramUrl>Instagram</InstagramUrl>
+			<YoutubeUrl>Ссылка на канал YouTube</YoutubeUrl>
+			<ScoreExamBudgetAvg>Средний бал по бюджету</ScoreExamBudgetAvg>
+			<ScoreExamContractAvg>Средний бал по договору</ScoreExamContractAvg>
+			<CommonHas>Есть</CommonHas>
+			<CommonNoHas>Нет</CommonNoHas>
+			<ConfirmRemove>Удалить направление '%Title%'?</ConfirmRemove>
+		</university_edit.html>
+		<speciality_list.html>
+			<SpecialityList>Специальности</SpecialityList>
+			<Add>Добавить специальность</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить специальность'%Title%'?</ConfirmRemove>
+		</speciality_list.html>
+		<speciality_edit.html>
+			<TabMain>Информация</TabMain>
+			<TabStudy>Форма обучения</TabStudy>
+			<AddSpeciality>Добавить направление</AddSpeciality>
+			<EditSpeciality>Редактировать направление</EditSpeciality>
+			<University>ВУЗ</University>
+			<Direction>Направление</Direction>
+			<Title>Название</Title>
+			<StaticPath>URL</StaticPath>
+			<Score>Балл</Score>
+			<Ege>Вступительные ЕГЭ и минимальные баллы</Ege>
+			<EgeAdd>добавить предмет</EgeAdd>
+			<EgeRemove>удалить</EgeRemove>
+			<Additional>Дополнительные вступительные испытания</Additional>
+			<AdditionAdd>Добавить ДВИ</AdditionAdd>
+			<Additional2>Доп. экзамен 2</Additional2>
+			<Additional3>Доп. экзамен 3</Additional3>
+			<Additional4>Доп. экзамен 4</Additional4>
+			<Additional5>Доп. экзамен 5</Additional5>
+			<Additional6>Доп. экзамен 6</Additional6>
+			<Additional7>Доп. экзамен 7</Additional7>
+			<Additional8>Доп. экзамен 8</Additional8>
+			<Additional9>Доп. экзамен 9</Additional9>
+			<Additional10>Доп. экзамен 10</Additional10>
+			<Students>Кол-во мест</Students>
+			<Recruitment>Набор открыт/закрыт</Recruitment>
+			<Period>Срок обучения, лет</Period>
+			<Military>Наличие военной кафедры</Military>
+			<Delay>Отсрочка от армии</Delay>
+			<Hostel>Общежитие</Hostel>
+			<Employment>Доля трудоустройства выпускников</Employment>
+			<Salary>Средняя заработная плата выпускников</Salary>
+			<Price>Цена</Price>
+			<Link>Ссылка на направление</Link>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</speciality_edit.html>
+		<push_send.html>
+			<SendPush>Отправить push-уведомление</SendPush>
+			<Client>Клиент</Client>
+			<Title>Заголовок</Title>
+			<Text>Текст</Text>
+			<Target>Цель</Target>
+			<TargetApplication>Запустить приложение</TargetApplication>
+			<TargetURL>Внешняя ссылка</TargetURL>
+			<URL>Ссылка</URL>
+			<ReceiverList>Получатели</ReceiverList>
+			<ReceiverListDescription>Укажите ID устройства пользователей, которые должны получить уведомление. 
+			Если список получателей не задан вручную, уведомление будет отправлено всем пользователям.</ReceiverListDescription>
+			<Add>Добавить</Add>
+			<ReceiverPlaceholder>ID устройства</ReceiverPlaceholder>
+			<Send>Отправить</Send>
+		</push_send.html>
+		<profession_list.html>
+			<ReportFrom>Отчет от</ReportFrom>
+			<ReportTo>до</ReportTo>
+			<ReportSubmit>Скачать</ReportSubmit>
+			<Add>Добавить</Add>
+			<ProfessionList>Похожие профессии</ProfessionList>
+			<Title>Наименование</Title>
+			<Industry>Сфера деятельности</Industry>
+			<WageLevel>Начинающий специалист</WageLevel>
+		</profession_list.html>
+		<profession_edit.html>
+			<EditProfession>Редактирование професии</EditProfession>
+			<AddProfession>Добавление профессии</AddProfession>
+			<Title>Наименование</Title>
+			<TitleInParentCase>Название в р.п.</TitleInParentCase>
+			<Industry>Сфера деятельности</Industry>
+			<WageLevel>ЗП начинающего специалиста</WageLevel>
+			<ProWageLevel>ЗП ведущего специалиста</ProWageLevel>
+			<Description>Что делает специалист</Description>
+			<Employee>Какими качествами нужно обладать</Employee>
+			<AreaWork>В каких областях можно работать</AreaWork>
+			<Books>Книги для саморазвития</Books>
+			<Films>Фильмы, влоги, передачи про профессию</Films>
+			<Schedule>График работы</Schedule>
+			<Operation>Характер труда</Operation>
+			<WantWork>Что хочу делать</WantWork>
+			<WhoWork>С чем хочу работать</WhoWork>
+			<SortOrder>Позиция</SortOrder>
+			<TabMain>Информация</TabMain>
+			<TabOtherProfession>Похожие профессии</TabOtherProfession>
+		</profession_edit.html>
+		<!-- Industry -->
+		<industry_list.html>
+			<Title>Наименование</Title>
+			<IndustryList>Сферы деятельности</IndustryList>
+			<Add>Добавить</Add>
+			<ConfirmRemove>Удалить сферу делятельности "%Title%"?</ConfirmRemove>
+		</industry_list.html>
+		<industry_edit.html>
+			<Edit>Редактировать сферу деятельности</Edit>
+			<Add>Добавить сферу деятельности</Add>
+			<Title>Наименование</Title>
+			<Description>Описание</Description>
+		</industry_edit.html>
+		<!-- Who to work -->
+		<who_work_edit.html>
+			<Edit>Редактировать "С чем хочу работать"</Edit>
+			<Add>Добавить "С чем хочу работать"</Add>
+			<Title>Наименование</Title>
+			<Description>Описание</Description>
+		</who_work_edit.html>
+		<who_work_list.html>
+			<WhoWorkList>С чем хочу работать</WhoWorkList>
+			<Add>Добавить</Add>
+			<Title>Наименование</Title>
+			<ConfirmRemove>Удалить элемент '%Title%'?</ConfirmRemove>
+		</who_work_list.html>
+		<!-- Want to work -->
+		<want_work_edit.html>
+			<Edit>Редактировать "Что хочу делать"</Edit>
+			<Add>Добавить "Что хочу делать"</Add>
+			<Title>Наименование</Title>
+			<Description>Описание</Description>
+		</want_work_edit.html>
+		<want_work_list.html>
+			<WantWorkList>Что хочу делать</WantWorkList>
+			<Add>Добавить</Add>
+			<Title>Наименование</Title>
+			<ConfirmRemove>Удалить элемент '%Title%'?</ConfirmRemove>
+		</want_work_list.html>
+		<!-- Operation -->
+		<operation_edit.html>
+			<Edit>Редактировать "График работы"</Edit>
+			<Add>Добавить "График работы"</Add>
+			<Title>Наименование</Title>
+		</operation_edit.html>
+		<operation_list.html>
+			<OperationList>График работы</OperationList>
+			<Add>Добавить</Add>
+			<Title>Наименование</Title>
+			<ConfirmRemove>Удалить элемент '%Title%'?</ConfirmRemove>
+		</operation_list.html>
+		<online_event_list.html>
+			<OnlineEventList>Онлайн-события</OnlineEventList>
+			<ReportFrom>Отчет от</ReportFrom>
+			<ReportTo>до</ReportTo>
+			<ReportSubmit>Скачать</ReportSubmit>
+			<Add>Добавить онлайн-событие</Add>
+			<EventDateTime>Дата</EventDateTime>
+			<Duration>Длительность</Duration>
+			<DeviceStatusCount>Пользователи</DeviceStatusCount>
+			<Title>Название</Title>
+			<ConfirmRemove>Удалить событие '%Title%'?</ConfirmRemove>
+			<Empty>Пусто</Empty>
+		</online_event_list.html>
+		<online_event_edit.html>
+			<TabInfo>Информация</TabInfo>
+			<TabUniversity>ВУЗы</TabUniversity>
+			<TabDirection>Направления подготовки</TabDirection>
+			<TabProfession>Профессии</TabProfession>
+			<TabLinks>Ссылки</TabLinks>
+			<AddOnlineEvent>Добавить онлайн-событие</AddOnlineEvent>
+			<EditOnlineEvent>Редактировать онлайн-событие</EditOnlineEvent>
+			<EventType>Тип</EventType>
+			<EventDateTime>Дата</EventDateTime>
+			<Duration>Длительность</Duration>
+			<Title>Название</Title>
+			<Description>Описание</Description>
+			<URL>Ссылка на трансляцию</URL>
+			<ButtonTitle>Название кнопки</ButtonTitle>
+			<ButtonURL>URL кнопки</ButtonURL>
+			<Active>Активно</Active>
+			<Chat>Использовать чат</Chat>
+			<ShowInList>Показывать в списке</ShowInList>
+			<RegistrationRequired>Регистрация обязательна</RegistrationRequired>
+			<Template>Шаблон страницы</Template>
+			<TemplateNormal>Навигатор поступления</TemplateNormal>
+			<TemplateCareer>Навигатор карьеры</TemplateCareer>
+			<TemplateProf>Навигатор профориентации</TemplateProf>
+			<RegistrationType>Форма регистрации</RegistrationType>
+			<RegistrationTypeNormal>Стандартная</RegistrationTypeNormal>
+			<RegistrationTypeStudent>Студент</RegistrationTypeStudent>
+			<HeadImage>Картинка</HeadImage>
+			<Status>Статус</Status>
+			<StatusSigned>Записался</StatusSigned>
+			<StatusWatched>Просматривал видео события</StatusWatched>
+			<Empty>Пусто</Empty>
+			<UserStatusList>Пользователи</UserStatusList>
+			<UserName>Имя</UserName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<UserWho>Статус</UserWho>
+			<UserWhoParent>Родитель</UserWhoParent>
+			<UserWhoChild>Ученик</UserWhoChild>
+			<UserWhoStudent>Студент</UserWhoStudent>
+			<ClassNumber>Класс</ClassNumber>
+			<City>Город</City>
+			<UserCreated>Зарегистрирован</UserCreated>
+			<RegUTM>UTM</RegUTM>
+			<Source>Источник</Source>
+			<ShortLink>Ссылка</ShortLink>
+			<SourceWebsite>Сайт</SourceWebsite>
+			<SourceMobile>Приложение</SourceMobile>
+			<LoadChat>Загрузить историю чата</LoadChat>
+			<GUID>GUID (для отправки в CRM)</GUID>
+			<OpenInNewTab>Открывать в новой вкладке</OpenInNewTab>
+			<EventUrl>URL</EventUrl>
+		</online_event_edit.html>
+		<exhibition_list.html>
+			<ExhibitionList>Список выставок</ExhibitionList>
+			<Add>Добавить выставку</Add>
+			<CityList>Список городов</CityList>
+			<ConfirmRemove>Удалить выставку "%Title%"?</ConfirmRemove>
+		</exhibition_list.html>
+		<exhibition.html>
+			<AddExhibition>Добавить выставку</AddExhibition>
+			<EditExhibition>Редактировать выставку</EditExhibition>
+			<TabInfo>Параметры</TabInfo>
+			<TabRegistrations>Регистрации</TabRegistrations>
+			<TabCampaign>Рекламные кампании</TabCampaign>
+			<Title>Наименование</Title>
+			<Page>Привязка к странице</Page>
+			<Page2>Привязка к странице 2</Page2>
+			<Type>Тип</Type>
+			<Period>Период</Period>
+			<Phone>Телефон</Phone>
+			<Email>E-mail</Email>
+			<Save>Сохранить</Save>
+			<RegExport>Регистрации</RegExport>
+			<RegExportVisitByUser>События по пользователям</RegExportVisitByUser>
+			<RegExportVisit>Считывания QR-кодов</RegExportVisit>
+			<RegExportCsv>Скачать .csv</RegExportCsv>
+			<RegExportCsvGroup>Сгруппированный экспорт</RegExportCsvGroup>
+			<RegEmpty>Список пуст</RegEmpty>
+			<RegFirstName>Имя</RegFirstName>
+			<RegLastName>Фамилия</RegLastName>
+			<RegBaseRegistration>Кто привел</RegBaseRegistration>
+			<RegCity>Город</RegCity>
+			<RegWho>Кто</RegWho>
+			<RegClass>Класс</RegClass>
+			<RegTime>Время</RegTime>
+			<RegInterest>Интересно</RegInterest>
+			<RegPhone>Телефон</RegPhone>
+			<RegEmail>E-mail</RegEmail>
+			<RegVisit>Посетил</RegVisit>
+			<RegCreated>Зарегистрировался</RegCreated>
+			<RegSource>Источник</RegSource>
+			<RegUTM>UTM</RegUTM>
+			<RegTicketLink>Ссылка на билет</RegTicketLink>
+			<RegStaticPath>Страница регистрации</RegStaticPath>
+			<VKReportSource>Источник</VKReportSource>
+            <Source>По источникам</Source>
+            <VkSource>Источник</VkSource>
+			<All>Все</All>
+			<Rub>₽</Rub>
+			<Ads>Объявления</Ads>
+			<Ad>Объявление</Ad>
+            <VkCR>Конверсия</VkCR>
+            <VkCome>Пришло</VkCome>
+            <VkSpentCome>Потрачено за пришедшего</VkSpentCome>
+			<VkExcludeClass>Исключить классы</VkExcludeClass>
+			<RegAdditionalBigDirection>Направления</RegAdditionalBigDirection>
+			<RegAdditionalUniversity>Вузы</RegAdditionalUniversity>
+			<RegAdditionalType>Категории лекций</RegAdditionalType>
+			<Family>По семьям</Family>
+			<VKReportCity>Город</VKReportCity>
+			<VKReportClass>Класс</VKReportClass>
+			<VkCampaign>Кампания</VkCampaign>
+			<VkReg>Регистраций</VkReg>
+			<VkSpentAll>Потрачено (всего)</VkSpentAll>
+			<VkSpentForReg>Потрачено за регистрацию (CPL)</VkSpentForReg>
+			<VKImpressions>Просмотры</VKImpressions>
+			<VkClicks>Клики</VkClicks>
+			<VkReach>Охват</VkReach>
+			<VkEmpty>Нет кампаний</VkEmpty>
+			<ReportFrom>Отчет от</ReportFrom>
+			<ReportTo>до</ReportTo>
+			<ReportSubmit>Показать</ReportSubmit>
+		</exhibition.html>
+		<exhibition_city_edit.html>
+			<TabInfoList>Список описаний</TabInfoList>
+			<TabSchedule>Расписание</TabSchedule>
+			<TabUnivers>Вузы</TabUnivers>
+			<TabMainPartners>Официальные партнеры</TabMainPartners>
+			<TabPartners>Партнеры</TabPartners>
+			<TabEmail>Настройки писем</TabEmail>
+			<CityTitle>Наименование города</CityTitle>
+			<Title>Наименование выставки</Title>
+			<Date>Дата и время начала</Date>
+			<ManualDate>Ручная дата выставки</ManualDate>
+			<Address>Адрес</Address>
+			<Phone>Телефон</Phone>
+			<Email>E-mail</Email>
+			<UpdateScheduleFile>Загрузить новый файл расписания (.csv)</UpdateScheduleFile>
+			<AddRoom>Добавить зал</AddRoom>
+			<RoomTitlePlaceholder>Наименование зала. Например: Зал 1</RoomTitlePlaceholder>
+			<ScheduleDatePlaceholder>Дата выставки</ScheduleDatePlaceholder>
+			<TimesItem>Время проведения</TimesItem>
+			<ItemTitlePlaceholder>Наименование</ItemTitlePlaceholder>
+			<ItemAuthorPlaceholder>Автор</ItemAuthorPlaceholder>
+			<ItemPostPlaceholder>Должность</ItemPostPlaceholder>
+			<ItemDescriptionPlaceholder>Описание</ItemDescriptionPlaceholder>
+			<AddItem>Добавить</AddItem>
+			<ConfirmRemoveTable>Вместе с залом удалится и расписание. Удалить зал?</ConfirmRemoveTable>
+			<ConfirmRemoveTr>Удалить позицию?</ConfirmRemoveTr>
+			<ConfirmRemovePartner>Хотите удалить партнера "%Title%"? Восстановить будет невозможно!</ConfirmRemovePartner>
+			<Latitude>Широта</Latitude>
+			<Longitude>Долгота</Longitude>
+			<AddInfo>Добавить пункт</AddInfo>
+			<StaticPath>URL</StaticPath>
+			<InfoTitle>Заголовок</InfoTitle>
+			<InfoDescription>Описание</InfoDescription>
+			<Description>Описание</Description>
+			<TitleSchedule>Заголовок для расписания</TitleSchedule>
+			<TitleRegister>Заголовок для регистрации</TitleRegister>
+			<GUID>GUID (для отправки в CRM)</GUID>
+			<Active>Показывать в меню</Active>
+			<HeadImage>Картинка</HeadImage>
+			<HeadImageDescription>Используется в шапке выставки</HeadImageDescription>
+			<EmailTheme>Тема письма</EmailTheme>
+			<EmailTemplate>Шаблон писем</EmailTemplate>
+			<RegisterOnlineEventID>Регистрировать на вебинар (ID вебинара)</RegisterOnlineEventID>
+		</exhibition_city_edit.html>
+		<exhibition_city_list.html>
+			<Add>Добавить город</Add>
+			<Date>Дата и время</Date>
+			<Title>Город</Title>
+			<Address>Адрес</Address>
+			<ConfirmRemove>Удалить город "%Title%"?</ConfirmRemove>
+		</exhibition_city_list.html>
+		<open_day_edit.html>
+            <Add>Добавить дод</Add>
+            <Edit>Редактировать дод</Edit>
+			<TabInfoList>Список описаний</TabInfoList>
+			<TabSchedule>Расписание</TabSchedule>
+			<TabSlider>Слайдер</TabSlider>
+			<TabUnivers>Вузы</TabUnivers>
+			<TabMainPartners>Официальные партнеры</TabMainPartners>
+			<TabPartners>Партнеры</TabPartners>
+            <TabRegistrations>Регистрации</TabRegistrations>
+			<TabEmail>Настройки писем</TabEmail>
+			<CityTitle>Наименование города</CityTitle>
+			<Title>Название</Title>
+			<Page>Привязка к странице</Page>
+			<Page2>Привязка к странице 2</Page2>
+			<Type>Тип</Type>
+			<Period>Период</Period>
+			<Date>Дата и время начала</Date>
+			<Address>Адрес</Address>
+			<Phone>Телефон</Phone>
+			<Email>E-mail</Email>
+			<Network>Тип Дода</Network>
+			<UpdateScheduleFile>Загрузить новый файл расписания (.csv)</UpdateScheduleFile>
+			<AddRoom>Добавить зал</AddRoom>
+			<RoomTitlePlaceholder>Наименование зала. Например: Зал 1</RoomTitlePlaceholder>
+			<TimesItem>Время проведения</TimesItem>
+			<ItemTitlePlaceholder>Наименование</ItemTitlePlaceholder>
+			<ItemAuthorPlaceholder>Автор</ItemAuthorPlaceholder>
+			<ItemPostPlaceholder>Должность</ItemPostPlaceholder>
+			<ItemDescriptionPlaceholder>Описание</ItemDescriptionPlaceholder>
+			<AddItem>Добавить</AddItem>
+			<ConfirmRemoveTable>Вместе с залом удалится и расписание. Удалить зал?</ConfirmRemoveTable>
+			<ConfirmRemoveTr>Удалить позицию?</ConfirmRemoveTr>
+			<ConfirmRemovePartner>Хотите удалить партнера "%Title%"? Восстановить будет невозможно!</ConfirmRemovePartner>
+			<ConfirmRemoveSlide>Хотите удалить слайд "%Title%"? Восстановить будет невозможно!</ConfirmRemoveSlide>
+			<Latitude>Широта</Latitude>
+			<Longitude>Долгота</Longitude>
+			<AddInfo>Добавить пункт</AddInfo>
+			<StaticPath>URL</StaticPath>
+			<InfoTitle>Заголовок</InfoTitle>
+			<InfoDescription>Описание</InfoDescription>
+			<Description>Описание</Description>
+			<ButtonText>Заголовок кнопки</ButtonText>
+			<ButtonLink>Ссылка для кнопки</ButtonLink>
+			<TitleSchedule>Заголовок для расписания</TitleSchedule>
+			<TitleRegister>Заголовок для регистрации</TitleRegister>
+			<GUID>GUID (для отправки в CRM)</GUID>
+			<Active>Показывать в меню</Active>
+			<EmailTheme>Тема письма</EmailTheme>
+			<EmailTemplate>Шаблон писем</EmailTemplate>
+			<MainImage>Изображение на главной</MainImage>
+
+			<Save>Сохранить</Save>
+			<RegExport>Регистрации</RegExport>
+			<RegExportVisitByUser>События по пользователям</RegExportVisitByUser>
+			<RegExportVisit>Считывания QR-кодов</RegExportVisit>
+			<RegExportCsv>Скачать .csv</RegExportCsv>
+			<RegExportCsvGroup>Сгруппированный экспорт</RegExportCsvGroup>
+			<RegEmpty>Список пуст</RegEmpty>
+			<RegFirstName>Имя</RegFirstName>
+			<RegLastName>Фамилия</RegLastName>
+			<RegBaseRegistration>Кто привел</RegBaseRegistration>
+			<RegCity>Город</RegCity>
+			<RegWho>Кто</RegWho>
+			<RegClass>Класс</RegClass>
+			<RegTime>Время</RegTime>
+			<RegInterest>Интересно</RegInterest>
+			<RegPhone>Телефон</RegPhone>
+			<RegEmail>E-mail</RegEmail>
+			<RegVisit>Посетил</RegVisit>
+			<RegCreated>Зарегистрировался</RegCreated>
+			<RegSource>Источник</RegSource>
+			<RegUTM>UTM</RegUTM>
+			<RegTicketLink>Ссылка на билет</RegTicketLink>
+			<RegStaticPath>Страница регистрации</RegStaticPath>
+			<RegAdditionalBigDirection>Направления</RegAdditionalBigDirection>
+			<RegAdditionalUniversity>Вузы</RegAdditionalUniversity>
+			<RegAdditionalType>Категории лекций</RegAdditionalType>
+		</open_day_edit.html>
+		<open_day_list.html>
+            <List>Список додов</List>
+			<Add>Добавить дод</Add>
+			<Period>Период</Period>
+			<Date>Дата и время начала</Date>
+			<Address>Адрес</Address>
+			<Title>Название</Title>
+			<PhoneEmail>Телефон и email</PhoneEmail>
+			<ConfirmRemove>Удалить "%Title%"?</ConfirmRemove>
+			<DeviceStatusCount>Пользователи</DeviceStatusCount>
+		</open_day_list.html>
+		<article_list.html>
+			<ArticleList>Статьи</ArticleList>
+			<Add>Добавить статью</Add>
+			<DateTime>Дата</DateTime>
+			<Title>Название</Title>
+			<ConfirmRemove>Удалить статью '%Title%'?</ConfirmRemove>
+			<Empty>Пусто</Empty>
+		</article_list.html>
+		<article_edit.html>
+			<AddArticle>Добавить статью</AddArticle>
+			<EditArticle>Редактировать статью</EditArticle>
+			<DateTime>Дата</DateTime>
+			<Title>Название</Title>
+			<MetaTitle>Заголовок вкладки (title)</MetaTitle>
+			<MetaDescription>О чем статья/новость (1-2 предложения)</MetaDescription>
+			<StaticPath>URL (латинницей)</StaticPath>
+			<Description>Описание</Description>
+			<Tags>Тэги</Tags>
+			<Keywords>Ключевые слова (через запятую)</Keywords>
+			<Author>Автор</Author>
+			<Job>Должность</Job>
+			<QuestionTitle>Комментарий автора</QuestionTitle>
+			<Content>Текст статьи</Content>
+			<Popular>Популярная</Popular>
+			<OnMain>На главной</OnMain>
+			<Active>Открытый доступ</Active>
+			<Image>Картинка для списка</Image>
+			<ImageSub>Используется в списке статей, рекомендуемый размер "600x350" пикселей</ImageSub>
+			<MainImage>Картинка для подложки</MainImage>
+			<MainImageSub>Используется как подложка в верху статьи, рекомендуемый размер "1920x640" пикселей</MainImageSub>
+			<ConfirmChangeBest>Сейчас лучшая статья "%Title%". Вы уверены что хотите заменить на новую ?</ConfirmChangeBest>
+			<TimeToRead>Время чтения (в минутах)</TimeToRead>
+		</article_edit.html>
+		<article_tag_list.html>
+			<RegionList>Список тэгов</RegionList>
+			<Add>Добавить тэг</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить тэг '%Title%'?</ConfirmRemove>
+		</article_tag_list.html>
+		<article_tag_edit.html>
+			<AddRegion>Добавить тэг</AddRegion>
+			<EditRegion>Редактировать тэг</EditRegion>
+			<Title>Название</Title>
+			<StaticPath>URL</StaticPath>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</article_tag_edit.html>
+		<list_list.html>
+			<ListList>Списки</ListList>
+			<Add>Добавить список</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить список '%Title%'?</ConfirmRemove>
+		</list_list.html>
+		<list_edit.html>
+			<AddList>Добавить список</AddList>
+			<EditList>Редактировать список</EditList>
+			<TabInfo>Параметры списка</TabInfo>
+			<TabManual>Ручной выбор объектов</TabManual>
+			<TabFilter>Настройки фильтра</TabFilter>
+			<Title>Название</Title>
+			<Type>Тип списка</Type>
+			<TypeManual>ручное добавление</TypeManual>
+			<TypeFilter>поиск по фильтру</TypeFilter>
+			<Description>Описание</Description>
+			<MetaTitle>Заголовок вкладки (title)</MetaTitle>
+			<MetaDescription>Мета-описание (description)</MetaDescription>
+			<StaticPath>URL (латинницей)</StaticPath>
+			<Public>Выводить список в вузах</Public>
+			<ManualUniversity>ВУЗы</ManualUniversity>
+			<ManualSpeciality>Специальности</ManualSpeciality>
+			<ManualProfession>Профессии</ManualProfession>
+			<FilterRegion>Регионы</FilterRegion>
+			<FilterBigDirection>Направления</FilterBigDirection>
+		</list_edit.html>
+		<achievement_list.html>
+			<ListList>Индивидуальные достижения</ListList>
+			<Add>Добавить</Add>
+			<Title>Название</Title>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить '%Title%'?</ConfirmRemove>
+		</achievement_list.html>
+		<achievement_edit.html>
+			<AddList>Добавить</AddList>
+			<EditList>Редактировать</EditList>
+			<Title>Название</Title>
+			<SortOrder>Позиция</SortOrder>
+		</achievement_edit.html>
+		<author_list.html>
+			<AuthorList>Список авторов</AuthorList>
+			<Add>Добавить автора</Add>
+			<Title>Имя</Title>
+			<Description>Описание</Description>
+			<Empty>Список пуст</Empty>
+			<ConfirmRemove>Удалить автора '%Title%'?</ConfirmRemove>
+		</author_list.html>
+		<author_edit.html>
+			<AddAuthor>Добавить автора</AddAuthor>
+			<EditAuthor>Редактировать автора</EditAuthor>
+			<Title>Имя</Title>
+			<Description>Описание</Description>
+			<Image>Фото автора</Image>
+			<SortOrder>Позиция</SortOrder>
+			<Save>Сохранить</Save>
+			<Cancel>Отмена</Cancel>
+		</author_edit.html>
+		<online_exhibition_edit.html>
+			<Title>Название</Title>
+			<StaticPath>URL</StaticPath>
+			<Period>Период</Period>
+			<Description>Описание</Description>
+		</online_exhibition_edit.html>
+		<online_exhibition_list.html>
+			<List>Список выставок</List>
+			<Add>Добавить</Add>
+			<Title>Заголовок</Title>
+			<Participants>Участники</Participants>
+			<ConfirmRemove>Удалить выставку '%Title%'?</ConfirmRemove>
+		</online_exhibition_list.html>
+		<online_exhibition_participant_edit.html>
+			<Title>Название</Title>
+			<Image>Лого</Image>
+			<University>Вуз</University>
+			<YouTubeUrl>Ссылка на видео YouTube</YouTubeUrl>
+			<OnlineEvent>Вебинар</OnlineEvent>
+			<Description>Описание</Description>
+			<QuestionTitle>Заголовок прямой линии</QuestionTitle>
+			<AboutTitle>Заголовок о вузе</AboutTitle>
+			<Attachment>Ссылка на Буклет</Attachment>
+			<UniversityWebsiteUrl>Ссылка на сайт вуза</UniversityWebsiteUrl>
+		</online_exhibition_participant_edit.html>
+		<online_exhibition_participant_list.html>
+			<List>Список участников</List>
+			<Add>Добавить</Add>
+			<Title>Заголовок</Title>
+			<ConfirmRemove>Удалить участника '%Title%'?</ConfirmRemove>
+		</online_exhibition_participant_list.html>
+	</admin>
+</Root>

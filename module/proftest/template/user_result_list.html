@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Utm</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<TMPL_LOOP NAME='ResultList'>
+        	<tr>
+        		<td>
+                    <a class="" href="<TMPL_VAR NAME='URL_PREFIX'><TMPL_VAR NAME='PageStaticPath'>?TestResult=<TMPL_VAR NAME='LinkID'>"><TMPL_VAR NAME='UserName'></a>
+                </td>
+        		<td><TMPL_VAR NAME='Created'></td>
+                <td>
+                    <TMPL_IF NAME='Status' OP='==' VALUE='active'>
+                        <TMPL_VAR NAME='LNG_TestActive'>
+                    </TMPL_ELSE>
+                        <TMPL_VAR NAME='LNG_TestReset'>
+                    </TMPL_IF>
+                </td>
+                <td><TMPL_VAR NAME='Utm'></td>
+            </tr>
+		</TMPL_LOOP>
+    </tbody>
+</table>

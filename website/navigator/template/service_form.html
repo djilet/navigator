@@ -1,0 +1,77 @@
+<div class="page-service">
+	<div class="forum__header"<TMPL_IF NAME='MenuImage1Path'> style="background-image: url('<TMPL_VAR NAME='MenuImage1Path'>')"</TMPL_IF>>
+    	<div class="container">
+            <ol class="breadcrumb white">
+       			<TMPL_LOOP NAME='Navigation'>
+          		<TMPL_UNLESS NAME='__LAST__'>
+      			<li><a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME='Title' /></a></li>
+          		</TMPL_UNLESS>
+          		</TMPL_LOOP>
+          		<li>Услуги</li>
+          		<li class="active"><TMPL_VAR NAME="TitleH1" /></li>
+      		</ol>
+            <div class="forum__header-content">
+            	<div class="forum__header-content_text">
+                	<div>
+                  		<h1 class="header-section"><TMPL_VAR NAME="TitleH1" /></h1>
+                  		<p><TMPL_VAR NAME="Description" /></p>
+                  		<p class="service">
+                  			<strike class="pricebefore"><TMPL_VAR NAME='PriceBefore' FORMAT='price'></strike><br/>
+                			<span class="pricediscount"><TMPL_VAR NAME='PriceDiscount' FORMAT='price'> <span class="comment"><TMPL_VAR NAME='PriceDiscountComment'></span></span><br/>
+                			<a href="#order" class="white-btn" onclick="<TMPL_IF NAME='YaTopGoal'>yaCounter47132955.reachGoal('<TMPL_VAR NAME='YaTopGoal'>');</TMPL_IF><TMPL_IF NAME='GaTopGoal'>ga('send', 'event', '<TMPL_VAR NAME='GaTopGoal'>', 'click');</TMPL_IF>return true;">перейти к оплате</a>
+                		</p>
+                	</div>
+              	</div>
+            </div>
+
+		</div>
+        <div class="forum__header-color gradient-overlay"></div>
+	</div>
+
+	<div class="container">
+		<div class="promo content">
+	    	<TMPL_VAR NAME='Content' ESCAPE='none'>
+	    </div>
+    </div>
+    
+    <div class="container">
+    	<div class="row">
+    		<div class="col-xs-12 col-md-7">
+    			<TMPL_VAR NAME='Description2' ESCAPE='none'>
+    		</div>
+    		<div class="col-xs-12 col-md-5 inline">
+    			<a name="order"></a>
+    			<div class="service-bottom-block">
+	    			<h3>Контакты для связи после оплаты</h3>
+	    			<form action="<TMPL_VAR NAME='PROJECT_PATH' />module/service/ajax_public.php" method="post" autocomplete="off" data-error="modal-order-error" onsubmit="<TMPL_IF NAME='YaBottomGoal'>yaCounter47132955.reachGoal('<TMPL_VAR NAME='YaBottomGoal'>');</TMPL_IF><TMPL_IF NAME='GaBottomGoal'>ga('send', 'event', '<TMPL_VAR NAME='GaBottomGoal'>', 'click');</TMPL_IF>return true;">
+				  		<div class="form-group">
+				           <input type="text" name="Phone" required class="form-control form--phone" id="formPhone">
+				           <label for="formPhone">Телефон</label>
+				       	</div>
+				       	<div class="form-group">
+				           <input type="text" name="Email" required class="form-control form--email" id="formEmail">
+				           <label for="formEmail">Адрес электронной почты</label>
+				       	</div>
+				       	<p class="service">
+	                 		<strike class="pricebefore bottom"><TMPL_VAR NAME='PriceBefore' FORMAT='price'></strike><br/>
+	               			<span class="pricediscount bottom"><TMPL_VAR NAME='PriceDiscount' FORMAT='price'> <span class="comment"><TMPL_VAR NAME='PriceDiscountComment'></span></span>
+	               		</p>
+				       	<input type="submit" class="main-btn" value="Перейти к оплате">
+				       	<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID'>">
+				       	<input type="hidden" name="Action" value="NewOrder">
+					</form>
+				</div>
+    		</div>
+    	</div>
+	</div>
+	<div class="modal fade" id="modal-order-error" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+	    	<div class="modal-content">
+	        	<div class="modal-body">
+	        		<div class="message"></div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+    
+</div>

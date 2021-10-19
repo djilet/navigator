@@ -1,0 +1,31 @@
+<TMPL_IF NAME='BannerPopUp'>
+    <div class="modal fade" id="npbanner" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="npbanner-popup">
+                    <i class="material-icons" onclick="$('#npbanner').modal('hide')">close</i>
+                    <div class="banner" id="popup-banner">
+                        <TMPL_LOOP NAME='BannerPopUp'>
+                            <a href="<TMPL_VAR NAME='Link'>" data-name="<TMPL_VAR NAME='Name'>">
+                                <img src="<TMPL_VAR NAME='ItemImageFullPath' />" alt="">
+                            </a>
+                        </TMPL_LOOP>
+                    </div>
+                    <!--<div class="h2">ОБРАЗОВАТЕЛЬНАЯ ВЫСТАВКА</div>
+                    <div class="h1">НАВИГАТОР ПРОФОРИЕНТАЦИИ</div>
+                    <div class="npbanner-rect-gradient">
+                        <div class="npbanner-popup-baseText">
+                            <p>Профориентация и диагностика знаний</p>
+                            <p>Практические мастер-классы по IT</p>
+                            <p>Семинары и открытые уроки</p>
+                        </div>
+                        <div class="h3">Москва<br/>31 марта</div>
+                    </div>
+                    <a href="https://propostuplenie.ru/navi_prof/?utm_source=propostuplenie&utm_medium=banner&utm_campaign=popup" class="button">
+                        ЗАПИШИСЬ
+                    </a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</TMPL_IF>

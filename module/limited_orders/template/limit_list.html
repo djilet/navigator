@@ -1,0 +1,64 @@
+<div class="col-md-12">
+    <section class="box">
+        <header class="panel_header">
+            <h2 class="title">Настройки</h2>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="btn" href="<TMPL_VAR NAME='MODULE_URL'>"><TMPL_VAR NAME='LNG_Back'></a>
+                    <a href="<TMPL_VAR NAME='MODULE_URL'>&PageID=<TMPL_VAR NAME='PageID' />&Section=limits&LimitID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i><TMPL_VAR NAME='LNG_Add'></a>
+                </div>
+
+                <div class="col-xs-12">
+
+                    <TMPL_IF NAME='LimitList'>
+
+                        <form method="post" id="item-list">
+                            <table class="table" id="listing">
+                                <thead>
+                                <tr>
+                                    <th><TMPL_VAR NAME='LNG_Date'></th>
+                                    <th><TMPL_VAR NAME='LNG_TimeFrom'></th>
+                                    <th><TMPL_VAR NAME="LNG_TimeTo" /></th>
+                                    <th><TMPL_VAR NAME="LNG_Step" /></th>
+                                    <th><TMPL_VAR NAME="LNG_LimitCount" /></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <TMPL_LOOP NAME='LimitList'>
+                                    <tr>
+                                        <td><a href="<TMPL_VAR NAME='BaseURL' />&LimitID=<TMPL_VAR NAME='LimitID' />"><TMPL_VAR NAME='Date' FORMAT='date'></a></td>
+                                        <td><TMPL_VAR NAME='TimeFrom'></td>
+                                        <td><TMPL_VAR NAME='TimeTo' /></td>
+                                        <td><TMPL_VAR NAME='Step' /></td>
+                                        <td><TMPL_VAR NAME='LimitCount' /></td>
+                                        <td>
+                                            <a href="<TMPL_VAR NAME='MODULE_URL'>&PageID=<TMPL_VAR NAME='PageID' />&Section=limits&LimitID=<TMPL_VAR NAME='LimitID'>&Do=Remove" onclick="ConfirmRemove(this); return false;"><i class="fa fa-close delete"></i></a>
+                                        </td>
+                                    </tr>
+                                </TMPL_LOOP>
+                                </tbody>
+                            </table>
+
+                            <div class="clearfix"></div>
+                        </form>
+
+                        <TMPL_ELSE>
+                            <TMPL_VAR NAME='LNG_EmptyList' />
+                    </TMPL_IF>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    function ConfirmRemove(a)
+    {
+        var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove' ESCAPE='js'>';
+        ModalConfirm(msg, function(){
+            window.location.href = $(a).attr('href');
+        });
+    }
+</script>

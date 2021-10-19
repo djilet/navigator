@@ -1,0 +1,176 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<h2 class="title"><TMPL_VAR NAME='LNG_SendPush'></h2>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post">
+				<TMPL_IF NAME='ErrorList'>
+					<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+				</TMPL_IF>
+				<TMPL_IF NAME='MessageList'>
+					<div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+				</TMPL_IF>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="form-label"><TMPL_VAR NAME='LNG_Client'></label>
+							<select name="Client" class="form-control">
+								<TMPL_LOOP NAME='ClientList'>
+									<option value="<TMPL_VAR NAME='Client'>" <TMPL_IF NAME='Selected'>selected</TMPL_IF>><TMPL_VAR NAME='Client'></option>
+								</TMPL_LOOP>
+							</select>
+						</div>
+						<div class="client-value for-android">
+							<div class="form-group">
+								<label class="form-label"><TMPL_VAR NAME='LNG_Title'></label>
+								<input type="text" class="form-control" name="Title" value="<TMPL_VAR NAME='Title'>" maxlength="255">
+							</div>
+						</div>
+						<div class="client-value for-android for-ios">
+							<div class="form-group">
+								<label class="form-label required"><TMPL_VAR NAME='LNG_Text'></label>
+								<textarea class="form-control" name="Text" maxlength="1000" rows="5"><TMPL_VAR NAME='Text'></textarea>
+							</div>
+						</div>
+						<div class="client-value for-android for-ios">
+							<div class="form-group">
+								<label class="form-label required"><TMPL_VAR NAME='LNG_Target'></label>
+								<select name="Target" class="form-control">
+									<option value="application" <TMPL_IF NAME='Target' VALUE='application'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_TargetApplication'></option>
+									<option value="url" <TMPL_IF NAME='Target' VALUE='url'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_TargetURL'></option>
+								</select>
+							</div>
+							<div class="target-value for-deeplink">
+								<div class="form-group target-screen-value for-article">
+									<label class="form-label"><TMPL_VAR NAME='LNG_Article'></label>
+									<select name="ArticleID" class="form-control">
+										<TMPL_LOOP NAME='SubjectList'>
+											<optgroup label="<TMPL_VAR NAME='Title'>">
+												<TMPL_LOOP NAME='SectionList'>
+													<optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'>">
+														<TMPL_LOOP NAME='ThemeList'>
+															<optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'>">
+																<TMPL_LOOP NAME='ArticleList'>
+																	<option value="<TMPL_VAR NAME='ArticleID'>" <TMPL_IF NAME='Selected'>selected</TMPL_IF>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'></option>
+																</TMPL_LOOP>
+															</optgroup>		
+														</TMPL_LOOP>
+													</optgroup>		
+												</TMPL_LOOP>
+											</optgroup>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group target-screen-value for-video">
+									<label class="form-label"><TMPL_VAR NAME='LNG_Video'></label>
+									<select name="VideoID" class="form-control">
+										<TMPL_LOOP NAME='SubjectList'>
+											<optgroup label="<TMPL_VAR NAME='Title'>">
+												<TMPL_LOOP NAME='SectionList'>
+													<optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'>">
+														<TMPL_LOOP NAME='ThemeList'>
+															<optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'>">
+																<TMPL_LOOP NAME='VideoList'>
+																	<option value="<TMPL_VAR NAME='VideoID'>" <TMPL_IF NAME='Selected'>selected</TMPL_IF>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'></option>
+																</TMPL_LOOP>
+															</optgroup>		
+														</TMPL_LOOP>
+													</optgroup>		
+												</TMPL_LOOP>
+											</optgroup>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group target-screen-value for-test">
+									<label class="form-label"><TMPL_VAR NAME='LNG_Test'></label>
+									<select name="TestID" class="form-control">
+										<TMPL_LOOP NAME='SubjectList'>
+											<optgroup label="<TMPL_VAR NAME='Title'>">
+												<TMPL_LOOP NAME='SectionList'>
+													<optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'>">
+														<TMPL_LOOP NAME='ThemeList'>
+															<optgroup label="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'>">
+																<TMPL_LOOP NAME='TestList'>
+																	<option value="<TMPL_VAR NAME='TestID'>" <TMPL_IF NAME='Selected'>selected</TMPL_IF>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<TMPL_VAR NAME='Title'></option>
+																</TMPL_LOOP>
+															</optgroup>		
+														</TMPL_LOOP>
+													</optgroup>		
+												</TMPL_LOOP>
+											</optgroup>
+										</TMPL_LOOP>
+									</select>
+								</div>
+							</div>
+							<div class="form-group target-value for-url">
+								<label class="form-label"><TMPL_VAR NAME='LNG_URL'></label>
+								<input type="text" class="form-control" name="URL" value="<TMPL_VAR NAME='URL'>" />
+							</div>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-success btn-icon"><i class="fa fa-send"></i> <TMPL_VAR NAME='LNG_Send'></button>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<p><TMPL_VAR NAME='LNG_ReceiverListDescription'></p>
+						<label class="form-label"><TMPL_VAR NAME='LNG_ReceiverList'></label> <a href="#" class="dashed" id="receiver-add"><TMPL_VAR NAME='LNG_Add'></a>
+						<div id="receiver-list">
+							
+						</div>
+					</div>
+				</div>
+				<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+				<input type="hidden" name="Action" value="Send" />
+			</form>
+		</div>
+	</section>
+</div>
+<div class="hidden">
+	<div id="receiver-template">
+		<div class="row top15">
+			<div class="col-xs-9">
+				<input type="text" name="ReceiverList[]" class="form-control" placeholder="<TMPL_VAR NAME='LNG_ReceiverPlaceholder'>" />
+			</div>
+			<div class="col-xs-3">
+				<a href="#" class="receiver-remove dashed"><TMPL_VAR NAME='LNG_Remove'></a>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(document).on('click', '.receiver-remove', function(e){
+		$(this).closest('.row').remove();
+		e.preventDefault();
+	});
+	
+	$('#receiver-add').click(function(e){
+		AddReceiver("");
+		e.preventDefault();
+	});
+	
+	$('select[name=Client]').change(function(){
+		$('.client-value').addClass('hidden');
+		$('.client-value.for-'+$(this).val()).removeClass('hidden');
+	});
+	$('select[name=Client]').trigger('change');
+	
+	$('select[name=Target]').change(function(){
+		$('.target-value').addClass('hidden');
+		$('.target-value.for-'+$(this).val()).removeClass('hidden');
+	});
+	$('select[name=Target]').trigger('change');
+	
+	function AddReceiver(deviceID){
+		var clone = $('#receiver-template').clone();
+		clone.removeAttr('id');
+		clone.find('input[name="ReceiverList[]"]').val(deviceID);
+		clone.appendTo('#receiver-list');
+	}
+	<TMPL_LOOP NAME='ReceiverList'>
+		AddReceiver('<TMPL_VAR NAME='DeviceID' ESCAPE='js'>');
+	</TMPL_LOOP>
+});
+</script>

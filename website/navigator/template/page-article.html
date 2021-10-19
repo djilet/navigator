@@ -1,0 +1,407 @@
+<TMPL_IF NAME='ArticleID'>
+<div id="page-single-article" data-id="<TMPL_VAR NAME='ArticleID'>">
+	<div class="container article__search">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="search-form">
+					<input class="search-input-on-single-article" placeholder="Найти другую статью" value="" type="text" data-href="<TMPL_VAR NAME='CurrentPageURL'>">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="article__headblock"<TMPL_IF NAME='ArticleMainImageHeadPath'> style="background-image: url('<TMPL_VAR NAME='ArticleMainImageHeadPath'>')"</TMPL_IF>>
+	<div class="container">
+		<ol class="breadcrumb white">
+			<TMPL_LOOP NAME='Navigation'>
+				<TMPL_UNLESS NAME='__LAST__'>
+					<li><a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME='Title' /></a></li>
+				</TMPL_UNLESS>
+			</TMPL_LOOP>
+			<li><a href="<TMPL_VAR NAME='CurrentPageURL'>/"><TMPL_VAR NAME="LNG_ArticleListTitle" /></a></li>
+			<li class="active"><TMPL_VAR NAME="Title" /></li>
+		</ol>
+
+		<div class="article__headblock-content">
+			<div class="article__headblock-content_text">
+				<div>
+					<h1 class="header-section"><TMPL_VAR NAME='Title'></h1>
+					<p><TMPL_VAR NAME='Tags'></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="article__headblock-info">
+			<ul>
+				<li><TMPL_VAR NAME='LNG_Author'></li>
+				<li><b><TMPL_VAR NAME='Author'></b></li>
+				<li><TMPL_VAR NAME='AuthorDescription'></li>
+			</ul>
+			<ul>
+				<li><TMPL_VAR NAME='LNG_Date'></li>
+				<li><b><TMPL_VAR NAME='DateTime' FORMAT='date'></b></li>
+			</ul>
+			<ul class="meta-info">
+				<li>
+
+					<div class="item">
+						<span class="icon">
+							<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/look-white.svg" alt="">
+						</span>
+						<span class="count">
+						<TMPL_IF NAME='ViewCount'>
+							<TMPL_VAR NAME='ViewCount'>
+						<TMPL_ELSE>
+								0
+						</TMPL_IF>
+					</span>
+					</div>
+
+					<TMPL_IF NAME='ShareCountAll' OP=">" VALUE="0">
+						<div class="item">
+						<span class="icon">
+							<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/repost-white.svg" alt="">
+						</span>
+							<span class="count">
+							<TMPL_VAR NAME='ShareCountAll'>
+						</span>
+						</div>
+					</TMPL_IF>
+
+					<TMPL_IF NAME='CommentCount' OP=">" VALUE="0">
+						<div class="item">
+						<span class="icon">
+							<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/comment-white.svg" alt="">
+						</span>
+							<span class="count">
+							<TMPL_VAR NAME='CommentCount'>
+						</span>
+						</div>
+					</TMPL_IF>
+
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="article__headblock-color gradient-overlay"></div>
+</div><!-- article__headblock -->
+
+<div class="content-aside--article" itemscope itemtype="http://schema.org/ScholarlyArticle">
+	<div class="container">
+		<div class="row d-flex flex-wrap">
+          	<div class="col-xs-8">
+            	<div class="content-main">
+            		<div class="time-to-read">
+	          			<div class="header">
+	          				<TMPL_IF NAME='TimeToRead'>
+		          				<div class="text">
+			          				Время чтения: <b><TMPL_VAR NAME='TimeToRead'></b>
+			          			</div>
+	          				</TMPL_IF>
+		          			<div class="read-later-btn btn main-btn" data-side-toggle="#form-read-later">
+		          				Нет времени читать ?
+		          			</div>
+	          			</div>
+
+		  				<form action="<TMPL_VAR NAME='PROJECT_PATH' />module/data/ajax_public.php" class="send-to" auto-save-form id="form-read-later">
+							<div class="error-list alert-danger alert" style="display: none"></div>
+
+							<b>Получите материал на почту и вернитесь к нему позже.</b>
+
+							<div class="form-group">
+								<input type="email" name="Email" required class="form-control" id="Email">
+								<label for="Email">Email</label>
+							</div>
+
+							<div class="checkbox-filter">
+								<div class="checkbox active">
+									<a href="#">
+										<span class="checkmark"></span>
+										<TMPL_VAR NAME='LNG_TermsOfAgreement'>
+									</a>
+									<input type="hidden" name="Terms" value="true">
+								</div>
+							</div>
+
+							<div class="g-recaptcha" data-sitekey="<TMPL_VAR NAME='RecaptchaSite'/>"></div>
+							<input type="hidden" name="Action" value="SendReadLater">
+							<input type="hidden" name="ItemID" value="<TMPL_VAR NAME='ArticleID'>">
+		                    <input type="submit" class="btn main-btn" value="Отправить">
+		  				</form>
+						<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	          		</div>
+
+					<br>
+
+              		<div class="article">
+                		<div class="article__text-light" itemprop="description"><TMPL_VAR NAME='Description'></div>
+                		<section itemprop="text" class="js-mediator-article shareable-selected">
+                			<TMPL_VAR NAME='Content' ESCAPE='none'>
+                		</section>
+
+						<div class="row">
+							<span class="col-xs-8">
+								<div class="h2 mt-0">Поделиться</div>
+								<div class="share-block" data-item-id="<TMPL_VAR NAME='ArticleID'>" data-item-type="Article">
+									<TMPL_INCLUDE NAME="widgets/share-block.html">
+								</div>
+							</span>
+							<span class="col-xs-4">
+								<div class="article-like-btn pull-right" data-item-id="<TMPL_VAR NAME='ArticleID'>">
+									<span class="icon">
+
+									</span>
+									<span class="count">
+										<TMPL_IF NAME='LikeCount' OP='>' VALUE='0'>
+											<TMPL_VAR NAME='LikeCount'>
+										</TMPL_IF>
+									</span>
+								</div>
+							</span>
+						</div>
+						<br>
+						<br>
+
+						<TMPL_IF NAME="QuestionTitle">
+							<div class="d-flex align-items-center mb-4">
+								<div class="image mr-4">
+									<img src="<TMPL_VAR NAME='AuthorImagePreviewPath'>" class="rounded-circle" alt="Автор статьи">
+								</div>
+
+								<div class="comment">
+									<span><TMPL_VAR NAME="Author"></span>
+									<h4 class="m-0">
+										<TMPL_VAR NAME="QuestionTitle">
+									</h4>
+								</div>
+							</div>
+						<TMPL_ELSE>
+							<h2 class="mb-4">
+								<TMPL_VAR NAME='LNG_Comments'>
+							</h2>
+						</TMPL_IF>
+                		<!--<div id="vk_comments"></div>-->
+              		</div>
+
+					<div class="questions" id="tab-4">
+						<form id="questionMessageForm" method="post" action="<TMPL_VAR NAME='PROJECT_PATH' />module/question/ajax_public.php">
+							<input type="hidden" name="Action" value="loadQuestionMessages">
+							<input type="hidden" class="page" name="Page" value="1">
+							<input type="hidden" name="Type" value="article">
+							<input type="hidden" name="AttachID" value="<TMPL_VAr NAME='ArticleID'>">
+							<input type="hidden" name="Status" value="public">
+							<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID' />">
+						</form>
+
+						<div class="question">
+							<TMPL_IF NAME="TemplateQuestionAnonUser">
+								<TMPL_INCLUDE NAME="quest-tmpl/anon_user_name.html"/>
+							</TMPL_IF>
+							<div class="form-group">
+								<textarea required="" class="form-control" id="questionText" rows="1"></textarea>
+								<label for="questionText">Оставить комментарий</label>
+								<a href="#" class="send">Отправить</a>
+							</div>
+						</div>
+						<div class="question answer">
+							<TMPL_IF NAME="TemplateQuestionAnonUser">
+								<TMPL_INCLUDE NAME="quest-tmpl/anon_user_name.html"/>
+							</TMPL_IF>
+							<div class="form-group">
+								<textarea required="" class="form-control" id="questionText" rows="1"></textarea>
+								<label for="questionText">Ваш ответ</label>
+								<a href="#" class="send">Ответить</a>
+							</div>
+						</div>
+						<div class="ajax-content">
+							<TMPL_INCLUDE NAME="_data/question_messages.html"/>
+						</div>
+					</div>
+            	</div>
+	        </div><!-- End col-xs-8 -->
+	
+	        <div class="col-xs-4 aside">
+	        	<div class="wrap sticky-sidebar">
+	        		<!--banner block-->
+						<TMPL_INCLUDE FILE='banners/sidebar-banner.html'>
+					<!--banner block end-->
+
+		        	<TMPL_IF NAME='PopularList'>
+			        	<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" alt="">
+			            <section>
+			            	<div class="aside__header">
+			            		<TMPL_VAR NAME='LNG_Popular'>
+			            	</div>
+			              	<TMPL_INCLUDE NAME='_data/article_popular_list.html'>
+			            </section>
+		            </TMPL_IF>
+
+		            <TMPL_IF NAME='TagList'>
+						<!-- <img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" alt=""> -->
+			            <section>
+			              <div class="aside__header"><TMPL_VAR NAME='LNG_TagList'></div>
+			              <ul class="aside__list-tags">
+			                  <TMPL_LOOP NAME='TagList'>
+			                  <li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>><a href="<TMPL_VAR NAME='CurrentPageURL'><TMPL_IF NAME='StaticPath'>?Tag=<TMPL_VAR NAME='StaticPath'></TMPL_IF>"><TMPL_VAR NAME='Title'></a></li>
+			                  </TMPL_LOOP>
+			              </ul>
+			            </section>
+					</TMPL_IF>
+	        	</div>
+	        </div><!-- End col-xs-4 aside -->
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+	        	<!-- basetest banner -->
+				<!--<TMPL_IF NAME='BaseTestNotComplete'>
+					<div class="base-test">
+						<div class="banner main new overlay-top">
+							<div class="content">
+								<h2 class="title extra-bold">
+									БАЗОВЫЙ <br> ПРОФТЕСТ
+								</h2>
+
+								<div class="info">
+									Здесь тебе <br> помогут
+								</div>
+
+								<a href="<TMPL_VAR NAME='URL_PREFIX'>basetest/" class="btn horizontal" id="base-test-landing-btn">
+									ПРОЙТИ ПРОФТЕСТ
+								</a>
+							</div>
+
+							<div class="image">
+								<img src="<TMPL_VAR NAME='PATH2MAIN' />/img/basetest/banner-guy.png" alt="">
+							</div>
+						</div>
+					</div>
+				</TMPL_IF>-->
+				<!-- basetest banner end -->
+	        </div>
+
+	        <TMPL_IF NAME='BestArticle'>
+	        	<div class="col-xs-12">
+		        	<TMPL_INCLUDE FILE='_data/article_similar.html'>
+		        </div>
+	        </TMPL_IF>
+		</div>
+		<div style="display:none;">
+        	<span itemprop="name"><TMPL_VAR NAME='Title'></span>
+        	<span itemprop="headline"><TMPL_VAR NAME='Tags'></span>
+        	<span itemprop="author"><TMPL_VAR NAME='Author'></span>
+        	<span itemprop="image">http://propostuplenie.ru<TMPL_VAR NAME='ArticleMainImageHeadPath'></span>
+        	<span itemprop="thumbnailUrl">http://propostuplenie.ru<TMPL_VAR NAME='ArticleMainImageHeadPath'></span>
+        	<span itemprop="inLanguage">Русский</span>
+        	<span itemprop="datePublished"><TMPL_VAR NAME='DateTime'></span>
+        	<span itemprop="typicalAgeRange">от 16 до 18 лет</span>
+        </div>
+        
+        <!-- script mediator.media -->
+        <meta name="mediator_author" content="<TMPL_VAR NAME='Author'>" />
+        <meta name="mediator_theme" content="<TMPL_VAR NAME='Tags'>" />
+        <meta name="mediator" content="<TMPL_VAr NAME='ArticleID'>" />
+        <meta name="mediator_published_time" content="<TMPL_VAR NAME='DateTimeUTC'>" />
+        <script class="js-mediator-script">
+			!function(e){function t(t,n){if(!(n in e)){for(var r,a=e.document,i=a.scripts,o=i.length;o--;)if(-1!==i[o].src.indexOf(t)){r=i[o];break}if(!r){r=a.createElement("script"),r.type="text/javascript",r.async=!0,r.defer=!0,r.src=t,r.charset="UTF-8";var d=function(){var e=a.getElementsByTagName("script")[0];e.parentNode.insertBefore(r,e)};"[object Opera]"==e.opera?a.addEventListener?a.addEventListener("DOMContentLoaded",d,!1):e.attachEvent("onload",d):d()}}}t("//mediator.mail.ru/script/2821240/","_mediator")}(window);
+		</script>
+</div>
+
+<div class="hidden">
+	<div class="share-block selected" data-item-id="<TMPL_VAR NAME='ArticleID'>" data-item-type="Article">
+		<TMPL_INCLUDE NAME="widgets/share-block.html">
+	</div>
+</div>
+	
+<div class="modal fade" id="modal-article-image" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+    	<div class="modal-content">
+        	<div class="modal-body">
+        		<div class="message"></div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<TMPL_ELSE>
+<div class="content-aside">
+	<div class="container">
+		<div class="row">
+          	<div class="col-xs-12">
+            	<ol class="breadcrumb">
+              		<TMPL_LOOP NAME='Navigation'>
+                    <TMPL_UNLESS NAME='__LAST__'>
+                	<li><a href="<TMPL_VAR NAME='PageURL' />"><TMPL_VAR NAME='Title' /></a></li>
+                    </TMPL_UNLESS>
+                    </TMPL_LOOP>
+                    <li class="active"><TMPL_VAR NAME="LNG_ArticleListTitle" /></li>
+            	</ol>
+            	<h1 class="header-section"><TMPL_VAR NAME='LNG_ArticleListTitle'></h1>
+            	<div class="search-form">
+					<input class="search-input" placeholder="Начните вводить фразу" value="<TMPL_IF NAME='ArticleSearch'><TMPL_VAR NAME='ArticleSearch'></TMPL_IF>" type="text" data-form="#articleFilterForm">
+				</div>
+          	</div>
+
+			<TMPL_IF NAME='TagList'>
+				<div class="col-xs-12">
+					<div class="list-filter owl-carousel">
+						<TMPL_LOOP NAME="TagList">
+							<div class="item">
+								<TMPL_IF NAME='Selected'>
+									<a href="<TMPL_VAR NAME='PROJECT_PATH'>article" class="active yellow"><TMPL_VAR NAME='Title'></a>
+								<TMPL_ELSE>
+									<a href="<TMPL_VAR NAME='CurrentPageURL'><TMPL_IF NAME='StaticPath'>?Tag=<TMPL_VAR NAME='StaticPath'></TMPL_IF>"><TMPL_VAR NAME='Title'></a>
+								</TMPL_IF>
+							</div>
+						</TMPL_LOOP>
+					</div>
+					<br>
+				</div>
+			</TMPL_IF>
+		</div>
+		<div class="row">
+          	<div class="col-md-8 col-sm-12">
+            	<div class="ajax-content">
+        			<TMPL_INCLUDE NAME="_data/article_list.html"/>
+	            </div>
+          	</div><!-- End col-xs-8 -->
+
+          	<div class="col-md-4 hidden-xs hidden-sm aside sticky-sidebar" style="position: static">
+          		<TMPL_IF NAME='PopularList'>
+		        	<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" alt="">
+		            <section>
+		            	<div class="aside__header">
+		            		<TMPL_VAR NAME='LNG_Popular'>
+		            	</div>
+		              	<TMPL_INCLUDE NAME='_data/article_popular_list.html'>
+		            </section>
+	            </TMPL_IF>
+
+				<TMPL_IF NAME='TagList'>
+					<!-- <img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" alt=""> -->
+		            <section>
+		              <div class="aside__header"><TMPL_VAR NAME='LNG_TagList'></div>
+		              <ul class="aside__list-tags">
+		                  <TMPL_LOOP NAME='TagList'>
+		                  <li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>><a href="<TMPL_VAR NAME='CurrentPageURL'><TMPL_IF NAME='StaticPath'>?Tag=<TMPL_VAR NAME='StaticPath'></TMPL_IF>"><TMPL_VAR NAME='Title'></a></li>
+		                  </TMPL_LOOP>
+		              </ul>
+		            </section>
+				</TMPL_IF>
+      		</div>
+
+            <form id="articleFilterForm" method="post" action="<TMPL_VAR NAME='PROJECT_PATH' />module/data/ajax_public.php" data-onload="initInfinityScroll">
+            	<input type="hidden" class="text" name="ArticleFilter[ArticleSearch]" value="<TMPL_VAR NAME='ArticleSearch'>">
+            	<input type="hidden" class="page" name="ArticlePager" value="<TMPL_VAR NAME='ArticlePager'>">
+            	<input type="hidden" class="tag" name="TagID" value="<TMPL_VAR NAME='TagID'>">
+				<input type="hidden" name="Action" value="loadArticles">
+				<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID' />">
+        	</form>
+      	</div><!-- End col-xs-4 aside -->
+		<TMPL_IF NAME='BestArticle'>
+			<div class="row">
+				<div class="col-xs-12">
+					<TMPL_INCLUDE FILE='_data/article_similar.html'>
+				</div>
+			</div>
+		</TMPL_IF>
+</TMPL_IF>

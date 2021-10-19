@@ -1,0 +1,100 @@
+<div class="content-aside--2">
+	<div class="container cabinet">
+    	<div class="row">
+        	<div class="col-xs-12">
+	            <h1 class="header-section">Редактирование</h1>
+			</div>
+
+          	<div class="col-xs-12">
+            	<div class="content-main">
+              		<!-- Nav tabs -->
+              		 <ul class="nav nav-tabs" role="tablist">
+              		                		<li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab"><span>Профиль</span></a></li>
+              		                 		<li role="presentation"><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab"><span>Пароль</span></a></li>
+              		                	</ul>
+                	
+                	<!-- Tab panes -->
+		            <div class="tab-content">
+		                <!-- Tab #1 -->
+		                <div role="tabpanel" class="tab-pane fade in active" id="tab-1">
+		                	<TMPL_IF NAME='ErrorList'>
+								<div>                                        
+									<TMPL_LOOP NAME='ErrorList'>
+										<TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS>
+									</TMPL_LOOP>
+								</div>
+							</TMPL_IF>
+		                	<div class="cabinet__userpic">
+		                		<a href="#" id="userpiclick">
+		                			<TMPL_IF NAME='UserImagePath'>
+			              			<img class="round80" src="<TMPL_VAR NAME='UserImagePath'>" alt="">
+			              			<TMPL_ELSE>
+			              			<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/userpic.svg" alt="">
+			              			</TMPL_IF>
+		                		</a>
+		                	</div>
+		                	<div class="cabinet__form">
+		                    	<form method="post" enctype="multipart/form-data">
+			                    	<div class="form-group">
+			                        	<input type="text" required class="form-control" name="UserName" id="formName" value="<TMPL_VAR NAME='UserName'>">
+			                        	<label for="formName">Имя</label>
+			                      	</div>
+			                      	<div class="form-group">
+			                        	<input type="text" required class="form-control" name="UserEmail" id="formEmail" value="<TMPL_VAR NAME='UserEmail'>">
+			                        	<label for="formEmail">Email</label>
+			                      	</div>
+			                      	<div class="form-group">
+			                        	<input type="text" required class="form-control form--phone" name="UserPhone" id="formPhone" value="<TMPL_VAR NAME='UserPhone'>">
+			                        	<label for="formPhone">Телефон</label>
+			                      	</div>
+			                      	<div class="form-group custom-select">
+			                        	<select class="form-control formWho" name="UserWho" id="formWho">
+			                          		<option value="parent" <TMPL_IF NAME='UserWho' VALUE="parent"> selected</TMPL_IF>>Я родитель</option>
+			                          		<option value="child" <TMPL_IF NAME='UserWho' VALUE="child"> selected</TMPL_IF>>Я ученик</option>
+			                          		<option value="student" <TMPL_IF NAME='UserWho' VALUE="student"> selected</TMPL_IF>>Я студент</option>
+			                        	</select>
+			                        	<label for="formWho">Кто вы?</label>
+			                      	</div>
+			                      	<div class="form-group" id="formClass-group"<TMPL_IF NAME='UserWho' VALUE="student"> style="display: none;"</TMPL_IF>>
+			                        	<input type="number" class="form-control" min="1" max="11" name="ClassNumber" id="formClass" value="<TMPL_VAR NAME='ClassNumber'>">
+			                        	<label for="formClass">В каком классе ребенок?</label>
+			                      	</div>
+			                      	<input type="hidden" name="Action" value="updateprofile">
+			                      	<input type="file" id="userpic" name="UserImage" style="display:none"/> 
+			                      	<input type="submit" class="main-btn" value="Сохранить">
+		                    	</form>
+		                  	</div>
+		                </div><!-- End Tab #1 -->
+		
+		                <!-- Tab #2 -->
+		                 <div role="tabpanel" class="tab-pane fade" id="tab-2">
+		                	<TMPL_IF NAME='ErrorList2'>
+		                								<div>                                        
+		                									<TMPL_LOOP NAME='ErrorList2'>
+		                										<TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS>
+		                									</TMPL_LOOP>
+		                								</div>
+		                							</TMPL_IF>
+		                	<div class="cabinet__form">
+		                    	<form method="post" action="#tab-2">
+		                      		<div class="form-group">
+		                        		<input type="password" required class="form-control" name="OldPassword" id="formPassword">
+		                        		<label for="formPassword">Старый пароль</label>
+		                      		</div>
+		                      		<div class="form-group">
+		                        		<input type="password" required class="form-control" name="NewPassword" id="formPasswordRepeat">
+		                        		<label for="formPasswordRepeat">Новый пароль</label>
+		                      		</div>
+		                      		<input type="hidden" name="Action" value="changepassword">
+		                      		<input type="submit" class="main-btn" value="Изменить">
+		                    	</form>
+		                  	</div>
+		                </div>
+		                <!-- End Tab #2 -->
+		            
+		            </div><!-- End Tab panes -->
+            	</div><!-- End content-main -->
+        	</div><!-- End col-xs-12 -->
+        </div>
+	</div>
+</div>

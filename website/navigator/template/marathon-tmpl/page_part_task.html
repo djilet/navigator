@@ -1,0 +1,98 @@
+<div class="content-aside marathon">
+	<div class="container">
+		<ol class="marathon breadcrumb">
+			<li>
+				<a href="<TMPL_VAR NAME='StaticPath'>">Главная</a>
+			</li>
+			<li>
+				<a href="<TMPL_VAR NAME='StaticPath'>?ShowProgram=1">Вся программа</a>
+			</li>
+			<li class="active">
+				<TMPL_VAR NAME='TaskTitle'>
+			</li>
+		</ol>
+		<div class="row">
+			<div class="marathon-block max-width quiz-block">
+				<div class="status-bar-wrap">
+					<div class="status-bar">
+						<ul class="stages-list horizontal left numeric scroll">
+							<TMPL_LOOP NAME='TaskList'>
+							<TMPL_IF NAME='Current'>
+							<li data-hash="<TMPL_VAR NAME='__ROWNUM__'>" class="active"><span></span></li>
+							<TMPL_ELSE>
+							<li data-hash="<TMPL_VAR NAME='__ROWNUM__'>" <TMPL_IF NAME='Complete'><TMPL_ELSE> class="disabled"</TMPL_IF>><a href="<TMPL_VAR NAME='StaticPath'>?PartID=<TMPL_VAR NAME='PartID'>&DirectTaskID=<TMPL_VAr NAME='TaskID'>"><span></span></a></li>
+							</TMPL_IF>
+							</TMPL_LOOP>
+						</ul>
+					</div>
+					<!-- div class="sub-title gray-text stages-info">
+						<b>2895 человек</b>
+						уже сделали это задание
+					</div-->
+				</div>
+
+				<div class="quiz">
+					<div class="title">
+						<h2><TMPL_VAR NAME='TaskTitle'></h2>
+						<!-- div class="xp">
+							<span class="purple">+<TMPL_VAR NAME='TaskXP'>XP</span>
+						</div-->
+					</div>
+
+					<div class="content task">
+						<p class="sub-title two-gray-text"><TMPL_VAR NAME='TaskDescription' ESCAPE='none'></p>
+					</div>
+
+					<form action="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>/?PartID=<TMPL_VAR NAME='PartID'>" method="post">
+						<TMPL_IF NAME='TaskType' VALUE='extended'>
+						<div class="decision-wrap">
+							<textarea name="Answer" placeholder="Введите свой ответ"><TMPL_VAR NAME='TaskAnswer'></textarea>
+							<input type="file" id="decision_files" name="decision_files" class="decision-files" multiple>
+							<ul class="selected-list"></ul>
+						</div>
+						<TMPL_IF NAME='ErrorList'>
+						<div class="navigation no-border error-message">
+							<TMPL_LOOP NAME='ErrorList'>
+							<TMPL_VAR NAME='Message'><br/>
+							</TMPL_LOOP>
+						</div>
+						</TMPL_IF>
+						<div class="navigation no-border">
+							
+							<div class="left-col">
+								<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>/?PartID=<TMPL_VAR NAME='PartID'>&SkipID=<TMPL_VAR NAME='TaskSolutionID'><TMPL_IF NAME='RedirectPath'>&RedirectPath=<TMPL_VAR NAME='RedirectPath'></TMPL_IF>" class="sub-title blue-text">Пропустить</a>
+							</div>
+							<div class="right-col">
+								<!-- a href="#" id="attach-file-btn" class="sub-title blue-text paperclip icon" data-inputid="decision_files">Прикрепить файл</a-->
+								<input type="submit" class="btn black" value="Ответить" />
+							</div>
+						</div>
+						<TMPL_ELSE>
+						<div class="navigation no-border">
+							<div class="left-col">
+								<a href="<TMPL_VAR NAME='PROJECT_PATH'><TMPL_VAR NAME='StaticPath'>/?PartID=<TMPL_VAR NAME='PartID'>&SkipID=<TMPL_VAR NAME='TaskSolutionID'><TMPL_IF NAME='RedirectPath'>&RedirectPath=<TMPL_VAR NAME='RedirectPath'></TMPL_IF>" class="sub-title blue-text">Пропустить</a>
+							</div>
+							<div class="right-col">
+								<input type="submit" class="btn black" value="Следующее задание" />
+							</div>
+						</div>
+						</TMPL_IF>
+						<input type="hidden" name="Action" value="completeTask" />
+						<input type="hidden" name="TaskID" value="<TMPL_VAR NAME='TaskID'>" />
+					</form>
+				</div>
+
+				<!-- div class="comment transparent">
+					<h2>Комментарий преподавателя</h2>
+					<div class="sub-title">Небольшой текст, который показывает пользователь зачем нужен этот блок и как его заполнить. Текст, который показывает пользователь зачем нужен этот блок и как его заполнить. Небольшой который показывает пользователь зачем нужен этот блок и как его заполнить. Текст, который показывает пользователь зачем нужен этот блок и как его заполнить.</div>
+				</div>
+
+				<div class="comment fill-bg">
+					<h2>Твое задание на проверке</h2>
+					<div class="sub-title">Я дам тебе знать, когда преподватель оставит свой комментарий!</div>
+					<a href="?action=quiz&show=result" class="btn white">Следующее задание</a>
+				</div-->
+			</div>
+		</div>
+	</div>
+</div>

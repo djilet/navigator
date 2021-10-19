@@ -1,0 +1,329 @@
+<div class="content-aside">
+	<div class="container page-cabinet">
+		<div class="row">
+			<div class="col-xs-12">
+            
+				<div class="cabinet-userinfo">
+              		<a class="cabinet-userinfo__edit" href="<TMPL_VAR NAME='PROJECT_PATH'>profile/edit"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/pen.png" alt=""></a>
+              		<div class="cabinet-userinfo__image">
+              			<TMPL_IF NAME='UserImagePath'>
+              			<img class="round136" src="<TMPL_VAR NAME='UserImagePath'>" alt="">
+              			<TMPL_ELSE>
+              			<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/userpic.svg" alt="">
+              			</TMPL_IF>
+              		</div>
+              		<div class="cabinet-userinfo__content">
+	                	<h1 class="header-section"><TMPL_VAR NAME='UserName'></h1>
+	                	<span class="cabinet-userinfo__description">
+	                		<TMPL_IF NAME='UserWho' VALUE='child'>
+	                		Ученик <TMPL_VAR NAME='ClassNumber'> класса
+	                		<TMPL_ELSEIF NAME='UserWho' VALUE='parent'>
+	                		Родитель ученика <TMPL_VAR NAME='ClassNumber'> класса
+	                		<TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+	                		Студент
+	                		</TMPL_IF>
+	                	</span>
+	                	<ul>
+	                  		<li class="cabinet-userinfo__email">
+	                    		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/envelope.png" alt="">
+	                    		<span><TMPL_VAR NAME='UserEmail'></span>
+	                  		</li>
+	                  		<li class="cabinet-userinfo__phone">
+	                    		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/phone.png" alt="">
+	                    		<span><TMPL_VAR NAME='UserPhone'></span>
+	                  		</li>
+	                	</ul>
+              		</div>
+            	</div>
+            
+	            <!-- Nav tabs -->
+	            <ul class="nav nav-tabs nav-tabs--big" role="tablist">
+		        	<li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab"><span>Мои Вузы</span></a></li>
+		            <li role="presentation"><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab"><span>Мои специальности</span></a></li>
+		            <li role="presentation"><a href="#tab-3" aria-controls="tab-3" role="tab" data-toggle="tab"><span>Мои профессии</span></a></li>
+		            <li role="presentation"><a href="#tab-4" aria-controls="tab-4" role="tab" data-toggle="tab"><span>Мои вебинары</span></a></li>
+		        </ul>
+          	</div>
+
+          	<div class="col-xs-12">
+				<!-- Tab panes -->
+              	<div class="tab-content">
+                	<!-- Tab #1 -->
+                	<div role="tabpanel" class="tab-pane fade in active" id="tab-1">
+                		<TMPL_IF NAME='UserUniversityList'>
+	                	<div class="row">
+	                		<div class="col-xs-8">
+	                      		<div class="content-main">
+									<TMPL_LOOP NAME='UserUniversityList'>
+									<div class="cabinet__highschool">
+				                    	<a class="delete-block" href="<TMPL_VAR NAME='CurrentPageURL' />?BecomeAnEntrant=N&UniversityID=<TMPL_VAR NAME='UniversityID'>" title="удалить"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/close.png" alt=""></a>
+				                        <a class="cabinet__highschool-header" href="<TMPL_VAR NAME='UniversityURL'>"><TMPL_VAR NAME='Title'></a>
+				                        <span class="town"><TMPL_VAR NAME='Region'></span>
+				                        <ul class="list-description">
+				                        	<TMPL_IF NAME="Score">
+			                                <li><span class="scoring"><TMPL_VAR NAME="Score" FORMAT="score" /></span></li>
+			                                </TMPL_IF>
+			                                <TMPL_IF NAME="Price">
+			                                <li><span class="price">от <TMPL_VAR NAME="Price" FORMAT="price" /></span></li>
+			                                </TMPL_IF>
+				                        </ul>
+			                        </div>
+									</TMPL_LOOP>
+	                      		</div>
+	                   		</div>
+	
+		                    <div class="col-xs-4 aside">
+		                    	<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN'>img/dotted.png" alt="">
+		                      	<section>
+		                        <div class="aside__header">Похожие ВУЗы</div>
+								<TMPL_LOOP NAME="OtherUniversityList">
+								<div class="aside__highschool">
+		                        	<a class="aside__highschool-header" href="<TMPL_VAR NAME='UniversityURL'>"><TMPL_VAR NAME='Title'></a>
+		                          	<ul class="list-description">
+		                            	<TMPL_IF NAME="Score">
+			                            <li><span class="scoring"><TMPL_VAR NAME="Score" FORMAT="score" /></span></li>
+			                            </TMPL_IF>
+			                            <TMPL_IF NAME="Price">
+			                            <li><span class="price">от <TMPL_VAR NAME="Price" FORMAT="price" /></span></li>
+			                            </TMPL_IF>
+		                          	</ul>
+		                        </div>
+								</TMPL_LOOP>								
+		                        <a class="main-link" href="<TMPL_VAR NAME='PROJECT_PATH' />university">Другие ВУЗы</a>
+		                      </section>
+		                    </div>
+	                  	</div>
+	                  	<TMPL_ELSE>
+	                  	<div class="cabinet-empty">
+                    		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/Inst.png" alt="">
+                    		<div>Здесь будут ваши вузы</div>
+                  		</div>
+	                  	</TMPL_IF>
+	                </div><!-- End Tab #1 -->
+	
+	                <!-- Tab #2 -->
+	                <div role="tabpanel" class="tab-pane fade" id="tab-2">
+	                	<TMPL_IF NAME='UserSpecialityList'>
+	                	<div class="row">
+		                	<div class="col-xs-8">
+		                    	<div class="content-main">
+		                      		<TMPL_LOOP NAME='UserSpecialityList'>
+			                        <div class="block-spec">
+			                        	<a class="delete-block" href="<TMPL_VAR NAME='CurrentPageURL' />?BecomeAnEntrant=N&UniversityID=<TMPL_VAR NAME='UniversityID'>&SpecialityID=<TMPL_VAR NAME='SpecialityID'>#tab-2" title="удалить"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/close.png" alt=""></a>
+			                          	<span class="block-spec__direction"><TMPL_VAR NAME='DirectionTitle'></span>
+			                          	<a class="block-spec__header" href="<TMPL_VAR NAME='PROJECT_PATH'>vuzi?specialityID=<TMPL_VAR NAME='SpecialityID'>"><TMPL_VAR NAME='Title'></a>
+			                          	<span class="block-spec__highschool"><TMPL_VAR NAME='UniversityTitle'></span>
+				                        <ul class="list-description">
+				                        	<TMPL_IF NAME='BudgetNext'>
+												<li><span class="scoring"><TMPL_VAR NAME="BudgetNext" FORMAT="score" /></span></li>
+												<TMPL_IF NAME="BudgetCountNext">
+													<li><span class="places"><TMPL_VAR NAME="BudgetCountNext" /></span></li>
+												</TMPL_IF>
+												<TMPL_IF NAME="PeriodNext">
+													<li><span class="time"><TMPL_VAR NAME="PeriodNext" FORMAT="yearPeriod" /></span></li>
+												</TMPL_IF>
+												<TMPL_IF NAME="PriceNext">
+													<li><span class="price"><TMPL_VAR NAME="PriceNext" FORMAT="price" /></span></li>
+												</TMPL_IF>
+											<TMPL_ELSEIF NAME='Budget'>
+												<li><span class="scoring"><TMPL_VAR NAME="Budget" FORMAT="score" /></span></li>
+												<TMPL_IF NAME="BudgetCount">
+													<li><span class="places"><TMPL_VAR NAME="BudgetCount" /></span></li>
+												</TMPL_IF>
+												<TMPL_IF NAME="Period">
+													<li><span class="time"><TMPL_VAR NAME="Period" FORMAT="yearPeriod" /></span></li>
+												</TMPL_IF>
+												<TMPL_IF NAME="Price">
+													<li><span class="price"><TMPL_VAR NAME="Price" FORMAT="price" /></span></li>
+												</TMPL_IF>
+											<TMPL_ELSEIF NAME='BudgetLast'>
+												<li><span class="scoring"><TMPL_VAR NAME="BudgetLast" FORMAT="score" /></span></li>
+												<TMPL_IF NAME="BudgetCountLast">
+													<li><span class="places"><TMPL_VAR NAME="BudgetCountLast" /></span></li>
+												</TMPL_IF>
+												<TMPL_IF NAME="PeriodLast">
+													<li><span class="time"><TMPL_VAR NAME="PeriodLast" FORMAT="yearPeriod" /></span></li>
+												</TMPL_IF>
+												<TMPL_IF NAME="PriceLast">
+													<li><span class="price"><TMPL_VAR NAME="PriceLast" FORMAT="price" /></span></li>
+												</TMPL_IF>
+											</TMPL_IF>
+				                        </ul>
+			                        </div>
+									</TMPL_LOOP>
+		                    	</div>
+		                    </div>
+		
+		                    <div class="col-xs-4 aside">
+		                    	<TMPL_IF NAME="OtherSpecialityList">
+					            <img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN'>img/dotted.png" alt="">
+					            <section>
+				                    <div class="aside__header">Другие специальности</div>
+				                    <div class="block-info__borderlist">
+				                        <TMPL_LOOP NAME="OtherSpecialityList">
+				                            <ul>
+				                                <li>
+				                                    <a href="<TMPL_VAR NAME='SpecialityURL' />">
+				                                        <span><TMPL_VAR NAME="Title" /></span>
+				                                        <img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/next.svg" alt="">
+				                                    </a>
+				                                </li>
+				                            </ul>
+				                        </TMPL_LOOP>
+				                    </div>
+					            </section>
+					            </TMPL_IF>
+		                	</div>
+	                  	</div>
+	                	<TMPL_ELSE>
+	                  	<div class="cabinet-empty">
+	                   		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/Spec.png" alt="">
+	                   		<div>Здесь будут ваши специальности</div>
+	                 	</div>
+	                  	</TMPL_IF>
+	                  
+	                </div><!-- End Tab #2 -->
+	
+	                <!-- Tab #3 -->
+	                <div role="tabpanel" class="tab-pane fade" id="tab-3">
+	                	<TMPL_IF NAME='UserProfessionList'>
+	                	<div class="row">
+		                	<div class="col-xs-8">
+		                    	<div class="content-main">
+		                      		<TMPL_LOOP NAME='UserProfessionList'>
+				                        <div class="block-prof">
+				                        	<a class="delete-block" href="<TMPL_VAR NAME='CurrentPageURL' />?RemoveProfession=1&ProfessionID=<TMPL_VAR NAME='ProfessionID'>#tab-3" title="удалить"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/close.png" alt=""></a>
+
+				                        	<div class="block-prof__left">
+				                            	<a class="block-prof__header" href="<TMPL_VAR NAME='ProfessionURL'>"><TMPL_VAR NAME='Title'></a>
+				                            	<span class="block-prof__direction"><TMPL_VAR NAME='Industry'></span>
+				                          	</div>
+				                          	
+				                         	<div class="block-prof__price">от <TMPL_VAR NAME='WageLevel' FORMAT='price'></div>
+				                        </div>
+									</TMPL_LOOP>
+		                        </div>
+		                    </div>
+		
+		                    <div class="col-xs-4 aside">
+		                      
+		                    </div>
+		                </div>
+	                	<TMPL_ELSE>
+	                	<div class="cabinet-empty">
+	                    	<img src="<TMPL_VAR NAME='PATH2MAIN'>img/Prof.png" alt="">
+	                    	<div>Здесь будут ваши профессии</div>
+	                  	</div>
+	                  	</TMPL_IF>
+	                </div><!-- End Tab #3 -->
+	
+	                <!-- Tab #4 -->
+	                <div role="tabpanel" class="tab-pane fade" id="tab-4">
+	                	<TMPL_IF NAME='UserEventList'>
+	                	<div class="row">	
+		                	<div class="col-xs-8">
+		                    	<div class="content-main">
+		                      		<TMPL_LOOP NAME="UserEventList">
+			                      	<div class="event-date">
+			                        	<span class="event-date__time"><TMPL_VAR NAME="Date" /></span>
+			                        	<span class="event-date__day"><TMPL_VAR NAME="DayOfTheWeek" /></span>
+			                        </div>
+			                        <TMPL_LOOP NAME='Children'>
+			                        <div class="block-event block-event--<TMPL_VAR NAME='EventType' />">
+			                          	<a class="delete-block" href="<TMPL_VAR NAME='CurrentPageURL' />?RemoveEvent=1&OnlineEventID=<TMPL_VAR NAME='OnlineEventID'>#tab-4" title="удалить"><img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/close.png" alt=""></a>
+			                          	<section>
+				                            <header class="toggled">
+				                            	<span class="block-event__time">в <TMPL_VAR NAME="EventDateTime" FORMAT="time" /> </span>
+				                              	<h3 class="block-event__header"><TMPL_VAR NAME="Title" /></h3>
+				                              	<span class="block-event__type"><TMPL_VAR NAME="TypeTitle" /></span>
+				                            </header>
+			
+				                            <div class="block-event__toggle">
+					                        	<TMPL_VAR NAME="Description" ESCAPE="none"/>
+					                        	
+				                              	<TMPL_IF NAME="isFinished">
+			                                        <div class="block__progressbar clearfix">
+			                                            <div class="progressbar">
+			                                                <div class="progressbar__load" style="width: 100%;"></div>
+			                                            </div>
+			                                            <ul>
+			                                                <li><TMPL_VAR NAME="TypeTitle" /> <TMPL_VAR NAME="LNG_Finished" /></li>
+			                                                <li class="dark"><TMPL_VAR NAME="FinishedDate" /></li>
+			                                            </ul>
+			                                        </div>
+			
+			                                        <a class="white-btn" href="<TMPL_VAR NAME='OnlineEventURL'>"><TMPL_VAR NAME="LNG_Details" /></a>
+			                                        <a class="white-btn" href="<TMPL_VAR NAME='PROJECT_PATH'>events?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_ShowRecord" /></a>
+			                                    <TMPL_ELSEIF NAME="inProgress">
+			                                        <div class="block__progressbar clearfix">
+			                                            <div class="progressbar">
+			                                                <div class="progressbar__load" style="width: <TMPL_VAR NAME='Progress' />%;"></div>
+			                                            </div>
+			                                            <ul>
+			                                                <li><TMPL_VAR NAME="LNG_AlreadyGoing" /></li>
+			                                                <li class="dark"><TMPL_VAR NAME="FinishedDate" /></li>
+			                                            </ul>
+			                                        </div>
+			                                        <a class="white-btn" href="<TMPL_VAR NAME='OnlineEventURL'>"><TMPL_VAR NAME="LNG_Details" /></a>
+			                                        <a class="main-btn" href="<TMPL_VAR NAME='PROJECT_PATH'>events?ShowRecord=<TMPL_VAR NAME='OnlineEventID' />"><TMPL_VAR NAME="LNG_Connect" /></a>
+			                                    <TMPL_ELSE>
+			                                        <div class="block__progressbar clearfix">
+			                                            <div class="dark"><TMPL_VAR NAME="OnlineEventDateTitle" /></div>
+			                                        </div>
+			
+			                                        <a class="white-btn" href="<TMPL_VAR NAME='OnlineEventURL'>"><TMPL_VAR NAME="LNG_Details" /></a>
+			                                    </TMPL_IF>
+				                            </div>
+			                          	</section>
+			                        </div>
+			                        </TMPL_LOOP>
+		                      		</TMPL_LOOP>
+		                      	</div>
+		                    </div>
+		
+							<div class="col-xs-4 aside">
+		                     	<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN'>img/dotted.png" alt="">
+		                      	<section class=" aside__first">
+	                		 		<div class="aside__header">Типы событий</div>
+	                				<div class="aside__section aside__section-webinar">
+	                    				<span>Вебинар</span>
+	                    				<span class="icon checkbox checked"></span>
+	                				</div>
+					                <div class="aside__section aside__section-dod">
+					                    <span>ДОД</span>
+					                    <span class="icon checkbox"></span>
+					                </div>
+					                <div class="aside__section aside__section-public_lesson">
+					                    <span>Открытые уроки</span>
+					                    <span class="icon checkbox"></span>
+					                </div>
+	            				</section>
+		
+			                  	<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN'>img/dotted.png" alt="">
+			                    <section>
+			                        <div class="aside__header">Другие вебинары</div>
+									<TMPL_LOOP NAME='OtherEventList'>
+									<div class="block-event">
+				                        <span class="block-event__time"><TMPL_VAR NAME="EventDate" /></span>
+				                        <a class="block-event__header" href="<TMPL_VAR NAME='OnlineEventURL'>"><TMPL_VAR NAME="Title" /></a>
+				                        <span class="block-event__type"><TMPL_VAR NAME="TypeTitle" /></span>
+				                    </div>
+	                                </TMPL_LOOP>
+			
+			                        <a class="main-link" href="<TMPL_VAR NAME='PROJECT_PATH'>events">Все вебинары</a>
+			                    </section>
+		                    </div>
+		                </div>
+	                	<TMPL_ELSE>
+	                  	<div class="cabinet-empty">
+	                   		<img src="<TMPL_VAR NAME='PATH2MAIN'>img/Event.png" alt="">
+	                   		<div>Здесь будут ваши вебинары</div>
+	                 	</div>
+	                  	</TMPL_IF>
+	                </div><!-- End Tab #4 -->
+
+              	</div><!-- End Tab panes -->
+			</div><!-- End col-xs-12 -->
+        </div>
+	</div>
+</div>

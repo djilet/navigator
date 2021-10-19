@@ -1,0 +1,12 @@
+<div class="popular-articles">
+	<TMPL_LOOP NAME='PopularList'>
+	<a href="<TMPL_VAR NAME='ArticleURL'>" class="item">
+		<span class="image">
+			<img src="<TMPL_VAR NAME='ArticleMainImageAdminPath'>" alt="">
+		</span>
+		<span class="title">
+			<TMPL_VAR NAME='Title'>
+		</span>
+	</a>
+	</TMPL_LOOP>
+</div>

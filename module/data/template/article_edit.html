@@ -1,0 +1,391 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<TMPL_IF NAME='ArticleID'>
+				<h2 class="title"><TMPL_VAR NAME='LNG_EditArticle'></h2>
+			<TMPL_ELSE>
+				<h2 class="title"><TMPL_VAR NAME='LNG_AddArticle'></h2>
+			</TMPL_IF>
+		</header>
+		<div class="content-body">
+			 <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab-1" data-toggle='tab'>Информация</a></li>
+				 <TMPL_UNLESS NAME='EditorMode'>
+					 <li><a href="#tab-2" data-toggle='tab'>Похожие професии</a></li>
+				 </TMPL_UNLESS>
+            </ul>
+
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" name="item-form" enctype="multipart/form-data" autocomplete="off">
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="row">
+							<TMPL_IF NAME='ErrorList'>
+								<div class="col-md-12">
+									<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+								</div>
+							</TMPL_IF>
+							<div class="col-md-6">
+								<TMPL_IF NAME="EditorMode">
+									<label for="DateTime" class="form-label required"><TMPL_VAR NAME='LNG_DateTime'></label><br />
+									<TMPL_IF NAME="IsPublished">
+										<input type="text" readonly class="form-control" name="DateTime" value="<TMPL_VAR NAME='DateTime' FORMAT='datetimepicker'>" />
+									<TMPL_ELSE/>
+										<div class="form-group">
+											<input class="form-control datetimepicker" name="DateTime" value="<TMPL_VAR NAME='DateTime' FORMAT='datetimepicker'>" />
+										</div>
+									</TMPL_IF>
+								<TMPL_ELSE/>
+									<div class="form-group">
+										<label for="DateTime" class="form-label required"><TMPL_VAR NAME='LNG_DateTime'></label><br />
+										<input class="form-control datetimepicker" name="DateTime" value="<TMPL_VAR NAME='DateTime' FORMAT='datetimepicker'>" />
+									</div>
+								</TMPL_IF>
+								<div class="form-group">
+									<label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+									<input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+								</div>
+								<TMPL_UNLESS NAME="EditorMode">
+									<div class="form-group">
+										<label for="MetaTitle" class="form-label"><TMPL_VAR NAME='LNG_MetaTitle'></label><br />
+										<input class="form-control" type="text" name="MetaTitle" id="MetaTitle" value="<TMPL_VAR NAME='MetaTitle'>" />
+									</div>
+								</TMPL_UNLESS>
+								<div class="form-group">
+									<label for="MetaDescription" class="form-label"><TMPL_VAR NAME='LNG_MetaDescription'></label><br />
+									<input class="form-control" type="text" name="MetaDescription" id="MetaDescription" value="<TMPL_VAR NAME='MetaDescription'>" />
+								</div>
+
+								<TMPL_IF NAME="EditorMode">
+									<input class="form-control" type="hidden" name="StaticPath" id="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" />
+								<TMPL_ELSE/>
+									<div class="form-group">
+										<label for="StaticPath" class="form-label" ><TMPL_VAR NAME='LNG_StaticPath'></label><br />
+										<input class="form-control" type="text" name="StaticPath" id="StaticPath" value="<TMPL_VAR NAME='StaticPath'>" />
+									</div>
+								</TMPL_IF>
+								<TMPL_UNLESS NAME="EditorMode">
+									<div class="form-group">
+										<label class="form-label"><TMPL_VAR NAME='LNG_Author'></label><br />
+										<select class="form-control" name="AuthorID">
+											<TMPL_LOOP NAME='AuthorList'>
+												<option value="<TMPL_VAR NAME='Id'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Name'></option>
+											</TMPL_LOOP>
+										</select>
+									</div>
+								</TMPL_UNLESS>
+								<div class="form-group">
+									<label for="TimeToRead" class="form-label"><TMPL_VAR NAME='LNG_TimeToRead'></label><br />
+									<input class="form-control" type="text" name="TimeToRead" id="TimeToRead" value="<TMPL_VAR NAME='TimeToRead'>" />
+								</div>
+								<TMPL_UNLESS NAME="EditorMode">
+									<div class="form-group">
+										<label for="Description" class="form-label"><TMPL_VAR NAME='LNG_Description'></label><br />
+										<textarea class="form-control" rows="5" name="Description" id="Description"><TMPL_VAR NAME='Description'></textarea>
+									</div>
+								</TMPL_UNLESS>
+								<div class="form-group">
+									<label class="form-label"><TMPL_VAR NAME='LNG_Tags'></label><br />
+									<select class="selectpicker" name="TagIDs[]" multiple>
+										<TMPL_LOOP NAME='TagList'>
+											<option value="<TMPL_VAR NAME='Id'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Name'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="form-label"><TMPL_VAR NAME='LNG_Keywords'></label><br />
+									<input class="form-control" type="text" name="Keywords" id="Keywords" value="<TMPL_VAR NAME='Keywords'>" />
+								</div>
+								<TMPL_UNLESS NAME="EditorMode">
+									<div class="form-group">
+										<label class="form-label"><TMPL_VAR NAME='LNG_QuestionTitle'></label><br />
+										<input class="form-control" type="text" name="QuestionTitle" value="<TMPL_VAR NAME='QuestionTitle'>"/>
+									</div>
+								</TMPL_UNLESS>
+							</div>
+							<div class="col-md-6">
+								<div class="row <TMPL_IF NAME='EditorMode'>hidden</TMPL_IF>">
+									<div class="col-sm-4 no-padding form-group form-inline">
+										<label for="Active"><TMPL_VAR NAME='LNG_Active'></label><br />
+										<input type="checkbox" name="Active" id="Active" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Active' VALUE='Y'>checked<TMPL_ELSEIF NAME='Active' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+									</div>
+
+									<div class="col-sm-4 no-padding form-group form-inline">
+										<label for="ToIndex">Индексировать</label><br />
+										<input type="checkbox" name="ToIndex" id="ToIndex" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='ToIndex' VALUE='Y'>checked<TMPL_ELSEIF NAME='ToIndex' VALUE='N'><TMPL_ELSE>checked</TMPL_IF> />
+									</div>
+								</div>
+								
+								<div class="row <TMPL_IF NAME='EditorMode'>hidden</TMPL_IF>">
+									<div class="col-sm-4 no-padding form-group form-inline float-left">
+										<label for="Best">Лучшая</label><br />
+										<TMPL_IF NAME='AvailableBest'>
+											<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=ChangeBest&ArticleID=<TMPL_VAR NAME='ArticleID'>" onclick="ConfirmChangeBest('<TMPL_VAR NAME='BestArticleTheLink' ESCAPE='js'>', this); return false;">
+											<input type="checkbox" name="Best" id="Best" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Best' OP='==' VALUE='Y'>checked<TMPL_ELSEIF NAME='Best' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+										<TMPL_ELSE>
+											<div class="text-danger right15">
+												Заголовок для лучшей статьи не должен превышать 82 символа
+											</div>
+										</TMPL_IF>
+										</a>
+									</div>
+
+									<div class="col-sm-4 no-padding form-group form-inline">
+										<label for="Popular"><TMPL_VAR NAME='LNG_Popular'></label><br />
+										<input type="checkbox" name="Popular" id="Popular" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Popular' VALUE='Y'>checked<TMPL_ELSEIF NAME='Popular' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+									</div>
+
+									<div class="col-sm-4 no-padding form-group form-inline">
+										<label for="OnMain"><TMPL_VAR NAME='LNG_OnMain'></label><br />
+										<input type="checkbox" name="OnMain" id="OnMain" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='OnMain' VALUE='Y'>checked<TMPL_ELSEIF NAME='OnMain' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+									</div>
+								</div>
+
+								<div id="ArticleImage-box">
+									<label for="ArticleImage"><TMPL_VAR NAME='LNG_Image'></label><br />
+									<p>
+										<TMPL_VAR NAME="LNG_ImageSub"/>
+									</p>
+								</div>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										params = new Array();
+										<TMPL_LOOP NAME='ArticleImageParamList'>
+											params.push({
+												"Name" : "<TMPL_VAR NAME='SourceName'>",
+												"Width" : "<TMPL_VAR NAME='Width'>",
+												"Height" : "<TMPL_VAR NAME='Height'>",
+												"Resize" : "<TMPL_VAR NAME='Resize'>",
+												"X1" : "<TMPL_VAR NAME='X1'>",
+												"X2" : "<TMPL_VAR NAME='X2'>",
+												"Y1" : "<TMPL_VAR NAME='Y1'>",
+												"Y2" : "<TMPL_VAR NAME='Y2'>"
+											});
+										</TMPL_LOOP>
+										CreateImageInput('ArticleImage', '<TMPL_VAR NAME='ArticleImageAdminPath'>', '<TMPL_VAR NAME='ArticleImageFullPath'>', '<TMPL_VAR NAME='ArticleImage'>', '<TMPL_VAR NAME='ArticleID'>', 'RemoveArticleImage', '<TMPL_VAR NAME='MODULE_PATH'>ajax.php', 0, params);
+									});
+								</script>
+								<div id="ArticleMainImage-box">
+									<label for="ArticleMainImage"><TMPL_VAR NAME='LNG_MainImage'></label><br />
+									<p>
+										<TMPL_VAR NAME="LNG_MainImageSub"/>
+									</p>
+								</div>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										params = new Array();
+										<TMPL_LOOP NAME='ArticleMainImageParamList'>
+											params.push({
+												"Name" : "<TMPL_VAR NAME='SourceName'>",
+												"Width" : "<TMPL_VAR NAME='Width'>",
+												"Height" : "<TMPL_VAR NAME='Height'>",
+												"Resize" : "<TMPL_VAR NAME='Resize'>",
+												"X1" : "<TMPL_VAR NAME='X1'>",
+												"X2" : "<TMPL_VAR NAME='X2'>",
+												"Y1" : "<TMPL_VAR NAME='Y1'>",
+												"Y2" : "<TMPL_VAR NAME='Y2'>"
+											});
+										</TMPL_LOOP>
+										CreateImageInput('ArticleMainImage', '<TMPL_VAR NAME='ArticleMainImageAdminPath'>', '<TMPL_VAR NAME='ArticleMainImageFullPath'>', '<TMPL_VAR NAME='ArticleMainImage'>', '<TMPL_VAR NAME='ArticleID'>', 'RemoveArticleImage', '<TMPL_VAR NAME='MODULE_PATH'>ajax.php', 0, params);
+									});
+								</script>
+								<div class="clearfix"></div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="Content" class="form-label"><TMPL_VAR NAME='LNG_Content'></label><br />
+									<textarea name="Content" id="Content"><TMPL_VAR NAME="Content" /></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<TMPL_UNLESS NAME='EditorMode'>
+						<div id="tab-2" class="tab-pane">
+							<div class="form-group">
+								<table id="SimilarArticle" class="table table-borderless full-width-ui-table">
+									<tbody>
+									<TMPL_LOOP NAME='SimilarArticle'>
+										<tr>
+											<td class="sort"><i class="fa fa-bars"></i></td>
+											<td>
+												<input type="hidden" name="SimilarArticle[]" value="<TMPL_VAR NAME='ArticleID' />" >
+												<TMPL_VAR NAME='Title' />
+											</td>
+											<td onclick="$(this).closest('tr').remove()" class="delete">X</td>
+										</tr>
+									</TMPL_LOOP>
+									</tbody>
+									<tfoot>
+									<tr>
+										<td colspan="3">
+											<input id="linked-article" type="text" placeholder="Начните вводить название статьи(минимум 3 символа)" class="form-control">
+										</td>
+									</tr>
+									</tfoot>
+								</table>
+							</div>
+
+							<div class="clearfix"></div>
+						</div>
+					</TMPL_UNLESS>
+
+					<div class="row">
+						<div class="col-md-12 top15">
+							<button type="submit" class="btn btn-success btn-icon right15"><i class="fa fa-save"></i><TMPL_VAR NAME='LNG_Save'></button>
+							<a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i><TMPL_VAR NAME='LNG_Cancel'></a>
+						</div>
+						<input type="hidden" name="Save" value="1" />
+						<input type="hidden" name="ArticleID" value="<TMPL_VAR NAME='ArticleID'>" />
+						<TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<section class="box">
+		<header class="panel_header">
+			<h2 class="title">Предпросмотр</h2>
+		</header>
+		<div class="content-body">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="#" data-width="360" data-height="640" class="preview-btn btn btn-success btn-icon right15">
+						Xs
+					</a>
+
+					<a href="#" data-width="768" data-height="640" class="preview-btn btn btn-success btn-icon right15">
+						Sm
+					</a>
+
+					<a href="#" data-width="992" data-height="768" class="preview-btn btn btn-success btn-icon right15">
+						Md
+					</a>
+
+					<a href="#" data-width="1200" data-height="768" class="preview-btn btn btn-success btn-icon right15">
+						Lg
+					</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="preview-block text-center">
+
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<script type="text/javascript">
+	const EditorMode = <TMPL_IF NAME="EditorMode"/>true<TMPL_ELSE>false</TMPL_IF>;
+	const toolBarSet = EditorMode ? 'articleEditor' : 'standart';
+
+	<TMPL_UNLESS NAME='ArticleID'>
+			$('.content-body').liTranslit({
+				elName: '#MetaTitle',
+				elAlias: '#StaticPath',
+				table: 'data_article',
+			});
+	</TMPL_UNLESS>
+
+
+	var previewLink = "<TMPL_VAR NAME='PreviewLink'>";
+
+	createCKEditor('Content', toolBarSet, '100%', '400px', {fontSize_sizes : 'Small/10px;Large/22px;', bodyClass : 'article'});
+	initPreview(previewLink, 360, 640);
+	initLinkedObjects('linked-article', 'SimilarArticle', 3);
+	$('#SimilarArticle tbody').sortable({
+		axis: "y",
+	});
+
+	$('.preview-btn').click(function(event) {
+		event.preventDefault();
+		let width = $(this).attr('data-width');
+		let height = $(this).attr('data-height');
+		initPreview(previewLink, width, height);
+	});
+
+
+
+	function ConfirmChangeBest(title, a)
+	{
+		var msg = '<TMPL_VAR NAME='LNG_ConfirmChangeBest' ESCAPE='js'>';
+		msg = msg.replace(/%Title%/g, title);
+		ModalConfirm(msg, function(){
+			window.location.href = $(a).attr('href');
+		});
+	}
+
+	function initPreview(link, width, height) {
+	   	$('.preview-block').hide();
+		$('.preview-block').html('');
+		$('<iframe>', {
+		   src: link,
+		   id:  'previewFrame',
+		   width: width,
+		   height: height,
+		   frameborder: 0,
+	   	}).appendTo('.preview-block');
+
+		let frame = document.getElementById('previewFrame');
+		frame.onload = function(){
+			let iframe = $('#previewFrame').contents();
+			let articles = iframe.find('.other-articles');
+			iframe.find('.article__headblock').css('display', 'none');
+			iframe.find('.content-aside--article .row').html('<div class="col-xs-12 preview"></div>');
+			iframe.find('.content-aside--article .row .preview').html(articles);
+			$('.preview-block').fadeIn();
+		};
+	}
+
+	function initLinkedObjects(controlID, tableID, minLength)
+    {
+        $( "#" + controlID ).autocomplete({
+            classes: {
+                "ui-autocomplete": "highlight"
+            },
+            minLength: minLength,
+            source: function(request, response) {
+                var ids = $('input[name="' + tableID + '[]"]').map(function(){return this.value}).get();
+                $.ajax({
+                    url: "<TMPL_VAR NAME='MODULE_PATH' />ajax.php",
+                    type: "post",
+                    data: {"Action":controlID, "term":request.term, "ItemIDs":ids},
+                    dataType: 'json',
+                    success: function (data) {
+                        //console.log(data);
+                        response(data);
+                    }
+                });
+            },
+            select: function( event, ui ) {
+                if (ui.item) {
+                    event.preventDefault();
+
+                    if ($('#' + tableID).find('tbody tr').length > 2) {
+                    	alert('Максимум 3');
+                    }
+                    else{
+                    	var row = '<tr>\
+	                        <td class="sort"><i class="fa fa-bars"></i></td> \
+	                        <td>\
+	                            <input type="hidden" name="' + tableID + '[]" value="'+ui.item.value+'" >\
+	                            '+ui.item.label+'\
+	                        </td> \
+	                        <td onclick="$(this).closest(\'tr\').remove()" class="delete">X</td> \
+	                    </tr>';
+	                    $('#' + tableID + ' tbody').append(row);
+	                    $(this).val("");
+                    }
+                }
+            },
+            focus: function( event, ui ) {
+                event.preventDefault();
+                $(this).val(ui.item.label);
+            },
+        });
+    }
+</script>

@@ -1,0 +1,58 @@
+<div class="olympiad-list">
+	<TMPL_LOOP NAME='MainList'>
+		<div class="item">
+			<a class="title<TMPL_IF NAME='Opened' VALUE='N'> closed-alert</TMPL_IF>" href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='StaticPath' />" target="_blank"><TMPL_VAR NAME='Name'></a>
+			<table>
+				<thead>
+				    <tr>
+				        <th width="35%">Дочернаяя олимпиада</th>
+				        <th width="10%">Уровень</th>
+				        <th width="25%">Регион</th>
+				        <th width="10%">Класс</th>
+				        <th width="20%">Завершение регистрации</th>
+				    </tr>
+			    </thead>
+			    <tbody>
+					<TMPL_LOOP NAME='OlympiadList'>
+						<tr>
+							<td>
+								<a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='MainList.StaticPath'>/<TMPL_VAR NAME='StaticPath'>">
+									<TMPL_VAR NAME='Name'>
+								</a>
+							</td>
+							<td>
+								<TMPL_VAR NAME='Level'>
+							</td>
+							<td>
+								<TMPL_LOOP NAME='RegionNameList'>
+									<p><TMPL_VAR NAME='Name'></p>
+								</TMPL_LOOP>
+							</td>
+							<td>
+								<TMPL_VAR NAME='ClassInfo'>
+							</td>
+							<td>
+								<TMPL_VAR NAME='RegistrationToDay'> <TMPL_VAR NAME='RegistrationToMount'>
+							</td>
+						</tr>
+					</TMPL_LOOP>
+				</tbody>
+			</table>
+		</div>
+		<a class="more" href="#"></a>
+	</TMPL_LOOP>
+</div>
+
+<TMPL_IF NAME='MainPager'>
+	<nav aria-label="<TMPL_VAR NAME='LNG_Paging' />">
+	    <ul class="pagination ajax-paging" data-form="OlympiadFilterForm">
+	    	<TMPL_LOOP NAME='MainPager'>
+	    	<TMPL_IF NAME='First'>
+	    	<TMPL_ELSEIF NAME='Last'>	
+	    	<TMPL_ELSE>	
+	    	<li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>><a href="<TMPL_VAR NAME='URL'>" data-page="<TMPL_VAR NAME='Page'>"><TMPL_VAR NAME='Title'></a></li>
+	    	</TMPL_IF>
+	    	</TMPL_LOOP>
+	    </ul>
+	</nav>
+</TMPL_IF>

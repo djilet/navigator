@@ -1,0 +1,138 @@
+<div class="row form-group">
+    <form action="<TMPL_VAR NAME='MODULE_URL'>" method="GET">
+        <div>
+            <div class="col-md-12 no-padding form-group"">
+                <div class="col-md-4">
+                    <div class="col-md-12">
+                        Дата регистрации
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-3">от</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control datepicker" name="DateFrom" value="<TMPL_VAR NAME='DateFrom'>" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-3">до</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control datepicker" name="DateTo"  value="<TMPL_VAR NAME='DateTo'>" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 no-padding form-group"">
+                <div class="col-md-4">
+                    <div class="col-md-3">Имя</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control" name="UserName" value="<TMPL_VAR NAME='UserName'>" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-3">Email</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control" name="UserEmail" value="<TMPL_VAR NAME='UserEmail'>" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-3">Телефон</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control" name="UserPhone"  value="<TMPL_VAR NAME='UserPhone'>" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 no-padding form-group">
+                <div class="col-md-4">
+                    <div class="col-md-3">Город</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control" name="City" value="<TMPL_VAR NAME='City'>" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-3">Класс</div>
+                    <div class="col-md-9 no-padding">
+                        <input class="form-control" name="ClassNumber" value="<TMPL_VAR NAME='ClassNumber'>" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-md-3">Статус</div>
+                    <div class="col-md-9 no-padding">
+                        <select class="form-control" name="UserWho">
+                            <option></option>
+                            <option value="parent" <TMPL_IF NAME='UserWho' OP='==' VALUE='parent'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_UserWhoParent'></option>
+                            <option value="child" <TMPL_IF NAME='UserWho' OP='==' VALUE='child'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_UserWhoChild'></option>
+                            <option value="student" <TMPL_IF NAME='UserWho' OP='==' VALUE='student'>selected</TMPL_IF>><TMPL_VAR NAME='LNG_UserWhoStudent'></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 no-padding form-group">
+                <div class="col-md-4">
+                    <div class="col-md-6">Элементов на странице</div>
+                    <div class="col-md-6 no-padding">
+                        <input class="form-control" name="OnPage" value="<TMPL_VAR NAME='OnPage'>" />
+                    </div>
+                </div>
+                <div class="col-md-8 text-right">
+                    <ul class="pagination pagination">
+                        <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <input type="submit" class="btn btn-success" value="Фильтровать" />
+                <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>" class="btn btn-success">Очистить</a>
+            </div>
+            <div class="col-sm-6 text-right">
+                <a href="#" data-do="ExportPDF" class="btn btn-success filter-action">PDF</a>
+                <a href="#" data-do="ExportSCV" class="btn btn-success filter-action">CSV</a>
+            </div>
+        </div>
+        <input type="hidden" name="ProftestID" value="<TMPL_VAR NAME='ProftestID'>" />
+        <TMPL_VAR NAME='ParamsForForm' ESCAPE='none'>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Телефон</th>
+            <th>Город</th>
+            <th>Класс</th>
+            <th>Статус</th>
+        </tr>
+    </thead>
+    <tbody>
+    	<TMPL_LOOP NAME='UserList'>
+        	<tr>
+        		<td>
+                    <a class="" href="<TMPL_VAR NAME='BaseURL'>&<TMPL_VAR NAME='ParamsForURL'>&UserID=<TMPL_VAR NAME='UserID'>">
+                        <TMPL_IF NAME='UserName'>
+                            <TMPL_VAR NAME='UserName'>
+                        <TMPL_ELSE>
+                            Имя не указано
+                        </TMPL_IF>
+                    </a>
+                </td>
+        		<td><TMPL_VAR NAME='UserEmail'></td>
+                <td><TMPL_VAR NAME='UserPhone'></td>
+                <td><TMPL_VAR NAME='City'></td>
+                <td><TMPL_VAR NAME='ClassNumber'></td>
+                <td>
+                    <TMPL_IF NAME='UserWho' VALUE='parent'>
+                        <TMPL_VAR NAME='LNG_UserWhoParent'>
+                    <TMPL_ELSEIF NAME='UserWho' VALUE='child'>
+                        <TMPL_VAR NAME='LNG_UserWhoChild'>
+                    <TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+                        <TMPL_VAR NAME='LNG_UserWhoStudent'>
+                    </TMPL_IF>
+                </td>
+            </tr>
+		</TMPL_LOOP>
+    </tbody>
+</table>

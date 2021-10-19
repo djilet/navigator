@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<page_list.html>
+			<AllOrders>Полный список</AllOrders>
+			<Page>Страница услуги</Page>
+		</page_list.html>
+		<order_list.html>
+			<Created>Дата заявки</Created>
+			<Name>ФИО</Name>
+			<Address>Адрес</Address>
+			<Email>E-mail</Email>
+			<Phone>Телефон</Phone>
+			<Date>Дата отправления</Date>
+			<Time>Время отправления</Time>
+			<Universities>Список вузов</Universities>
+			<Summ>Стоимость(руб.)</Summ>
+			<Payment>Оплата</Payment>
+			<PaymentNo>нет</PaymentNo>
+			<City>Город</City>
+			<UTM>UTM</UTM>
+			<EmptyList>Заявки на полачу документов отсутствуют</EmptyList>
+		</order_list.html>
+		<order_list_full.html>
+			<Created>Дата заявки</Created>
+			<Name>ФИО</Name>
+			<Address>Адрес</Address>
+			<Email>E-mail</Email>
+			<Phone>Телефон</Phone>
+			<Date>Дата отправления</Date>
+			<Time>Время отправления</Time>
+			<Universities>Список вузов</Universities>
+			<Summ>Стоимость(руб.)</Summ>
+			<Payment>Оплата</Payment>
+			<PaymentNo>нет</PaymentNo>
+			<City>Город</City>
+			<PageTitle>Страница подачи</PageTitle>
+			<UTM>UTM</UTM>
+			<EmptyList>Заявки на полачу документов отсутствуют</EmptyList>
+		</order_list_full.html>
+	</admin>
+</Root>

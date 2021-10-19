@@ -1,0 +1,26 @@
+<ul class="drop-list select">
+	<TMPL_LOOP NAME='Content'>
+		<li class="item">
+			<span class="title"><TMPL_VAR NAME='Title'></span>
+			<input type="checkbox" name="answers[]" value="<TMPL_VAR NAME='UniversityID'>">
+			<ul class="speciality">
+				<TMPL_LOOP NAME='SpecialityList'>
+					<li class="item">
+						<span class="sub-title"><TMPL_VAR NAME='Title'></span>
+						<span class="text-right sub-title gray-text">
+							<TMPL_IF NAME='BudgetNext'>
+								<TMPL_IF NAME='BudgetNext'>
+									<TMPL_VAR NAME='BudgetNext'> балла<TMPL_ELSEIF NAME='BudgetText'><TMPL_VAR NAME='BudgetText'></TMPL_IF><TMPL_IF NAME='BudgetCountNext'>, <TMPL_VAR NAME='BudgetCountNext'> мест
+								</TMPL_IF>
+							</TMPL_IF>
+						</span>
+					</li>
+				</TMPL_LOOP>
+			</ul>
+		</li>
+	</TMPL_LOOP>
+</ul>
+
+<ul class="selected-list full">
+
+</ul>

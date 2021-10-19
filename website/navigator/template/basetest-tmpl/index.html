@@ -1,0 +1,28 @@
+<div class="base-test">
+	<TMPL_IF NAME='ResultPage'>
+		<TMPL_INCLUDE FILE='basetest-tmpl/result.html'>
+	<TMPL_ELSEIF NAME='ConsultationPage'>
+		<TMPL_INCLUDE FILE='basetest-tmpl/consultation_result.html'>
+	<TMPL_ELSEIF NAME='LandingPage'>
+		<TMPL_INCLUDE FILE='basetest-tmpl/landing.html'>
+	<TMPL_ELSE>
+		<TMPL_INCLUDE FILE='basetest-tmpl/test.html'>
+	</TMPL_IF>
+
+
+	<div class="modal fade" id="modal-base-test" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<a href="#" class="modal-close-btn top-exit">
+				<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/close.png" alt="">
+			</a>
+			<div class="modal-content">
+				<div class="message text-center">
+					<p>
+						<TMPL_VAR NAME='LNG_ResetTest'>
+					</p>
+					<a href="<TMPL_VAR NAME='BaseURL'>?Action=ResetTest" class="btn black"><TMPL_VAR NAME='LNG_ResetTestConfirmBtn'></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

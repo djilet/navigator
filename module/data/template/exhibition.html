@@ -1,0 +1,445 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'/>
+    <section class="box">
+        <header class="panel_header">
+            <TMPL_IF NAME='ExhibitionID'>
+                <h2 class="title"><TMPL_VAR NAME='LNG_EditExhibition'></h2>
+                <TMPL_ELSE>
+                    <h2 class="title"><TMPL_VAR NAME='LNG_AddExhibition'></h2>
+            </TMPL_IF>
+        </header>
+        <div class="content-body">
+
+			<TMPL_IF NAME='ImportErrorList'>
+				<div class="row">
+	                <div class="col-md-12">
+	                    <div class="alert alert-error">
+	                    	<TMPL_LOOP NAME='ImportErrorList'>
+	                        	Ошибка в строке номер <TMPL_VAR NAME='Line'> (Имя: <TMPL_VAR NAME='Name'>, Email: <TMPL_VAR NAME='Email'>)
+
+	                        	<details>
+	                             <summary>Открыть список</summary>
+	                             	<div class="errors">
+	                             		<TMPL_LOOP NAME='ErrorList'>
+				                        	<TMPL_VAR NAME='Message'>
+				                        	<TMPL_UNLESS NAME='__LAST__'><br />
+				                        	</TMPL_UNLESS>
+			                        	</TMPL_LOOP>
+	                             	</div>
+	                        	</details>
+	                        	<TMPL_UNLESS NAME='__LAST__'><br />
+	                        	</TMPL_UNLESS>
+	                    	</TMPL_LOOP>
+	                    </div>
+	                </div>
+				</div>
+	        <TMPL_ELSE>
+
+	        <TMPL_IF NAME='ImportResult'>
+	        	<div class="alert alert-success">Импорт успешно завершен</div>
+	        </TMPL_IF>
+
+		        <ul class="nav nav-tabs">
+	                <li class="active"><a href="#tab-1" aria-controls="tab-1" data-toggle='tab'><TMPL_VAR NAME='LNG_TabInfo'></a></li>
+	                <li><a href="#tab-2" aria-controls="tab-2" data-toggle='tab'><TMPL_VAR NAME='LNG_TabRegistrations'></a></li>
+					<li><a href="#tab-3" id="vk-tab" aria-controls="tab-3" data-toggle='tab'><TMPL_VAR NAME='LNG_TabCampaign'></a></li>
+	            </ul>
+
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+			            <form method="post" enctype="multipart/form-data">
+			                <TMPL_IF NAME='ErrorList'>
+			                    <div class="col-md-12">
+			                        <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+			                    </div>
+			                </TMPL_IF>
+
+			                <div class="row">
+
+			                    <div class="col-md-6">
+			                        <div class="form-group">
+			                            <label for="Title" class="form-label required"><TMPL_VAR NAME='LNG_Title'></label><br />
+			                            <input class="form-control" type="text" name="Title" id="Title" value="<TMPL_VAR NAME='Title'>" />
+			                        </div>
+
+			                        <div class="form-group">
+										<label for="PageID" class="form-label"><TMPL_VAR NAME='LNG_Page'></label><br />
+										<select class="form-control" name="PageID" id="PageID">
+											<TMPL_LOOP NAME='PageList'>
+											<option value="<TMPL_VAR NAME='PageID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+											</TMPL_LOOP>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label for="Page2ID" class="form-label"><TMPL_VAR NAME='LNG_Page2'></label><br />
+										<select class="form-control" name="Page2ID" id="Page2ID">
+											<option value="">&nbsp;</option>
+											<TMPL_LOOP NAME='Page2List'>
+											<option value="<TMPL_VAR NAME='PageID'>"<TMPL_IF NAME='Selected'> selected</TMPL_IF>><TMPL_VAR NAME='Title'></option>
+											</TMPL_LOOP>
+										</select>
+									</div>
+
+			                        <div class="form-group">
+			                            <label for="Type" class="form-label required"><TMPL_VAR NAME='LNG_Type'></label><br />
+			                            <input class="form-control" type="text" name="Type" id="Type" value="<TMPL_VAR NAME='Type'>" />
+			                        </div>
+
+			                        <div class="form-group">
+			                            <label class="form-label required"><TMPL_VAR NAME='LNG_Period'></label><br />
+			                            <div class="row">
+			                                <div class="col-md-6">
+			                                    <input class="form-control datepicker" type="text" name="DateFrom" id="DateFrom" value="<TMPL_VAR NAME='DateFrom' FORMAT='datepicker'>" />
+			                                </div>
+			                                <div class="col-md-6">
+			                                    <input class="form-control datepicker col-md-6" type="text" name="DateTo" id="DateTo" value="<TMPL_VAR NAME='DateTo' FORMAT='datepicker'>" />
+			                                </div>
+			                            </div>
+			                        </div>
+
+			                        <div class="form-group">
+			                            <label for="Phone" class="form-label"><TMPL_VAR NAME='LNG_Phone'></label><br />
+			                            <input class="form-control" type="text" name="Phone" id="Phone" value="<TMPL_VAR NAME='Phone'>" />
+			                        </div>
+
+			                        <div class="form-group">
+			                            <label for="Email" class="form-label"><TMPL_VAR NAME='LNG_Email'></label><br />
+			                            <input class="form-control" type="text" name="Email" id="Email" value="<TMPL_VAR NAME='Email'>" />
+			                        </div>
+			                    </div>
+
+								<div class="col-md-6">
+									<div class="form-group form-inline">
+										<label for="PropertyHideUserTime">Убрать "Во сколько вас ждать?"</label><br />
+										<input type="checkbox" name="Properties[HideUserTime]" id="PropertyHideUserTime" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='PropertyHideUserTime' OP='==' VALUE='Y'>checked<TMPL_ELSE></TMPL_IF> />
+									</div>
+
+									<div class="form-group form-inline">
+										<label for="PropertyHeaderLogotype">Логотип профориентации</label><br />
+										<input type="checkbox" name="Properties[HeaderLogotype]" id="PropertyHeaderLogotype" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='PropertyHeaderLogotype' OP='==' VALUE='Y'>checked<TMPL_ELSE></TMPL_IF> />
+									</div>
+								</div>
+
+			                </div>
+
+
+			                <div class="clearfix"></div>
+			                <div class="buttons top15">
+			                    <input type="hidden" name="ExhibitionID" value="<TMPL_VAR NAME='ExhibitionID' />">
+			                    <input type="submit" class="btn btn-primary" name="Save" value="<TMPL_VAR NAME='LNG_Save' />">
+			                </div>
+			            </form>
+			        </div>
+			        <div id="tab-2" class="tab-pane">
+			        	<div class="row">
+			        		<div class="col-md-3 form-group form-inline">
+				        		<label>Импортировать регистрации</label><br/>
+				        		<form enctype="multipart/form-data" action="<TMPL_VAR NAME='MODULE_URL'>" method="POST">
+				        			<label for="import_file" id="import-btn" class="btn btn-orange btn-icon">Добавить .csv</label>
+								    <input type="file" id="import_file" name="importFile" accept=".csv" style="display: none;">
+		                    	    <input type="submit" id="init-import-btn" class="btn btn-success btn-icon" value="Импорт" />
+								    
+		                        	<input type="hidden" name="ExhibitionID" value="<TMPL_VAR NAME='ExhibitionID'>">
+		                    	    <input type="hidden" name="load" value="data">
+		                    	    <input type="hidden" name="Import" value="csv">
+		                    	    <TMPL_VAR NAME='ParamsForForm' ESCAPE='NONE'>
+		                        </form>
+		                    </div>
+			        	</div>
+			        	<TMPL_IF NAME='RegistrationList'>
+				        	<div class="row">
+				        		<div class="col-md-3 form-group form-inline">
+					        		<label><TMPL_VAR NAME='LNG_RegExport'></label><br/>
+			                        <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ExhibitionID=<TMPL_VAR NAME='ExhibitionID'>&Output=csv" class="btn btn-primary btn-icon"><TMPL_VAR NAME='LNG_RegExportCsv'></a>
+			                        <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ExhibitionID=<TMPL_VAR NAME='ExhibitionID'>&Output=csv-group" class="btn btn-primary btn-icon"><TMPL_VAR NAME='LNG_RegExportCsvGroup'></a>
+			                    </div>
+			                    <div class="col-md-3 form-group form-inline">
+			                    	<label><TMPL_VAR NAME='LNG_RegExportVisitByUser'></label><br/>
+			                        <form action="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>" method="get">
+			                        	<select name="ExportCityID" class="btn">
+			                        		<TMPL_LOOP NAME='CityList'>
+			                        		<option value="<TMPL_VAR NAME='CityID'>"><TMPL_VAR NAME='CityTitle'></option>
+			                        		</TMPL_LOOp>
+			                        	</select>
+			                        	<input type="hidden" name="ExhibitionID" value="<TMPL_VAR NAME='ExhibitionID'>">
+			                        	<input type="hidden" name="load" value="data">
+			                        	<input type="hidden" name="Section" value="exhibition">
+			                        	<input type="hidden" name="OutputVisit" value="csv">
+			                    	    <input type="submit" class="btn btn-primary btn-icon" value="<TMPL_VAR NAME='LNG_RegExportCsv'>" />
+			                        </form>
+			                    </div>
+			                    <div class="col-md-3 form-group form-inline">
+			                    	<label><TMPL_VAR NAME='LNG_RegExportVisit'></label><br/>
+			                        <form action="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>" method="get">
+			                        	<select name="ExportCityID" class="btn">
+			                        		<TMPL_LOOP NAME='CityList'>
+			                        		<option value="<TMPL_VAR NAME='CityID'>"><TMPL_VAR NAME='CityTitle'></option>
+			                        		</TMPL_LOOp>
+			                        	</select>
+			                        	<input type="hidden" name="ExhibitionID" value="<TMPL_VAR NAME='ExhibitionID'>">
+			                        	<input type="hidden" name="load" value="data">
+			                        	<input type="hidden" name="Section" value="exhibition">
+			                        	<input type="hidden" name="OutputVisitFlat" value="csv">
+			                    	    <input type="submit" class="btn btn-primary btn-icon" value="<TMPL_VAR NAME='LNG_RegExportCsv'>" />
+			                        </form>
+			                    </div>
+			                    <TMPL_IF NAME='Paging'>
+									<div class="col-md-12 form-group">
+										<ul class="pagination pagination pull-right">
+											<TMPL_VAR NAME='Paging' ESCAPE='none'>
+										</ul>
+										<div class="clearfix"></div>
+									</div>
+								</TMPL_IF>
+				        	</div>
+		                    <div class="clearfix"></div>
+	                    
+	                        <table class="table" id="listing">
+	                            <thead>
+	                            <tr>
+	                            	<th>&nbsp;</th>
+	                                <th><TMPL_VAR NAME='LNG_RegFirstName' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegLastName' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegBaseRegistration' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegCity' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegWho' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegClass' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegTime' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegInterest' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegPhone' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegEmail' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegVisit' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegCreated' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegSource' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegUTM' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegTicketLink' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegStaticPath' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegAdditionalBigDirection' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegAdditionalUniversity' /></th>
+	                                <th><TMPL_VAR NAME='LNG_RegAdditionalType' /></th>
+	                            </tr>
+	                            </thead>
+	                            <tbody>
+	                            <TMPL_LOOP NAME='RegistrationList'>
+	                            <tr>
+	                            	<td><TMPL_VAR NAME='RegistrationID' /></td>
+	                                <td><TMPL_VAR NAME='FirstName' /></td>
+	                                <td><TMPL_VAR NAME='LastName' /></td>
+	                                <td><TMPL_VAR NAME='BaseRegistrationID' /></td>
+	                                <td><TMPL_VAR NAME='City' /></td>
+	                                <td><TMPL_VAR NAME='Who' /></td>
+	                                <td><TMPL_VAR NAME='Class' /></td>
+	                                <td><TMPL_VAR NAME='Time' /></td>
+	                                <td><TMPL_VAR NAME='Interest' /></td>
+	                                <td><TMPL_VAR NAME='Phone' /></td>
+	                                <td><TMPL_VAR NAME='UserEmail' /></td>
+	                                <td><TMPL_IF NAME='VisitCount' ><TMPL_VAR NAME='LNG_Yes'><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+	                                <td><TMPL_VAR NAME='Created' FORMAT='datetime' /></td>
+	                                <td><TMPL_VAR NAME='Source' /></td>
+	                                <td><TMPL_VAR NAME='UTM' /></td>
+	                                <td><a href="<TMPL_VAR NAME='TicketURL'>" target="_blank"><TMPL_VAR NAME='TicketURL'></a></td>
+	                                <td><TMPL_VAR NAME='StaticPath' /></td>
+	                                <td><TMPL_VAR NAME='AdditionalBigDirection' /></td>
+	                                <td><TMPL_VAR NAME='AdditionalUniversity' /></td>
+	                                <td><TMPL_VAR NAME='AdditionalType' /></td>
+	                            </tr>
+	                            </TMPL_LOOP>
+	                            </tbody>
+	                        </table>
+	                        <TMPL_ELSE>
+	                            <div class="alert alert-success"><TMPL_VAR NAME='LNG_RegEmpty'></div>
+	                    </TMPL_IF>
+			        </div>
+					<div id="tab-3" class="tab-pane"> <!--Отчеты ВК-->
+						<form method="post" id="item-list" action="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ExhibitionID=<TMPL_VAR NAME='ExhibitionID'>#tab-3">
+							<div class="row">
+								<div class="form-group form-inline pull-left right15 col-md-1">
+									<label for="Ads"><TMPL_VAR NAME="LNG_Ads"></label><br />
+									<input type="checkbox" name="VkReportFilter[Ads]" id="Ads" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Ads' VALUE='Y'>checked<TMPL_ELSEIF NAME='Ads' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+								</div>
+								<div class="form-group form-inline pull-left right15 col-md-1">
+									<label for="Family"><TMPL_VAR NAME="LNG_Family"></label><br />
+									<input type="checkbox" name="VkReportFilter[Family]" id="Family" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Family' VALUE='Y'>checked<TMPL_ELSEIF NAME='Family' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+								</div>
+								<div class="form-group form-inline pull-left right15 col-md-2">
+									<label for="Source"><TMPL_VAR NAME="LNG_Source"></label><br />
+									<input type="checkbox" name="VkReportFilter[Source]" id="Source" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='Source' VALUE='Y'>checked<TMPL_ELSEIF NAME='Source' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-2">
+									<label><TMPL_VAR NAME='LNG_VKReportCity'></label><br/>
+									<select name="VkReportFilter[VKReportCity]" class="form-control">
+										<option value="0"><TMPL_VAR NAME='LNG_All'></option>
+										<TMPL_LOOP NAME='VkReportCityList'>
+											<option value="<TMPL_VAR NAME='static_path'>" <TMPL_IF NAME='selected'>selected</TMPL_IF>><TMPL_VAR NAME='title'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="col-md-2">
+									<label><TMPL_VAR NAME='LNG_VKReportClass'></label><br/>
+									<select name="VkReportFilter[VKReportClass]" class="form-control">
+										<option value="0"><TMPL_VAR NAME='LNG_All'></option>
+										<TMPL_LOOP NAME='VkReportClassList'>
+											<option value="<TMPL_VAR NAME='title'>" <TMPL_IF NAME='selected'>selected</TMPL_IF>><TMPL_VAR NAME='title'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+								<div class="col-md-2">
+									<label><TMPL_VAR NAME='LNG_VKReportSource'></label><br/>
+									<div class="form-group"><input class="form-control select2" id="VKReportSource" name="VkReportFilter[VKReportSource]" value="<TMPL_VAR NAME='VKReportSource'>"></div>
+								</div>
+								<div class="col-md-2">
+									<label><TMPL_VAR NAME='LNG_VkExcludeClass'></label><br/>
+									<select name="VkReportFilter[VKExcludeClass][]" class="js-example-basic-multiple" multiple="multiple">
+										<option value="0"><TMPL_VAR NAME='LNG_All'></option>
+										<TMPL_LOOP NAME='VkExcludeClassList'>
+											<option value="<TMPL_VAR NAME='title'>" <TMPL_IF NAME='selected'>selected</TMPL_IF>><TMPL_VAR NAME='title'></option>
+										</TMPL_LOOP>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-1"><TMPL_VAR NAME='LNG_ReportFrom'> </div>
+								<div class="col-md-2"><div class="form-group"><input class="form-control datepickerforvk" id="VkReportDateFrom" name="VkReportFilter[VkReportDateFrom]" value="<TMPL_VAR NAME='VkReportDateFrom'>" /></div></div>
+								<div class="col-md-1"><TMPL_VAR NAME='LNG_ReportTo'> </div>
+								<div class="col-md-2"><div class="form-group"><input class="form-control datepickerforvk" id="VkReportDateTo" name="VkReportFilter[VkReportDateTo]" value="<TMPL_VAR NAME='VkReportDateTo'>" /></div></div>
+								<div class="col-md-2"><div class="form-group"><button type="submit" class="btn btn-success btn-icon right15"><TMPL_VAR NAME='LNG_ReportSubmit'></button></div></div>
+								<input type="hidden" name="Do" id="vk-import-filter" value="ImportVK" />
+							</div>
+						<TMPL_IF NAME='VkPaging'>
+							<div class="col-md-12 form-group">
+								<ul class="pagination pagination pull-right">
+									<TMPL_VAR NAME='Paging' ESCAPE='none'>
+								</ul>
+								<div class="clearfix"></div>
+							</div>
+						</TMPL_IF>
+							<div class="clearfix"></div>
+							<TMPL_IF NAME="VkImportList">
+								<table class="table">
+									<thead>
+									<tr>
+										<TMPL_IF NAME='Source' VALUE='Y'><th><TMPL_VAR NAME='LNG_VkSource' /></th></TMPL_IF>
+										<TMPL_IF NAME='Ads' VALUE='Y'>
+											<th><TMPL_VAR NAME='LNG_VkCampaign' /></th>
+											<TMPL_ELSE>
+												<TMPL_IF NAME='Source' VALUE='Y'>
+													<TMPL_ELSE>
+														<th><TMPL_VAR NAME='LNG_VkCampaign' /></th>
+												</TMPL_IF>
+										</TMPL_IF>
+										<TMPL_IF NAME='Ads' VALUE='Y'><th><TMPL_VAR NAME='LNG_Ad' /></th></TMPL_IF>
+										<th>
+											<TMPL_IF NAME="OrderBy" Value="ImpressionsDesc">
+												<input type="submit" class="like_link" name="Sort[impressionsAsc]" value="<TMPL_VAR NAME='LNG_VKImpressions' />" > <i class='fa fa-sort-asc clr'></i>
+												<TMPL_ELSE>
+													<input type="submit" class="like_link" name="Sort[impressionsDesc]" value="<TMPL_VAR NAME='LNG_VKImpressions' />" > <i class='fa fa-sort-desc clr'></i>
+											</TMPL_IF>
+										</th>
+										<th>
+											<TMPL_IF NAME="OrderBy" Value="ClicksDesc">
+												<input type="submit" class="like_link" name="Sort[clicksAsc]" value="<TMPL_VAR NAME='LNG_VkClicks' />" > <i class='fa fa-sort-asc clr'></i>
+												<TMPL_ELSE>
+													<input type="submit" class="like_link" name="Sort[clicksDesc]" value="<TMPL_VAR NAME='LNG_VkClicks' />" > <i class='fa fa-sort-desc clr'></i>
+											</TMPL_IF>
+										</th>
+										<th><TMPL_VAR NAME='LNG_VkReach' /></th>
+										<th>
+											<TMPL_IF NAME="OrderBy" Value="SpentDesc">
+												<input type="submit" class="like_link" name="Sort[spentAsc]" value="<TMPL_VAR NAME='LNG_VkSpentAll' />"> <i class='fa fa-sort-asc clr'></i>
+												<TMPL_ELSE>
+													<input type="submit" class="like_link" name="Sort[spentDesc]" value="<TMPL_VAR NAME='LNG_VkSpentAll' />"> <i class='fa fa-sort-desc clr'></i>
+											</TMPL_IF>
+										</th>
+										<th>
+											<TMPL_IF NAME="OrderBy" Value="RegDesc">
+												<input type="submit" class="like_link" name="Sort[regAsc]" value="<TMPL_VAR NAME='LNG_VkReg' />"> <i class='fa fa-sort-asc clr'></i>
+												<TMPL_ELSE>
+													<input type="submit" class="like_link" name="Sort[regDesc]" value="<TMPL_VAR NAME='LNG_VkReg' />"> <i class='fa fa-sort-desc clr'></i>
+											</TMPL_IF>
+										</th>
+										<th><TMPL_VAR NAME='LNG_VkSpentForReg' /></th>
+										<th><TMPL_VAR NAME='LNG_VkCR' /></th>
+										<th><TMPL_VAR NAME='LNG_VkCome' /></th>
+										<th><TMPL_VAR NAME='LNG_VkSpentCome' /></th>
+									</tr>
+									</thead>
+									<tbody>
+									<TMPL_LOOP NAME='VkImportList'>
+										<tr>
+											<TMPL_IF NAME='Source' VALUE='Y'><td><TMPL_VAR NAME='source' /></td></TMPL_IF>
+											<TMPL_IF NAME='Ads' VALUE='Y'>
+												<td><TMPL_VAR NAME='campaign_id' /></td>
+												<TMPL_ELSE>
+													<TMPL_IF NAME='Source' VALUE='Y'>
+														<TMPL_ELSE>
+															<td><TMPL_VAR NAME='campaign_id' /></td>
+													</TMPL_IF>
+											</TMPL_IF>
+											<TMPL_IF NAME='Ads' VALUE='Y'><td><TMPL_VAR NAME='advert_id' /></td></TMPL_IF>
+											<td><TMPL_VAR NAME='impressions' /></td>
+											<td><TMPL_VAR NAME='clicks' /></td>
+											<td><TMPL_VAR NAME='reach' /></td>
+											<td><TMPL_VAR NAME='spent'/> <TMPL_VAR NAME='LNG_Rub'/></td>
+											<td><TMPL_VAR NAME='reg' /></td>
+											<td><TMPL_VAR NAME='CPL'/> <TMPL_VAR NAME='LNG_Rub'/></td>
+											<td><TMPL_VAR NAME='CR'/></td>
+											<td><TMPL_VAR NAME='come'/></td>
+											<td><TMPL_VAR NAME='spent_come'/> <TMPL_VAR NAME='LNG_Rub'/></td>
+										</tr>
+									</TMPL_LOOP>
+									</tbody>
+								</table>
+								<TMPL_ELSE>
+									<b><TMPL_VAR NAME="LNG_VkEmpty"></b>
+							</TMPL_IF>
+						</form>
+					</div>
+			    </div>
+			</TMPL_IF>
+
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+	$('#init-import-btn').click(function(event) {
+		event.preventDefault();
+		if ($('#import_file').val().length > 0) {
+			$(this).parents('form').submit();
+		}
+	});
+
+	$('#import_file').change(function(event) {
+		var text = $(this).val();
+		
+		text = text.replace(/^.*[\\\/]/, '');
+		if ($(this).val().length > 0) {
+			$('#import-btn').text(text);
+		}
+		else{
+			$('#import-btn').text('Добавить .csv');
+		}
+	});
+
+	$(document).ready(function() {
+		$('.js-example-basic-multiple').select2();
+	});
+
+</script>
+
+<style>
+	.like_link{
+		padding: 0;
+		border: none;
+		font: inherit;
+		color: rgba(31, 181, 172, 1);
+		background-color: transparent;
+		cursor: pointer;
+	}
+	.clr{
+		color: rgba(31, 181, 172, 1);
+	}
+</style>

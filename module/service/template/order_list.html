@@ -1,0 +1,74 @@
+<div class="col-md-12">
+    <section class="box">
+        <div class="content-body">
+
+            <div class="col-md-12 no-padding form-group">
+                <ul class="pagination pagination pull-right">
+                    <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+
+            <TMPL_IF NAME='OrderList'>
+
+                <form method="post" id="item-list">
+                    <table class="table" id="listing">
+                        <thead>
+                        <tr>
+                            <th class="text-nowrap"><TMPL_VAR NAME="LNG_Created" /></th>
+                            <th><TMPL_VAR NAME="LNG_Name" /></th>
+                            <th><TMPL_VAR NAME="LNG_Phone" /></th>
+                            <th><TMPL_VAR NAME="LNG_Email" /></th>
+                            <th><TMPL_VAR NAME='LNG_UserWho'></th>
+							<th><TMPL_VAR NAME='LNG_ClassNumber'></th>
+							<th><TMPL_VAR NAME='LNG_Summ'></th>
+                            <th><TMPL_VAR NAME='LNG_Payment'></th>
+                            <th><TMPL_VAR NAME='LNG_City'></th>
+                            <th><TMPL_VAR NAME="LNG_UTM" /></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <TMPL_LOOP NAME='OrderList'>
+                            <tr>
+                                <td><TMPL_VAR NAME='Created' FORMAT='datetime'></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='UserName' /></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='Phone' /></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='Email' /></td>
+                                <td class="text-nowrap">
+									<TMPL_IF NAME='UserWho' VALUE='parent'>
+										<TMPL_VAR NAME='LNG_UserWhoParent'>
+									<TMPL_ELSEIF NAME='UserWho' VALUE='child'>
+										<TMPL_VAR NAME='LNG_UserWhoChild'>
+									<TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+										<TMPL_VAR NAME='LNG_UserWhoStudent'>
+									</TMPL_IF>
+								</td>
+								<td class="text-nowrap"><TMPL_VAR NAME='ClassNumber'></td>
+								<td class="text-nowrap"><TMPL_VAR NAME='Summ'></td>
+								<td class="text-nowrap">
+									<TMPL_IF NAME='PayDate'>
+										<TMPL_VAR NAME='PayDate' FORMAT='datetime'>
+									</TMPL_ELSE>
+										<TMPL_VAR NAME='LNG_PaymentNo'>
+									</TMPL_IF>
+								</td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='City'></td>
+                                <td class="text-nowrap"><TMPL_VAR NAME='UTM' /></td>
+                            </tr>
+                        </TMPL_LOOP>
+                        </tbody>
+                    </table>
+
+                    <div class="clearfix"></div>
+                    <input type="hidden" name="Page" value="<TMPL_VAR NAME='Page'>" />
+                </form>
+
+            <TMPL_ELSE>
+                <TMPL_VAR NAME='LNG_EmptyList' />
+            </TMPL_IF>
+
+
+        </div>
+    </section>
+</div>

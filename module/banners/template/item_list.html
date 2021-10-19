@@ -1,0 +1,63 @@
+<section class="box">
+    <header class="panel_header">
+        <h2 class="title pull-left">
+            <TMPL_IF NAME='BoxTitle'>
+                <TMPL_VAR NAME='BoxTitle'>
+            <TMPL_ELSE>
+                <TMPL_VAR NAME='PageTitle'>
+            </TMPL_IF>
+        </h2>
+    </header>
+    <div class="content-body">
+        <div class="row">
+            <div class="col-xs-12">
+                <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&BannerID=<TMPL_VAR NAME='ItemListByBannerID'>&ItemID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i>Добавить</a>
+            </div>
+
+            <div class="col-xs-12 top15">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Название</th>
+                            <th>Изображение</th>
+                            <th>Ссылка</th>
+                            <th width="40">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <TMPL_LOOP NAME='ItemList'>
+                        <tr>
+                            <td>
+                                <a class="<TMPL_IF NAME='Active' OP='==' VALUE='N'>text-muted</TMPL_IF>" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ItemID=<TMPL_VAR NAME='ItemID'>">
+                                    <TMPL_VAR NAME='ItemID'>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="<TMPL_IF NAME='Active' OP='==' VALUE='N'>text-muted</TMPL_IF>" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ItemID=<TMPL_VAR NAME='ItemID'>">
+                                    <TMPL_VAR NAME='Name'>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ItemID=<TMPL_VAR NAME='ItemID'>">
+                                    <img src="<TMPL_VAR NAME='ItemImageAdminPath'>" alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="<TMPL_VAR NAME='Link'>"><TMPL_VAR NAME='Link'></a>
+                            </td>
+                            <td>
+                                <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Action=Remove&ItemID=<TMPL_VAR NAME='ItemID'>" onclick="ConfirmHref('<TMPL_VAR NAME='LNG_ConfirmRemoveLink' ESCAPE='js'>','<TMPL_VAR NAME='ItemID' ESCAPE='js'>', this); return false;"><i class="fa fa-close delete"></i></a>
+                            </td>
+                        </tr>
+                    </TMPL_LOOP>
+                    </tbody>
+                </table>
+            </div>
+                
+            <div class="col-md-12 top15">
+                <a class="btn btn-icon" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><i class="fa fa-ban"></i>Назад</a>
+            </div>
+        </div>
+    </div>
+</section>

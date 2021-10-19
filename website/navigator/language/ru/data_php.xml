@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<api-request-sign-incorrect>Неверная подпись запроса</api-request-sign-incorrect>
+	<api-request-id-incorrect>Неверный идентификатор объекта</api-request-id-incorrect>
+	
+	<online-event-webinar>Вебинар</online-event-webinar>
+	<online-event-dod>Дод</online-event-dod>
+	<online-event-public_lesson>Открытый урок</online-event-public_lesson>
+	<exhibition-register-user-name-empty>Не указано имя</exhibition-register-user-name-empty>
+	<exhibition-register-city-empty>Город не найден</exhibition-register-city-empty>
+	<exhibition-register-user-email-empty>Не указан e-mail</exhibition-register-user-email-empty>
+	<exhibition-register-user-email-incorrect>Указан некорректный e-mail</exhibition-register-user-email-incorrect>
+	<exhibition-register-user-who-empty>Вы не указали, кто вы</exhibition-register-user-who-empty>
+	<exhibition-register-user-who-incorrect></exhibition-register-user-who-incorrect>
+	<exhibition-register-user-phone-empty>Не указан номер телефона</exhibition-register-user-phone-empty>
+	<exhibition-register-user-class-name-empty>Не указан номер класса</exhibition-register-user-class-name-empty>
+	<exhibition-register-success>%UserName% успешно зарегистрирован на выставку. Пригласительный билет отправлен на почту</exhibition-register-success>
+	<exhibition-register-registration-id-empty>Не указан номер билета</exhibition-register-registration-id-empty>
+	<exhibition-register-registration-id-incorrect>Некорректный номер билета</exhibition-register-registration-id-incorrect>
+	<exhibition-register-registration-id-exists>Номер билета уже был использован ранее</exhibition-register-registration-id-exists>
+	<AllRooms>Все залы</AllRooms>
+	<exhibition-event-type-experts>ЕГЭ и ОГЭ</exhibition-event-type-experts>
+	<exhibition-event-type-parent>Для родителей</exhibition-event-type-parent>
+	<exhibition-event-type-abroad>Обучение за рубежом</exhibition-event-type-abroad>
+	<exhibition-event-type-prof>Профориентация</exhibition-event-type-prof>
+	<exhibition-event-type-univer>Лекция от вуза</exhibition-event-type-univer>
+	<exhibition-event-type-toelf>English</exhibition-event-type-toelf>
+
+	<open-day-register-user-name-empty>Не указано имя</open-day-register-user-name-empty>
+	<open-day-register-city-empty>Город не найден</open-day-register-city-empty>
+	<open-day-register-user-email-empty>Не указан e-mail</open-day-register-user-email-empty>
+	<open-day-register-user-email-incorrect>Указан некорректный e-mail</open-day-register-user-email-incorrect>
+	<open-day-register-user-who-empty>Вы не указали, кто вы</open-day-register-user-who-empty>
+	<open-day-register-user-phone-empty>Не указан номер телефона</open-day-register-user-phone-empty>
+	<open-day-register-user-class-name-empty>Не указан номер класса</open-day-register-user-class-name-empty>
+	<open-day-register-success>%UserName% успешно зарегистрирован на день открытых дверей. Пригласительный билет отправлен на почту</open-day-register-success>
+	<open-day-register-registration-id-empty>Не указан номер билета</open-day-register-registration-id-empty>
+	<open-day-register-registration-id-incorrect>Некорректный номер билета</open-day-register-registration-id-incorrect>
+	<open-day-register-registration-id-exists>Номер билета уже был использован ранее</open-day-register-registration-id-exists>
+	<open-day-event-type-experts>ЕГЭ и ОГЭ</open-day-event-type-experts>
+	<open-day-event-type-parent>Для родителей</open-day-event-type-parent>
+	<open-day-event-type-abroad>Обучение за рубежом</open-day-event-type-abroad>
+	<open-day-event-type-prof>Профориентация</open-day-event-type-prof>
+	<open-day-event-type-univer>Лекция от вуза</open-day-event-type-univer>
+	<open-day-event-type-toelf>English</open-day-event-type-toelf>
+
+	<file-not-csv>Файл не соответсвует ".csv"</file-not-csv>
+	<file-error>Ошибка загрузки файла</file-error>
+	<file-open-error>Ошибка открытия файла</file-open-error>
+</Root>

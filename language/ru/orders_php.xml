@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<config-details><![CDATA[
+	<h3>Поля для настройки шаблона</h3>
+	<p>Варианты:</p>
+	<ul>
+		<li>
+		"0" - Не будет отображаться на странице
+		</li>
+		<li>
+		"1" - Будет отображаться на странице
+		</li>
+	</ul>
+	]]></config-details>
+
+	<config-TemplateUserClassNumber>
+		Выбор класса в форме (настройка шаблона)
+	</config-TemplateUserClassNumber>
+	<config-TemplateUserWho>
+		Выбор ученик/родитель в форме (настройка шаблона)
+	</config-TemplateUserWho>
+	<config-SendToZapier>
+		Отправлять форму в Zapier
+	</config-SendToZapier>
+	<config-SendToCRM>
+		Отправлять форму в CRM
+	</config-SendToCRM>
+	<config-CampaignGUID>
+		GUID кампании
+	</config-CampaignGUID>
+
+	<module-title>Заявки</module-title>
+	<module-admin-title>Заявки</module-admin-title>
+	<order-pageid-empty>Не указана привязка к странице заявки</order-pageid-empty>
+	<order-name-empty>Не указано имя</order-name-empty>
+	<order-phone-empty>Не указан номер телефона</order-phone-empty>
+	<order-contacttype-empty>Не указан способ связи</order-contacttype-empty>
+	<order-exists>Заявка с таким номером телефона уже поступила ранее</order-exists>
+</Root>

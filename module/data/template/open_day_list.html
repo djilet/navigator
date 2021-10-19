@@ -1,0 +1,94 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'/>
+    <section class="box">
+        <header class="panel_header">
+            <h2 class="title"><TMPL_VAR NAME='LNG_List'></h2>
+        </header>
+        <div class="content-body">
+
+            <form action="<TMPL_VAR NAME='MODULE_URL'>" id="item-list" method="post">
+                <div class="col-md-6 no-padding form-group form-inline">
+                    <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ID=" class="btn btn-success btn-icon right15"><i class="fa fa-plus"></i><TMPL_VAR NAME='LNG_Add'></a>
+                </div>
+                <div class="col-md-6 no-padding form-group">
+                    <ul class="pagination pagination pull-right">
+                        <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+
+                <TMPL_IF NAME='ErrorList'>
+                    <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                </TMPL_IF>
+                <TMPL_IF NAME='MessageList'>
+                    <div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                </TMPL_IF>
+                <TMPL_IF NAME='OpenDayList'>
+                    <p><TMPL_VAR NAME='ListInfo'></p>
+                    <table class="table" id="listing">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th><TMPL_VAR NAME='LNG_Title' /></th>
+                                <TMPL_UNLESS NAME="TemplateWithoutPeriod">
+                                    <th><TMPL_VAR NAME='LNG_Period' /></th>
+                                </TMPL_UNLESS>
+                                <th><TMPL_VAR NAME='LNG_Date' /></th>
+                                <th><TMPL_VAR NAME='LNG_PhoneEmail' /></th>
+                                <th><TMPL_VAR NAME='LNG_Address' /></th>
+                                <TMPL_UNLESS NAME="TemplateWithoutRegistration">
+                                    <th><TMPL_VAR NAME='LNG_DeviceStatusCount' /></th>
+                                </TMPL_UNLESS>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <TMPL_LOOP NAME='OpenDayList'>
+                                <tr>
+                                    <td><TMPL_VAR NAME="ID" /></td>
+                                    <td>
+                                        <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&ID=<TMPL_VAR NAME='ID' />">
+                                            <TMPL_VAR NAME='Title' /> <br>
+                                            <small><TMPL_VAR NAME='Type' /></small>
+                                        </a>
+                                    </td>
+                                    <TMPL_UNLESS NAME="TemplateWithoutPeriod">
+                                        <td><TMPL_VAR NAME='DateFrom' FORMAT="date" /> - <TMPL_VAR NAME='DateTo' FORMAT="date" /></td>
+                                    </TMPL_UNLESS>
+                                    <td><TMPL_VAR NAME='Date' FORMAT="date" /></td>
+                                    <td>
+                                        <TMPL_VAR NAME='Phone' /> <TMPL_IF NAME="Phone"><TMPL_IF NAME="Email">, </TMPL_IF></TMPL_IF> 
+                                        <TMPL_VAR NAME='Email' />
+                                    </td>
+                                    <td>
+                                        <TMPL_VAR NAME='Address'/>
+                                    </td>
+                                    <TMPL_UNLESS NAME="TemplateWithoutRegistration">
+                                        <td>
+                                            <TMPL_VAR NAME='DeviceStatusCount'/>
+                                        </td>
+                                    </TMPL_UNLESS>
+                                    <td>
+                                        <a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&Do=Remove&ListIDs[]=<TMPL_VAR NAME='ID'>" title="<TMPL_VAR NAME='LNG_Remove'>" onclick="ConfirmRemove('<TMPL_VAR NAME='Title' ESCAPE='js'>', this); return false;"><i class="fa fa-close delete"></i></a>
+                                    </td>
+                                </tr>
+                            </TMPL_LOOP>
+                        </tbody>
+                    </table>
+                </TMPL_IF>
+            </form>
+            
+        </div>
+    </section>
+</div>
+
+<script>
+    function ConfirmRemove(title, a) {
+        var msg = '<TMPL_VAR NAME='LNG_ConfirmRemove' ESCAPE='js'>';
+        msg = msg.replace(/%Title%/g, title);
+        ModalConfirm(msg, function(){
+            window.location.href = $(a).attr('href');
+        })
+    }
+</script>

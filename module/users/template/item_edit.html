@@ -1,0 +1,163 @@
+<div class="col-md-12">
+    <section class="box">
+        <header class="panel_header">
+            <h2 class="title pull-left"><TMPL_VAR NAME='LNG_EditItem'></h2>
+        </header>
+        <div class="content-body">
+
+            <TMPL_IF NAME='ErrorList'>
+                <div class="col-md-12">
+                    <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                </div>
+            </TMPL_IF>
+
+            <form method="post">
+                <div class="row">
+
+                    <div class="col-md-7">
+                        <section class="box">
+                            <header class="panel_header">
+                                <h2 class="title pull-left"><TMPL_VAR NAME='LNG_PersonalData'/></h2>
+                            </header>
+                            <div class="content-body">
+                                <p>
+                                    <label><TMPL_VAR NAME="LNG_UserName" />:</label> <br>
+                                    <input type="text" class="form-control" name="UserName" value="<TMPL_VAR NAME='UserName' />">
+                                </p>
+                                <p>
+                                    <label><TMPL_VAR NAME="LNG_UserEmail" />:</label> <br>
+                                    <input type="text" class="form-control" name="UserEmail" value="<TMPL_VAR NAME='UserEmail' />">
+                                </p>
+                                <p>
+                                    <label><TMPL_VAR NAME="LNG_UserPhone" />:</label> <br>
+                                    <input type="text" class="form-control" name="UserPhone" value="<TMPL_VAR NAME='UserPhone' />">
+                                </p>
+                                <p>
+                                    <label><TMPL_VAR NAME="LNG_UserWho" />:</label> <br>
+                                    <select name="UserWho" id="UserWho" class="form-control">
+                                        <option value="child" <TMPL_IF NAME='UserWho' VALUE="child"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_UserWhoChild" /></option>
+                                        <option value="parent" <TMPL_IF NAME='UserWho' VALUE="parent"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_UserWhoParent" /></option>
+                                        <option value="student" <TMPL_IF NAME='UserWho' VALUE="student"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_UserWhoStudent" /></option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <label><TMPL_VAR NAME="LNG_ClassNumber" />:</label> <br>
+                                    <input type="text" class="form-control" name="ClassNumber" value="<TMPL_VAR NAME='ClassNumber' />">
+                                </p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="col-md-5">
+                        <section class="box">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Статусы</h2>
+                            </header>
+                            <div class="content-body">
+                                <p>
+                                    <label for="ChatStatus"><TMPL_VAR NAME='LNG_ChatStatus'>:</label><br />
+                                    <select name="ChatStatus" id="ChatStatus" class="form-control">
+                                        <option value="simple" <TMPL_IF NAME='ChatStatus' VALUE="simple"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_ChatStatusSimple" /></option>
+                                        <option value="moderator" <TMPL_IF NAME='ChatStatus' VALUE="moderator"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_ChatStatusModerator" /></option>
+                                        <option value="locked" <TMPL_IF NAME='ChatStatus' VALUE="locked"> selected</TMPL_IF>><TMPL_VAR NAME="LNG_ChatStatusLocked" /></option>
+                                    </select>
+                                </p>
+                                <div class="form-group form-inline float-left">
+                                    <label for="CommentsStatus">Комментарии</label><br />
+                                    <input type="checkbox" name="CommentsStatus" id="CommentsStatus" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='CommentsStatus' VALUE='Y'>checked<TMPL_ELSEIF NAME='CommentsStatus' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+                                </div>
+                                <div class="form-group form-inline float-left">
+                                    <label for="EgeStatus">ЕГЭ у профессий</label><br />
+                                    <input type="checkbox" name="EgeStatus" id="EgeStatus" value="Y" class="iswitch iswitch-md iswitch-primary" <TMPL_IF NAME='EgeStatus' VALUE='Y'>checked<TMPL_ELSEIF NAME='EgeStatus' VALUE='N'><TMPL_ELSE></TMPL_IF> />
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <TMPL_IF NAME="SocialAuthList">
+                        <div class="col-md-5">
+                            <section class="box">
+                                <header class="panel_header">
+                                    <h2 class="title pull-left">Социальные сети</h2>
+                                </header>
+                                <div class="content-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Сеть</th>
+                                                <th>ID</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <TMPL_LOOP NAME="SocialAuthList">
+                                                <tr>
+                                                    <TMPL_IF NAME='SocialType' OP='==' VALUE='vk'>
+                                                        <td>
+                                                            <i class="fa fa-vk fa-3x"></i>
+                                                        </td>
+                                                        <td>
+                                                            <a href="https://vk.com/id<TMPL_VAR NAME='SocialID' />">
+                                                                <TMPL_VAR NAME='SocialID'>
+                                                            </a>
+                                                        </td>
+                                                    <TMPL_ELSEIF NAME='SocialType' OP='==' VALUE='fb'>
+                                                        <td>
+                                                            <i class="fa fa-facebook fa-3x"></i>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                    </TMPL_IF>
+                                                </tr>
+                                            </TMPL_LOOP>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </TMPL_IF>
+
+                    <TMPL_IF NAME="DevicesList">
+                        <div class="col-md-12">
+                            <section class="box">
+                                <header class="panel_header">
+                                    <h2 class="title pull-left"><TMPL_VAR NAME='LNG_DevicesList'/></h2>
+                                </header>
+                                <div class="content-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th><TMPL_VAR NAME="LNG_DeviceID" /></th>
+                                                <th><TMPL_VAR NAME="LNG_SocialType" /></th>
+                                                <th><TMPL_VAR NAME="LNG_Created" /></th>
+                                                <th><TMPL_VAR NAME="LNG_Client" /></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <TMPL_LOOP NAME="DevicesList">
+                                                <tr>
+                                                    <td><TMPL_VAR NAME="DeviceID" /></td>
+                                                    <td><TMPL_VAR NAME="SocialType" /></td>
+                                                    <td><TMPL_VAR NAME="Created" /></td>
+                                                    <td><TMPL_VAR NAME="Client" /></td>
+                                                </tr>
+                                            </TMPL_LOOP>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </section>
+                        </div>
+                    </TMPL_IF>
+
+                </div>
+
+                <div class="buttons">
+                    <input type="hidden" name="UserID" value="<TMPL_VAR NAME='UserID' />">
+                    <input type="submit" name="Save" value="<TMPL_VAR NAME='LNG_Save' />" class="btn btn-primary">
+                    <a href="<TMPL_VAR NAME='BaseURL' />" class="btn"><TMPL_VAR NAME='LNG_Cancel' /></a>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+</div>

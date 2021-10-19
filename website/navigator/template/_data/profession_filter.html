@@ -1,0 +1,130 @@
+<section class="checkbox-filter-block industry">
+		<div class="title"><span>Сфера деятельности</span></div>
+		<div class="checkbox-filter">
+			<TMPL_LOOP NAME="IndustryList">
+				<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+					<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="IndustryTitle" /></a>
+					<input type="hidden" name="ProfessionFilter[Industry][]" value="<TMPL_VAR NAME='IndustryID' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+				</div>
+			</TMPL_LOOP>
+		</div>
+		<a href="#" class="checkbox-filter-more">Показать все</a>
+	</section>
+
+	<section class="checkbox-filter-block who-work">
+		<div class="title"><span>С чем хочу работать</span></div>
+		<div class="checkbox-filter multiple">
+			<TMPL_LOOP NAME="WhoWorkList">
+				<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+					<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Title" /></a>
+					<input type="hidden" name="ProfessionFilter[WhoWork][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+					<TMPL_IF NAME='ChildList1'>
+						<div class="checkbox-filter multiple sub-list"<TMPL_IF NAME='Selected'> style="display:block;"</TMPL_IF>>
+							<TMPL_LOOP NAME='ChildList1'>
+								<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>">
+									<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Title" /></a>
+									<input type="hidden" name="ProfessionFilter[WhoWork][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+
+									<TMPL_IF NAME='ChildList2'>
+										<div class="checkbox-filter multiple sub-list"<TMPL_IF NAME='Selected'> style="display:block;"</TMPL_IF>>
+											<TMPL_LOOP NAME='ChildList2'>
+												<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>">
+													<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Title" /></a>
+													<input type="hidden" name="ProfessionFilter[WhoWork][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+												</div>
+											</TMPL_LOOP>
+										</div>
+									</TMPL_IF>
+								</div>
+							</TMPL_LOOP>
+						</div>
+					</TMPL_IF>
+				</div>
+			</TMPL_LOOP>
+		</div>
+	</section>
+
+	<section class="checkbox-filter-block want-work">
+		<div class="title"><span>Что хочу делать</span></div>
+		<div class="checkbox-filter multiple">
+			<TMPL_LOOP NAME="WantWorkList">
+				<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+					<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Title" /></a>
+					<input type="hidden" name="ProfessionFilter[WantWork][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+					<TMPL_IF NAME='ChildList1'>
+						<div class="checkbox-filter multiple sub-list"<TMPL_IF NAME='Selected'> style="display:block;"</TMPL_IF>>
+							<TMPL_LOOP NAME='ChildList1'>
+								<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>">
+									<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Title" /></a>
+									<input type="hidden" name="ProfessionFilter[WantWork][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+
+									<TMPL_IF NAME='ChildList2'>
+										<div class="checkbox-filter multiple sub-list"<TMPL_IF NAME='Selected'> style="display:block;"</TMPL_IF>>
+											<TMPL_LOOP NAME='ChildList2'>
+												<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>">
+													<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Title" /></a>
+													<input type="hidden" name="ProfessionFilter[WantWork][]" value="<TMPL_VAR NAME='Id' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+												</div>
+											</TMPL_LOOP>
+										</div>
+									</TMPL_IF>
+								</div>
+							</TMPL_LOOP>
+						</div>
+					</TMPL_IF>
+				</div>
+			</TMPL_LOOP>
+		</div>
+	</section>
+	
+	<!-- 
+	<TMPL_IF NAME="WageLevelList">
+		<section class="checkbox-filter-block">
+			<div class="title"><span>Зарплата</div>
+			<div class="checkbox-filter">
+				<TMPL_LOOP NAME="WageLevelList">
+					<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>">
+						<a href="#"> <span class="checkmark"></span>От <TMPL_VAR NAME="WageLevel" FORMAT='price' /></a>
+						<input type="hidden" name="ProfessionFilter[WageLevel]" value="<TMPL_VAR NAME='WageLevel' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+					</div>
+				</TMPL_LOOP>
+			</div>
+		</section>
+	</TMPL_IF> -->
+
+	<TMPL_IF NAME="ScheduleList">
+		<section class="checkbox-filter-block schedule">
+			<div class="title"><span>График работы</span></div>
+			<div class="checkbox-filter">
+				<TMPL_LOOP NAME="ScheduleList">
+					<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>">
+						<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="Schedule" /></a>
+						<input type="hidden" name="ProfessionFilter[Schedule][]" value="<TMPL_VAR NAME='Schedule' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+					</div>
+				</TMPL_LOOP>
+			</div>
+		</section>
+	</TMPL_IF>
+
+	<section class="checkbox-filter-block operation">
+		<div class="title"><span>Характер труда</span></div>
+		<div class="checkbox-filter">
+			<TMPL_LOOP NAME="OperationList">
+				<div class="checkbox<TMPL_IF NAME='Selected'> active</TMPL_IF>" data-sort="<TMPL_VAR NAME='__ROWNUM__'>">
+					<a href="#"> <span class="checkmark"></span><TMPL_VAR NAME="OperationTitle" /></a>
+					<input type="hidden" name="ProfessionFilter[Operation][]" value="<TMPL_VAR NAME='OperationID' />" <TMPL_UNLESS NAME='Selected'> disabled</TMPL_UNLESS>>
+				</div>
+			</TMPL_LOOP>
+		</div>
+	</section>
+
+	<input type="hidden" class="text"  name="TextSearch" value="<TMPL_VAR NAME='ProfessionFilterText'>">
+	<input type="hidden" class="page" name="ProfessionPager" value="<TMPL_VAR NAME='ProfessionPager'>">
+	<input type="hidden" name="Action" value="loadProfession">
+	<input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID' />">
+	<TMPL_IF NAME='ProfessionLike'>
+		<input type="hidden" name="ProfessionLike" value="<TMPL_VAR NAME='ProfessionLike'/>">
+	</TMPL_IF>
+	<TMPL_IF NAME='ShowTest'>
+		<input type="hidden" name="ShowTest" value="<TMPL_VAR NAME='ShowTest'/>">
+	</TMPL_IF>

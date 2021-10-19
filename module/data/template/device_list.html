@@ -1,0 +1,83 @@
+<div class="col-md-12 top15">
+	<TMPL_INCLUDE FILE='_navigation.html'>
+	<section class="box">
+		<header class="panel_header">
+			<h2 class="title"><TMPL_VAR NAME='LNG_DeviceList'></h2>
+		</header>
+		<div class="content-body">
+			<form action="<TMPL_VAR NAME='MODULE_URL'>" method="post" autocomplete="off">
+				<div class="row">
+					<div class="col-md-2 col-sm-3">
+						<div class="form-group">
+							<label class="form-label"><TMPL_VAR NAME='LNG_DeviceID'></label><br />
+							<input type="text" class="form-control" name="FilterDeviceID" value="<TMPL_VAR NAME='FilterDeviceID'>" />
+						</div>
+					</div>
+					<div class="col-md-2 col-sm-3">
+						<div class="form-group">
+							<label class="form-label"><TMPL_VAR NAME='LNG_Client'></label><br />
+							<select name="FilterClient" class="form-control">
+								<option value=""><TMPL_VAR NAME='LNG_All'></option>
+								<option value="android" <TMPL_IF NAME='FilterClient' VALUE='android'>selected</TMPL_IF>>android</option>
+								<option value="ios" <TMPL_IF NAME='FilterClient' VALUE='ios'>selected</TMPL_IF>>ios</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-2 col-sm-3">
+						<div class="form-group">
+							<label class="form-label"><TMPL_VAR NAME='LNG_Output'></label><br />
+							<select name="Output" class="form-control">
+								<option value="html"><TMPL_VAR NAME='LNG_OutputHTML'></option>
+								<option value="csv"><TMPL_VAR NAME='LNG_OutputCSV'></option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-2 col-sm-3">
+						<label class="form-label">&nbsp;</label><br />
+						<button type="submit" class="btn btn-primary"><TMPL_VAR NAME='LNG_Show'></button>
+					</div>
+				</div>
+				<TMPL_VAR NAME='ParamsForFilter' ESCAPE='none'>
+			</form>
+			<TMPL_IF NAME='Paging'>
+				<div class="col-md-12 no-padding form-group">
+					<ul class="pagination pagination pull-right">
+						<TMPL_VAR NAME='Paging' ESCAPE='none'>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</TMPL_IF>
+			<TMPL_IF NAME='ErrorList'>
+				<div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+			</TMPL_IF>
+			<TMPL_IF NAME='MessageList'>
+				<div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+			</TMPL_IF>
+			<TMPL_IF NAME='DeviceList'>
+				<p><TMPL_VAR NAME='ListInfo'></p>
+				<table class="table" id="listing">
+					<thead>
+						<tr>
+							<th><TMPL_VAR NAME='LNG_DeviceID'></th>
+							<th><TMPL_VAR NAME='LNG_Client'></th>
+							<th><TMPL_VAR NAME='LNG_Created'></th>
+						</tr>
+					</thead>
+					<tbody>
+						<TMPL_LOOP NAME='DeviceList'>
+							<tr>
+								<td>
+									<a href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>&DeviceID=<TMPL_VAR NAME='DeviceID'>"><TMPL_VAR NAME='DeviceID'></a>
+								</td>
+								<td><TMPL_VAR NAME='Client'></td>
+								<td><TMPL_VAR NAME='Created' FORMAT='datetime'></td>
+							</tr>
+						</TMPL_LOOP>
+					</tbody>
+				</table>
+			<TMPL_ELSE>
+				<div class="alert alert-success"><TMPL_VAR NAME='LNG_Empty'></div>
+			</TMPL_IF>
+		</div>
+	</section>
+</div>

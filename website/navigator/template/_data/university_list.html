@@ -1,0 +1,104 @@
+<TMPL_IF NAME='UniversityList'>
+	<TMPL_LOOP NAME='UniversityList'>
+		<div class="university-item">
+			<div class="row">
+				<div class="col-xs-3">
+					<img src="<TMPL_IF NAME='ItemImagePreviewPath'><TMPL_VAR NAME='ItemImagePreviewPath'><TMPL_ELSE><TMPL_VAR NAME='PATH2MAIN'>img/univer-stub.png</TMPL_IF>" />
+				</div>
+				<div class="col-xs-9 head">
+					<span class="type"><TMPL_VAR NAME="Address" /></span><br/>
+					<a class="title<TMPL_IF NAME='Opened' VALUE='N'> closed-alert</TMPL_IF>" href="<TMPL_VAR NAME='UniversityURL' />" target="_blank"><TMPL_VAR NAME="Title" /></a>
+				</div>
+			</div>
+			<table class="speciality-list">
+				<thead>
+				<tr class="information">
+					<th width="40%" class="name">Направление</th>
+					<th width="25%">Предметы</th>
+					<th width="15%">Бюджет,б</th>
+					<th width="15%">Платно,б</th>
+					<th width="15%" align="right">Стоимость</th>
+				</tr>
+				</thead>
+				<tbody>
+				<TMPL_LOOP NAME='SpecialityList'>
+					<tr class="hidden item">
+						<td class="name"><a href="<TMPL_VAR NAME='SpecialityURL'>" class="stitle<TMPL_IF NAME='Opened' VALUE='N'> closed-alert</TMPL_IF>" target="_blank"><TMPL_VAR NAME='Title'></a>
+						</td>
+
+						<td class="item-information">
+							<!-- <span class="name">Предметы</span> -->
+							<span class="name">Бюджет,б</span>
+							<span class="name">Платно,б</span>
+							<span class="name">Стоимость</span>
+						</td>
+
+						<td class="subject">
+							<TMPL_LOOP NAME='SubjectList'>
+								<TMPL_IF NAME='IsProfile' VALUE='Y'>
+									<span class="bold"><TMPL_VAR NAME='Title'></span>&nbsp;
+									<TMPL_ELSEIF NAME='Tooltip'>
+										<span class="dashed" data-toggle="tooltip" data-placement="bottom" title="<TMPL_VAR NAME='Tooltip'>"><TMPL_VAR NAME='Title'></span>&nbsp;
+										<TMPL_ELSE>
+											<TMPL_VAR NAME='Title'>&nbsp;
+								</TMPL_IF>
+							</TMPL_LOOP>
+						</td>
+
+						<TMPL_IF NAME='BudgetMinNext'>
+							<td>
+								<TMPL_VAR NAME='BudgetMinNext'>
+							</td>
+							<td>
+								<TMPL_VAR NAME='PaidScopeNext'>
+							</td>
+							<td align="right">
+								<TMPL_VAR NAME='PaidPriceNext' FORMAT='price'>
+							</td>
+
+							<TMPL_ELSEIF NAME='BudgetMin'>
+								<td>
+									<TMPL_VAR NAME='BudgetMin'>
+								</td>
+								<td>
+									<TMPL_VAR NAME='PaidScope'>
+								</td>
+								<td align="right">
+									<TMPL_VAR NAME='PaidPrice' FORMAT='price'>
+								</td>
+
+								<TMPL_ELSEIF NAME='BudgetMinLast'>
+									<td>
+										<TMPL_VAR NAME='BudgetMinLast'>
+									</td>
+									<td>
+										<TMPL_VAR NAME='PaidScopeLast'>
+									</td>
+									<td align="right">
+										<TMPL_VAR NAME='PaidPriceLast' FORMAT='price'>
+									</td>
+						</TMPL_IF>
+					</tr>
+				</TMPL_LOOP>
+				</tbody>
+			</table>
+			<a class="more" href="#"></a>
+		</div>
+	</TMPL_LOOP>
+
+	<TMPL_IF NAME='UniversityPager'>
+		<nav aria-label="<TMPL_VAR NAME='LNG_Paging' />">
+			<ul class="pagination ajax-paging" data-form="universityFilterForm">
+				<TMPL_LOOP NAME='UniversityPager'>
+					<TMPL_IF NAME='First'>
+						<TMPL_ELSEIF NAME='Last'>
+							<TMPL_ELSE>
+								<li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>><a href="<TMPL_VAR NAME='URL'>" data-page="<TMPL_VAR NAME='Page'>"><TMPL_VAR NAME='Title'></a></li>
+					</TMPL_IF>
+				</TMPL_LOOP>
+			</ul>
+		</nav>
+	</TMPL_IF>
+<TMPL_ELSE>
+	<h2 class="text-center">По вашему запросу ничего не найдено. Измените ваши фильтры</h2>
+</TMPL_IF>

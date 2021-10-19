@@ -1,0 +1,47 @@
+<a href="https://www.facebook.com/sharer.php?u=<TMPL_VAR NAME='ItemURL'>" class="item fb" target="_blank" data-share-item="Facebook">
+	<div class="image">
+		<img src="<TMPL_VAR NAME='PATH2MAIN'>/img/icons/facebook.svg" alt="">
+	</div>
+
+	<TMPL_IF NAME='ShareItemFacebook'>
+		<div class="counter">
+			<TMPL_VAR NAME='ShareItemFacebook'>
+		</div>
+	</TMPL_IF>
+</a>
+
+<a href="https://telegram.me/share/url?url=<TMPL_VAR NAME='ItemURL'>" class="item tg" target="_blank" data-share-item="Telegram">
+	<div class="image">
+		<img src="<TMPL_VAR NAME='PATH2MAIN'>/img/icons/telegram.svg" alt="">
+	</div>
+
+	<TMPL_IF NAME='ShareItemTelegram'>
+		<div class="counter">
+			<TMPL_VAR NAME='ShareItemTelegram'>
+		</div>
+	</TMPL_IF>
+</a>
+
+<a href="https://vk.com/share.php?url=<TMPL_VAR NAME='ItemURL'>" class="item vk" target="_blank" data-share-item="Vk">
+	<div class="image">
+		<img src="<TMPL_VAR NAME='PATH2MAIN'>/img/icons/new-vk.svg" alt="">
+	</div>
+
+	<TMPL_IF NAME='ShareItemVk'>
+		<div class="counter">
+			<TMPL_VAR NAME='ShareItemVk'>
+		</div>
+	</TMPL_IF>
+</a>
+
+<a href="whatsapp://send?text=<TMPL_VAR NAME='ItemURL'>" class="item ws" target="_blank" data-share-item="Whatsapp">
+	<div class="image">
+		<img src="<TMPL_VAR NAME='PATH2MAIN'>/img/icons/whatsapp.svg" alt="">
+	</div>
+
+	<TMPL_IF NAME='ShareItemWhatsapp'>
+		<div class="counter">
+			<TMPL_VAR NAME='ShareItemWhatsapp'>
+		</div>
+	</TMPL_IF>
+</a>

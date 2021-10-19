@@ -1,0 +1,151 @@
+<div class="modal fade sing-in-form" id="modal-checkin" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <a href="#" class="modal-close-btn"></a>
+        <div class="modal-dialog-wrap">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <TMPL_IF NAME='InsideModule' VALUE='basetest'>
+                            <div class="col-md-7">
+                                <div class="modal-information">
+                                    <TMPL_INCLUDE NAME="forms-tmpl/interactive-logo.html"/>
+                                    <TMPL_INCLUDE NAME="forms-tmpl/sing-up-text.html"/>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                        <TMPL_ELSE>
+                            <div class="col-md-5 col-center">
+                        </TMPL_IF>
+                            <!-- <div id="carousel-modal" class="carousel slide carousel-modal" data-ride="carousel">
+
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-modal" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-modal" data-slide-to="1"></li>
+                                    <li data-target="#carousel-modal" data-slide-to="2"></li>
+                                    <li data-target="#carousel-modal" data-slide-to="3"></li>
+                                </ol>
+
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide1" ESCAPE="none" /></div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide2" ESCAPE="none" /></div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide3" ESCAPE="none" /></div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide4" ESCAPE="none" /></div>
+                                    </div>
+                                </div>
+
+                                <a class="left carousel-control" href="#carousel-modal" role="button" data-slide="prev">
+                                    <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/prev.svg" alt=" ">
+                                    <span class="sr-only">Предыдущий</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-modal" role="button" data-slide="next">
+                                    <img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/next.svg" alt=" ">
+                                    <span class="sr-only">Следующий</span>
+                                </a>
+                            </div> --><!-- End carousel -->
+                            <div class="form sign-in">
+                                <div class="title color-gray extra-bold text-uppercase">
+                                    Регистрация
+                                </div>
+
+                                <div class="modal__social">
+                                    <p class="semi-bold">В 1 клик через соцсети</p>
+                                    <ul>
+                                        <li>
+                                            <a class="modal__social-vk" href="<TMPL_VAR NAME='PROJECT_PATH' />profile/auth/vk/?redirect_url=<TMPL_VAR NAME='FullPageURL'>">
+                                                <img class="image" src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/vk.svg" alt="">
+                                                <span class="title">вконтакте</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="modal__social-fb" href="<TMPL_VAR NAME='PROJECT_PATH' />profile/auth/fb/?redirect_url=<TMPL_VAR NAME='FullPageURL'>">
+                                                <img class="image" src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/fb.svg" alt="">
+                                                <span class="title">facebook</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <p class="semi-bold">...ну или вручную</p>
+                                <form action="<TMPL_VAR NAME='PROJECT_PATH' />module/users/ajax_public.php" method="post" autocomplete="off" id="checkin-form">
+                                    <div class="form-group">
+                                        <input type="text" name="UserName" required class="form-control" id="formName" value="">
+                                        <label for="formName">Имя и фамилия</label>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <input type="text" name="UserSurname" required class="form-control" id="formSurname" value="">
+                                        <label for="formSurname">Фамилия</label>
+                                    </div> -->
+                                    <div class="form-group">
+                                        <input type="text" name="Phone" required class="form-control form--phone" id="formPhone">
+                                        <label for="formPhone">Телефон</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="Email" required class="form-control" id="formEmail">
+                                        <label for="formEmail">Электропочта</label>
+                                    </div>
+                                    <div class="form-group custom-select">
+                                        <select class="form-control" id="formWho" name="WhoAmI">
+                                            <option value="child">Я ученик</option>
+                                            <option value="parent">Я родитель</option>
+                                            <option value="student">Я студент</option>
+                                        </select>
+                                        <label for="formWho">Кто вы?</label>
+                                    </div>
+                                    <div class="form-group" id="formClass-group">
+                                        <input type="number" name="ClassNumber" required class="form-control" min="1" max="11" id="formClass">
+                                        <label for="formClass">В каком вы классе?</label>
+                                    </div>
+                                    <div class="form-group" id="formUniversity-group" style="display: none;">
+                                        <input type="text" name="University" required class="form-control">
+                                        <label for="formClass">Вуз</label>
+                                    </div>
+                                    <div class="form-group" id="formCourse-group" style="display: none;">
+                                        <input type="number" name="CourseNumber" required class="form-control" min="1" max="6">
+                                        <label for="formClass">Курс</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="password" name="Pass" required class="form-control" id="formPassword">
+                                        <label for="formPassword">Пароль</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="PassRepeat" required class="form-control" id="formPassword2">
+                                        <label for="formPassword2">Повторите пароль</label>
+                                    </div>
+
+                                    <span class="btn main extra-bold submit-btn" id="register-btn">Зарегистрироваться</span>
+
+                                    <div class="form-group licence-block">
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="form-control" name="Rules" checked="checked">
+                                            <div class="checkmark color-gray">Я принимаю правила сервиса и даю согласие на обработку данных</div>
+                                        </label>
+
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="form-control" name="Licence" checked="checked">
+                                            <div class="checkmark color-gray">Я согласен получать важную информацию про ВУЗы, профессии и мероприятия</div>
+                                        </label>
+                                    </div>
+
+                                    <input type="hidden" name="Action" value="Registration">
+                                    <input type="hidden" name="RequirePassword" value="true">
+                                </form>
+
+                                <div class="navigate">
+                                    <a class="semi-bold link-btn icon arrow-right" id="login-btn" data-dismiss="modal" data-toggle="modal" data-target="#modal-signin" href="" data-redirect-default="<TMPL_VAR NAME='FullPageURL'>">У меня уже есть аккаунт</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

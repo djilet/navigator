@@ -1,0 +1,62 @@
+<table class="table table--spec">
+    <thead>
+    <tr>
+        <th><TMPL_VAR NAME="LNG_Speciality" /></th>
+        <th><TMPL_VAR NAME="LNG_PassingScore" /></th>
+        <th><TMPL_VAR NAME="LNG_BudgetPlaces" /></th>
+        <th><TMPL_VAR NAME="LNG_CostOfEducation" /></th>
+    </tr>
+    </thead>
+    <tbody>
+    <TMPL_LOOP NAME="SpecialityList">
+        <tr>
+            <td class="high-school">
+                <span><TMPL_VAR NAME="DirectionTitle" /></span>
+                <a href="<TMPL_VAR NAME='SpecialityURL' />">
+                    <TMPL_VAR NAME="Title" />
+                </a>
+                <span><TMPL_VAR NAME="UniversityTitle" /></span>
+            </td>
+            <td>
+                <TMPL_IF NAME="Budget2Level">
+                    <span class="scoring">
+                        <TMPL_VAR NAME="Budget2Level" FORMAT="score" />
+                    </span>
+                </TMPL_IF>
+            </td>
+            <td>
+                <TMPL_IF NAME="BudgetNext">
+                    <span class="places">
+                        <TMPL_VAR NAME="BudgetNext" />
+                    </span>
+                <TMPL_ELSEIF NAME="Students">
+                	<span class="places">
+                        <TMPL_VAR NAME="Students" />
+                    </span>
+                </TMPL_IF>
+            </td>
+            <td>
+                <TMPL_IF NAME="Price">
+                    <span class="price">
+                        от <TMPL_VAR NAME="Price" FORMAT="price" />
+                    </span>
+                </TMPL_IF>
+            </td>
+        </tr>
+    </TMPL_LOOP>
+    </tbody>
+</table>
+
+<TMPL_IF NAME='SpecialityPager'>
+<nav aria-label="<TMPL_VAR NAME='LNG_Paging' />">
+    <ul class="pagination ajax-paging" data-form="specialityFilterForm">
+    	<TMPL_LOOP NAME='SpecialityPager'>
+    	<TMPL_IF NAME='First'>
+    	<TMPL_ELSEIF NAME='Last'>	
+    	<TMPL_ELSE>	
+    	<li<TMPL_IF NAME='Selected'> class="active"</TMPL_IF>><a href="<TMPL_VAR NAME='URL'>" data-page="<TMPL_VAR NAME='Page'>"><TMPL_VAR NAME='Title'></a></li>
+    	</TMPL_IF>
+    	</TMPL_LOOP>
+    </ul>
+</nav>
+</TMPL_IF>

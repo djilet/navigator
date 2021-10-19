@@ -1,0 +1,107 @@
+<TMPL_UNLESS NAME='Ajax'>
+<div class="content-aside marathon">
+	<div class="container">
+		<div class="row">
+</TMPL_UNLESS>
+
+			<div class="marathon">
+				<div class="marathon-block quiz-block max-width info-block">
+					<div class="status-bar-wrap full center info">
+						<div class="status-bar">
+							<ul class="stages-list horizontal center numeric">
+								<TMPL_LOOP NAME='TaskList'>
+									<li class="item <TMPL_IF NAME='Current'>active<TMPL_ELSEIF NAME='Complete'><TMPL_ELSE>disabled</TMPL_IF>">
+										<TMPL_IF NAME='Complete'>
+											<a href="#" class="change-user-info-btn" data-info-item="<TMPL_VAR NAME='Name'>"><span></span></a>
+										<TMPL_ELSEIF NAME='Current'>
+											<a href="#" class="change-user-info-btn" data-info-item="<TMPL_VAR NAME='Name'>"><span></span></a>
+										<TMPL_ELSE>
+											<span></span>
+										</TMPL_IF>
+									</li>
+								</TMPL_LOOP>
+							</ul>
+						</div>
+					</div>
+					<div class="quiz">
+						<div class="title center">
+							<h2>
+								<TMPL_IF NAME='Title'>
+									<TMPL_VAR NAME='Title'>
+								</TMPL_IF>
+							</h2>
+						</div>
+
+						<div class="description text-center">
+						
+							<TMPL_IF NAME='ItemName' VALUE='Industry'>
+								<TMPL_VAR NAME='LNG_Industry'>
+							</TMPL_IF>
+							<TMPL_IF NAME='ItemName' VALUE='Region'>
+								<TMPL_VAR NAME='LNG_Region'>
+							</TMPL_IF>
+							<TMPL_IF NAME='ItemName' VALUE='Subject'>
+								<TMPL_VAR NAME='LNG_Subject'>
+							</TMPL_IF>
+							<TMPL_IF NAME='ItemName' VALUE='University'>
+								<TMPL_VAR NAME='LNG_University'>
+							</TMPL_IF>
+							<TMPL_IF NAME='ItemName' VALUE='Welcome'>
+								<TMPL_VAR NAME='LNG_Welcome' ESCAPE='html'>
+							</TMPL_IF>
+						
+						</div>
+
+						<div class="content">
+							<form action="" method="POST" class="answer-form">
+								<TMPL_IF  NAME='Type' OP='==' VALUE='Checkbox'>
+									<TMPL_INCLUDE NAME='/marathon-tmpl/checkbox_list.html'>
+								</TMPL_IF>
+								<TMPL_IF  NAME='Type' OP='==' VALUE='SearchList'>
+									<TMPL_INCLUDE NAME='/marathon-tmpl/search_list.html'>
+								</TMPL_IF>
+								<TMPL_IF  NAME='Type' OP='==' VALUE='Text'>
+									<input type="hidden" name="skip" value="1">
+								</TMPL_IF>
+								<input type="hidden" name="ItemName" value="<TMPL_VAR NAME='ItemName'>">
+							<form>
+						</div>
+
+						<div class="navigation no-border">
+							<TMPL_IF NAME='CanSkip'>
+								<div class="left-col for-list">
+									<a href="?" id="skip-answer-btn" class="sub-title blue-text prev">Пропустить</a>
+								</div>
+								<div class="right-col">
+									<a href="#" id="save-answer-btn" class="btn black">
+										<TMPL_IF NAME='LastInfo'>
+											Готово
+										<TMPL_ELSEIF NAME='ItemName' VALUE='Welcome'>
+											Начать марафон
+										</TMPL_ELSE>
+											Далее
+										</TMPL_IF>
+									</a>
+								</div>
+							<TMPL_ELSE>
+								<a href="#" id="save-answer-btn" class="btn black half">
+									<TMPL_IF NAME='LastInfo'>
+										Готово
+									<TMPL_ELSEIF NAME='ItemName' VALUE='Welcome'>
+										Начать марафон
+									</TMPL_ELSE>
+										Далее
+									</TMPL_IF>
+								</a>
+							</TMPL_IF>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+<TMPL_UNLESS NAME='Ajax'>
+		</div>
+	</div>
+</div>
+</TMPL_UNLESS>

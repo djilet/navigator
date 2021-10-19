@@ -1,0 +1,36 @@
+<!-- Tab panes -->
+<TMPL_LOOP NAME='OnlineEventList'>
+    <div>
+        <TMPL_LOOP NAME='Children'>
+            <div class="date-tablist__event">
+                <span class="date-tablist__date text-center">
+                    <div>
+                        <b>
+                            <TMPL_VAR NAME='OnlineEventList.Day'/>
+                        </b>
+                    </div>
+                    <div>
+                        <TMPL_VAR NAME='OnlineEventList.Month'/>
+                    </div>
+                </span>
+
+                <TMPL_IF NAME="inProgress">
+                    <div class="live-indicator d-flex align-items-center">
+                        LIVE
+                        <span class="icon">
+
+                        </span>
+                    </div>
+                <TMPL_ELSE/>
+                    <span class="small"><TMPL_VAR NAME='TimePrefix'> в <TMPL_VAR NAME="EventDateTime" FORMAT="time" /></span>
+                </TMPL_IF>
+
+                <div class="date-tablist__event_header">
+                    <a href="<TMPL_VAR NAME='OnlineEventURL' />"><TMPL_VAR NAME="Title"/></a>
+                </div>
+                <span class="small"><TMPL_VAR NAME="TypeTitle"/></span>
+            </div>
+            <br>
+        </TMPL_LOOP>
+    </div>
+</TMPL_LOOP>

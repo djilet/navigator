@@ -1,0 +1,65 @@
+<div class="col-md-12 top15">
+    <TMPL_INCLUDE FILE='_navigation.html'>
+    <div class="row">
+        <div class="col-md-6">
+            <section class="box admin-marathon">
+                <header class="panel_header">
+                    <h2 class="title">
+                        Этап карты
+                    </h2>
+                </header>
+                <div class="content-body">
+                    <div class="form-group">
+                        <b>Название: </b> <TMPL_VAR NAME='Name'>
+                    </div>
+                    <div class="form-group">
+                        <details>
+                             <summary><b>Описание</b></summary>
+                             <div>
+                                 <TMPL_VAR NAME='Description' ESCAPE='HTML'>
+                             </div>
+                        </details>
+                    </div>
+                </div>
+            </section>  
+        </div>
+
+        <div class="col-md-6">
+            <section class="box admin-marathon">
+                <header class="panel_header">
+                    <h2 class="title">
+                        Выбранные варианты:
+                    </h2>
+                </header>
+                <div class="content-body">
+                    <TMPL_IF NAME='Type' OP='==' VALUE='MultipleSearch'>
+                        <TMPL_LOOP NAME='Content'>
+                            <div class="form-group">
+                                <b><TMPL_VAR NAME='ListTitle'></b>
+                                <ul class="parts-list">
+                                    <TMPL_LOOP NAME='List'>
+                                        <TMPL_IF NAME='Selected'>
+                                            <li class="item completed">
+                                                <TMPL_VAR NAME='Title'>
+                                            </li>
+                                        </TMPL_IF>
+                                    </TMPL_LOOP>
+                                </ul>
+                            </div>
+                        </TMPL_LOOP>
+                    <TMPL_ELSE>
+                        <TMPL_LOOP NAME='Content'>
+                            <TMPL_IF NAME='Selected'>
+                                <ul class="parts-list">
+                                    <li class="item completed">
+                                        <TMPL_VAR NAME='Title'>
+                                    </li>
+                                </ul>
+                            </TMPL_IF>
+                        </TMPL_LOOP>
+                    </TMPL_IF>
+                </div>
+            </section>  
+        </div>
+    </div>
+</div>

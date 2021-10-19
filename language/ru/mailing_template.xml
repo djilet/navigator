@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<admin>
+		<mailing_list.html>
+			<Filter>Фильтровать</Filter>
+			<Add>Добавить рассылку</Add>
+			<Created>Дата создания рассылки</Created>
+			<From>Адрес отправителя</From>
+			<Theme>Тема</Theme>
+			<Time>Время старта</Time>
+			<Status>Статус рассылки</Status>
+			<StatusNew>ожидает подтверждения</StatusNew>
+			<StatusConfirmed>подтверждена</StatusConfirmed>
+			<StatusInprogress>отправляется</StatusInprogress>
+			<StatusComplete>завершена</StatusComplete>
+			<StatusCancelled>отменена</StatusCancelled>
+		</mailing_list.html>
+		<mailing_edit.html>
+			<EditMailing>Редактирование рассылки</EditMailing>
+			<AddMailing>Добавление рассылки</AddMailing>
+			<From>Адрес отправителя</From>
+			<Theme>Тема</Theme>
+			<Time>Время старта</Time>
+			<Emails>Список адресатов (по одному в строке)</Emails>
+			<Text>Тестк рассылки</Text>
+			<Confirm>Подтвердить и отправить</Confirm>
+			<CancelMailing>Отменить рассылку</CancelMailing>
+		</mailing_edit.html>
+	</admin>
+</Root>

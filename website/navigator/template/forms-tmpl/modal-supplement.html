@@ -1,0 +1,109 @@
+<div class="modal fade sing-in-form" id="modal-supplement" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<a href="<TMPL_VAR NAME='PROJECT_PATH' />profile/?logout=true" id="cancellation-register" class="ajax modal-close-btn"></a>
+        <div class="modal-dialog-wrap">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="row">
+						<TMPL_IF NAME='InsideModule' VALUE='basetest'>
+							<div class="col-md-7">
+								<div class="modal-information">
+									<TMPL_INCLUDE NAME="forms-tmpl/interactive-logo.html"/>
+									<TMPL_INCLUDE NAME="forms-tmpl/sing-up-text.html"/>
+								</div>
+							</div>
+							<div class="col-md-5">
+						<TMPL_ELSE>
+							<div class="col-md-5 col-center">
+						</TMPL_IF>
+							<!-- <div id="carousel-modal2" class="carousel slide carousel-modal" data-ride="carousel">
+							
+								<ol class="carousel-indicators">
+									<li data-target="#carousel-modal2" data-slide-to="0" class="active"></li>
+									<li data-target="#carousel-modal2" data-slide-to="1"></li>
+									<li data-target="#carousel-modal2" data-slide-to="2"></li>
+									<li data-target="#carousel-modal2" data-slide-to="3"></li>
+								</ol>
+							
+								<div class="carousel-inner" role="listbox">
+									<div class="item active">
+										<div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide1" ESCAPE="none" /></div>
+									</div>
+									<div class="item">
+										<div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide2" ESCAPE="none" /></div>
+									</div>
+									<div class="item">
+										<div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide3" ESCAPE="none" /></div>
+									</div>
+									<div class="item">
+										<div class="carousel-caption"><TMPL_VAR NAME="LNG_AuthSlide4" ESCAPE="none" /></div>
+									</div>
+								</div>
+							
+								<a class="left carousel-control" href="#carousel-modal2" role="button" data-slide="prev">
+									<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/prev.svg" alt=" ">
+									<span class="sr-only">Предыдущий</span>
+								</a>
+								<a class="right carousel-control" href="#carousel-modal2" role="button" data-slide="next">
+									<img src="<TMPL_VAR NAME='PATH2MAIN' />img/icons/next.svg" alt=" ">
+									<span class="sr-only">Следующий</span>
+								</a>
+							</div> --><!-- End carousel -->
+							<div class="form sign-in">
+								 <div class="title color-gray extra-bold text-uppercase">
+								 	Завершение регистрации
+								 </div>
+								<form action="<TMPL_VAR NAME='PROJECT_PATH' />module/users/ajax_public.php" method="post" autocomplete="off">
+									<div class="form-group">
+										<input type="text" name="UserName" required class="form-control" id="formName2" value="<TMPL_VAR NAME='SocialName' />">
+										<label for="formName2">Имя и фамилия</label>
+									</div>
+									<div class="form-group">
+										<input type="text" name="Email" required class="form-control" id="formEmail2" value="<TMPL_VAR NAME='SocialEmail' />">
+										<label for="formEmail2">Электропочта</label>
+									</div>
+									<div class="form-group">
+										<input type="text" name="Phone" required class="form-control form--phone" id="formPhone2">
+										<label for="formPhone2">Телефон</label>
+									</div>
+									<div class="form-group custom-select">
+										<select name="WhoAmI" class="form-control" id="formWho2">
+											<option <TMPL_IF NAME='SocialWhoAmI' OP='==' VALUE='child'>selected</TMPL_IF> value="child">Я ученик</option>
+											<option <TMPL_IF NAME='SocialWhoAmI' OP='==' VALUE='parent'>selected</TMPL_IF> value="parent">Я родитель</option>
+											<option <TMPL_IF NAME='SocialWhoAmI' OP='==' VALUE='student'>selected</TMPL_IF> value="student">Я студент</option>
+										</select>
+										<label for="formWho2">Кто вы?</label>
+									</div>
+									
+									<div class="form-group" id="formClass-group2">
+										<input type="number" name="ClassNumber" required class="form-control" min="1" max="11" id="formClass2" value="<TMPL_VAR NAME='SocialClass'>">
+										<label for="formClass2">В каком вы классе?</label>
+									</div>
+									<span class="btn main extra-bold submit-btn">Зарегистрироваться</span>
+									<input type="hidden" name="SocialID" value="<TMPL_VAR NAME='SocialID' />">
+									<input type="hidden" name="Action" value="Registration">
+
+									<div class="form-group licence-block">
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="form-control" name="Rules" checked="checked">
+                                            <div class="checkmark color-gray">Я принимаю правила сервиса и даю согласие на обработку данных</div>
+                                        </label>
+
+                                        <label class="checkbox">
+                                            <input type="checkbox" class="form-control" name="Licence" checked="checked">
+                                            <div class="checkmark color-gray">Я согласен получать важную информацию про ВУЗы, профессии и мероприятия</div>
+                                        </label>
+                                    </div>
+								</form>
+
+								<div class="navigate">
+	                                <a class="semi-bold link-btn icon arrow-right" id="login-btn" data-dismiss="modal" data-toggle="modal" data-target="#modal-signin" href="" data-redirect-default="<TMPL_VAR NAME='FullPageURL'>">У меня уже есть аккаунт</a>
+	                            </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<Website WebsiteID="1" Folder="navigator" Name="navigator" WebDir="/navigator/" ModuleList="data,users,infoblock,orders,limited_orders,mailing,service,question,document,tracker,marathon,college,proftest,olympiad,basetest,abtest,rss,settings,banners,share" Logo="img/admin_logo.png">
+		<Language Folder="ru" Name="Russian" NativeName="Русский" Encoding="utf-8" DateFormat="d.m.Y" TimeFormat="H:i" Default="1">
+			<Domain HostName="localhost" LangDir="" />
+		</Language>
+	</Website>
+</Root>

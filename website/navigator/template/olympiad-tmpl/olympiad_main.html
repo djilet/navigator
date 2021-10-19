@@ -1,0 +1,108 @@
+<div class="row">
+	<div class="col-md-12">
+		<h1 class="header-section">
+			<TMPL_IF NAME="Name"><TMPL_VAR NAME="Name" /><TMPL_ELSE><TMPL_VAR NAME="TitleH1" /></TMPL_IF>
+			<TMPL_IF NAME="RegionTitle"><small><TMPL_VAR NAME='RegionTitle'></small></TMPL_IF>
+		</h1>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="content-main">
+			<!-- Nav tabs -->
+			<!-- <TMPL_IF NAME="SpecialityList">
+			<ul class="nav nav-tabs nav-tabs--<TMPL_VAR NAME='TabsCount'>" role="tablist">
+				<li role="presentation" class="active"><a href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab"><span>Информация</span></a></li>
+				<li role="presentation"><a href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab"><span>Вузы</span></a></li>
+			</ul>
+			</TMPL_IF> -->
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<!-- Tab #1 -->
+				<div role="tabpanel" class="tab-pane fade in active" id="tab-1">
+					<div class="block-info typography-body2">
+						<TMPL_IF NAME="Description">
+							<h2 class="header-level2">Информация</h2>
+							<div class="content-wrap">
+								<TMPL_VAR NAME="Description" ESCAPE="none" />
+							</div>
+							<br>
+						</TMPL_IF>
+
+						<h2 class="header-level2">Олимпиады</h2>
+						<div class="block-info__borderlist">
+							<ul>
+								<li>
+									<small>Название</small>
+								</li>
+								<li>
+									<small>Уровень</small>
+								</li>
+							</ul>
+
+							<TMPL_LOOP NAME="OlympiadList">
+								<ul>
+									<li>
+										<a href="<TMPL_VAR NAME='BaseURL'>/<TMPL_VAR NAME='global.StaticPath'>/<TMPL_VAR NAME='StaticPath'>">
+											<TMPL_VAR NAME='Name'>
+										</a>
+									</li>
+
+									<li>
+										<TMPL_IF NAME='Level'>
+											<TMPL_VAR NAME="Level"/>
+										</TMPL_IF>
+									</li>
+								</ul>
+							</TMPL_LOOP>
+						</div>
+					</div>
+				</div>
+				<!-- Tab #2 -->
+				<div role="tabpanel" class="tab-pane fade" id="tab-2">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-4 aside">
+		<div class="aside__contacts">
+			<div class="aside__header">Контакты</div>
+			<ul>
+				<TMPL_IF NAME="SiteUrl">
+					<li>
+						<span>Официальный сайт</span>
+						<a class="main-link" href="http://<TMPL_VAR NAME='SiteUrl' />" target="_blank">
+							<TMPL_VAR NAME='SiteUrl' />
+						</a>
+					</li>
+				</TMPL_IF>
+			</ul>
+		</div>
+
+		<!-- <TMPL_IF NAME="OtherOlympiad">
+			<img class="img-responsive" src="<TMPL_VAR NAME='PATH2MAIN' />img/dotted.png" alt="">
+			<section>
+				<div class="aside__header">Похожие олипиады</div>
+		
+				<div class="block-info__borderlist">
+					<TMPL_LOOP NAME="OtherOlympiad">
+						<ul>
+							<li>
+								<a href="<TMPL_VAR NAME='OlympiadURL' />">
+									<span><TMPL_VAR NAME="Title" /></span>
+									<img src="<TMPL_VAR NAME='PATH2MAIN'>img/icons/next.svg" alt="">
+								</a>
+							</li>
+						</ul>
+					</TMPL_LOOP>
+				</div>
+			</section>
+		</TMPL_IF> -->
+	</div>
+</div>
+
+</div>
+</div>

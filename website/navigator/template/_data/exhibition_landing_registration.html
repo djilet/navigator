@@ -1,0 +1,58 @@
+			<div class="registration-list">
+				<div class="registration-item">
+					<div class="group">
+						<input type="text" name="RegisterForm[UserName][0]" class="checkempty" value="">
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label class="material-label">Имя</label>
+					</div>
+					<div class="group">
+						<input type="text" name="RegisterForm[UserLastName][0]" class="checkempty" value="">
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label class="material-label">Фамилия</label>
+					</div>
+					<div class="group">
+						<input type="text" name="RegisterForm[UserPhone][0]" class="form--phone checkempty" value="">
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label class="material-label">Телефон</label>
+					</div>
+					<div class="group">
+						<input type="text" name="RegisterForm[UserEmail][0]" class="checkempty" value="">
+						<span class="highlight"></span>
+						<span class="bar"></span>
+						<label class="material-label">E-mail</label>
+					</div>
+					<p class="text-row-inform">Кто вы?</p>
+					<div class="radiogroup d-flex justify-content-between">
+						<input type='radio' name='RegisterForm[UserWho][0]' value="child"><label>ученик</label>
+						<input type='radio' name='RegisterForm[UserWho][0]' value="student"><label>студент</label>
+						<input type='radio' name='RegisterForm[UserWho][0]' value="parent"><label>родитель</label>
+					</div>
+					<p class="text-row-inform whatschoolclass">В каком Вы классе?</p>
+					<div class="radiogroup d-flex justify-content-between whatschoolclassradio">
+						<input type='radio' name='RegisterForm[UserClassNumber][0]' value="7"><label>7</label>
+						<input type='radio' name='RegisterForm[UserClassNumber][0]' value="8"><label>8</label>
+						<input type='radio' name='RegisterForm[UserClassNumber][0]' value="9"><label>9</label>
+						<input type='radio' name='RegisterForm[UserClassNumber][0]' value="10"><label>10</label>
+						<input type='radio' name='RegisterForm[UserClassNumber][0]' value="11"><label>11</label>
+					</div>
+					<div class="mad-select select-of-bottom-lending">
+						<ul>
+							<li data-value="">Во сколько вас ждать?</li>
+							<li data-value="10:00">10:00</li>
+							<li data-value="12:00">12:00</li>
+							<li data-value="14:00">14:00</li>
+							<li data-value="16:00">16:00</li>
+						</ul>
+						<input type="hidden" name="RegisterForm[UserTime][0]" value="">
+					</div>
+					<div class="group form-errors"></div>
+				</div>
+			</div>
+			<a href="#" class="registration-item-add">Добавить участника</a>
+			<input type="hidden" name="Action" value="registerExhibition" />
+			<input type="hidden" name="CityID" value="<TMPL_VAR NAME='CityID'>" />
+			<input type="hidden" name="PageID" value="<TMPL_VAR NAME='CurrentPageID'>" />
+				

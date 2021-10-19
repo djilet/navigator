@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Root>
+	<common>
+		<Paging>Навигация по страницам</Paging>
+		<TermsOfAgreement>Согласие на обработку персональных данных</TermsOfAgreement>
+	</common>
+	<public>
+		<_header.html></_header.html>
+		<_footer.html>
+			<Organizer>ОРГАНИЗАТОР:</Organizer>
+			<OrganizerValue>Навигатор Поступления</OrganizerValue>
+			<Phone><![CDATA[<a href="tel:88002229058">8 800 222 90 58</a>]]></Phone>
+			<Email>information@propostuplenie.ru</Email>
+			<VKUrl>https://vk.com/navigator.postuplenia</VKUrl>
+			<VKUrlTitle>Подписаться на Навигатор поступления</VKUrlTitle>
+			<ZenUrl>https://zen.yandex.ru/id/5c41aa0abbca2100acb2f222</ZenUrl>
+			<ZenUrlTitle>Читайте нас на Яндекс.Дзене</ZenUrlTitle>
+			<Copyright>© Навигатор поступления 2020</Copyright>
+			<AuthSlide1 type="html"><![CDATA[<img alt="" src="/website/navigator/var/custom/file/slide1.png" style="height:93px; width:97px" />
+<span class="h4">Навигатор поступления</span><br/>
+Проведем вас через весь процесс поступления на основании ваших знаний и предпочтений]]></AuthSlide1>
+			<AuthSlide2 type="html"><![CDATA[<img alt="" src="/website/navigator/var/custom/file/slide2.png" style="height:89px; width:116px" />
+<span class="h4">Справочники профессий и вузов</span><br/>
+Получите подробную информацию о вашей будущей профессии или о вузе в котором хотите учиться]]></AuthSlide2>
+			<AuthSlide3 type="html"><![CDATA[<img alt="" src="/website/navigator/var/custom/file/slide3.png" style="height:75px; width:105px" />
+<span class="h4">Тесты на знания предметов и на профориентацию</span><br/>
+Скоро! Проходите тесты, следите за результатами, отслеживайте прогресс своего обучения, или просто решайте, чем хотите заниматься]]></AuthSlide3>
+			<AuthSlide4 type="html"><![CDATA[<img alt="" src="/website/navigator/var/custom/file/slide4.png" style="height:100px; width:99px" />
+<span class="h4">Календарь событий</span><br/>
+Следите за своими занятиями, записывайтесь на предстоящие мероприятия или смотрите онлайн записи прошедших вебинаров]]></AuthSlide4>
+		</_footer.html>
+		<page-index.html>
+			<TopBanner type="html"><![CDATA[<h2 class="header-section">Образовательная выставка &quot;Навигатор Поступления&quot;</h2>
+
+<p>Выбери будущую профессию, узнай все секреты ЕГЭ/ОГЭ и поступления на бюджет. Подай документы в лучшие вузы прямо на выставке.</p>
+
+<p>29 июня в Москве!</p>
+<a class="white-btn" href="https://propostuplenie.ru/pk19/">Подробнее</a>]]></TopBanner>
+			<Events>Ближайшие события</Events>
+			<AllEvents>Все события</AllEvents>
+			<ArticleAuthor>Автор:</ArticleAuthor>
+			<ArticleDate>Дата публикации:</ArticleDate>
+			<ArticleOther>Другие статьи</ArticleOther>
+			<AllArticles>ВСЕ СТАТЬИ</AllArticles>
+		</page-index.html>
+		<page-online-events.html>
+			<NearestTitle>Ближайшие вебинары</NearestTitle>
+			<ArchiveTitle>Архив вебинаров</ArchiveTitle>
+			<ShowRecord>Посмотреть запись</ShowRecord>
+			<Details>Подробнее</Details>
+			<Connect>Присоединиться</Connect>
+			<AlreadyGoing>Уже идет</AlreadyGoing>
+			<Duration>Продолжительность</Duration>
+			<Finished>состоялся</Finished>
+			<AllEvents>Все вебинары</AllEvents>
+			<SignedEvent>Зарегистрироваться</SignedEvent>
+			<Block1>Знакомство с сильнейшими вузами России и мира</Block1>
+			<Block2>Уникальные семинары, мастер-классы и лекции по ЕГЭ</Block2>
+			<Block3>Подбор вузов и профориентация для учеников 10-11 классов</Block3>
+			<Address>Адрес</Address>
+		</page-online-events.html>
+		<page-online-exhibition.html>
+			<NearestTitle>Ближайшие вебинары</NearestTitle>
+			<ArchiveTitle>Архив вебинаров</ArchiveTitle>
+			<ShowRecord>Посмотреть запись</ShowRecord>
+			<Details>Подробнее</Details>
+			<Connect>Присоединиться</Connect>
+			<AlreadyGoing>Уже идет</AlreadyGoing>
+			<Duration>Продолжительность</Duration>
+			<Finished>состоялся</Finished>
+			<AllEvents>Все вебинары</AllEvents>
+			<SignedEvent>Зарегистрироваться</SignedEvent>
+			<Block1>Знакомство с сильнейшими вузами России и мира</Block1>
+			<Block2>Уникальные семинары, мастер-классы и лекции по ЕГЭ</Block2>
+			<Block3>Подбор вузов и профориентация для учеников 10-11 классов</Block3>
+			<Address>Адрес</Address>
+		</page-online-exhibition.html>
+		<page-open-day-events.html>
+			<NearestTitle>Ближайшие дни открытых дверей</NearestTitle>
+			<ArchiveTitle>Архив додов</ArchiveTitle>
+			<Details>Подробнее</Details>
+			<Finished>состоялся</Finished>
+			<AllEvents>Все дни открытых дверей</AllEvents>
+			<SignedEvent>Зарегистрироваться</SignedEvent>
+		</page-open-day-events.html>
+		<page-university.html>
+			<Univer>Вуз</Univer>
+			<Speciality>Специальность</Speciality>
+			<PassingScore>Проходной бал</PassingScore>
+			<BudgetPlaces>Бюджетные места</BudgetPlaces>
+			<CostOfEducation>Стоимость обучения</CostOfEducation>
+			<Specialities>Направления подготовки</Specialities>
+			<SpecialitiesTitle>Факультеты, направления подготовки и проходные баллы</SpecialitiesTitle>
+			<Information>Информация</Information>
+			<Contacts>Контакты</Contacts>
+			<Hostel>Общежитие</Hostel>
+			<DelayOfArmy>Отсрочка от армии</DelayOfArmy>
+			<MilitaryDepartment>Военный учебный центр</MilitaryDepartment>
+			<MilitaryDepartmentParam>Военный учебный центр (ВУЦ)</MilitaryDepartmentParam>
+			<SimilarUniver>Другие ВУЗы</SimilarUniver>
+			<Other>Другие</Other>
+			<ExamEGE>Экзамены ЕГЭ</ExamEGE>
+			<ExamEGEByChoice>Экзамены ЕГЭ по выбору</ExamEGEByChoice>
+			<ExamEGEDescription><![CDATA[				<p>Ниже перечислены предметы, которые необходимо сдать для поступления на специальность в данном вузе и минимальные баллы ЕГЭ</p>]]></ExamEGEDescription>
+			<ExamEGEDescriptionByChoice>Необходимо выбрать </ExamEGEDescriptionByChoice>
+			<Achievement>Учет индивидуальных достижений</Achievement>
+			<AchievementDescription><![CDATA[<p>Здесь показаны максимальные баллы за достижения</p>]]></AchievementDescription>
+			<DopExam>Дополнительное вступительное испытание</DopExam>
+			<OtherSpecialitiesOfUniver>Другие специальности ВУЗа</OtherSpecialitiesOfUniver>
+			<SearchUniver>Поиск вузов</SearchUniver>
+			<SearchSpeciality>Поиск специальностей</SearchSpeciality>
+			<ChooseByPoints>Подобрать по баллам</ChooseByPoints>
+			<AddSubject>Добавить предмет</AddSubject>
+			<Directions>Направления</Directions>
+			<Region>Регион</Region>
+			<ClearFilter>Очистить фильтры</ClearFilter>
+			<License>Лицензия</License>
+			<Video>Видео о</Video>
+			<Content>О вузе в цифрах</Content>
+			<FormTraining>Формат обучения</FormTraining>
+			<EducationalBlock>Образовательные возможности</EducationalBlock>
+			<InternationalPrograms>Международные программы</InternationalPrograms>
+			<DoubleDiploma>Двойной диплом</DoubleDiploma>
+			<MilitaryBlock>Военная подготовка</MilitaryBlock>
+			<DelayArmy>Отсрочка от армии</DelayArmy>
+			<ExtracurricularActivities>Внеучебная деятельность</ExtracurricularActivities>
+			<HostelBlock>Общежитие</HostelBlock>
+			<HostelPriceBudget>По бюджету (мес.)</HostelPriceBudget>
+			<HostelPriceContract>По договору (мес.)</HostelPriceContract>
+			<ScholarshipBlock>Стипендия</ScholarshipBlock>
+			<Scholarship>Государственная стипендия (мес.)</Scholarship>
+			<ScholarshipSpecialAcademic>За особые успехи в учебе (мес.)</ScholarshipSpecialAcademic>
+			<ScholarshipSocial>По социальным льготам (мес.)</ScholarshipSocial>
+			<FamousGraduates>Известные выпускники</FamousGraduates>
+			<BecomeAnEntrant>Стать абитуриентом</BecomeAnEntrant>
+			<CancelAnEntrant>Отменить выбор</CancelAnEntrant>
+			<Contact>Контакты</Contact>
+			<ContactPhone>Телефон приемной комиссии</ContactPhone>
+			<ContactWebsite>Официальный сайт</ContactWebsite>
+			<ContactAddress>Адрес</ContactAddress>
+			<BudgetBlock>Прием на бюджетное отделение</BudgetBlock>
+			<BudgetCompetition>Конкурс</BudgetCompetition>
+			<BudgetScopeWave1><![CDATA[Проходной балл, <br>I волна]]></BudgetScopeWave1>
+			<BudgetScopeWave2><![CDATA[Проходной балл, <br>II волна]]></BudgetScopeWave2>
+			<BudgetCount>Число мест</BudgetCount>
+			<ContractBlock>Прием на платное отделение</ContractBlock>
+			<PaidCompetition>Конкурс</PaidCompetition>
+			<PaidScope>Проходной балл на платное</PaidScope>
+			<PaidCount>Число мест</PaidCount>
+			<PeriodPriceBlock>Срок и стоимость обучения</PeriodPriceBlock>
+			<Period>Срок обучения</Period>
+			<Price>Стоимость обучения в год</Price>
+			<SpecialityContent>Содержание программы</SpecialityContent>
+			<ProfileSubject>Профильный предмет</ProfileSubject>
+			<ShowRecord>Посмотреть запись</ShowRecord>
+			<Details>Подробнее</Details>
+			<Connect>Присоединиться</Connect>
+			<SignedEvent>Зарегистрироваться</SignedEvent>
+			<AlreadyGoing>Уже идет</AlreadyGoing>
+			<Finished>состоялся</Finished>
+		</page-university.html>
+		<_data_speciality_list.html>
+			<Speciality>Специальность</Speciality>
+			<PassingScore>Проходной бал</PassingScore>
+			<BudgetPlaces>Бюджетные места</BudgetPlaces>
+			<CostOfEducation>Стоимость обучения</CostOfEducation>
+		</_data_speciality_list.html>
+		<_data_university_list.html>
+			<Univer>Вуз</Univer>
+			<BudgetPlaces>Бюджетные места</BudgetPlaces>
+			<CostOfEducation>Стоимость обучения</CostOfEducation>
+		</_data_university_list.html>
+		<college-tmpl_page_college.html>
+			<PricePerYear>Стоимость обучения в год</PricePerYear>
+			<Period>Срок обучения</Period>
+			<FullStud>очно</FullStud>
+			<PartStud>очно-заочно</PartStud>
+			<ExtramuralStud>заочно</ExtramuralStud>
+			<RemoteStud>дистанционно</RemoteStud>
+			<PlacesCount>Число мест</PlacesCount>
+			<License>Срок действия аккредитации</License>
+			<Video>Видео о колледже</Video>
+			<HostelBlock>Общежите</HostelBlock>
+			<Hostel>Общежите</Hostel>
+			<HostelPrice>в месяц</HostelPrice>
+			<ScholarshipBlock>Стипендия</ScholarshipBlock>
+			<Scholarship>Минимальная (в мес.)</Scholarship>
+			<ScholarshipSocial>Социальная (в мес.)</ScholarshipSocial>
+			<Contact>Контакты</Contact>
+			<ContactPhone>Телефон приемной комиссии</ContactPhone>
+			<ContactWebsite>Официальный сайт</ContactWebsite>
+			<ContactAddress>Адрес</ContactAddress>
+			<SimilarCollege>Другие колледжи</SimilarCollege>
+			<Other>Другие</Other>
+			<Specialities>Направления подготовки</Specialities>
+			<Contacts>Контакты</Contacts>
+		</college-tmpl_page_college.html>
+		<page-exhibition.html>
+			<ScheduleForum>Расписание лекций и мастер-классов</ScheduleForum>
+			<ExhibitionStart>Выставка состоится</ExhibitionStart>
+			<ShowAllEvents>Смотреть все расписание</ShowAllEvents>
+			<HowTo><![CDATA[Как стать
+участником форума?]]></HowTo>
+			<HowToDescription><![CDATA[Все очень просто: нужно пройти регистрацию и получить бесплатный пригласительный билет.
+Прохождение профориентации и диагностического тестирования возможно только с родителем, при этом  родитель также должен зарегистрироваться.]]></HowToDescription>
+			<Registration>Зарегистрироваться</Registration>
+			<ExpireToStart>До начала выставки</ExpireToStart>
+			<Contacts>Контакты</Contacts>
+			<Email>E-mail</Email>
+			<CallOur>Если у Вас остались какие-то вопросы или Вы хотите что-то уточнить – звоните и пишите нам, мы обязательно ответим!</CallOur>
+			<PrintMap>Распечатать карту</PrintMap>
+			<RegistrationOnForum>Регистрация на форум</RegistrationOnForum>
+			<RegistrationOnForumDescription><![CDATA[Для участия необходимо зарегистрироваться.
+В день трансляции мы пришлем тебе ссылку на трансляцию и подробные инструкции.]]></RegistrationOnForumDescription>
+			<UserName>Имя</UserName>
+			<UserLastName>Фамилия</UserLastName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IParent>Я родитель</IParent>
+			<IChild>Я ученик</IChild>
+			<IStudent>Я студент</IStudent>
+			<WhichClassChild>В каком классе ребенок?</WhichClassChild>
+			<WhatClassYou>В каком вы классе?</WhatClassYou>
+			<Time>Во сколько вас ждать?</Time>
+			<RegistrationSubmit>Зарегистрироваться</RegistrationSubmit>
+			<ConfirmRegistration>Нажимая «Зарегистрироваться», вы подтверждаете, что согласны с правилами работы сервиса</ConfirmRegistration>
+			<MainPartners>Официальные партнеры</MainPartners>
+			<OurPartners>Участники выставки</OurPartners>
+			<AddChildOrParent>Добавить еще участника</AddChildOrParent>
+			<FillFieldsFromSocial>Заполнить через социальные сети</FillFieldsFromSocial>
+			<Type1>ЕГЭ и ОГЭ</Type1>
+			<Type2>Для родителей</Type2>
+			<Type3>Обучение за рубежом</Type3>
+			<Type4>Профориентация</Type4>
+			<Type5>Лекция от вуза</Type5>
+			<Type6>English</Type6>
+			<ResultTitle>Спасибо за регистрацию</ResultTitle>
+			<ResultComment>Ждем вас и ваших друзей на выставке</ResultComment>
+			<ResultMenu>А пока можете посмотреть</ResultMenu>
+			<ResultMenuEvents>Онлайн-трансляции</ResultMenuEvents>
+			<ResultMenuProfession>Информацию о профессиях</ResultMenuProfession>
+			<ResultMenuUniversity>Информацию о вузах</ResultMenuUniversity>
+			<ThanksBlockButton><![CDATA[<a href="https://propostuplenie.ru/consultation/?utm_source=propostuplenie&utm_medium=exhibition&utm_campaign=thankyou" class="main-btn">Записаться</a>]]></ThanksBlockButton>
+		</page-exhibition.html>
+		<page-exhibition2.html>
+			<ScheduleForum>Расписание лекций и мастер-классов</ScheduleForum>
+			<ExhibitionStart>Мероприятие состоится</ExhibitionStart>
+			<ShowAllEvents>Смотреть все расписание</ShowAllEvents>
+			<HowTo>Мероприятие полностью бесплатно</HowTo>
+			<HowToDescription>Но количество мест ограничено. Регистрируйтесь уже сейчас, чтобы забронировать за собой место и получить пригласительный билет.</HowToDescription>
+			<Registration>Зарегистрироваться</Registration>
+			<ExpireToStart>До мероприятия</ExpireToStart>
+			<Contacts>Контакты</Contacts>
+			<Email>E-mail</Email>
+			<CallOur>Если у Вас остались какие-то вопросы или Вы хотите что-то уточнить – звоните и пишите нам, мы обязательно ответим!</CallOur>
+			<PrintMap>Распечатать карту</PrintMap>
+			<RegistrationOnForum>Регистрация на форум</RegistrationOnForum>
+			<RegistrationOnForumDescription><![CDATA[Для посещения мероприятия нужно зарегистрироваться.
+Можете зарегистрировать однокурсников или друзей, с которыми планируете прийти, воспользовавшись кнопкой "добавить еще участника".
+Ждем вас на мероприятии!]]></RegistrationOnForumDescription>
+			<UserName>Имя</UserName>
+			<UserLastName>Фамилия</UserLastName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IStudent>Студент</IStudent>
+			<ISpecialist>Выпускник вуза</ISpecialist>
+			<IOther>Другое</IOther>
+			<WhichClassChild>На каком вы курсе?</WhichClassChild>
+			<WhatClassYou>На каком вы курсе?</WhatClassYou>
+			<IRussia>9</IRussia>
+			<IOutside>8</IOutside>
+			<ICareer>7</ICareer>
+			<IBusiness>другое</IBusiness>
+			<Time>Во сколько вас ждать?</Time>
+			<RegistrationSubmit>Зарегистрироваться</RegistrationSubmit>
+			<ConfirmRegistration>Нажимая «Зарегистрироваться», вы подтверждаете, что согласны с правилами работы сервиса</ConfirmRegistration>
+			<MainPartners>Официальные партнеры</MainPartners>
+			<OurPartners>Участники выставки</OurPartners>
+			<AddChildOrParent>Добавить участника</AddChildOrParent>
+			<FillFieldsFromSocial>Заполнить через социальные сети</FillFieldsFromSocial>
+			<Type1>Школьные предметы</Type1>
+			<Type2>Для родителей</Type2>
+			<Type3>Обучение за рубежом</Type3>
+			<Type4>Профориентация</Type4>
+			<Type5>Лекция от вуза</Type5>
+			<Type6>English</Type6>
+			<ResultTitle>Спасибо за регистрацию</ResultTitle>
+			<ResultComment>Ждем вас и ваших друзей на мероприятии!</ResultComment>
+			<ResultMenu>А пока можете посмотреть</ResultMenu>
+			<ResultMenuEvents>Онлайн-трансляции</ResultMenuEvents>
+			<ResultMenuProfession>Информацию о профессиях</ResultMenuProfession>
+			<ResultMenuUniversity>Информацию о вузах</ResultMenuUniversity>
+			<SuccessAuthMessage>Мы заполнили анкету. Если всё в порядке, нажмите Зарегистрироваться</SuccessAuthMessage>
+			<RemoveRegistration>Удалить участника</RemoveRegistration>
+			<ThanksBlockButton><![CDATA[<a href="https://propostuplenie.ru/consultation/?utm_source=propostuplenie&utm_medium=exhibition&utm_campaign=thankyou" class="main-btn">Записаться</a>]]></ThanksBlockButton>
+		</page-exhibition2.html>
+		<page-exhibition3.html>
+			<ScheduleForum>Расписание лекций и мастер-классов</ScheduleForum>
+			<ExhibitionStart>Мероприятие состоится</ExhibitionStart>
+			<ShowAllEvents>Смотреть все расписание</ShowAllEvents>
+			<HowTo><![CDATA[Как стать
+участником?]]></HowTo>
+			<HowToDescription><![CDATA[Все очень просто: нужно пройти регистрацию и прийти на мероприятие.
+Прохождение профориентации и диагностического тестирования возможно только с родителем, при этом  родитель также должен зарегистрироваться.]]></HowToDescription>
+			<Registration>Зарегистрироваться</Registration>
+			<ExpireToStart>До мероприятия</ExpireToStart>
+			<Contacts>Контакты</Contacts>
+			<Email>E-mail</Email>
+			<CallOur>Если у Вас остались какие-то вопросы или Вы хотите что-то уточнить – звоните и пишите нам, мы обязательно ответим!</CallOur>
+			<PrintMap>Распечатать карту</PrintMap>
+			<RegistrationOnForum>Регистрация на форум</RegistrationOnForum>
+			<RegistrationOnForumDescription><![CDATA[Для посещения мероприятия нужно зарегистрироваться. Для добавления  воспользуйтесь кнопкой "добавить еще участника".
+Ждем вас на мероприятии!]]></RegistrationOnForumDescription>
+			<UserName>Имя</UserName>
+			<UserLastName>Фамилия</UserLastName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IStudent>Студент</IStudent>
+			<ISpecialist>Молодой специалист</ISpecialist>
+			<IParent>Родитель</IParent>
+			<IOther>Другое</IOther>
+			<WhatInteresting>Что интересно?</WhatInteresting>
+			<IRussia>Образование в РФ</IRussia>
+			<IOutside>Образование за рубежом</IOutside>
+			<ICareer>Карьера</ICareer>
+			<IBusiness>Бизнес</IBusiness>
+			<Time>Во сколько вас ждать?</Time>
+			<RegistrationSubmit>Зарегистрироваться</RegistrationSubmit>
+			<ConfirmRegistration>Нажимая «Зарегистрироваться», вы подтверждаете, что согласны с правилами работы сервиса</ConfirmRegistration>
+			<MainPartners>Официальные партнеры</MainPartners>
+			<OurPartners>Участники выставки</OurPartners>
+			<AddChildOrParent>Добавить участника</AddChildOrParent>
+			<FillFieldsFromSocial>Заполнить через социальные сети</FillFieldsFromSocial>
+			<Type1>Школьные предметы</Type1>
+			<Type2>Для родителей</Type2>
+			<Type3>Обучение за рубежом</Type3>
+			<Type4>Профориентация</Type4>
+			<Type5>Лекция от вуза</Type5>
+			<Type6>English</Type6>
+			<ResultTitle>Спасибо за регистрацию</ResultTitle>
+			<ResultComment>Ждем вас и ваших друзей на мероприятии!</ResultComment>
+			<ResultMenu>А пока можете посмотреть</ResultMenu>
+			<ResultMenuEvents>Онлайн-трансляции</ResultMenuEvents>
+			<ResultMenuProfession>Информацию о профессиях</ResultMenuProfession>
+			<ResultMenuUniversity>Информацию о вузах</ResultMenuUniversity>
+			<SuccessAuthMessage>Мы заполнили анкету. Если всё в порядке, нажмите Зарегистрироваться</SuccessAuthMessage>
+			<RemoveRegistration>Удалить участника</RemoveRegistration>
+			<ThanksBlockButton><![CDATA[<a href="https://propostuplenie.ru/consultation/?utm_source=propostuplenie&utm_medium=exhibition&utm_campaign=thankyou" class="main-btn">Записаться</a>]]></ThanksBlockButton>
+		</page-exhibition3.html>
+		<page-exhibition4.html>
+			<ScheduleForum>Расписание лекций и мастер-классов</ScheduleForum>
+			<ExhibitionStart>Мероприятие состоится</ExhibitionStart>
+			<ShowAllEvents>Смотреть все расписание</ShowAllEvents>
+			<HowTo><![CDATA[Как стать
+участником?]]></HowTo>
+			<HowToDescription><![CDATA[Все очень просто: нужно пройти регистрацию и прийти на мероприятие.
+Прохождение профориентации и диагностического тестирования возможно только с родителем, при этом  родитель также должен зарегистрироваться.]]></HowToDescription>
+			<Registration>Зарегистрироваться</Registration>
+			<ExpireToStart>До мероприятия</ExpireToStart>
+			<Contacts>Контакты</Contacts>
+			<Email>E-mail</Email>
+			<CallOur>Если у Вас остались какие-то вопросы или Вы хотите что-то уточнить – звоните и пишите нам, мы обязательно ответим!</CallOur>
+			<PrintMap>Распечатать карту</PrintMap>
+			<RegistrationOnForum>Регистрация на форум</RegistrationOnForum>
+			<RegistrationOnForumDescription><![CDATA[Внимание! Мы ограничиваем запись на разное время, чтобы не создавать очереди и обеспечить соблюдение всех мер предосторожности.
+Выбирайте свободные слоты и приходите в указанное время.
+Ждем вас на мероприятии!]]></RegistrationOnForumDescription>
+			<UserName>Имя</UserName>
+			<UserLastName>Фамилия</UserLastName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IStudent>Студент</IStudent>
+			<ISpecialist>Молодой специалист</ISpecialist>
+			<IParent>Родитель</IParent>
+			<IChild>Ученик</IChild>
+			<ITeacher>Учитель</ITeacher>
+			<IOther>Другое</IOther>
+			<WhatInteresting>Что интересно?</WhatInteresting>
+			<IRussia>Образование в РФ</IRussia>
+			<IOutside>Образование за рубежом</IOutside>
+			<ICareer>Карьера</ICareer>
+			<IBusiness>Бизнес</IBusiness>
+			<Time>Во сколько вас ждать?</Time>
+			<RegistrationSubmit>Зарегистрироваться</RegistrationSubmit>
+			<ConfirmRegistration>Нажимая «Зарегистрироваться», вы подтверждаете, что согласны с правилами работы сервиса</ConfirmRegistration>
+			<MainPartners>Официальные партнеры</MainPartners>
+			<OurPartners>Участники выставки</OurPartners>
+			<AddChildOrParent>Добавить участника</AddChildOrParent>
+			<FillFieldsFromSocial>Заполнить через социальные сети</FillFieldsFromSocial>
+			<Type1>Школьные предметы</Type1>
+			<Type2>Для родителей</Type2>
+			<Type3>Обучение за рубежом</Type3>
+			<Type4>Профориентация</Type4>
+			<Type5>Лекция от вуза</Type5>
+			<Type6>English</Type6>
+			<ResultTitle>Спасибо за регистрацию</ResultTitle>
+			<ResultComment>Ждем вас и ваших друзей на мероприятии!</ResultComment>
+			<ResultMenu>А пока можете посмотреть</ResultMenu>
+			<ResultMenuEvents>Онлайн-трансляции</ResultMenuEvents>
+			<ResultMenuProfession>Информацию о профессиях</ResultMenuProfession>
+			<ResultMenuUniversity>Информацию о вузах</ResultMenuUniversity>
+			<SuccessAuthMessage>Мы заполнили анкету. Если всё в порядке, нажмите Зарегистрироваться</SuccessAuthMessage>
+			<RemoveRegistration>Удалить участника</RemoveRegistration>
+			<ThanksBlockButton><![CDATA[<a href="https://propostuplenie.ru/consultation/?utm_source=propostuplenie&utm_medium=exhibition&utm_campaign=thankyou" class="main-btn">Записаться</a>]]></ThanksBlockButton>
+		</page-exhibition4.html>
+		<page-exhibition4_online.html>
+			<ScheduleForum>Расписание лекций и мастер-классов</ScheduleForum>
+			<ExhibitionStart>Трансляция состоится</ExhibitionStart>
+			<ShowAllEvents>Смотреть все расписание</ShowAllEvents>
+			<HowTo><![CDATA[Как стать
+участником?]]></HowTo>
+			<HowToDescription><![CDATA[Для участия необходимо зарегистрироваться.
+В день трансляции мы пришлем тебе ссылку на трансляцию и подробные инструкции.]]></HowToDescription>
+			<Registration>Зарегистрироваться</Registration>
+			<ExpireToStart>До мероприятия</ExpireToStart>
+			<Contacts>Контакты</Contacts>
+			<Email>E-mail</Email>
+			<CallOur>Если у Вас остались какие-то вопросы или Вы хотите что-то уточнить – звоните и пишите нам, мы обязательно ответим!</CallOur>
+			<PrintMap>Распечатать карту</PrintMap>
+			<RegistrationOnForum>Регистрация на форум</RegistrationOnForum>
+			<RegistrationOnForumDescription><![CDATA[Для посещения мероприятия нужно зарегистрироваться. Для добавления  воспользуйтесь кнопкой "добавить еще участника".
+Ждем вас на мероприятии!]]></RegistrationOnForumDescription>
+			<UserName>Имя</UserName>
+			<UserLastName>Фамилия</UserLastName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IStudent>Студент</IStudent>
+			<ISpecialist>Молодой специалист</ISpecialist>
+			<IParent>Родитель</IParent>
+			<IChild>Ученик</IChild>
+			<IOther>Другое</IOther>
+			<WhatInteresting>Что интересно?</WhatInteresting>
+			<IRussia>Образование в РФ</IRussia>
+			<IOutside>Образование за рубежом</IOutside>
+			<ICareer>Карьера</ICareer>
+			<IBusiness>Бизнес</IBusiness>
+			<Time>Во сколько вас ждать?</Time>
+			<RegistrationSubmit>Зарегистрироваться</RegistrationSubmit>
+			<ConfirmRegistration>Нажимая «Зарегистрироваться», вы подтверждаете, что согласны с правилами работы сервиса</ConfirmRegistration>
+			<MainPartners>Официальные партнеры</MainPartners>
+			<OurPartners>Участники выставки</OurPartners>
+			<AddChildOrParent>Добавить участника</AddChildOrParent>
+			<FillFieldsFromSocial>Заполнить через социальные сети</FillFieldsFromSocial>
+			<Type1>Школьные предметы</Type1>
+			<Type2>Для родителей</Type2>
+			<Type3>Обучение за рубежом</Type3>
+			<Type4>Профориентация</Type4>
+			<Type5>Лекция от вуза</Type5>
+			<Type6>English</Type6>
+			<ResultTitle>Спасибо за регистрацию</ResultTitle>
+			<ResultComment>Ждем вас и ваших друзей на мероприятии!</ResultComment>
+			<ResultMenu>А пока можете посмотреть</ResultMenu>
+			<ResultMenuEvents>Онлайн-трансляции</ResultMenuEvents>
+			<ResultMenuProfession>Информацию о профессиях</ResultMenuProfession>
+			<ResultMenuUniversity>Информацию о вузах</ResultMenuUniversity>
+			<SuccessAuthMessage>Мы заполнили анкету. Если всё в порядке, нажмите Зарегистрироваться</SuccessAuthMessage>
+			<RemoveRegistration>Удалить участника</RemoveRegistration>
+			<ThanksBlockButton><![CDATA[<a href="https://propostuplenie.ru/consultation/?utm_source=propostuplenie&utm_medium=exhibition&utm_campaign=thankyou" class="main-btn">Записаться</a>]]></ThanksBlockButton>
+		</page-exhibition4_online.html>
+		<page-exhibition5_online.html>
+			<ScheduleForum>Расписание лекций и мастер-классов</ScheduleForum>
+			<ExhibitionStart>Трансляция состоится</ExhibitionStart>
+			<ShowAllEvents>Смотреть все расписание</ShowAllEvents>
+			<HowTo><![CDATA[Как стать
+участником?]]></HowTo>
+			<HowToDescription><![CDATA[Для участия необходимо зарегистрироваться.
+В день трансляции мы пришлем тебе ссылку на трансляцию и подробные инструкции.]]></HowToDescription>
+			<Registration>Зарегистрироваться</Registration>
+			<ExpireToStart>До мероприятия</ExpireToStart>
+			<Contacts>Контакты</Contacts>
+			<Email>E-mail</Email>
+			<CallOur>Если у Вас остались какие-то вопросы или Вы хотите что-то уточнить – звоните и пишите нам, мы обязательно ответим!</CallOur>
+			<PrintMap>Распечатать карту</PrintMap>
+			<RegistrationOnForum>Регистрация на форум</RegistrationOnForum>
+			<RegistrationOnForumDescription><![CDATA[Для посещения мероприятия нужно зарегистрироваться. Для добавления  воспользуйтесь кнопкой "добавить еще участника".
+Ждем вас на мероприятии!]]></RegistrationOnForumDescription>
+			<UserName>Имя</UserName>
+			<UserLastName>Фамилия</UserLastName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IStudent>Студент</IStudent>
+			<ISpecialist>Молодой специалист</ISpecialist>
+			<IParent>Родитель</IParent>
+			<IChild>Ученик</IChild>
+			<IOther>Другое</IOther>
+			<WhatInteresting>Что интересно?</WhatInteresting>
+			<IRussia>Образование в РФ</IRussia>
+			<IOutside>Образование за рубежом</IOutside>
+			<ICareer>Карьера</ICareer>
+			<IBusiness>Бизнес</IBusiness>
+			<Time>Во сколько вас ждать?</Time>
+			<RegistrationSubmit>Зарегистрироваться</RegistrationSubmit>
+			<ConfirmRegistration>Нажимая «Зарегистрироваться», вы подтверждаете, что согласны с правилами работы сервиса</ConfirmRegistration>
+			<MainPartners>Официальные партнеры</MainPartners>
+			<OurPartners>Участники выставки</OurPartners>
+			<AddChildOrParent>Добавить участника</AddChildOrParent>
+			<FillFieldsFromSocial>Заполнить через социальные сети</FillFieldsFromSocial>
+			<Type1>Школьные предметы</Type1>
+			<Type2>Для родителей</Type2>
+			<Type3>Обучение за рубежом</Type3>
+			<Type4>Профориентация</Type4>
+			<Type5>Лекция от вуза</Type5>
+			<Type6>English</Type6>
+			<ResultTitle>Спасибо за регистрацию</ResultTitle>
+			<ResultComment>Ждем вас и ваших друзей на мероприятии!</ResultComment>
+			<ResultMenu>А пока можете посмотреть</ResultMenu>
+			<ResultMenuEvents>Онлайн-трансляции</ResultMenuEvents>
+			<ResultMenuProfession>Информацию о профессиях</ResultMenuProfession>
+			<ResultMenuUniversity>Информацию о вузах</ResultMenuUniversity>
+			<SuccessAuthMessage>Мы заполнили анкету. Если всё в порядке, нажмите Зарегистрироваться</SuccessAuthMessage>
+			<RemoveRegistration>Удалить участника</RemoveRegistration>
+			<ThanksBlockButton><![CDATA[<a href="https://propostuplenie.ru/consultation/?utm_source=propostuplenie&utm_medium=exhibition&utm_campaign=thankyou" class="main-btn">Записаться</a>]]></ThanksBlockButton>
+		</page-exhibition5_online.html>
+		<page-exhibition-landing.html>
+			<MenuAbout>О выставке</MenuAbout>
+			<MenuProgram>Программа</MenuProgram>
+			<MenuPartners>Партнеры</MenuPartners>
+			<MenuUniversities>Вузы</MenuUniversities>
+			<MenuContacts>Контакты</MenuContacts>
+			<Register>Зарегистрироваться</Register>
+			<ScheduleTitle>ПРОГРАММА</ScheduleTitle>
+			<ScheduleDownload>Скачать pdf</ScheduleDownload>
+		</page-exhibition-landing.html>
+		<page-open-day.html>
+			<ScheduleForum>Расписание лекций и мастер-классов</ScheduleForum>
+			<Start>День открытых дверей состоится</Start>
+			<ShowAllEvents>Смотреть все расписание</ShowAllEvents>
+			<HowTo><![CDATA[Как стать
+участником дня открытых дверей?]]></HowTo>
+			<HowToDescription>Все очень просто: нужно прийти по указанному адресу и не забыть с собой документы!</HowToDescription>
+			<Registration>Зарегистрироваться</Registration>
+			<ExpireToStart>До начала мероприятия</ExpireToStart>
+			<Contacts>Контакты</Contacts>
+			<Email>E-mail</Email>
+			<CallOur>Если у Вас остались какие-то вопросы или Вы хотите что-то уточнить – звоните и пишите нам, мы обязательно ответим!</CallOur>
+			<PrintMap>Распечатать карту</PrintMap>
+			<RegistrationOnForum>Регистрация на мероприятие</RegistrationOnForum>
+			<RegistrationOnForumDescription>Для посещения дня открытых дверей не забудьте документы.</RegistrationOnForumDescription>
+			<UserName>Имя</UserName>
+			<UserLastName>Фамилия</UserLastName>
+			<UserEmail>E-mail</UserEmail>
+			<UserPhone>Телефон</UserPhone>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IParent>Я родитель</IParent>
+			<IChild>Я ученик</IChild>
+			<IStudent>Я студент</IStudent>
+			<WhichClassChild>В каком классе ребенок?</WhichClassChild>
+			<WhatClassYou>В каком вы классе?</WhatClassYou>
+			<Time>Во сколько вас ждать?</Time>
+			<RegistrationSubmit>Зарегистрироваться</RegistrationSubmit>
+			<ConfirmRegistration>Нажимая «Зарегистрироваться», вы подтверждаете, что согласны с правилами работы сервиса</ConfirmRegistration>
+			<MainPartners>Официальные партнеры</MainPartners>
+			<OurPartners>Участники выставки</OurPartners>
+			<AddChildOrParent>Добавить еще участника</AddChildOrParent>
+			<FillFieldsFromSocial>Заполнить через социальные сети</FillFieldsFromSocial>
+			<Type1>ЕГЭ и ОГЭ</Type1>
+			<Type2>Для родителей</Type2>
+			<Type3>Обучение за рубежом</Type3>
+			<Type4>Профориентация</Type4>
+			<Type5>Лекция от вуза</Type5>
+			<Type6>English</Type6>
+			<ResultTitle>Спасибо за регистрацию</ResultTitle>
+			<ResultComment>Ждем вас и ваших друзей на дне открытых дверей</ResultComment>
+			<ResultMenu>А пока можете посмотреть</ResultMenu>
+			<ResultMenuEvents>Онлайн-трансляции</ResultMenuEvents>
+			<ResultMenuProfession>Информацию о профессиях</ResultMenuProfession>
+			<ResultMenuUniversity>Информацию о вузах</ResultMenuUniversity>
+			<ThanksBlockButton><![CDATA[<a href="https://propostuplenie.ru/consultation/?utm_source=propostuplenie&utm_medium=exhibition&utm_campaign=thankyou" class="main-btn">Записаться</a>]]></ThanksBlockButton>
+		</page-open-day.html>
+		<page-profession.html>
+			<ProfessionListTitle>Профессии</ProfessionListTitle>
+			<SortOrder>Сортировать:</SortOrder>
+			<SortOrderTitle>по алфавиту</SortOrderTitle>
+			<SortOrderCost>по среднему доходу</SortOrderCost>
+			<ProfessionInfo>Что делает</ProfessionInfo>
+			<WageTitle>Заработная плата</WageTitle>
+			<WageLevel>Начинающий специалист</WageLevel>
+			<ProWageLevel>Ведущий специалист</ProWageLevel>
+			<AreaWork>В каких областях можно работать</AreaWork>
+			<Books>Книги для саморазвития</Books>
+			<Films>Фильмы, влоги, передачи про профессию </Films>
+			<FilmsAges>(16+)</FilmsAges>
+			<ScheduleTitle>График работы и характер труда</ScheduleTitle>
+			<WantToWork>Что хочу делать</WantToWork>
+			<WhoToWork>С чем хочу работать</WhoToWork>
+			<Employee>Какими качествами должен обладать</Employee>
+			<SelectProfession>Выбрать профессию</SelectProfession>
+			<UnselectProfession>Отменить выбор</UnselectProfession>
+			<Other>Показать еще</Other>
+			<ShowRecord>Посмотреть запись</ShowRecord>
+			<Details>Подробнее</Details>
+			<Connect>Присоединиться</Connect>
+			<SignedEvent>Зарегистрироваться</SignedEvent>
+			<AlreadyGoing>Уже идет</AlreadyGoing>
+			<Finished>состоялся</Finished>
+			<ProfessionLike>Профессии, похожие на</ProfessionLike>
+		</page-profession.html>
+		<page-article.html>
+			<ArticleListTitle>Статьи</ArticleListTitle>
+			<TagList>Теги</TagList>
+			<Author>Автор:</Author>
+			<Date>Дата публикации:</Date>
+			<Popular>Топчик месяца</Popular>
+			<Comments>Комментарии</Comments>
+			<BlockBest>Это волнует всех</BlockBest>
+			<BlockSimilar>Разгадки тайн поступления</BlockSimilar>
+		</page-article.html>
+		<page-paymentsuccess.html>
+			<ResultTitle>Успешная оплата!</ResultTitle>
+			<ResultComment>Информация о платеже — на вашей электронной почте</ResultComment>
+			<ResultMenu>Пока вы ожидаете звонка нашего эксперта, посмотрите</ResultMenu>
+			<ResultMenuEvents>Онлайн-трансляции</ResultMenuEvents>
+			<ResultMenuProfession>Информацию о профессиях</ResultMenuProfession>
+			<ResultMenuUniversity>Информацию о вузах</ResultMenuUniversity>
+		</page-paymentsuccess.html>
+		<limited_orders_form.html>
+			<FormTitle>Запись на консультацию в учебном центре MAXIMUM</FormTitle>
+			<FormFirstName>Имя</FormFirstName>
+			<FormLastName>Фамилия</FormLastName>
+			<FormPhone>Телефон</FormPhone>
+			<FormDateTime>Время консультации</FormDateTime>
+			<FormSubmit>Записаться</FormSubmit>
+			<Free>Бесплатно</Free>
+			<MessageSuccess><![CDATA[Ваша заявка отправлена!
+В ближайшее время вам позвонит эксперт учебного центра MAXIMUM и назначит удобные день и время для консультации.]]></MessageSuccess>
+			<WhoAreYou>Кто вы?</WhoAreYou>
+			<IChild>Ученик</IChild>
+			<IParent>Родитель</IParent>
+			<UserClass>Класс</UserClass>
+			<Other>Другое</Other>
+		</limited_orders_form.html>
+		<_404.html></_404.html>
+	</public>
+</Root>

@@ -1,0 +1,133 @@
+<div class="col-md-12">
+    <section class="box">
+        <header class="panel_header">
+            <h2 class="title">Список заявок</h2>
+        </header>
+        <div class="content-body">
+            <form id="item-list" method="get">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="form-label">Дата запроса</label><br>
+                            <div class="col-md-4 no-padding">
+                                <div class="col-md-3">от</div>
+                                <div class="col-md-9 no-padding">
+                                    <input class="form-control datepicker" name="DateFrom" value="<TMPL_VAR NAME='DateFrom'>" />
+                                </div>
+                            </div>
+                            <div class="col-md-4 no-padding">
+                                <div class="col-md-3">до</div>
+                                <div class="col-md-9 no-padding">
+                                    <input class="form-control datepicker" name="DateTo"  value="<TMPL_VAR NAME='DateTo'>" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 no-padding form-group">
+                        <ul class="pagination pagination pull-right">
+                            <TMPL_VAR NAME='Paging' ESCAPE='none'>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-12">
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a class="btn" href="<TMPL_VAR NAME='MODULE_URL'>&<TMPL_VAR NAME='ParamsForURL'>"><TMPL_VAR NAME='LNG_Back'></a>
+                                <button type="submit" class="btn btn-success">Применить</button>
+                            </div>
+
+                            <div class="col-md-6 text-right">
+                                Количество записей - <TMPL_VAR NAME='ItemsCount'>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <TMPL_IF NAME='ErrorList'>
+                            <div class="alert alert-error"><TMPL_LOOP NAME='ErrorList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                        </TMPL_IF>
+                        <TMPL_IF NAME='MessageList'>
+                            <div class="alert alert-success"><TMPL_LOOP NAME='MessageList'><TMPL_VAR NAME='Message'><TMPL_UNLESS NAME='__LAST__'><br /></TMPL_UNLESS></TMPL_LOOP></div>
+                        </TMPL_IF>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <TMPL_IF NAME='OrderList'>
+                        <table class="table" id="listing">
+                            <thead>
+                            <tr>
+                                <th class="text-nowrap"><TMPL_VAR NAME="LNG_Created" /></th>
+                                <th><TMPL_VAR NAME="LNG_FirstName" /></th>
+                                <th><TMPL_VAR NAME="LNG_LastName" /></th>
+                                <th><TMPL_VAR NAME="LNG_Phone" /></th>
+                                <th><TMPL_VAR NAME='LNG_UserWho'></th>
+                                <th><TMPL_VAR NAME='LNG_ClassNumber'></th>
+                                <th><TMPL_VAR NAME='LNG_Country'></th>
+                                <th><TMPL_VAR NAME='LNG_City'></th>
+                                <th><TMPL_VAR NAME="LNG_ContactType" /></th>
+                                <th><TMPL_VAR NAME="LNG_ContactAdditional" /></th>
+                                <th><TMPL_VAR NAME="LNG_PageTitle" /></th>
+                                <th><TMPL_VAR NAME="LNG_UTMSource" /></th>
+                                <th><TMPL_VAR NAME="LNG_UTMMedium" /></th>
+                                <th><TMPL_VAR NAME="LNG_UTMCampaign" /></th>
+                                <th><TMPL_VAR NAME="LNG_UTMTerm" /></th>
+                                <th><TMPL_VAR NAME="LNG_UTMContent" /></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <TMPL_LOOP NAME='OrderList'>
+                                <tr>
+                                    <td><TMPL_VAR NAME='Created' FORMAT='datetime'></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='FirstName' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='LastName' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='Phone' /></td>
+                                    <td class="text-nowrap">
+                                        <TMPL_IF NAME='UserWho' VALUE='parent'>
+                                            <TMPL_VAR NAME='LNG_UserWhoParent'>
+                                        <TMPL_ELSEIF NAME='UserWho' VALUE='child'>
+                                            <TMPL_VAR NAME='LNG_UserWhoChild'>
+                                        <TMPL_ELSEIF NAME='UserWho' VALUE='student'>
+                                            <TMPL_VAR NAME='LNG_UserWhoStudent'>
+                                        </TMPL_IF>
+                                    </td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='ClassNumber'></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='Country'></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='City'></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='ContactType' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='ContactAdditional' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='PageTitle' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='utm_source' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='utm_medium' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='utm_campaign' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='utm_term' /></td>
+                                    <td class="text-nowrap"><TMPL_VAR NAME='utm_content' /></td>
+                                </tr>
+                            </TMPL_LOOP>
+                            </tbody>
+                        </table>
+
+                        <div class="clearfix"></div>
+                        <input type="hidden" name="Page" value="<TMPL_VAR NAME='Page'>" />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div href="#" class="btn btn-success" OnClick="doAction('ExportCSV', $(this).closest('form'))">Экспорт .csv</div>
+                        </div>
+                    </div>
+
+                <TMPL_ELSE>
+                    <TMPL_VAR NAME='LNG_EmptyList' />
+                </TMPL_IF>
+                <input type="hidden" name="load" value="orders" />
+                <TMPL_IF NAME="AllOrders">
+                    <input type="hidden" name="AllOrders" value="1" />
+                </TMPL_IF>
+                <TMPL_IF NAME="PageID">
+                    <input type="hidden" name="PageID" value="<TMPL_VAR NAME='PageID'>" />
+                </TMPL_IF>
+            </form>
+        </div>
+    </section>
+</div>
